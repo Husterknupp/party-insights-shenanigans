@@ -21,6 +21,25 @@ function writeAsJson(fileName, output) {
   });
 }
 
+function writeAsMarkdown(fileName, output) {
+  let formatted = `# ${fileName.toLowerCase().replace(".md", "")}\n`;
+  formatted += output
+    .map((bundesland) => {
+      return `
+${bundesland.state}:
+* Ministerpräsident/in: ${bundesland.name}
+* Partei: ${bundesland.party}
+* Profilbild: ${bundesland.imageUrl}
+* Kabinett: ${bundesland.urlCabinet}
+`;
+    })
+    .join("");
+
+  writeFileSync(fileName, formatted, {
+    encoding: "utf-8",
+  });
+}
+
 async function extractMinisterpraesidenten() {
   const response = await axios.get(
     "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten",
@@ -66,6 +85,7 @@ async function extractMinisterpraesidenten() {
   );
 
   writeAsJson("ministerpraesidenten.json", result);
+  writeAsMarkdown("ministerpraesidenten.md", result);
 }
 
 function run() {
