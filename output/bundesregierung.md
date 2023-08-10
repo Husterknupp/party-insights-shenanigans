@@ -4,7 +4,6 @@ Auswärtiges Amt (AA):
 * Name: Annalena Baerbock
 * Partei: Bündnis 90/Die Grünen
 * Profilbild: ![Annalena Baerbock](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Meeting_between_N._Dendias_and_A._Baerbock_at_the_Munich_Security_Conference_%2849535210281%29_%28cropped%29.jpg/400px-Meeting_between_N._Dendias_and_A._Baerbock_at_the_Munich_Security_Conference_%2849535210281%29_%28cropped%29.jpg)
-* Profilbild: ![Annalena Baerbock](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Meeting_between_N._Dendias_and_A._Baerbock_at_the_Munich_Security_Conference_%2849535210281%29_%28cropped%29.jpg/400px-Meeting_between_N._Dendias_and_A._Baerbock_at_the_Munich_Security_Conference_%2849535210281%29_%28cropped%29.jpg)
 
 Bundeskanzler:
 * Name: Olaf Scholz
