@@ -1,3 +1,4 @@
+// IntelliJ has hard times, understanding cheerio's `.attr` method
 // noinspection JSUnresolvedFunction
 
 import axios from 'axios';
@@ -18,7 +19,7 @@ function writeAsMarkdown(fileName, title, data) {
 ${minister.amt}:
 * Name: ${minister.name}
 * Partei: ${minister.party}
-* Profilbild: ![](${minister.imageUrl})
+* Profilbild: ![${minister.name}](${minister.imageUrl})
 `;
         })
         .join('');

@@ -16,7 +16,7 @@ function writeAsMarkdown(fileName, title, data) {
 ${bundesland.state}:
 * Ministerpräsident/in: ${bundesland.name}
 * Partei: ${bundesland.party}
-* Profilbild: ![](${bundesland.imageUrl})
+* Profilbild: ![${bundesland.name}](${bundesland.imageUrl})
 * Kabinett: ${bundesland.urlCabinet}
 `;
         })
