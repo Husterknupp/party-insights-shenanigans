@@ -2,6 +2,21 @@ import axios from 'axios';
 import { load } from 'cheerio';
 import { writeFileSync } from 'fs';
 
+function createImageFiles(ministerpraesidenten) {
+    ministerpraesidenten.forEach((ministerpraesident) => {
+        console.log('Download file for ' + ministerpraesident.name);
+        axios.get(ministerpraesident.imageUrl, { responseType: 'arraybuffer' }).then((image) =>
+            writeFileSync(
+                'output/ministerpraesidenten/' + ministerpraesident.name + '.jpg',
+                image.data,
+                {
+                    encoding: 'base64',
+                }
+            )
+        );
+    });
+}
+
 function writeAsJson(fileName, output) {
     writeFileSync(fileName, JSON.stringify(output, null, 2), {
         encoding: 'utf-8',
@@ -66,6 +81,11 @@ export default async function extract() {
 
     result.sort(({ state: stateA }, { state: stateB }) => stateA.localeCompare(stateB));
 
-    writeAsJson('output/ministerpraesidenten.json', result);
-    writeAsMarkdown('output/ministerpraesidenten.md', 'Ministerpräsidenten', result);
+    writeAsJson('output/ministerpraesidenten/ministerpraesidenten.json', result);
+    writeAsMarkdown(
+        'output/ministerpraesidenten/ministerpraesidenten.md',
+        'Ministerpräsidenten',
+        result
+    );
+    createImageFiles(result);
 }
