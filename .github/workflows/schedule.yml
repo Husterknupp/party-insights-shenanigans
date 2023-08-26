@@ -20,4 +20,4 @@ jobs:
               run: |
                 git status --porcelain
                 STATUS=$(git status --porcelain)
-                if [[ ! $STATUS ]]; then echo "empty"; else echo "AAAAa"; fi
+                if [[ ! $STATUS ]]; then echo "empty"; else exit 1; fi
