@@ -17,8 +17,4 @@ jobs:
             - run: yarn start
             # ACTUAL CHECK
             - name: Check if there are changes
-              id: changes
-              uses: UnicornGlobal/has-changes-action@v1.0.11
-            - name: Bail out to receive an email about updates
-              if: steps.changes.outputs.changed == 1
-              run: echo "::error title={Wiki Has Updates}::{Workflow run created files and the content is different to what was committed.}"
+              run: "git status --porcelain"
