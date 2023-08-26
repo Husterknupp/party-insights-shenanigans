@@ -14,7 +14,6 @@ jobs:
               with:
                   node-version: '16'
             - run: yarn --frozen-lockfile
-            - run: yarn build
             - run: yarn start
             # ACTUAL CHECK
             - name: Check if there are changes
