@@ -1,0 +1,28 @@
+name: 'Check For Wiki Updates'
+
+on:
+    schedule:
+        - cron: '00 00 * * *' # daily at Midnight
+    push:
+      branches:
+        [*]
+
+
+jobs:
+    schedule:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '16'
+            - run: yarn --frozen-lockfile
+            - run: yarn build
+            - run: yarn start
+            # ACTUAL CHECK
+            - name: Check if there are changes
+              id: changes
+              uses: UnicornGlobal/has-changes-action@v1.0.11
+            - name: Bail out to receive an email about updates
+              if: steps.changes.outputs.changed == 1
+              run: echo "::error title={Wiki Has Updates}::{Workflow run created files and the content is different to what was committed.}"

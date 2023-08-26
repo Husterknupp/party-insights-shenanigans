@@ -7,7 +7,7 @@ import extractBundesregierung from './extractors/bundesregierung.js';
 
 // * same for Bundesländer
 // Header: Kabinett/Mitglieder der Landesregierung
-// Amt/Ressort 	Foto/Bild 	Name/Amtsinhaber 	Partei/Parteien
+// Amt/Ressort | Foto/Bild | Name/Amtsinhaber | Partei/Parteien
 
 function run() {
     console.log(`starting`);
