@@ -17,5 +17,5 @@ jobs:
             - run: yarn start
             # ACTUAL CHECK
             - name: Check if there are changes
-              if: git status --porcelain != ''
+              if: ${{ git status --porcelain != '' }}
               run: git status --porcelain && exit 1
