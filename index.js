@@ -1,22 +1,20 @@
-import extractMinisterpraesidenten from './extractors/ministerpraesidenten.js';
-import extractBundesregierung from './extractors/bundesregierung.js';
+import extractMinisterpraesidenten from './extractors/ministerpraesidenten.js'
+import extractBundesregierung from './extractors/bundesregierung.js'
+import extractLandesregierungen from './extractors/landesregierungen.js'
 
-// todo
-// * -> GitHub
-// * GitHub CI notify on updates
+async function run () {
+  console.log('Start')
 
-// * same for Bundesländer
-// Header: Kabinett/Mitglieder der Landesregierung
-// Amt/Ressort | Foto/Bild | Name/Amtsinhaber | Partei/Parteien
+  await extractMinisterpraesidenten()
+  console.log('Done with ministerpräsidenten.')
 
-function run() {
-    console.log(`starting`);
-    extractMinisterpraesidenten()
-        .then(() => console.log('Done Ministerpräsidenten'))
-        .catch(console.error);
-    extractBundesregierung()
-        .then(() => console.log('Done Bundesregierung'))
-        .catch(console.error);
+  await extractBundesregierung()
+  console.log('Done with bundesregierung.')
+
+  await extractLandesregierungen()
+  console.log('Done with landesregierungen.')
 }
 
-run();
+run()
+  .then(() => console.log('All done. Ite domum!'))
+  .catch(console.error)
