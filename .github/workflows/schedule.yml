@@ -1,9 +1,10 @@
 name: 'Check For Wiki Updates'
 
+# Daily at Midnight and with every push (to see result of new changes)
 on:
     schedule:
-        - cron: '00 00 * * *' # daily at Midnight
-    push: # All push events
+        - cron: '00 00 * * *'
+    push:
 
 jobs:
     schedule:
@@ -16,7 +17,7 @@ jobs:
             - run: yarn --frozen-lockfile
             - run: yarn start
             # ACTUAL CHECK
-            - name: Check if there are changes
+            - name: Compare output with checked-in version
               run: |
                 git status --porcelain
                 STATUS=$(git status --porcelain)
