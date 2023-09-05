@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { load } from 'cheerio'
 import { writeFileSync } from 'fs'
+import { writeAsJson } from './output-helpers.js'
 
 function createImageFiles (ministerpraesidenten) {
   ministerpraesidenten.forEach((ministerpraesident) => {
@@ -14,12 +15,6 @@ function createImageFiles (ministerpraesidenten) {
         }
       )
     )
-  })
-}
-
-function writeAsJson (fileName, output) {
-  writeFileSync(fileName, JSON.stringify(output, null, 2), {
-    encoding: 'utf-8'
   })
 }
 

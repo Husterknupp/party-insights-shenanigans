@@ -3,31 +3,7 @@
 
 import axios from 'axios'
 import { load } from 'cheerio'
-import { writeFileSync } from 'fs'
-
-function writeAsJson (fileName, output) {
-  writeFileSync(fileName, JSON.stringify(output, null, 2), {
-    encoding: 'utf-8'
-  })
-}
-
-function writeAsMarkdown (fileName, title, data) {
-  let formatted = `# ${title}\n`
-  formatted += data
-    .map((minister) => {
-      return `
-${minister.amt}:
-* Name: ${minister.name}
-* Partei: ${minister.party}
-* Profilbild: ![${minister.name}](${minister.imageUrl})
-`
-    })
-    .join('')
-
-  writeFileSync(fileName, formatted, {
-    encoding: 'utf-8'
-  })
-}
+import { writeAsJson, writeMinisterAsMarkdown } from './output-helpers.js'
 
 function urlForResizedImage (image) {
   // Resize image to non-thumb size
@@ -151,5 +127,5 @@ export default async function extract () {
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b))
 
   writeAsJson('output/bundesregierung.json', result)
-  writeAsMarkdown('output/bundesregierung.md', 'Bundesregierung', result)
+  writeMinisterAsMarkdown('output/bundesregierung.md', 'Bundesregierung', result)
 }
