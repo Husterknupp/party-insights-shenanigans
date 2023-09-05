@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 import axios from 'axios'
 import { load } from 'cheerio'
-import { writeAsJson, writeMinisterAsMarkdown } from './output-helpers.js'
+import { writeAsJson, writeAsMarkdown } from './output-helpers.js'
 
 function urlForResizedImage (image) {
   // Resize image to non-thumb size
@@ -143,7 +143,7 @@ async function extractSingle (bundesland) {
   console.log(result)
 
   writeAsJson(`output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.json`, result)
-  writeMinisterAsMarkdown(`output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.md`, bundesland.state, result)
+  writeAsMarkdown(`output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.md`, bundesland.state, 'amt', result)
 }
 
 export default async function extract () {

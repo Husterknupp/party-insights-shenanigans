@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { load } from 'cheerio'
 import { writeFileSync } from 'fs'
-import { writeAsJson } from './output-helpers.js'
+import { writeAsJson, writeAsMarkdown } from './output-helpers.js'
 
 function createImageFiles (ministerpraesidenten) {
   ministerpraesidenten.forEach((ministerpraesident) => {
@@ -15,25 +15,6 @@ function createImageFiles (ministerpraesidenten) {
         }
       )
     )
-  })
-}
-
-function writeAsMarkdown (fileName, title, data) {
-  let formatted = `# ${title}\n`
-  formatted += data
-    .map((bundesland) => {
-      return `
-${bundesland.state}:
-* Ministerpräsident/in: ${bundesland.name}
-* Partei: ${bundesland.party}
-* Profilbild: ![${bundesland.name}](${bundesland.imageUrl})
-* Kabinett: ${bundesland.urlCabinet}
-`
-    })
-    .join('')
-
-  writeFileSync(fileName, formatted, {
-    encoding: 'utf-8'
   })
 }
 
@@ -80,6 +61,7 @@ export default async function extract () {
   writeAsMarkdown(
     'output/ministerpraesidenten/ministerpraesidenten.md',
     'Ministerpräsidenten',
+    'state',
     result
   )
   createImageFiles(result)
