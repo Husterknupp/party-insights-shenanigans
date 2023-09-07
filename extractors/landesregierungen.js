@@ -67,7 +67,6 @@ function indexAmt ($rows) {
       return found.index()
     }
   }
-  // todo Sachsen Couldn't find amt column
   throw Error("Couldn't find amt column")
 }
 
@@ -78,7 +77,7 @@ function findRelevantTable ($cheerio) {
     const found = $cheerio(`h2:contains("${o}")`)
     if (found.length !== 0) {
       console.log(`found table '${o}'`)
-      return found.siblings().next('table:first').find('tr')
+      return found.next('table').find('tr')
     }
   }
   throw Error("Couldn't find relevant table with any of the names " + options.toString())
@@ -105,11 +104,11 @@ async function extractSingle (bundesland) {
 
     const amt = $(cells[amtIdx]).find('br').replaceWith(' • ').end().text().trim()
 
-    const name = $(cells[nameIdx]).find('a:nth-of-type(1)').text().trim()
+    const name = $(cells[nameIdx]).find('a:first').text().trim()
     if (!name) {
       console.info(`I have no name. Column ${nameIdx}. Maybe it's some sort of 'amt'?`)
 
-      if (amt.toLocaleLowerCase().indexOf('inneres') !== -1) {
+      if (amt.toLocaleLowerCase().indexOf('inneres') !== -1 || amt.toLocaleLowerCase().indexOf('minister') !== -1) {
         console.info(`'amt'='${amt}' looks useful. Will add it to predecessor's amt`)
         const predecessor = result[result.length - 1]
         predecessor.amt = amt + ` (${predecessor.amt})`
@@ -138,6 +137,7 @@ async function extractSingle (bundesland) {
     })
   })
 
+  // todo delete sorting once we can scrape bundeslaender - it's easier when using Wikipedia's sorting
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b))
 
   console.log(result)
@@ -152,8 +152,9 @@ export default async function extract () {
 
   for (const bundesland of bundeslaender) {
     switch (bundesland.state.toLocaleLowerCase()) {
-      // case 'sachsen':
-      case 'baden-württemberg': {
+      case 'sachsen':
+      case 'baden-württemberg':
+      {
         await extractSingle(bundesland)
         break
       }
