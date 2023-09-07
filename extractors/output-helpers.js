@@ -11,16 +11,8 @@ export function writeAsMarkdown (fileName, title, headingField, data) {
   formatted += data
     .map((minister) => {
       return `\n${minister[headingField]}:` + Object.keys(minister)
-        .sort((keyA, keyB) => {
-          // Have the image as last because it looks shitty between two text items
-          if (keyA === 'imageUrl') {
-            return 1
-          } else if (keyB === 'imageUrl') {
-            return -1
-          } else {
-            return 0
-          }
-        })
+        // Have the image as last because it looks shitty between two text items
+        .sort((keyA, keyB) => keyA === 'imageUrl' ? 1 : keyB === 'imageUrl' ? -1 : 0)
         .map(key => {
           switch (key) {
             case headingField: {
@@ -40,8 +32,8 @@ export function writeAsMarkdown (fileName, title, headingField, data) {
               return `* Kabinett: ${minister.urlCabinet}`
             }
             default: {
-              console.warn(`Markdown field ${key} not mapped. Object: ${JSON.stringify(minister)}`)
-              return ''
+              console.warn(`Markdown: Field ${key} not mapped.`)
+              return `* ${key}: ${minister[key]}`
             }
           }
         }).join('\n')
