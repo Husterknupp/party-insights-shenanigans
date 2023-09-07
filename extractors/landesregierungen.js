@@ -20,7 +20,7 @@ function indexParty ($rows) {
     const found = $rows.find(`th:contains("${o}")`)
     if (found.length !== 0) {
       if (found.attr('colspan') > 1) {
-        console.warn(`[WARN] colspan ${found.attr('colspan')} for party column`)
+        console.warn(`colspan ${found.attr('colspan')} for party column`)
       }
 
       console.log(
@@ -84,7 +84,7 @@ function findRelevantTable ($cheerio) {
 }
 
 async function extractSingle (bundesland) {
-  console.log('extracting ' + bundesland.urlCabinet + ` (${bundesland.state})`)
+  console.log('\nextracting ' + bundesland.urlCabinet + ` (${bundesland.state})`)
 
   const response = await axios.get(bundesland.urlCabinet)
   const $ = load(response.data)
@@ -96,7 +96,10 @@ async function extractSingle (bundesland) {
   const amtIdx = indexAmt(rows)
   const nameIdx = indexName(rows)
   const imageIdx = nameIdx - 1
+  console.log(`assuming image column at index ${imageIdx}`)
   const partyIdx = indexParty(rows)
+
+  console.log('found all indexes\n')
 
   rows.each((i, row) => {
     const cells = $(row).find('td')
@@ -125,8 +128,8 @@ async function extractSingle (bundesland) {
 
     let party = $(cells[partyIdx]).text().trim()
     if (!party) {
-      console.log(`What about a paartey? Column ${partyIdx} has no text. Trying column right of it`)
       party = $(cells[partyIdx + 1]).text().trim()
+      console.log(`${name}: What about a paartey? Column ${partyIdx} has no text. Reading column right of it ... '${party}'`)
     }
 
     result.push({
@@ -140,6 +143,7 @@ async function extractSingle (bundesland) {
   // todo delete sorting once we can scrape bundeslaender - it's easier when using Wikipedia's sorting
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b))
 
+  console.log(`found ${result.length} minister\n`)
   console.log(result)
 
   writeAsJson(`output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.json`, result)
