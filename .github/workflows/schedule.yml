@@ -1,24 +1,24 @@
-name: 'Check For Wiki Updates'
+name: "Check For Wiki Updates"
 
 # Daily at Midnight and with every push (to see result of new changes)
 on:
-    schedule:
-        - cron: '00 00 * * *'
-    push:
+  schedule:
+    - cron: "00 00 * * *"
+  push:
 
 jobs:
-    schedule:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: '16'
-            - run: yarn --frozen-lockfile
-            - run: yarn start
-            # ACTUAL CHECK
-            - name: Compare output with checked-in version
-              run: |
-                git status --porcelain
-                STATUS=$(git status --porcelain)
-                if [[ ! $STATUS ]]; then echo "empty"; else exit 1; fi
+  schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - run: yarn --frozen-lockfile
+      - run: yarn start
+      # ACTUAL CHECK
+      - name: Compare output with checked-in version
+        run: |
+          git status --porcelain
+          STATUS=$(git status --porcelain)
+          if [[ ! $STATUS ]]; then echo "empty"; else exit 1; fi
