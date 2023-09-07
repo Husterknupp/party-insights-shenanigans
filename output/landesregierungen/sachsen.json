@@ -1,26 +1,14 @@
 [
   {
-    "amt": "Ministerpräsident",
-    "name": "Michael Kretschmer",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93030.jpg/400px-2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93030.jpg",
+    "amt": "Chef der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien",
+    "name": "Oliver Schenk",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
     "party": "CDU"
   },
   {
-    "amt": "Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (Erster Stellvertreter des Ministerpräsidenten)",
-    "name": "Wolfram Günther",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wolfram_G%C3%BCnther_Pressefoto.jpg/400px-Wolfram_G%C3%BCnther_Pressefoto.jpg",
-    "party": "B’90/Die Grünen"
-  },
-  {
-    "amt": "Staatsminister für Wirtschaft, Arbeit und Verkehr (Zweiter Stellvertreter des Ministerpräsidenten)",
-    "name": "Martin Dulig",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/2016-12-15_Martin_Dulig_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank.jpg/400px-2016-12-15_Martin_Dulig_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank.jpg",
-    "party": "SPD"
-  },
-  {
-    "amt": "Staatsminister des Innern",
-    "name": "Roland Wöller",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93022.jpg/400px-2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93022.jpg",
+    "amt": "Ministerpräsident",
+    "name": "Michael Kretschmer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93030.jpg/400px-2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93030.jpg",
     "party": "CDU"
   },
   {
@@ -30,9 +18,15 @@
     "party": "CDU"
   },
   {
-    "amt": "Staatsministerin der Justiz und für Demokratie, Europa und Gleichstellung",
-    "name": "Katja Meier",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Katja_Meier_Pressefoto.jpg/400px-Katja_Meier_Pressefoto.jpg",
+    "amt": "Staatsminister des Innern",
+    "name": "Roland Wöller",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93022.jpg/400px-2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93022.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (Erster Stellvertreter des Ministerpräsidenten)",
+    "name": "Wolfram Günther",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wolfram_G%C3%BCnther_Pressefoto.jpg/400px-Wolfram_G%C3%BCnther_Pressefoto.jpg",
     "party": "B’90/Die Grünen"
   },
   {
@@ -42,10 +36,28 @@
     "party": "CDU"
   },
   {
+    "amt": "Staatsminister für Regionalentwicklung",
+    "name": "Thomas Schmidt",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MJK21321_Thomas_Schmidt.jpg/400px-MJK21321_Thomas_Schmidt.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Staatsminister für Wirtschaft, Arbeit und Verkehr (Zweiter Stellvertreter des Ministerpräsidenten)",
+    "name": "Martin Dulig",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/2016-12-15_Martin_Dulig_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank.jpg/400px-2016-12-15_Martin_Dulig_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank.jpg",
+    "party": "SPD"
+  },
+  {
     "amt": "Staatsminister für Wissenschaft",
     "name": "Sebastian Gemkow",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2016-12-15_Sebastian_Gemkow_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%931.jpg/400px-2016-12-15_Sebastian_Gemkow_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%931.jpg",
     "party": "CDU"
+  },
+  {
+    "amt": "Staatsministerin der Justiz und für Demokratie, Europa und Gleichstellung",
+    "name": "Katja Meier",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Katja_Meier_Pressefoto.jpg/400px-Katja_Meier_Pressefoto.jpg",
+    "party": "B’90/Die Grünen"
   },
   {
     "amt": "Staatsministerin für Kultur und Tourismus",
@@ -58,17 +70,5 @@
     "name": "Petra Köpping",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2016-12-15_Petra_K%C3%B6pping_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%934.jpg/400px-2016-12-15_Petra_K%C3%B6pping_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%934.jpg",
     "party": "SPD"
-  },
-  {
-    "amt": "Staatsminister für Regionalentwicklung",
-    "name": "Thomas Schmidt",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MJK21321_Thomas_Schmidt.jpg/400px-MJK21321_Thomas_Schmidt.jpg",
-    "party": "CDU"
-  },
-  {
-    "amt": "Chef der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien",
-    "name": "Oliver Schenk",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
-    "party": "CDU"
   }
 ]
