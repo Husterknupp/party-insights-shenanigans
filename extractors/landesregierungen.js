@@ -97,7 +97,7 @@ function findRelevantTable($cheerio) {
   );
 }
 
-async function extractSingle(bundesland) {
+async function _extract(bundesland) {
   console.log(
     "\nextracting " + bundesland.urlCabinet + ` (${bundesland.state})`,
   );
@@ -198,13 +198,28 @@ export default async function extract() {
       encoding: "UTF-8",
     }),
   );
-  const notMapped = [];
 
+  const notMapped = [];
   for (const bundesland of bundeslaender) {
-    switch (bundesland.state.toLocaleLowerCase()) {
-      case "sachsen":
-      case "baden-württemberg": {
-        await extractSingle(bundesland);
+    switch (bundesland.state) {
+      case "Sachsen":
+      case "Baden-Württemberg":
+      // case "Bayern":
+      // case "Thüringen":
+      // case "Schleswig-Holstein":
+      // case "Sachsen-Anhalt":
+      // case "Saarland":
+      // case "Rheinland-Pfalz":
+      // case "Nordrhein-Westfalen":
+      // case "Niedersachsen":
+      // case "Mecklenburg-Vorpommern":
+      // case "Hessen":
+      // case "Hamburg":
+      // case "Bremen":
+      // case "Brandenburg":
+      // case "Berlin":
+      case "NEVER": {
+        await _extract(bundesland);
         break;
       }
       default: {
