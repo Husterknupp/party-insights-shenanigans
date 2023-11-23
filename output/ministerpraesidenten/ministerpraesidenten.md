@@ -9,7 +9,7 @@ Baden-Württemberg:
 Bayern:
 * Name: Markus Söder
 * Partei: CSU
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_S%C3%B6der_II
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_S%C3%B6der_III
 * Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/400px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg)
 
 Berlin:

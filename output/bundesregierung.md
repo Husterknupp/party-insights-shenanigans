@@ -23,7 +23,7 @@ Bundesministerium der Finanzen (BMF):
 Bundesministerium der Justiz (BMJ):
 * Name: Marco Buschmann
 * Partei: FDP
-* Profilbild: ![Marco Buschmann](https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/2021-12-07_Unterzeichnung_des_Koalitionsvertrages_der_20._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93112.jpg/400px-2021-12-07_Unterzeichnung_des_Koalitionsvertrages_der_20._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93112.jpg)
+* Profilbild: ![Marco Buschmann](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2021-12-07_Unterzeichnung_des_Koalitionsvertrages_der_20._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93112_%28cropped%29.jpg/400px-2021-12-07_Unterzeichnung_des_Koalitionsvertrages_der_20._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93112_%28cropped%29.jpg)
 
 Bundesministerium der Verteidigung (BMVg):
 * Name: Boris Pistorius
@@ -33,7 +33,7 @@ Bundesministerium der Verteidigung (BMVg):
 Bundesministerium des Innern und für Heimat (BMI):
 * Name: Nancy Faeser
 * Partei: SPD
-* Profilbild: ![Nancy Faeser](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/2023-02-12_BMW_IBU_World_Championships_Biathlon_Oberhof_2023_%E2%80%93_Men_12.5_km_Pursuit_by_Sandro_Halank%E2%80%93004.jpg/400px-2023-02-12_BMW_IBU_World_Championships_Biathlon_Oberhof_2023_%E2%80%93_Men_12.5_km_Pursuit_by_Sandro_Halank%E2%80%93004.jpg)
+* Profilbild: ![Nancy Faeser](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Portr%C3%A4t_von_Nancy_Faeser_2023_%28cropped%29.jpg/400px-Portr%C3%A4t_von_Nancy_Faeser_2023_%28cropped%29.jpg)
 
 Bundesministerium für Arbeit und Soziales (BMAS):
 * Name: Hubertus Heil
