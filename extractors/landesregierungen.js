@@ -125,6 +125,9 @@ async function _extract(bundesland) {
     const cells = $(row).find("td");
     if (cells.length === 0) return; // for table header
 
+    // Assuming this is a scenario where the minister changed during the same election period (Wiki lists old ones too).
+    // Only the first row has the Amt, the succeeding rows are missing first column.
+    // Relevant for the name is the last row (the person that is currently actually the minister).
     const override = $(cells[imageIdx - 1])
       .find("img")
       .attr("src");
@@ -189,9 +192,6 @@ async function _extract(bundesland) {
       imageSmall = $(cells[imageIdx]).find("img").attr("src");
     }
     if (!imageSmall) {
-      // Assuming this is a scenario where the minister changed during the same election period (Wiki lists old ones too).
-      // Only the first row has the Amt, the succeeding rows are missing first column.
-      // Relevant for the name is the last row (the person that is currently actually the minister).
       throw new Error(`${name}: Missing img URL. Column ${imageIdx}`);
     }
 
@@ -253,7 +253,7 @@ export default async function extract() {
       case "Sachsen":
       case "Baden-Württemberg":
       case "Bayern":
-      // case "Thüringen":
+      case "Thüringen":
       // case "Schleswig-Holstein":
       // case "Sachsen-Anhalt":
       // case "Saarland":
