@@ -5,12 +5,12 @@ Ministerpräsident:
 * Partei: CDU
 * Profilbild: ![Michael Kretschmer](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93030.jpg/400px-2022-03-28_Empfang_des_S%C3%A4chsischen_Ministerpr%C3%A4sidenten_f%C3%BCr_die_Teilnehmenden_der_Olympischen_Winterspiele_2022_by_Sandro_Halank%E2%80%93030.jpg)
 
-Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (Erster Stellvertreter des Ministerpräsidenten):
+Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
 * Name: Wolfram Günther
 * Partei: B’90/Die Grünen
 * Profilbild: ![Wolfram Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wolfram_G%C3%BCnther_Pressefoto.jpg/400px-Wolfram_G%C3%BCnther_Pressefoto.jpg)
 
-Staatsminister für Wirtschaft, Arbeit und Verkehr (Zweiter Stellvertreter des Ministerpräsidenten):
+Staatsminister für Wirtschaft, Arbeit und Verkehr (gleichzeitig: Zweiter Stellvertreter des Ministerpräsidenten):
 * Name: Martin Dulig
 * Partei: SPD
 * Profilbild: ![Martin Dulig](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/2016-12-15_Martin_Dulig_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank.jpg/400px-2016-12-15_Martin_Dulig_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank.jpg)

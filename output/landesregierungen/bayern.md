@@ -5,12 +5,12 @@ Ministerpräsident:
 * Partei: CSU
 * Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/400px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg)
 
-Wirtschaft, Landesentwicklung und Energie (Stellvertretender Ministerpräsident):
+Wirtschaft, Landesentwicklung und Energie (gleichzeitig: Stellvertretender Ministerpräsident):
 * Name: Hubert Aiwanger
 * Partei: FW
 * Profilbild: ![Hubert Aiwanger](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hart_aber_fair_2019-02-25-5560.jpg/400px-Hart_aber_fair_2019-02-25-5560.jpg)
 
-Familie, Arbeit und Soziales (Weitere Stellvertreterin des Ministerpräsidenten):
+Familie, Arbeit und Soziales (gleichzeitig: Weitere Stellvertreterin des Ministerpräsidenten):
 * Name: Ulrike Scharf
 * Partei: CSU
 * Profilbild: ![Ulrike Scharf](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2016-03-08_Ulrike_Scharf_018_%28cropped%29.JPG/400px-2016-03-08_Ulrike_Scharf_018_%28cropped%29.JPG)

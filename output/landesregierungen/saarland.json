@@ -1,0 +1,44 @@
+[
+  {
+    "amt": "Ministerpräsidentin • Staatskanzlei",
+    "name": "Anke Rehlinger",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/2022-03-27_Wahlabend_Saarland_by_Sandro_Halank%E2%80%93061_%28cropped%29.jpg/400px-2022-03-27_Wahlabend_Saarland_by_Sandro_Halank%E2%80%93061_%28cropped%29.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister für Wirtschaft, Innovation, Digitales und Energie (gleichzeitig: Stellvertreter der Ministerpräsidentin)",
+    "name": "Jürgen Barke",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/J%C3%BCrgen_Barke-7276.jpg/400px-J%C3%BCrgen_Barke-7276.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister der Finanzen und für Wissenschaft",
+    "name": "Jakob von Weizsäcker",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Jakob_von_Weizs%C3%A4cker.jpg/400px-Jakob_von_Weizs%C3%A4cker.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister für Inneres, Bauen und Sport",
+    "name": "Reinhold Jost",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Reinhold_Jost-7323.jpg/400px-Reinhold_Jost-7323.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister für Arbeit, Soziales, Frauen und Gesundheit",
+    "name": "Magnus Jung",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Magnus_Jung-7401.jpg/400px-Magnus_Jung-7401.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Ministerin für Bildung und Kultur",
+    "name": "Christine Streichert-Clivot",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Portrait_Christine_Streichert-Clivot%2C_2022.jpg/400px-Portrait_Christine_Streichert-Clivot%2C_2022.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Ministerin der Justiz (gleichzeitig: Ministerin für Umwelt, Klimaschutz, Mobilität, Agrar und Verbraucherschutz)",
+    "name": "Petra Berg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Petra_Berg-6869.jpg/400px-Petra_Berg-6869.jpg",
+    "party": "SPD"
+  }
+]

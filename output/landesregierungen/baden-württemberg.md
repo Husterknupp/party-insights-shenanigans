@@ -5,7 +5,7 @@ Ministerpräsident:
 * Partei: Grüne
 * Profilbild: ![Winfried Kretschmann](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/180913_Kretschmann_Hybrid_Faehre_01_%28cropped%29.jpg/400px-180913_Kretschmann_Hybrid_Faehre_01_%28cropped%29.jpg)
 
-Inneres, Digitalisierung und Kommunen (Stellvertretender Ministerpräsident):
+Inneres, Digitalisierung und Kommunen (gleichzeitig: Stellvertretender Ministerpräsident):
 * Name: Thomas Strobl
 * Partei: CDU
 * Profilbild: ![Thomas Strobl](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/2018-12-07_Thomas_Strobl_CDU_Pateitag_in_Hamburg-2501.jpg/400px-2018-12-07_Thomas_Strobl_CDU_Pateitag_in_Hamburg-2501.jpg)

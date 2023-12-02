@@ -5,12 +5,12 @@ Ministerpräsident:
 * Partei: CDU
 * Profilbild: ![Reiner Haseloff](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg/400px-Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg)
 
-Minister für Wissenschaft, Energie, Klimaschutz und Umwelt (Erster Stellvertreter des Ministerpräsidenten):
+Minister für Wissenschaft, Energie, Klimaschutz und Umwelt (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
 * Name: Armin Willingmann
 * Partei: SPD
 * Profilbild: ![Armin Willingmann](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/2018-09_Tierparkfest_10_Armin_Willingmann.jpg/400px-2018-09_Tierparkfest_10_Armin_Willingmann.jpg)
 
-Ministerin für Infrastruktur und Digitales (Zweite Stellvertreterin des Ministerpräsidenten):
+Ministerin für Infrastruktur und Digitales (gleichzeitig: Zweite Stellvertreterin des Ministerpräsidenten):
 * Name: Lydia Hüskens
 * Partei: FDP
 * Profilbild: ![Lydia Hüskens](https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Lydia-H%C3%BCskens-MdL-Portrait.jpg/400px-Lydia-H%C3%BCskens-MdL-Portrait.jpg)

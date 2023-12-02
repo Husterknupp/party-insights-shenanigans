@@ -153,6 +153,8 @@ async function _extract(bundesland) {
         console.log("Replacing footnote in text");
         amt = amt.replace(/\[\d]/, "");
       }
+      // For each new <br>, the above code produces '•' (sometimes we have 2 <br>s)
+      amt = amt.replace(" •  • ", " • ");
     }
 
     // todo Looking for <a /> elements here - but there are 2x ministers with plain text
@@ -180,7 +182,7 @@ async function _extract(bundesland) {
             `'amt'='${amt}' looks useful. Will add it to predecessor's amt`,
           );
           const predecessor = result[result.length - 1];
-          predecessor.amt = amt + ` (${predecessor.amt})`;
+          predecessor.amt = amt + ` (gleichzeitig: ${predecessor.amt})`;
         } else {
           console.info(`Skipping. 'amt'=${amt}`);
         }
@@ -263,7 +265,7 @@ export default async function extract() {
       case "Thüringen":
       case "Schleswig-Holstein":
       case "Sachsen-Anhalt":
-      // case "Saarland":
+      case "Saarland":
       // case "Rheinland-Pfalz":
       // case "Nordrhein-Westfalen":
       // case "Niedersachsen":

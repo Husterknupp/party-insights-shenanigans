@@ -5,7 +5,7 @@ Ministerpräsident:
 * Partei: CDU
 * Profilbild: ![Daniel Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Daniel_G%C3%BCnther_%282017%29.jpg/400px-Daniel_G%C3%BCnther_%282017%29.jpg)
 
-Ministerin der Finanzen (Stellvertretende Ministerpräsidentin):
+Ministerin der Finanzen (gleichzeitig: Stellvertretende Ministerpräsidentin):
 * Name: Monika Heinold
 * Partei: B’90/Die Grünen
 * Profilbild: ![Monika Heinold](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/1454-ri-102-Gruene_Monika_Heinold_%28cropped%29.jpg/400px-1454-ri-102-Gruene_Monika_Heinold_%28cropped%29.jpg)
