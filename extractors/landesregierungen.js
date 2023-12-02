@@ -12,7 +12,7 @@ function urlForResizedImage(image) {
   return "https:" + parts.join("/");
 }
 
-function indexParty($rows) {
+function indexOfColumnParty($rows) {
   const options = ["Partei", "Parteien"];
 
   for (const o of options) {
@@ -20,11 +20,13 @@ function indexParty($rows) {
     const found = $rows.find(`th:contains("${o}")`);
     if (found.length !== 0) {
       if (found.attr("colspan") > 1) {
-        console.warn(`colspan ${found.attr("colspan")} for party column`);
+        console.warn(
+          `[WARN] colspan ${found.attr("colspan")} for 'party' column`,
+        );
       }
 
       console.log(
-        `found party column with name '${found
+        `found 'party' column with name '${found
           .text()
           .trim()}' at index ${found.index()}`,
       );
@@ -32,22 +34,24 @@ function indexParty($rows) {
     }
   }
 
-  throw Error("Couldn't find party column");
+  throw Error("Couldn't find 'party' column");
 }
 
-function indexName($rows) {
-  const options = ["Amtsinhaber/in", "Name"];
+function indexOfColumnName($rows) {
+  const options = ["Amtsinhaber", "Name"];
 
   for (const o of options) {
     // language=JQuery-CSS
     const found = $rows.find(`th:contains("${o}")`);
     if (found.length !== 0) {
       if (found.attr("colspan") > 1) {
-        console.warn(`[WARN] colspan ${found.attr("colspan")} for name column`);
+        console.warn(
+          `[WARN] colspan ${found.attr("colspan")} for 'name' column`,
+        );
       }
 
       console.log(
-        `found name column with name '${found
+        `found 'name' column with name '${found
           .text()
           .trim()}' at index ${found.index()}`,
       );
@@ -55,10 +59,10 @@ function indexName($rows) {
     }
   }
 
-  throw Error("Couldn't find name column");
+  throw Error("Couldn't find 'name' column");
 }
 
-function indexAmt($rows) {
+function indexOfColumnAmt($rows) {
   const options = ["Ressort", "Amt"];
 
   for (const o of options) {
@@ -66,14 +70,14 @@ function indexAmt($rows) {
     const found = $rows.find(`th:contains("${o}")`);
     if (found.length !== 0) {
       console.log(
-        `found amt column with name '${found
+        `found 'amt' column with name '${found
           .text()
           .trim()}' at index ${found.index()}`,
       );
       return found.index();
     }
   }
-  throw Error("Couldn't find amt column");
+  throw Error("Couldn't find 'amt' column");
 }
 
 function findRelevantTable($cheerio) {
@@ -109,11 +113,11 @@ async function _extract(bundesland) {
   const rows = findRelevantTable($);
 
   // Column indices
-  const amtIdx = indexAmt(rows);
-  const nameIdx = indexName(rows);
+  const amtIdx = indexOfColumnAmt(rows);
+  const nameIdx = indexOfColumnName(rows);
   const imageIdx = nameIdx - 1;
-  console.log(`assuming image column at index ${imageIdx}`);
-  const partyIdx = indexParty(rows);
+  console.log(`assuming 'image' column at index ${imageIdx}`);
+  const partyIdx = indexOfColumnParty(rows);
 
   console.log("found all indexes\n");
 
@@ -121,49 +125,96 @@ async function _extract(bundesland) {
     const cells = $(row).find("td");
     if (cells.length === 0) return; // for table header
 
-    const amt = $(cells[amtIdx])
-      .find("br")
-      .replaceWith(" • ")
-      .end()
-      .text()
-      .trim();
-
-    const name = $(cells[nameIdx]).find("a:first").text().trim();
-    if (!name) {
-      console.info(
-        `I have no name. Column ${nameIdx}. Maybe it's some sort of 'amt'?`,
-      );
-
-      if (
-        amt.toLocaleLowerCase().indexOf("inneres") !== -1 ||
-        amt.toLocaleLowerCase().indexOf("minister") !== -1
-      ) {
-        console.info(
-          `'amt'='${amt}' looks useful. Will add it to predecessor's amt`,
-        );
-        const predecessor = result[result.length - 1];
-        predecessor.amt = amt + ` (${predecessor.amt})`;
-      } else {
-        console.info(`Skipping. 'amt'=${amt}`);
-      }
-      return;
+    const override = $(cells[imageIdx - 1])
+      .find("img")
+      .attr("src");
+    if (override) {
+      console.log(`${override}: override`);
     }
 
-    const imageSmall = $(cells[imageIdx]).find("img").attr("src");
+    let amt;
+    if (override) {
+      amt = result[result.length - 1].amt;
+    } else {
+      amt = $(cells[amtIdx]).find("br").replaceWith(" • ").end().text().trim();
+      if (amt.endsWith(" •")) {
+        // Does it make sense to end content with a <br> ? Idk
+        amt = amt.slice(0, amt.length - 2);
+      }
+      if (amt.search(/\[\d]/) !== -1) {
+        console.log("Replacing footnote in text");
+        amt = amt.replace(/\[\d]/, "");
+      }
+    }
+
+    // todo Looking for <a /> elements here - but there are 2x ministers with plain text
+    let name;
+    if (override) {
+      name = $(cells[nameIdx - 1])
+        .find("a:first")
+        .text()
+        .trim();
+    } else {
+      name = $(cells[nameIdx]).find("a:first").text().trim();
+      if (!name) {
+        // This branch never happened in the override scenario
+        console.info(
+          `I have no name. Column ${nameIdx}. Maybe it's some sort of 'amt'?`,
+        );
+
+        if (
+          amt.toLocaleLowerCase().indexOf("inneres") !== -1 ||
+          amt.toLocaleLowerCase().indexOf("minister") !== -1 ||
+          amt.toLocaleLowerCase().indexOf("wirtschaft") !== -1 ||
+          amt.toLocaleLowerCase().indexOf("familie") !== -1
+        ) {
+          console.info(
+            `'amt'='${amt}' looks useful. Will add it to predecessor's amt`,
+          );
+          const predecessor = result[result.length - 1];
+          predecessor.amt = amt + ` (${predecessor.amt})`;
+        } else {
+          console.info(`Skipping. 'amt'=${amt}`);
+        }
+        return;
+      }
+    }
+
+    let imageSmall;
+    if (override) {
+      imageSmall = $(cells[imageIdx - 1])
+        .find("img")
+        .attr("src");
+    } else {
+      imageSmall = $(cells[imageIdx]).find("img").attr("src");
+    }
     if (!imageSmall) {
-      throw new Error(`Missing img URL. Column ${imageIdx}`);
+      // Assuming this is a scenario where the minister changed during the same election period (Wiki lists old ones too).
+      // Only the first row has the Amt, the succeeding rows are missing first column.
+      // Relevant for the name is the last row (the person that is currently actually the minister).
+      throw new Error(`${name}: Missing img URL. Column ${imageIdx}`);
     }
 
     const imageUrl = urlForResizedImage(imageSmall);
 
-    let party = $(cells[partyIdx]).text().trim();
+    let party;
+    if (override) {
+      party = result[result.length - 1].party;
+    } else {
+      party = $(cells[partyIdx]).text().trim();
+    }
     if (!party) {
       party = $(cells[partyIdx + 1])
         .text()
         .trim();
+      // Party column often has a party-color tile in front of the text
       console.log(
         `${name}: What about a paartey? Column ${partyIdx} has no text. Reading column right of it ... '${party}'`,
       );
+    }
+
+    if (override) {
+      result.pop();
     }
 
     result.push({
@@ -173,9 +224,6 @@ async function _extract(bundesland) {
       party,
     });
   });
-
-  // todo delete sorting once we can scrape bundeslaender - it's easier when using Wikipedia's sorting
-  result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b));
 
   console.log(`found ${result.length} minister\n`);
   console.log(result);
@@ -204,7 +252,7 @@ export default async function extract() {
     switch (bundesland.state) {
       case "Sachsen":
       case "Baden-Württemberg":
-      // case "Bayern":
+      case "Bayern":
       // case "Thüringen":
       // case "Schleswig-Holstein":
       // case "Sachsen-Anhalt":
