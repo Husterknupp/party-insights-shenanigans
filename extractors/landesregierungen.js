@@ -122,7 +122,9 @@ async function _extract(bundesland) {
   console.log(`assuming 'image' column at index ${imageIdx}`);
   const partyIdx = indexOfColumnParty(rows);
 
-  console.log("found all indexes\n");
+  const cabinetName = $("h1").text();
+
+  console.log(`found all indexes - cabinet name: '${cabinetName}'\n`);
 
   rows.each((i, row) => {
     const cells = $(row).find("td");
@@ -237,7 +239,7 @@ async function _extract(bundesland) {
   );
   writeAsMarkdown(
     `output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.md`,
-    bundesland.state,
+    bundesland.state + " - " + cabinetName,
     "amt",
     result,
   );
@@ -260,7 +262,7 @@ export default async function extract() {
       case "Bayern":
       case "Thüringen":
       case "Schleswig-Holstein":
-      // case "Sachsen-Anhalt":
+      case "Sachsen-Anhalt":
       // case "Saarland":
       // case "Rheinland-Pfalz":
       // case "Nordrhein-Westfalen":
