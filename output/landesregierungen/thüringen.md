@@ -1,4 +1,4 @@
-# Thüringen
+# Thüringen - Kabinett Ramelow II
 
 Ministerpräsident:
 * Name: Bodo Ramelow

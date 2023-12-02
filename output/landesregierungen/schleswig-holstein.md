@@ -1,4 +1,4 @@
-# Schleswig-Holstein
+# Schleswig-Holstein - Kabinett Günther II
 
 Ministerpräsident:
 * Name: Daniel Günther
