@@ -30,7 +30,13 @@ export function writeAsMarkdown(fileName, title, headingField, data) {
                 return `* Partei: ${minister.party}`;
               }
               case "imageUrl": {
-                return `* Profilbild: ![${minister.name}](${minister.imageUrl})`;
+                const usefulImage =
+                  !minister.imageUrl.includes("replace_this_image");
+                if (usefulImage) {
+                  return `* Profilbild: ![${minister.name}](${minister.imageUrl})`;
+                } else {
+                  return "* Profilbild: *No image available*";
+                }
               }
               case "urlCabinet": {
                 return `* Kabinett: ${minister.urlCabinet}`;

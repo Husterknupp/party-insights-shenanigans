@@ -23,7 +23,7 @@ Staatsminister des Innern:
 Staatsminister der Finanzen:
 * Name: Hartmut Vorjohann
 * Partei: CDU
-* Profilbild: ![Hartmut Vorjohann](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg)
+* Profilbild: *No image available*
 
 Staatsministerin der Justiz und für Demokratie, Europa und Gleichstellung:
 * Name: Katja Meier
@@ -58,4 +58,4 @@ Staatsminister für Regionalentwicklung:
 Chef der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien:
 * Name: Oliver Schenk
 * Partei: CDU
-* Profilbild: ![Oliver Schenk](https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg)
+* Profilbild: *No image available*

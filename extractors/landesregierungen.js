@@ -1,3 +1,6 @@
+// $rows.find(`th:contains("${o}")`).attr IntelliJ cannot find - deactivate warning to not annoy me too much
+// noinspection JSUnresolvedFunction
+
 import { readFileSync } from "fs";
 import axios from "axios";
 import { load } from "cheerio";
@@ -241,6 +244,8 @@ async function _extract(bundesland) {
 }
 
 export default async function extract() {
+  // IntelliJ not sure what's your problem
+  // noinspection JSCheckFunctionSignatures
   const bundeslaender = JSON.parse(
     readFileSync("./output/ministerpraesidenten/ministerpraesidenten.json", {
       encoding: "UTF-8",
@@ -254,7 +259,7 @@ export default async function extract() {
       case "Baden-Württemberg":
       case "Bayern":
       case "Thüringen":
-      // case "Schleswig-Holstein":
+      case "Schleswig-Holstein":
       // case "Sachsen-Anhalt":
       // case "Saarland":
       // case "Rheinland-Pfalz":
