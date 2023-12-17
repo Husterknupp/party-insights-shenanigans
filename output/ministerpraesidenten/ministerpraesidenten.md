@@ -39,7 +39,7 @@ Hamburg:
 Hessen:
 * Name: Boris Rhein
 * Partei: CDU
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Rhein
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Rhein_I
 * Profilbild: ![Boris Rhein](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Boris-Rhein-Passbild2sw2.jpg/400px-Boris-Rhein-Passbild2sw2.jpg)
 
 Mecklenburg-Vorpommern:
