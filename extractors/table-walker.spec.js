@@ -1,3 +1,7 @@
+// Cheerio function calls have problems with the element's (2nd argument) type signature
+// when used in the `each` Cheerio callback.
+// noinspection JSCheckFunctionSignatures
+
 const { load } = require("cheerio");
 const kabinettDreyer = require("../test-data/Kabinett_Dreyer_III.js");
 
@@ -59,7 +63,8 @@ function tableWalker(html) {
     $(row)
       .find("td")
       .each((cellNumber, cell) => {
-        const text = $(cell).text().trim();
+        // Line breaks in HTML can cause weird amount of whitespace
+        const text = $(cell).text().replace(/\s+/g, " ").trim();
         const colSpan = parseIntOr($(cell).attr("colspan"), 1);
         const rowSpan = parseIntOr($(cell).attr("rowspan"), 1);
 
@@ -137,33 +142,39 @@ describe("tableWalker", () => {
 
   test("finding cells works (specific columns of a row)", () => {
     const cells = tableWalker(kabinettDreyer);
+
+    // Assumption is that the "Amt" column defines the rows.
+    // Ie, all cells between rowStart and rowEnd correspond to one Amt-row.
     const aemter = cells.filter((cell) =>
       isColumnHeaderLike(cell.header, ["amt", "ressort"]),
     );
 
-    const result = [];
+    const ministerRows = [];
     for (const amt of aemter) {
       const row = cells.filter(
         (cell) => amt.rowStart <= cell.rowStart && cell.rowStart <= amt.rowEnd,
       );
-      const ministerName = row.find((cell) =>
+
+      // Using findLast here because during one term of office more than one person can have the Ministerial position.
+      // Wikipedia puts the latest person at the bottom of a row.
+      const ministerName = row.findLast((cell) =>
         isColumnHeaderLike(cell.header, ["amtsinhaber", "name"]),
       );
 
-      const party = row.find(
+      const party = row.findLast(
         (cell) =>
           isColumnHeaderLike(cell.header, ["partei", "parteien"]) &&
           cell.text !== "",
       );
 
-      const imageUrl = row.find(
+      const imageUrl = row.findLast(
         (cell) =>
           isColumnHeaderLike(cell.header, ["foto"]) &&
           cell.imageUrl !== undefined &&
           cell.imageUrl !== "",
       );
 
-      result.push({
+      ministerRows.push({
         amt: amt.text,
         name: ministerName.text,
         party: party.text,
@@ -171,20 +182,31 @@ describe("tableWalker", () => {
       });
     }
 
-    expect(result.length).toBe(10);
-    expect(result[0].amt).toContain("Ministerpräsidentin");
-    expect(result[0].name).toContain("Malu Dreyer");
-    expect(result[0].party).toContain("SPD");
-    expect(result[0].imageUrl).toEqual(
+    expect(ministerRows.length).toBe(10);
+    expect(ministerRows[0].amt).toContain("Ministerpräsidentin");
+    expect(ministerRows[0].name).toContain("Malu Dreyer");
+    expect(ministerRows[0].party).toContain("SPD");
+    expect(ministerRows[0].imageUrl).toEqual(
       "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg",
     );
 
     // One minister row but two people had the amt one after the other
-    expect(result[5].amt).toContain("Minister des Innern und für Sport");
-    expect(result[5].name).toContain("Michael Ebling");
-    expect(result[5].party).toContain("SPD");
-    expect(result[5].imageUrl).toEqual(
+    expect(ministerRows[5].amt).toContain("Minister des Innern und für Sport");
+    expect(ministerRows[5].name).toContain("Michael Ebling");
+    expect(ministerRows[5].party).toContain("SPD");
+    expect(ministerRows[5].imageUrl).toEqual(
       "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg/400px-2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg",
+    );
+
+    // One minister row but three people had the amt one after the other
+    const klimaschutz = ministerRows[ministerRows.length - 1];
+    expect(klimaschutz.amt).toContain(
+      "Ministerin für Klimaschutz, Umwelt, Energie und Mobilität",
+    );
+    expect(klimaschutz.name).toContain("Katrin Eder");
+    expect(klimaschutz.party).toContain("B’90/Die Grünen");
+    expect(klimaschutz.imageUrl).toEqual(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg/400px-Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg",
     );
   });
 
