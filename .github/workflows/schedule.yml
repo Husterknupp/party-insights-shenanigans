@@ -5,15 +5,17 @@ on:
   schedule:
     - cron: "00 00 * * *"
   push:
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
   schedule:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4 # to have the repo content actually available
+      - uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version-file: ".nvmrc"
       - run: yarn --frozen-lockfile
       - run: yarn start
       # ACTUAL CHECK
