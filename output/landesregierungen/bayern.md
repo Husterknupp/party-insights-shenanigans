@@ -58,7 +58,7 @@ Umwelt und Verbraucherschutz:
 Ernährung, Landwirtschaft, Forsten und Tourismus:
 * Name: Michaela Kaniber
 * Partei: CSU
-* Profilbild: ![Michaela Kaniber](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Michaela_Kaniber%2C_CSU_at_Prien_%28cropped%29.jpg/400px-Michaela_Kaniber%2C_CSU_at_Prien_%28cropped%29.jpg)
+* Profilbild: ![Michaela Kaniber](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/2024-02-26-Michaela_Kaniber-Hart_aber_fair-2517.jpg/400px-2024-02-26-Michaela_Kaniber-Hart_aber_fair-2517.jpg)
 
 Gesundheit, Pflege und Prävention:
 * Name: Judith Gerlach
