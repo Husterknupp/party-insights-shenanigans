@@ -1,11 +1,12 @@
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 import tableWalker from "./tableWalker.js";
+import { getCellOfColumn } from "./landesregierungen.js";
 
 // todo
-// * let extractors use table-walker
 // * rename extractors -> src
 // * cell.text !== "", -> tableWalker should not expose cells with empty text
+// * consider moving helper functions together into one file
 
 /* Assumptions:
  * Height of a row: First regular cell (td, not th) of first column defines the height
@@ -92,7 +93,7 @@ describe("tableWalker", () => {
         </th>
         <th colspan="2">Partei
         </th>
-        <th>Staatssekretär
+        <th>Staatssekretär <!-- column #5 -->
         </th>
         <th colspan="2">Partei
         </th>
@@ -121,14 +122,14 @@ describe("tableWalker", () => {
 </table>
     `;
 
-    const cells = tableWalker(table);
+    const row = tableWalker(table);
 
-    // todo broken 2.3.24
-
-    expect(cells.filter((cell) => cell.header === "Partei")).toHaveLength(2);
-    const staatssekretaer = cells.find(
-      (cell) => cell.indexOf("Dirk Diedrichs") !== -1,
+    const partyCell = getCellOfColumn(row, ["Partei"]);
+    expect(partyCell.text).toEqual("CDU");
+    const staatssekretaer = row.find(
+      (cell) => cell.text.indexOf("Dirk Diedrichs") !== -1,
     );
+    // todo this is broken (expected '5' is correct) - 6.3.24
     expect(staatssekretaer.colStart).toEqual(5);
   });
 

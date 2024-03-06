@@ -8,9 +8,32 @@ import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
 import tableWalker from "./tableWalker.js";
 
-function isColumnHeaderLike(headerText, searchStrings) {
+export function getCellOfColumn(cells, searchStrings) {
+  // There might be two columns of the same header.
+  // Eg, tables often have more than one "name" column.
+  const relevantCells = cells.filter((cell) =>
+    isColumnHeaderLike(cell, searchStrings),
+  );
+  if (relevantCells.length === 0) {
+    throw new Error(`Found no cells for headers ${searchStrings.toString()}`);
+  }
+
+  const firstColumnWithThatName = relevantCells.sort(
+    (cellA, cellB) => 0 - (cellB.colStart - cellA.colStart),
+  )[0].colStart;
+
+  // Using findLast here because during one term of office more than one person can have the Ministerial position.
+  // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
+  return relevantCells.findLast(
+    (cell) => cell.colStart === firstColumnWithThatName,
+  );
+}
+
+function isColumnHeaderLike(cell, searchStrings) {
   for (const searchString of searchStrings) {
-    if (headerText.toLocaleLowerCase().includes(searchString)) {
+    if (
+      cell.header.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
+    ) {
       return true;
     }
   }
@@ -67,7 +90,7 @@ async function _extract(bundesland) {
   // Assumption is that the "Amt" column defines the rows.
   // Ie, all cells between rowStart and rowEnd correspond to one Amt-row.
   const aemter = cells.filter((cell) =>
-    isColumnHeaderLike(cell.header, ["amt", "ressort"]),
+    isColumnHeaderLike(cell, ["amt", "ressort"]),
   );
 
   const result = [];
@@ -78,24 +101,9 @@ async function _extract(bundesland) {
         (amt.rowStart <= cell.rowEnd && cell.rowEnd <= amt.rowEnd),
     );
 
-    // Using findLast here because during one term of office more than one person can have the Ministerial position.
-    // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
-    const ministerName = row.findLast((cell) =>
-      isColumnHeaderLike(cell.header, ["amtsinhaber", "name"]),
-    );
-
-    const party = row.findLast(
-      (cell) =>
-        isColumnHeaderLike(cell.header, ["partei", "parteien"]) &&
-        cell.text !== "",
-    );
-
-    const imageUrl = row.findLast(
-      (cell) =>
-        isColumnHeaderLike(cell.header, ["foto", "bild"]) &&
-        cell.imageUrl !== undefined &&
-        cell.imageUrl !== "",
-    );
+    const ministerName = getCellOfColumn(row, ["amtsinhaber", "name"]);
+    const party = getCellOfColumn(row, ["partei", "parteien"]);
+    const imageUrl = getCellOfColumn(row, ["foto", "bild"]);
 
     if (
       amt === undefined ||
