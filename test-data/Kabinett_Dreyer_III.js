@@ -1,4 +1,4 @@
-module.exports = `<table class="wikitable">
+export default `<table class="wikitable">
     <caption>Kabinett Dreyer III
     </caption>
     <tbody>

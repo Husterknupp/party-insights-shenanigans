@@ -17,6 +17,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: yarn --frozen-lockfile
+      - run: yarn test
       - run: yarn start
       # ACTUAL CHECK
       - name: Compare output with checked-in version

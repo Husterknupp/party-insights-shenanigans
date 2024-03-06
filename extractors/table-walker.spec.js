@@ -1,116 +1,17 @@
-// Cheerio function calls have problems with the element's (2nd argument) type signature
-// when used in the `each` Cheerio callback.
-// noinspection JSCheckFunctionSignatures
-
-const { load } = require("cheerio");
-const kabinettDreyer = require("../test-data/Kabinett_Dreyer_III.js");
+import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
+import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
+import tableWalker from "./tableWalker.js";
 
 // todo
-// * Same Amt by more than one person: One visual row (framed by border) can have multiple virtual rows (<tr> w/o border)
 // * let extractors use table-walker
 // * rename extractors -> src
-
-function parseIntOr(maybeString, fallback) {
-  const parsed = Number.parseInt(maybeString);
-  return Number.isNaN(parsed) ? fallback : parsed;
-}
+// * cell.text !== "", -> tableWalker should not expose cells with empty text
 
 /* Assumptions:
  * Height of a row: First regular cell (td, not th) of first column defines the height
  *  (if first data cell has rowspan=3, that means that for all later columns 2,3,4,... for this row they are expected to have also 3 cells)
  * Multiple headline rows: Only 1 row of `th`s gets considered
  */
-
-function tableWalker(html) {
-  const $ = load(html);
-  const ths = $(`th`);
-
-  let parent = null;
-  for (const el of ths.toArray()) {
-    if (parent === null) {
-      parent = el.parent;
-    } else if (el.parent === parent) {
-      // Deliberately left blank - this is good, we have no problem
-    } else {
-      const text = el.children.map((el) => el.data);
-      throw new Error(`Multiple headline rows - that's bad. <th>${text}</th>`);
-    }
-  }
-
-  const columnCount = ths
-    .toArray()
-    .map((th) => parseIntOr(th.attribs.colspan, 1))
-    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-  const rows = $(`tr:has(td)`);
-  console.log(
-    `Found ${ths.length} table headers (spanning ${columnCount} columns). ${rows.length} rows (not including rowspans).`,
-  );
-
-  const headers = [];
-  ths.each((headerCount, header) => {
-    const colStart = headers[headerCount - 1]?.colEnd + 1 || 0;
-    const colEnd = colStart + parseIntOr($(header).attr("colspan"), 1) - 1;
-    const text = $(header).text();
-    headers.push({ colStart, colEnd, text });
-  });
-
-  const allCells = [];
-  rows.each((rowIndex, row) => {
-    // columnIdx basically imitates the browser behavior which moves a cell to the right when there are cells from other rows blocking.
-    // So even the first `<td>` of a `<tr>` can be in some random column, based on a previous row.
-    // See test "Staatssekretaer has correct colStart and doesnt mess up Partei column"
-    let columnIdx = 0;
-    $(row)
-      .find("td")
-      .each((cellNumber, cell) => {
-        // Line breaks in HTML can cause weird amount of whitespace
-        const text = $(cell).text().replace(/\s+/g, " ").trim();
-        const colSpan = parseIntOr($(cell).attr("colspan"), 1);
-        const rowSpan = parseIntOr($(cell).attr("rowspan"), 1);
-
-        let maybeShiftCellRight = undefined;
-        do {
-          maybeShiftCellRight = allCells.find(
-            (cell) =>
-              cell.colStart <= columnIdx &&
-              columnIdx <= cell.colEnd &&
-              cell.rowEnd >= rowIndex,
-          );
-          if (maybeShiftCellRight) {
-            columnIdx = maybeShiftCellRight.colEnd + 1;
-          }
-        } while (maybeShiftCellRight !== undefined);
-
-        const header = headers.find(
-          (header) =>
-            header.colStart <= columnIdx && columnIdx <= header.colEnd,
-        ).text;
-
-        let imageUrl = $(cell).find("img").attr("src");
-        if (imageUrl !== undefined) {
-          // Resize image to non-thumb size
-          // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-          let parts = imageUrl.split("/");
-          parts = parts.filter((_, index) => index !== parts.length - 1);
-          parts.push("400px-" + parts[parts.length - 1]);
-          imageUrl = "https:" + parts.join("/");
-        }
-
-        allCells.push({
-          text,
-          imageUrl,
-          header,
-          colStart: columnIdx,
-          colEnd: columnIdx + colSpan - 1,
-          rowStart: rowIndex,
-          rowEnd: rowIndex + rowSpan - 1,
-        });
-        columnIdx += colSpan;
-      });
-  });
-
-  return allCells;
-}
 
 function isColumnHeaderLike(headerText, searchStrings) {
   for (const searchString of searchStrings) {
@@ -121,8 +22,45 @@ function isColumnHeaderLike(headerText, searchStrings) {
   return false;
 }
 
-// https://de.wikipedia.org/wiki/Kabinett_Dreyer_III
 describe("tableWalker", () => {
+  test("cell text strips away footnotes", () => {
+    // https://de.wikipedia.org/wiki/Kabinett_Kretschmer_II
+    const table03 = `
+<table>
+    <tbody>
+    <tr>
+        <th>Spalte 1</th>
+    </tr>
+    <tr>
+        <td>
+          <a href="/wiki/Armin_Schuster" title="Armin Schuster">Armin Schuster</a>
+          <br>
+          <small>(ab 25. April 2022)</small>
+          <sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup>
+        </td>
+    </tr>
+    </tbody>
+</table>
+`;
+
+    const cells = tableWalker(table03);
+
+    expect(cells[0].text).toEqual("Armin Schuster");
+  });
+
+  test("Person with two Ämter is handled properly", () => {
+    const cells = tableWalker(kabinettKretschmer);
+
+    console.log(`cells: `, cells);
+
+    const giesela = cells.find((cell) => cell.text === "Gisela Reetz");
+    expect(giesela.header).toEqual("Staatssekretär");
+    expect(giesela.colStart).toEqual(5);
+    const gerd = cells.find((cell) => cell.text === "Gerd Lippold");
+    expect(gerd.header).toEqual("Staatssekretär");
+    expect(gerd.colStart).toEqual(5);
+  });
+
   test("Staatssekretaer has correct colStart and doesnt mess up Partei column", () => {
     const cells = tableWalker(kabinettDreyer);
     const ministerpraesident = cells.filter((cell) =>
@@ -138,6 +76,60 @@ describe("tableWalker", () => {
     for (const cell of partyCells) {
       expect(cell.text).not.toContain("Heike Raab");
     }
+  });
+
+  test("row with two Partei columns selects Minister's party (not party of Staatssekretär)", () => {
+    // https://de.wikipedia.org/wiki/Kabinett_Kretschmer_II
+    const table = `
+<table>
+    <tbody>
+    <tr>
+        <th>Amt
+        </th>
+        <th>Bild
+        </th>
+        <th>Name
+        </th>
+        <th colspan="2">Partei
+        </th>
+        <th>Staatssekretär
+        </th>
+        <th colspan="2">Partei
+        </th>
+    </tr>
+    <tr>
+        <td><a href="/wiki/S%C3%A4chsisches_Staatsministerium_der_Finanzen"
+               title="Sächsisches Staatsministerium der Finanzen">Staatsminister der Finanzen</a>
+        </td>
+        <td style="padding:0;background-color:#777;text-align:center;vertical-align:middle;">
+        </td>
+        <td><a href="/wiki/Hartmut_Vorjohann" title="Hartmut Vorjohann">Hartmut Vorjohann</a>
+        </td>
+        <td>CDU
+        </td>
+        <td><a href="/wiki/Dirk_Diedrichs" title="Dirk Diedrichs">Dirk Diedrichs</a> <small>(bis 25. April 2023)</small><br><a
+                href="/wiki/Sebastian_Hecht" title="Sebastian Hecht">Sebastian Hecht</a> <small>(ab 26. April
+            2023)</small>
+            <br> <small>(Amtschef)</small>
+        </td>
+        <td style="padding:0;background-color:#777;text-align:center;vertical-align:middle;">
+        </td>
+        <td>parteilos
+        </td>
+    </tr>
+    </tbody>
+</table>
+    `;
+
+    const cells = tableWalker(table);
+
+    // todo broken 2.3.24
+
+    expect(cells.filter((cell) => cell.header === "Partei")).toHaveLength(2);
+    const staatssekretaer = cells.find(
+      (cell) => cell.indexOf("Dirk Diedrichs") !== -1,
+    );
+    expect(staatssekretaer.colStart).toEqual(5);
   });
 
   test("finding cells works (specific columns of a row)", () => {
