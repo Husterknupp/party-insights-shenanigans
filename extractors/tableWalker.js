@@ -64,7 +64,7 @@ export default function tableWalker(html) {
     let columnIdx = 0;
     $(row)
       .find("td")
-      .each((cellNumber, cell) => {
+      .each((_, cell) => {
         // Line breaks in HTML can cause weird amount of whitespace
         const text = removeWhiteSpace(
           $(cell)
@@ -84,6 +84,9 @@ export default function tableWalker(html) {
               cell.rowEnd >= rowIndex,
           );
           if (maybeShiftCellRight) {
+            console.log(
+              `Row no. ${rowIndex}: At column ${columnIdx} I found a cell of an earlier row... one to the right`,
+            );
             columnIdx = maybeShiftCellRight.colEnd + 1;
           }
         } while (maybeShiftCellRight !== undefined);

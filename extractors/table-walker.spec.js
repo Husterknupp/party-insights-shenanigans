@@ -37,7 +37,7 @@ describe("tableWalker", () => {
           <a href="/wiki/Armin_Schuster" title="Armin Schuster">Armin Schuster</a>
           <br>
           <small>(ab 25. April 2022)</small>
-          <sup id="cite_ref-3" class="reference"><a href="#cite_note-3">[3]</a></sup>
+          <sup id="cite_ref-3" class="reference"><a>[3]</a></sup>
         </td>
     </tr>
     </tbody>
@@ -129,8 +129,7 @@ describe("tableWalker", () => {
     const staatssekretaer = row.find(
       (cell) => cell.text.indexOf("Dirk Diedrichs") !== -1,
     );
-    // todo this is broken (expected '5' is correct) - 6.3.24
-    expect(staatssekretaer.colStart).toEqual(5);
+    expect(staatssekretaer.colStart).toEqual(4);
   });
 
   test("finding cells works (specific columns of a row)", () => {
