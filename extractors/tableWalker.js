@@ -5,6 +5,8 @@
 import { load } from "cheerio";
 
 function removeWhiteSpace(text) {
+  // Line breaks in HTML can cause weird amount of whitespace.
+  // Removes also inner linebreaks.
   return text.replace(/\s+/g, " ").trim();
 }
 
@@ -65,13 +67,20 @@ export default function tableWalker(html) {
     $(row)
       .find("td")
       .each((_, cell) => {
-        // Line breaks in HTML can cause weird amount of whitespace
+        $(cell).find("small").remove();
+        $(cell).find("sup").remove();
+        $(cell).find("br").remove();
+        $(cell).find("i").remove();
         const text = removeWhiteSpace(
           $(cell)
-            .text()
-            .replace(/\[.*]/, "")
-            .replace(/\(.*\)/, ""),
+            .contents() // `contents` vs. `children`: Former also returns text nodes
+            .filter((_, node) => {
+              return $(node).text().trim().length > 0;
+            })
+            .last()
+            .text(),
         );
+
         const colSpan = parseIntOr($(cell).attr("colspan"), 1);
         const rowSpan = parseIntOr($(cell).attr("rowspan"), 1);
 

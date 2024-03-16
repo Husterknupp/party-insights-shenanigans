@@ -24,6 +24,37 @@ function isColumnHeaderLike(headerText, searchStrings) {
 }
 
 describe("tableWalker", () => {
+  test("handles similar situations individually: Finds last person in cell that contains two names and combines different nodes into one name", () => {
+    // https://de.wikipedia.org/wiki/Kabinett_Kretschmann_III
+    const table = `
+<table>
+    <tbody>
+    <tr>
+        <th>Spalte 1</th>
+    </tr>
+    <tr>
+        <td>
+            <a href="/wiki/Theresia_Bauer" title="Theresia Bauer">Theresia Bauer</a>
+            <a href="/wiki/Petra_Olschowski" title="Petra Olschowski">Petra Olschowski</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="/wiki/Staatsrat_(Amt)" title="Staatsrat (Amt)">Staatsrätin</a> für Zivilgesellschaft und Bürgerbeteiligung
+        </td>
+    </tr>
+    </tbody>
+</table>
+`;
+
+    const cells = tableWalker(table);
+
+    expect(cells[0].text).toEqual("Petra Olschowski");
+    expect(cells[1].text).toEqual(
+      "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
+    );
+  });
+
   test("cell text strips away footnotes", () => {
     // https://de.wikipedia.org/wiki/Kabinett_Kretschmer_II
     const table03 = `
@@ -108,10 +139,14 @@ describe("tableWalker", () => {
         </td>
         <td>CDU
         </td>
-        <td><a href="/wiki/Dirk_Diedrichs" title="Dirk Diedrichs">Dirk Diedrichs</a> <small>(bis 25. April 2023)</small><br><a
-                href="/wiki/Sebastian_Hecht" title="Sebastian Hecht">Sebastian Hecht</a> <small>(ab 26. April
-            2023)</small>
-            <br> <small>(Amtschef)</small>
+        <td>
+            <a href="/wiki/Dirk_Diedrichs" title="Dirk Diedrichs">Dirk Diedrichs</a> 
+            <small>(bis 25. April 2023)</small>
+            <br>
+            <a href="/wiki/Sebastian_Hecht" title="Sebastian Hecht">Sebastian Hecht</a> 
+            <small>(ab 26. April 2023)</small>
+            <br> 
+            <small>(Amtschef)</small>
         </td>
         <td style="padding:0;background-color:#777;text-align:center;vertical-align:middle;">
         </td>
@@ -127,7 +162,7 @@ describe("tableWalker", () => {
     const partyCell = getCellOfColumn(row, ["Partei"]);
     expect(partyCell.text).toEqual("CDU");
     const staatssekretaer = row.find(
-      (cell) => cell.text.indexOf("Dirk Diedrichs") !== -1,
+      (cell) => cell.text.indexOf("Sebastian Hecht") !== -1,
     );
     expect(staatssekretaer.colStart).toEqual(4);
   });
@@ -144,27 +179,16 @@ describe("tableWalker", () => {
     const ministerRows = [];
     for (const amt of aemter) {
       const row = cells.filter(
-        (cell) => amt.rowStart <= cell.rowStart && cell.rowStart <= amt.rowEnd,
+        (cell) =>
+          (amt.rowStart <= cell.rowStart && cell.rowStart <= amt.rowEnd) ||
+          (amt.rowStart <= cell.rowEnd && cell.rowEnd <= amt.rowEnd),
       );
 
       // Using findLast here because during one term of office more than one person can have the Ministerial position.
       // Wikipedia puts the latest person at the bottom of a row.
-      const ministerName = row.findLast((cell) =>
-        isColumnHeaderLike(cell.header, ["amtsinhaber", "name"]),
-      );
-
-      const party = row.findLast(
-        (cell) =>
-          isColumnHeaderLike(cell.header, ["partei", "parteien"]) &&
-          cell.text !== "",
-      );
-
-      const imageUrl = row.findLast(
-        (cell) =>
-          isColumnHeaderLike(cell.header, ["foto"]) &&
-          cell.imageUrl !== undefined &&
-          cell.imageUrl !== "",
-      );
+      const ministerName = getCellOfColumn(row, ["amtsinhaber", "name"]);
+      const party = getCellOfColumn(row, ["partei", "parteien"]);
+      const imageUrl = getCellOfColumn(row, ["foto"]);
 
       ministerRows.push({
         amt: amt.text,
