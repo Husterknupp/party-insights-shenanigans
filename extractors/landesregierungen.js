@@ -8,7 +8,22 @@ import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
 import tableWalker from "./tableWalker.js";
 
-export function getCellOfColumn(cells, searchStrings) {
+function sameRow(cellA, cellB) {
+  return (
+    (cellB.rowStart <= cellA.rowStart && cellA.rowStart <= cellB.rowEnd) ||
+    (cellB.rowStart <= cellA.rowEnd && cellA.rowEnd <= cellB.rowEnd)
+  );
+}
+
+export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
+  const result = getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings);
+
+  // Using findLast here because during one term of office more than one person can have the Ministerial position.
+  // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
+  return result.pop();
+}
+
+export function getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings) {
   // There might be two columns of the same header.
   // Eg, tables often have more than one "name" column.
   const relevantCells = cells.filter((cell) =>
@@ -22,9 +37,7 @@ export function getCellOfColumn(cells, searchStrings) {
     (cellA, cellB) => 0 - (cellB.colStart - cellA.colStart),
   )[0].colStart;
 
-  // Using findLast here because during one term of office more than one person can have the Ministerial position.
-  // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
-  return relevantCells.findLast(
+  return relevantCells.filter(
     (cell) => cell.colStart === firstColumnWithThatName,
   );
 }
@@ -89,21 +102,32 @@ async function _extract(bundesland) {
 
   // Assumption is that the "Amt" column defines the rows.
   // Ie, all cells between rowStart and rowEnd correspond to one Amt-row.
-  const aemter = cells.filter((cell) =>
-    isColumnHeaderLike(cell, ["amt", "ressort"]),
-  );
+  const amtSearch = ["amt", "ressort"];
+  const amtColumn = getAllCellsOfFirstColumnWithHeaderLike(cells, amtSearch);
+  let checkSum = amtColumn[0].colStart;
+  for (const td of amtColumn) {
+    if (td.colStart !== checkSum) {
+      throw new Error(
+        `Amt column has cells of more than one column. That's bad. Maybe the search strings '${amtSearch}' are ambiguous?`,
+      );
+    }
+  }
 
   const result = [];
-  for (const amt of aemter) {
-    const row = cells.filter(
-      (cell) =>
-        (amt.rowStart <= cell.rowStart && cell.rowStart <= amt.rowEnd) ||
-        (amt.rowStart <= cell.rowEnd && cell.rowEnd <= amt.rowEnd),
-    );
-
-    const ministerName = getCellOfColumn(row, ["amtsinhaber", "name"]);
-    const party = getCellOfColumn(row, ["partei", "parteien"]);
-    const imageUrl = getCellOfColumn(row, ["foto", "bild"]);
+  for (const amt of amtColumn) {
+    const row = cells.filter((cell) => sameRow(cell, amt));
+    const ministerName = getLastCellOfFirstColumnWithHeaderLike(row, [
+      "amtsinhaber",
+      "name",
+    ]);
+    const party = getLastCellOfFirstColumnWithHeaderLike(row, [
+      "partei",
+      "parteien",
+    ]);
+    const imageUrl = getLastCellOfFirstColumnWithHeaderLike(row, [
+      "foto",
+      "bild",
+    ]);
 
     if (
       amt === undefined ||

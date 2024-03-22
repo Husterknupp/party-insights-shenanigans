@@ -109,15 +109,13 @@ export default function tableWalker(html) {
       for (const node of $(cell._cheerioEl).contents().toArray().reverse()) {
         if (node.name === "br" && text !== "") break;
 
-        const part = $(node).text().trim();
-        if (part.length === 0) continue;
-
-        text = part + " " + text;
+        const part = $(node).text();
+        if (part.trim().length !== 0) {
+          text = part + text;
+        }
       }
       text = removeWhiteSpace(text);
 
-      // todo selbes Problem wie in Text (aktuell wird das erste Bild genommen - wir wollen aber das letzte Bild)
-      //  da Bild von T. Bauer - soll aber P. Olschowski sein (Kretschmann III)
       let imageUrl = $(cell._cheerioEl).find("img").last().attr("src");
       if (imageUrl !== undefined) {
         // Resize image to non-thumb size

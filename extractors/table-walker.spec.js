@@ -1,7 +1,7 @@
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 import tableWalker from "./tableWalker.js";
-import { getCellOfColumn } from "./landesregierungen.js";
+import { getLastCellOfFirstColumnWithHeaderLike } from "./landesregierungen.js";
 
 // todo
 // * rename extractors -> src
@@ -201,7 +201,7 @@ describe("tableWalker", () => {
 
     const row = tableWalker(table);
 
-    const partyCell = getCellOfColumn(row, ["Partei"]);
+    const partyCell = getLastCellOfFirstColumnWithHeaderLike(row, ["Partei"]);
     expect(partyCell.text).toEqual("CDU");
     const staatssekretaer = row.find(
       (cell) => cell.text.indexOf("Sebastian Hecht") !== -1,
@@ -228,9 +228,15 @@ describe("tableWalker", () => {
 
       // Using findLast here because during one term of office more than one person can have the Ministerial position.
       // Wikipedia puts the latest person at the bottom of a row.
-      const ministerName = getCellOfColumn(row, ["amtsinhaber", "name"]);
-      const party = getCellOfColumn(row, ["partei", "parteien"]);
-      const imageUrl = getCellOfColumn(row, ["foto"]);
+      const ministerName = getLastCellOfFirstColumnWithHeaderLike(row, [
+        "amtsinhaber",
+        "name",
+      ]);
+      const party = getLastCellOfFirstColumnWithHeaderLike(row, [
+        "partei",
+        "parteien",
+      ]);
+      const imageUrl = getLastCellOfFirstColumnWithHeaderLike(row, ["foto"]);
 
       ministerRows.push({
         amt: amt.text,
