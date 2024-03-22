@@ -21,9 +21,9 @@ Kultus, Jugend und Sport:
 * Profilbild: ![Theresa Schopper](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/2012-07-18-Theresa-Schopper-1.jpg/400px-2012-07-18-Theresa-Schopper-1.jpg)
 
 Wissenschaft, Forschung und Kunst:
-* Name: Theresia Bauer
+* Name: Petra Olschowski
 * Partei: Grüne
-* Profilbild: ![Theresia Bauer](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Theresia_Bauer.jpg/400px-Theresia_Bauer.jpg)
+* Profilbild: ![Petra Olschowski](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Theresia_Bauer.jpg/400px-Theresia_Bauer.jpg)
 
 Umwelt, Klima und Energiewirtschaft:
 * Name: Thekla Walker

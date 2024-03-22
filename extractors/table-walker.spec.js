@@ -5,7 +5,6 @@ import { getCellOfColumn } from "./landesregierungen.js";
 
 // todo
 // * rename extractors -> src
-// * cell.text !== "", -> tableWalker should not expose cells with empty text
 // * consider moving helper functions together into one file
 
 /* Assumptions:
@@ -34,14 +33,17 @@ describe("tableWalker", () => {
     </tr>
     <tr>
         <td>
-            <a href="/wiki/Theresia_Bauer" title="Theresia Bauer">Theresia Bauer</a>
-            <a href="/wiki/Petra_Olschowski" title="Petra Olschowski">Petra Olschowski</a>
+            <a href="/wiki/Theresia_Bauer" title="Theresia Bauer">Theresia Bauer</a><br><small><i>bis 28. September 2022</i></small>
+            <br><a href="/wiki/Petra_Olschowski" title="Petra Olschowski">Petra Olschowski</a><br><small><i>ab 28. September 2022</i></small>
         </td>
     </tr>
     <tr>
         <td>
             <a href="/wiki/Staatsrat_(Amt)" title="Staatsrat (Amt)">Staatsrätin</a> für Zivilgesellschaft und Bürgerbeteiligung
         </td>
+    </tr>
+    <tr>
+        <td>Random teapot</td>
     </tr>
     </tbody>
 </table>
@@ -53,6 +55,7 @@ describe("tableWalker", () => {
     expect(cells[1].text).toEqual(
       "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
     );
+    expect(cells[2].text).toEqual("Random dude");
   });
 
   test("cell text strips away footnotes", () => {

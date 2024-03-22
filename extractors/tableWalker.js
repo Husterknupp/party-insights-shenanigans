@@ -67,20 +67,6 @@ export default function tableWalker(html) {
     $(row)
       .find("td")
       .each((_, cell) => {
-        $(cell).find("small").remove();
-        $(cell).find("sup").remove();
-        $(cell).find("br").remove();
-        $(cell).find("i").remove();
-        const text = removeWhiteSpace(
-          $(cell)
-            .contents() // `contents` vs. `children`: Former also returns text nodes
-            .filter((_, node) => {
-              return $(node).text().trim().length > 0;
-            })
-            .last()
-            .text(),
-        );
-
         const colSpan = parseIntOr($(cell).attr("colspan"), 1);
         const rowSpan = parseIntOr($(cell).attr("rowspan"), 1);
 
@@ -100,43 +86,62 @@ export default function tableWalker(html) {
           }
         } while (maybeShiftCellRight !== undefined);
 
-        const header = headers.find(
-          (header) =>
-            header.colStart <= columnIdx && columnIdx <= header.colEnd,
-        ).text;
-
-        let imageUrl = $(cell).find("img").attr("src");
-        if (imageUrl !== undefined) {
-          // Resize image to non-thumb size
-          // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-          let parts = imageUrl.split("/");
-          parts = parts.filter((_, index) => index !== parts.length - 1);
-          parts.push("400px-" + parts[parts.length - 1]);
-          imageUrl = "https:" + parts.join("/");
-        }
-
-        // We must push cells with no text/imageUrl because
-        // later column/row index calculation is based on also the empty cells.
+        // We need all cells regardless of their content because later
+        // column/row index calculation is based on also the empty cells.
         allCells.push({
-          text,
-          imageUrl,
-          header,
           colStart: columnIdx,
           colEnd: columnIdx + colSpan - 1,
           rowStart: rowIndex,
           rowEnd: rowIndex + rowSpan - 1,
+          _ref: cell,
         });
         columnIdx += colSpan;
       });
   });
 
-  return allCells.filter((cell) => {
-    // Cells with no useful value - seem only confusing for user
-    return (
-      (cell.text !== undefined && cell.text !== null && cell.text !== "") ||
-      (cell.imageUrl !== undefined &&
-        cell.imageUrl !== null &&
-        cell.imageUrl !== "")
-    );
-  });
+  return allCells
+    .map((cell) => {
+      $(cell._ref).find("small").remove();
+      $(cell._ref).find("sup").remove();
+      $(cell._ref).find("i").remove();
+
+      let text = "";
+      for (const node of $(cell._ref).contents().toArray().reverse()) {
+        if (node.name === "br" && text !== "") break;
+
+        const part = $(node).text().trim();
+        if (part.length === 0) continue;
+
+        text = part + " " + text;
+      }
+      text = removeWhiteSpace(text);
+
+      // todo selbes Problem wie in Text (aktuell wird das erste Bild genommen - wir wollen aber das letzte Bild)
+      //  da Bild von T. Bauer - soll aber P. Olschowski sein (Kretschmann III)
+      let imageUrl = $(cell._ref).find("img").attr("src");
+      if (imageUrl !== undefined) {
+        // Resize image to non-thumb size
+        // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
+        let parts = imageUrl.split("/");
+        parts = parts.filter((_, index) => index !== parts.length - 1);
+        parts.push("400px-" + parts[parts.length - 1]);
+        imageUrl = "https:" + parts.join("/");
+      }
+
+      const header = headers.find(
+        (header) =>
+          header.colStart <= cell.colStart && cell.colStart <= header.colEnd,
+      ).text;
+
+      return { ...cell, text, imageUrl, header };
+    })
+    .filter((cell) => {
+      // Cells with no useful value - seem only confusing for user
+      return (
+        (cell.text !== undefined && cell.text !== null && cell.text !== "") ||
+        (cell.imageUrl !== undefined &&
+          cell.imageUrl !== null &&
+          cell.imageUrl !== "")
+      );
+    });
 }
