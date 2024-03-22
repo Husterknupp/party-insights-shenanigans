@@ -122,7 +122,7 @@ export default function tableWalker(html) {
         // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
         let parts = imageUrl.split("/");
         parts = parts.filter((_, index) => index !== parts.length - 1);
-        parts.push("400px-" + parts[parts.length - 1]);
+        parts.push("400px-" + parts[parts.length - 1].replace(".tif", ".png"));
         imageUrl = "https:" + parts.join("/");
       }
 
