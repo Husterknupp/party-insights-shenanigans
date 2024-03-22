@@ -23,7 +23,7 @@ Kultus, Jugend und Sport:
 Wissenschaft, Forschung und Kunst:
 * Name: Petra Olschowski
 * Partei: Grüne
-* Profilbild: ![Petra Olschowski](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Theresia_Bauer.jpg/400px-Theresia_Bauer.jpg)
+* Profilbild: ![Petra Olschowski](https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/400px-PetravonOlschowski_Web.jpg)
 
 Umwelt, Klima und Energiewirtschaft:
 * Name: Thekla Walker

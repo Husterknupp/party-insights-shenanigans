@@ -118,7 +118,7 @@ export default function tableWalker(html) {
 
       // todo selbes Problem wie in Text (aktuell wird das erste Bild genommen - wir wollen aber das letzte Bild)
       //  da Bild von T. Bauer - soll aber P. Olschowski sein (Kretschmann III)
-      let imageUrl = $(cell._ref).find("img").attr("src");
+      let imageUrl = $(cell._ref).find("img").last().attr("src");
       if (imageUrl !== undefined) {
         // Resize image to non-thumb size
         // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg

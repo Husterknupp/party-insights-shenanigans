@@ -23,7 +23,46 @@ function isColumnHeaderLike(headerText, searchStrings) {
 }
 
 describe("tableWalker", () => {
-  test("handles similar situations individually: Finds last person in cell that contains two names and combines different nodes into one name", () => {
+  test("Handles two image nodes in one cell", () => {
+    // https://de.wikipedia.org/wiki/Kabinett_Kretschmann_III
+
+    // Wikipedia apparently doesn't use the same linting rules like I do
+    // noinspection HtmlUnknownTarget,HtmlRequiredAltAttribute
+    const table = `
+<table>
+    <tbody>
+    <tr>
+        <th>Spalte 1</th>
+    </tr>
+    <tr>
+        <td style="padding:0;background-color:#777;text-align:center;vertical-align:middle;">
+            <span typeof="mw:File"><a
+                    href="/wiki/Datei:Theresia_Bauer.jpg" class="mw-file-description"><img
+                    src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Theresia_Bauer.jpg/120px-Theresia_Bauer.jpg"
+                    decoding="async" width="120" height="180" class="mw-file-element"
+                    srcset="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Theresia_Bauer.jpg/180px-Theresia_Bauer.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Theresia_Bauer.jpg/240px-Theresia_Bauer.jpg 2x"
+                    data-file-width="644" data-file-height="966"></a></span><br>
+            <span typeof="mw:File"><a
+                    href="/wiki/Datei:PetravonOlschowski_Web.jpg" class="mw-file-description"><img
+                    src="//upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/120px-PetravonOlschowski_Web.jpg"
+                    decoding="async" width="120" height="117" class="mw-file-element"
+                    srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/180px-PetravonOlschowski_Web.jpg 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/240px-PetravonOlschowski_Web.jpg 2x"
+                    data-file-width="899" data-file-height="876"></a></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+`;
+
+    const cells = tableWalker(table);
+
+    expect(cells.length).toBe(1);
+    expect(cells[0].imageUrl).toEqual(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/400px-PetravonOlschowski_Web.jpg",
+    );
+  });
+
+  test("Understands different text formattings in a cell: Finds last person in cell that contains two names and combines different nodes into one name", () => {
     // https://de.wikipedia.org/wiki/Kabinett_Kretschmann_III
     const table = `
 <table>
