@@ -30,7 +30,7 @@ export function getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings) {
     isColumnHeaderLike(cell, searchStrings),
   );
   if (relevantCells.length === 0) {
-    throw new Error(`Found no cells for headers ${searchStrings.toString()}`);
+    return [];
   }
 
   const firstColumnWithThatName = relevantCells.sort(
@@ -104,13 +104,8 @@ async function _extract(bundesland) {
   // Ie, all cells between rowStart and rowEnd correspond to one Amt-row.
   const amtSearch = ["amt", "ressort"];
   const amtColumn = getAllCellsOfFirstColumnWithHeaderLike(cells, amtSearch);
-  let checkSum = amtColumn[0].colStart;
-  for (const td of amtColumn) {
-    if (td.colStart !== checkSum) {
-      throw new Error(
-        `Amt column has cells of more than one column. That's bad. Maybe the search strings '${amtSearch}' are ambiguous?`,
-      );
-    }
+  if (amtColumn.length === 0) {
+    throw new Error(`Found no cells for headers ${searchStrings.toString()}`);
   }
 
   const result = [];
@@ -132,8 +127,7 @@ async function _extract(bundesland) {
     if (
       amt === undefined ||
       ministerName === undefined ||
-      party === undefined ||
-      imageUrl === undefined
+      party === undefined
     ) {
       console.error("Something's missing: ", {
         amt,
@@ -157,7 +151,7 @@ async function _extract(bundesland) {
     result.push({
       amt: amt.text,
       name: ministerName.text,
-      imageUrl: imageUrl.imageUrl,
+      imageUrl: imageUrl ? imageUrl.imageUrl : null,
       party: party.text,
     });
   }
@@ -199,7 +193,7 @@ export default async function extract() {
       case "Rheinland-Pfalz":
       // case "Nordrhein-Westfalen":
       case "Niedersachsen":
-      // case "Mecklenburg-Vorpommern":
+      case "Mecklenburg-Vorpommern":
       // case "Hessen":
       // case "Hamburg":
       // case "Bremen":
