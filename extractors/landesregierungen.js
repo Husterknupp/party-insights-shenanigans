@@ -196,7 +196,7 @@ export default async function extract() {
       case "Schleswig-Holstein":
       case "Sachsen-Anhalt":
       case "Saarland":
-      // case "Rheinland-Pfalz":
+      case "Rheinland-Pfalz":
       // case "Nordrhein-Westfalen":
       // case "Niedersachsen":
       // case "Mecklenburg-Vorpommern":
