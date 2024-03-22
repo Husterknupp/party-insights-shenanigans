@@ -93,7 +93,7 @@ export default function tableWalker(html) {
           colEnd: columnIdx + colSpan - 1,
           rowStart: rowIndex,
           rowEnd: rowIndex + rowSpan - 1,
-          _ref: cell,
+          _cheerioEl: cell,
         });
         columnIdx += colSpan;
       });
@@ -101,12 +101,12 @@ export default function tableWalker(html) {
 
   return allCells
     .map((cell) => {
-      $(cell._ref).find("small").remove();
-      $(cell._ref).find("sup").remove();
-      $(cell._ref).find("i").remove();
+      $(cell._cheerioEl).find("small").remove();
+      $(cell._cheerioEl).find("sup").remove();
+      $(cell._cheerioEl).find("i").remove();
 
       let text = "";
-      for (const node of $(cell._ref).contents().toArray().reverse()) {
+      for (const node of $(cell._cheerioEl).contents().toArray().reverse()) {
         if (node.name === "br" && text !== "") break;
 
         const part = $(node).text().trim();
@@ -118,7 +118,7 @@ export default function tableWalker(html) {
 
       // todo selbes Problem wie in Text (aktuell wird das erste Bild genommen - wir wollen aber das letzte Bild)
       //  da Bild von T. Bauer - soll aber P. Olschowski sein (Kretschmann III)
-      let imageUrl = $(cell._ref).find("img").last().attr("src");
+      let imageUrl = $(cell._cheerioEl).find("img").last().attr("src");
       if (imageUrl !== undefined) {
         // Resize image to non-thumb size
         // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
@@ -133,6 +133,7 @@ export default function tableWalker(html) {
           header.colStart <= cell.colStart && cell.colStart <= header.colEnd,
       ).text;
 
+      delete cell._cheerioEl;
       return { ...cell, text, imageUrl, header };
     })
     .filter((cell) => {

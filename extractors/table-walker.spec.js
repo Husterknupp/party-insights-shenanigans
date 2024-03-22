@@ -94,7 +94,7 @@ describe("tableWalker", () => {
     expect(cells[1].text).toEqual(
       "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
     );
-    expect(cells[2].text).toEqual("Random dude");
+    expect(cells[2].text).toEqual("Random teapot");
   });
 
   test("cell text strips away footnotes", () => {
