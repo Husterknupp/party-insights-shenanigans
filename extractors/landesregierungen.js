@@ -63,17 +63,15 @@ function findRelevantTable(html) {
     "Mitglieder der Staatsregierung",
     "Amtierende Regierungschefs",
     "Zusammensetzung",
+    "Senat",
   ];
   for (const o of options) {
     // language=JQuery-CSS
     const found = $(`h2:contains("${o}")`);
     if (found.length !== 0) {
       console.log(`found table '${o}'`);
-      // For debugging purposes
-      const result = found.next("table");
-      // const result = found.nextUntil("table").next("table");
+      const result = found.nextAll("table").first();
       return result.html();
-      // return found.next("table").find("tr");
     }
   }
   throw Error(
@@ -198,7 +196,7 @@ export default async function extract() {
       // case "Hamburg":
       // case "Bremen":
       // case "Brandenburg":
-      // case "Berlin":
+      case "Berlin":
       case "NEVER": {
         await _extract(bundesland);
         break;

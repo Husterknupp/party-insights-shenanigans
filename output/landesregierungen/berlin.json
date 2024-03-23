@@ -1,0 +1,68 @@
+[
+  {
+    "amt": "Regierender Bürgermeister",
+    "name": "Kai Wegner",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93110.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93110.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Wirtschaft, Energie und Betriebe (gleichzeitig: Bürgermeisterin)",
+    "name": "Franziska Giffey",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93011.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93011.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Finanzen (gleichzeitig: Bürgermeister)",
+    "name": "Stefan Evers",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Stefan_Evers%2C_Finanzsenator_von_Berlin%2C_%28Tobias_Koch%2C_202%29.jpg/400px-Stefan_Evers%2C_Finanzsenator_von_Berlin%2C_%28Tobias_Koch%2C_202%29.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Kultur und Gesellschaftlicher Zusammenhalt",
+    "name": "Joe Chialo",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Joe_Chialo.jpg/400px-Joe_Chialo.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Stadtentwicklung, Bauen und Wohnen",
+    "name": "Christian Gaebler",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93084.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93084.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Inneres und Sport",
+    "name": "Iris Spranger",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/2021-12-21_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93127.jpg/400px-2021-12-21_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93127.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Bildung, Jugend und Familie",
+    "name": "Katharina Günther-Wünsch",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93117.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93117.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Wissenschaft, Gesundheit und Pflege",
+    "name": "Ina Czyborra",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93137.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93137.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Arbeit, Soziales, Gleichstellung, Integration, Vielfalt und Antidiskriminierung",
+    "name": "Cansel Kiziltepe",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93139.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93139.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Mobilität, Verkehr, Klimaschutz und Umwelt",
+    "name": "Manja Schreiner",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93074.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93074.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Justiz und Verbraucherschutz",
+    "name": "Felor Badenberg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Felor_Badenberg_Portrait.jpg/400px-Felor_Badenberg_Portrait.jpg",
+    "party": "parteilos (von der CDU nominiert)"
+  }
+]
