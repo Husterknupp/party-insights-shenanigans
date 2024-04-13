@@ -15,6 +15,15 @@ function sameRow(cellA, cellB) {
   );
 }
 
+export function createMinister(amt, ministerName, party, imageUrl) {
+  return {
+    amt: amt.linesOfText.join(", "),
+    name: ministerName.linesOfText[ministerName.linesOfText.length - 1],
+    party: party.linesOfText[0],
+    imageUrl: imageUrl.imageUrl,
+  };
+}
+
 export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
   const result = getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings);
 
@@ -146,12 +155,7 @@ async function _extract(bundesland) {
       continue;
     }
 
-    result.push({
-      amt: amt.text,
-      name: ministerName.text,
-      imageUrl: imageUrl ? imageUrl.imageUrl : null,
-      party: party.text,
-    });
+    result.push(createMinister(amt, ministerName, party, imageUrl));
   }
 
   console.log(`\nfound ${result.length} minister\n`);

@@ -19,6 +19,28 @@ function parseIntOr(maybeString, fallback) {
  * tableWalker aims to be a more intuitive approach on how to assign cells to columns.
  */
 export default function tableWalker(html) {
+  /* todo separate somehow location logic ("cell in row X-Y")
+      from extraction/parsing of cell content---or does that make no sense after all?
+
+  MAKE THE tableWalker API MORE CONCISE - SOME IDEAS
+
+  VARIANT A
+  const wot = tableWalker(
+    html,
+    amtColumn=["amt", ressort"],
+    ministerNameColumn=["amtsinhaber", "name"],
+    ...
+  )
+
+  VARIANT B
+  const wot = tableWalker(
+    html,
+    {mainColumn: ["amt", ressort"], mainColumnAlias: 'amt'},
+    {columns: [headerText: ["amtsinhaber", "name",], alias: ]}
+  )
+
+  */
+
   let $;
   // noinspection HtmlRequiredLangAttribute
   if (html.indexOf("<html>") !== -1) {
@@ -51,11 +73,12 @@ export default function tableWalker(html) {
   );
 
   const headers = [];
-  ths.each((headerCount, header) => {
-    const colStart = headers[headerCount - 1]?.colEnd + 1 || 0;
+  ths.each((headerIdx, header) => {
+    const maybePreviousCol = headers[headerIdx - 1]?.colEnd;
+    const colStart = maybePreviousCol + 1 || 0;
     const colEnd = colStart + parseIntOr($(header).attr("colspan"), 1) - 1;
-    const text = removeWhiteSpace($(header).text());
-    headers.push({ colStart, colEnd, text });
+    const linesOfText = [removeWhiteSpace($(header).text())];
+    headers.push({ colStart, colEnd, linesOfText });
   });
 
   const allCells = [];
@@ -103,18 +126,21 @@ export default function tableWalker(html) {
     .map((cell) => {
       $(cell._cheerioEl).find("small").remove();
       $(cell._cheerioEl).find("sup").remove();
-      $(cell._cheerioEl).find("i").remove();
 
+      const linesOfText = [];
       let text = "";
-      for (const node of $(cell._cheerioEl).contents().toArray().reverse()) {
-        if (node.name === "br" && text !== "") break;
-
-        const part = $(node).text();
+      const nodes = $(cell._cheerioEl).contents().toArray();
+      for (let i = 0; i < nodes.length; i++) {
+        const part = $(nodes[i]).text();
         if (part.trim().length !== 0) {
-          text = part + text;
+          text = text + part;
+        }
+
+        if (text !== "" && (nodes[i].name === "br" || i === nodes.length - 1)) {
+          linesOfText.push(removeWhiteSpace(text));
+          text = "";
         }
       }
-      text = removeWhiteSpace(text);
 
       let imageUrl = $(cell._cheerioEl).find("img").last().attr("src");
       if (imageUrl !== undefined) {
@@ -129,18 +155,15 @@ export default function tableWalker(html) {
       const header = headers.find(
         (header) =>
           header.colStart <= cell.colStart && cell.colStart <= header.colEnd,
-      ).text;
+      ).linesOfText[0]; // Hopefully (🤞) header cells have not more than one line of text
 
+      // somehow feels weird to expose Cheerio
       delete cell._cheerioEl;
-      return { ...cell, text, imageUrl, header };
+
+      return { ...cell, imageUrl, header, linesOfText };
     })
     .filter((cell) => {
       // Cells with no useful value - seem only confusing for user
-      return (
-        (cell.text !== undefined && cell.text !== null && cell.text !== "") ||
-        (cell.imageUrl !== undefined &&
-          cell.imageUrl !== null &&
-          cell.imageUrl !== "")
-      );
+      return cell.linesOfText.length !== 0 || cell.imageUrl !== undefined;
     });
 }

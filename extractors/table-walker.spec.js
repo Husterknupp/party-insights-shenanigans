@@ -1,7 +1,10 @@
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 import tableWalker from "./tableWalker.js";
-import { getLastCellOfFirstColumnWithHeaderLike } from "./landesregierungen.js";
+import {
+  createMinister,
+  getLastCellOfFirstColumnWithHeaderLike,
+} from "./landesregierungen.js";
 
 // todo
 // * rename extractors -> src
@@ -23,7 +26,63 @@ function isColumnHeaderLike(headerText, searchStrings) {
 }
 
 describe("tableWalker", () => {
-  test("Handles two image nodes in one cell", () => {
+  test("handles special cell with two rows of Ämter in the same cell well", () => {
+    // https://de.wikipedia.org/wiki/Senat_Tschentscher_II
+    const table = `
+<table>
+    <thead>
+    <tr>
+        <th style="width:35%" tabindex="0" title="Aufsteigend sortieren">
+            Amt
+        </th>
+        <th>Bild
+        </th>
+        <th style="width:20%" tabindex="0" title="Aufsteigend sortieren">
+            Name
+        </th>
+        <th colspan="2" style="width:10%" tabindex="0"
+            title="Aufsteigend sortieren">Partei
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td rowspan="2">Präsident des Senats und <a href="/wiki/Erster_B%C3%BCrgermeister" title="Erster Bürgermeister">Erster
+            Bürgermeister</a><br><a href="/wiki/Senatskanzlei_(Hamburg)"
+                                    title="Senatskanzlei (Hamburg)">Senatskanzlei</a>
+        </td>
+        <td rowspan="2">
+            <figure typeof="mw:File/Frameless">
+                <figcaption></figcaption>
+            </figure>
+        </td>
+        <td rowspan="2"><a href="/wiki/Peter_Tschentscher" title="Peter Tschentscher">Peter Tschentscher</a>
+        </td>
+        <td rowspan="2">
+        </td>
+        <td rowspan="2"><a href="/wiki/Sozialdemokratische_Partei_Deutschlands"
+                           title="Sozialdemokratische Partei Deutschlands">SPD</a>
+        </td>
+    </tr>
+    <tr>
+    </tr>
+    </tbody>
+</table>  
+  `;
+
+    const cells = tableWalker(table);
+    const aemter = cells.filter((cell) =>
+      isColumnHeaderLike(cell.header, ["amt"]),
+    );
+
+    expect(aemter).toHaveLength(1);
+    expect(aemter[0].linesOfText).toEqual([
+      "Präsident des Senats und Erster Bürgermeister",
+      "Senatskanzlei",
+    ]);
+  });
+
+  test("handles two image nodes in one cell well", () => {
     // https://de.wikipedia.org/wiki/Kabinett_Kretschmann_III
 
     // Wikipedia apparently doesn't use the same linting rules like I do
@@ -90,11 +149,11 @@ describe("tableWalker", () => {
 
     const cells = tableWalker(table);
 
-    expect(cells[0].text).toEqual("Petra Olschowski");
-    expect(cells[1].text).toEqual(
+    expect(cells[0].linesOfText.toReversed()[0]).toEqual("Petra Olschowski");
+    expect(cells[1].linesOfText.toReversed()[0]).toEqual(
       "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
     );
-    expect(cells[2].text).toEqual("Random teapot");
+    expect(cells[2].linesOfText.toReversed()[0]).toEqual("Random teapot");
   });
 
   test("cell text strips away footnotes", () => {
@@ -119,18 +178,18 @@ describe("tableWalker", () => {
 
     const cells = tableWalker(table03);
 
-    expect(cells[0].text).toEqual("Armin Schuster");
+    expect(cells[0].linesOfText[0]).toEqual("Armin Schuster");
   });
 
   test("Person with two Ämter is handled properly", () => {
     const cells = tableWalker(kabinettKretschmer);
 
-    console.log(`cells: `, cells);
-
-    const giesela = cells.find((cell) => cell.text === "Gisela Reetz");
+    const giesela = cells.find(
+      (cell) => cell.linesOfText[0] === "Gisela Reetz",
+    );
     expect(giesela.header).toEqual("Staatssekretär");
     expect(giesela.colStart).toEqual(5);
-    const gerd = cells.find((cell) => cell.text === "Gerd Lippold");
+    const gerd = cells.find((cell) => cell.linesOfText[0] === "Gerd Lippold");
     expect(gerd.header).toEqual("Staatssekretär");
     expect(gerd.colStart).toEqual(5);
   });
@@ -148,7 +207,7 @@ describe("tableWalker", () => {
     );
 
     for (const cell of partyCells) {
-      expect(cell.text).not.toContain("Heike Raab");
+      expect(cell.linesOfText[0]).not.toContain("Heike Raab");
     }
   });
 
@@ -202,11 +261,15 @@ describe("tableWalker", () => {
     const row = tableWalker(table);
 
     const partyCell = getLastCellOfFirstColumnWithHeaderLike(row, ["Partei"]);
-    expect(partyCell.text).toEqual("CDU");
-    const staatssekretaer = row.find(
-      (cell) => cell.text.indexOf("Sebastian Hecht") !== -1,
-    );
-    expect(staatssekretaer.colStart).toEqual(4);
+    expect(partyCell.linesOfText[0]).toEqual("CDU");
+    expect(
+      (() => {
+        const staatssekretaer = row.find((cell) =>
+          cell.linesOfText.includes("Sebastian Hecht"),
+        );
+        return staatssekretaer.colStart;
+      })(),
+    ).toEqual(4);
   });
 
   test("finding cells works (specific columns of a row)", () => {
@@ -238,12 +301,7 @@ describe("tableWalker", () => {
       ]);
       const imageUrl = getLastCellOfFirstColumnWithHeaderLike(row, ["foto"]);
 
-      ministerRows.push({
-        amt: amt.text,
-        name: ministerName.text,
-        party: party.text,
-        imageUrl: imageUrl.imageUrl,
-      });
+      ministerRows.push(createMinister(amt, ministerName, party, imageUrl));
     }
 
     expect(ministerRows.length).toBe(10);
@@ -299,7 +357,8 @@ describe("tableWalker", () => {
 
     expect(tableWalker(table01)).toEqual([
       {
-        text: "bla",
+        linesOfText: ["bla"],
+        imageUrl: undefined,
         colStart: 0,
         colEnd: 0,
         rowStart: 0,
@@ -308,7 +367,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 2",
-        text: "img",
+        linesOfText: ["img"],
+        imageUrl: undefined,
         colStart: 1,
         colEnd: 1,
         rowStart: 0,
@@ -316,7 +376,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 3",
-        text: "bloing",
+        linesOfText: ["bloing"],
+        imageUrl: undefined,
         colStart: 2,
         colEnd: 2,
         rowStart: 0,
@@ -324,7 +385,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 1",
-        text: "cook",
+        linesOfText: ["cook"],
+        imageUrl: undefined,
         colStart: 0,
         colEnd: 0,
         rowStart: 1,
@@ -332,7 +394,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 2",
-        text: "check",
+        linesOfText: ["check"],
+        imageUrl: undefined,
         colStart: 1,
         colEnd: 1,
         rowStart: 1,
@@ -340,7 +403,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 3",
-        text: "ccc",
+        linesOfText: ["ccc"],
+        imageUrl: undefined,
         colStart: 2,
         colEnd: 2,
         rowStart: 1,
@@ -378,7 +442,8 @@ describe("tableWalker", () => {
     expect(tableWalker(table)).toEqual([
       {
         header: "Spalte 1",
-        text: "1A",
+        linesOfText: ["1A"],
+        imageUrl: undefined,
         colStart: 0,
         colEnd: 0,
         rowStart: 0,
@@ -386,7 +451,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 2",
-        text: "2A",
+        linesOfText: ["2A"],
+        imageUrl: undefined,
         colStart: 1,
         colEnd: 1,
         rowStart: 0,
@@ -394,7 +460,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 3",
-        text: "3A",
+        linesOfText: ["3A"],
+        imageUrl: undefined,
         colStart: 2,
         colEnd: 2,
         rowStart: 0,
@@ -402,7 +469,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 2",
-        text: "2B",
+        linesOfText: ["2B"],
+        imageUrl: undefined,
         colStart: 1,
         colEnd: 1,
         rowStart: 1,
@@ -410,7 +478,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 3",
-        text: "3B",
+        linesOfText: ["3B"],
+        imageUrl: undefined,
         colStart: 2,
         colEnd: 2,
         rowStart: 1,
@@ -418,7 +487,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 1",
-        text: "1C",
+        linesOfText: ["1C"],
+        imageUrl: undefined,
         colStart: 0,
         colEnd: 0,
         rowStart: 2,
@@ -426,7 +496,8 @@ describe("tableWalker", () => {
       },
       {
         header: "Spalte 2",
-        text: "2C",
+        linesOfText: ["2C"],
+        imageUrl: undefined,
         colStart: 1,
         colEnd: 1,
         rowStart: 2,
@@ -468,7 +539,8 @@ describe("tableWalker", () => {
       expect(tableWalker(table)).toEqual([
         {
           header: "Spalte 1",
-          text: "1A",
+          linesOfText: ["1A"],
+          imageUrl: undefined,
           colStart: 0,
           colEnd: 0,
           rowStart: 0,
@@ -476,7 +548,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 1",
-          text: "1A",
+          linesOfText: ["1A"],
+          imageUrl: undefined,
           colStart: 1,
           colEnd: 1,
           rowStart: 0,
@@ -484,7 +557,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 2",
-          text: "2A",
+          linesOfText: ["2A"],
+          imageUrl: undefined,
           colStart: 2,
           colEnd: 2,
           rowStart: 0,
@@ -492,7 +566,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 3",
-          text: "3A",
+          linesOfText: ["3A"],
+          imageUrl: undefined,
           colStart: 3,
           colEnd: 3,
           rowStart: 0,
@@ -500,7 +575,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 3",
-          text: "3A",
+          linesOfText: ["3A"],
+          imageUrl: undefined,
           colStart: 4,
           colEnd: 4,
           rowStart: 0,
@@ -508,7 +584,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 3",
-          text: "3A",
+          linesOfText: ["3A"],
+          imageUrl: undefined,
           colStart: 5,
           colEnd: 5,
           rowStart: 0,
@@ -516,7 +593,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 1",
-          text: "1B",
+          linesOfText: ["1B"],
+          imageUrl: undefined,
           colStart: 0,
           colEnd: 0,
           rowStart: 1,
@@ -524,7 +602,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 1",
-          text: "1B",
+          linesOfText: ["1B"],
+          imageUrl: undefined,
           colStart: 1,
           colEnd: 1,
           rowStart: 1,
@@ -532,7 +611,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 2",
-          text: "2B",
+          linesOfText: ["2B"],
+          imageUrl: undefined,
           colStart: 2,
           colEnd: 2,
           rowStart: 1,
@@ -540,7 +620,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 3",
-          text: "3B",
+          linesOfText: ["3B"],
+          imageUrl: undefined,
           colStart: 3,
           colEnd: 3,
           rowStart: 1,
@@ -548,7 +629,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 3",
-          text: "3B",
+          linesOfText: ["3B"],
+          imageUrl: undefined,
           colStart: 4,
           colEnd: 4,
           rowStart: 1,
@@ -556,7 +638,8 @@ describe("tableWalker", () => {
         },
         {
           header: "Spalte 3",
-          text: "3B",
+          linesOfText: ["3B"],
+          imageUrl: undefined,
           colStart: 5,
           colEnd: 5,
           rowStart: 1,
@@ -587,7 +670,7 @@ describe("tableWalker", () => {
 `;
 
     expect(() => tableWalker(table02)).toThrow(
-      "Cannot read properties of undefined (reading 'text')",
+      "Cannot read properties of undefined (reading 'linesOfText')",
     );
   });
 
