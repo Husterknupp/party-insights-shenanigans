@@ -16,12 +16,20 @@ function sameRow(cellA, cellB) {
 }
 
 export function createMinister(amt, ministerName, party, imageUrl) {
-  return {
-    amt: amt.linesOfText.join(", "),
-    name: ministerName.linesOfText[ministerName.linesOfText.length - 1],
-    party: party.linesOfText[0],
-    imageUrl: imageUrl.imageUrl,
-  };
+  try {
+    return {
+      amt: amt.linesOfText.join(", "),
+      name: ministerName.linesOfText[ministerName.linesOfText.length - 1],
+      party: party.linesOfText[0],
+      imageUrl: imageUrl.imageUrl,
+    };
+  } catch (e) {
+    console.error(
+      `Cannot create minister object for name ${JSON.stringify(ministerName)}. Message:`,
+      e.message,
+    );
+    throw e;
+  }
 }
 
 export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
@@ -146,12 +154,12 @@ async function _extract(bundesland) {
       throw new Error("Could not extract table info");
     }
 
-    const sameName = result.find(
-      (minister) => minister.name === ministerName.text,
+    const sameName = result.find((minister) =>
+      ministerName.linesOfText.includes(minister.name),
     );
     if (sameName !== undefined) {
       const subTitle = sameName.amt;
-      sameName.amt = `${amt.text} (gleichzeitig: ${subTitle})`;
+      sameName.amt = `${amt.linesOfText.join(", ")} (gleichzeitig: ${subTitle})`;
       continue;
     }
 

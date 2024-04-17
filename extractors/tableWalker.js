@@ -160,6 +160,8 @@ export default function tableWalker(html) {
       // somehow feels weird to expose Cheerio
       delete cell._cheerioEl;
 
+      // `linesOfText` instead of a single text field because for some columns, we can ignore parts of
+      // a cell's text---while in other columns all text is relevant. With this list, the caller can decide.
       return { ...cell, imageUrl, header, linesOfText };
     })
     .filter((cell) => {
