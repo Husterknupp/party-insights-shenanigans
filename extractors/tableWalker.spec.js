@@ -114,7 +114,7 @@ describe("tableWalker", () => {
     );
   });
 
-  test("Understands different text formattings in a cell: Finds last person in cell that contains two names and combines different nodes into one name", () => {
+  test("Understands different text formatting in a cell: Line breaks, dedicated nodes, blank text and more", () => {
     // https://de.wikipedia.org/wiki/Kabinett_Kretschmann_III
     const table = `
 <table>
@@ -136,17 +136,30 @@ describe("tableWalker", () => {
     <tr>
         <td>Random teapot</td>
     </tr>
+    <tr>
+        <!-- https://de.wikipedia.org/wiki/Kabinett_Rehlinger -->
+        <td rowspan="2">
+            Ministerpräsidentin
+            <br><br>
+            <i><a href="/wiki/Saarl%C3%A4ndische_Staatskanzlei" title="Saarländische Staatskanzlei">Staatskanzlei</a></i>
+        </td>
+    </tr>
     </tbody>
 </table>
 `;
 
     const cells = tableWalker(table);
+    let lastElement = (arr) => arr.toReversed()[0];
 
-    expect(cells[0].linesOfText.toReversed()[0]).toEqual("Petra Olschowski");
-    expect(cells[1].linesOfText.toReversed()[0]).toEqual(
+    expect(lastElement(cells[0].linesOfText)).toEqual("Petra Olschowski");
+    expect(lastElement(cells[1].linesOfText)).toEqual(
       "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
     );
-    expect(cells[2].linesOfText.toReversed()[0]).toEqual("Random teapot");
+    expect(lastElement(cells[2].linesOfText)).toEqual("Random teapot");
+    expect(cells[3].linesOfText).toEqual([
+      "Ministerpräsidentin",
+      "Staatskanzlei",
+    ]);
   });
 
   test("cell text strips away footnotes", () => {

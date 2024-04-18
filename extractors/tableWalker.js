@@ -146,16 +146,18 @@ export default function tableWalker(html) {
               linesOfText.push(removeInnerWhiteSpace(combinedText));
               combinedText = "";
             }
-            if (text.trim().length !== 0) {
+            if (text.trim() !== "") {
               linesOfText.push(removeInnerWhiteSpace(text));
             }
             break;
           case "br":
-            linesOfText.push(removeInnerWhiteSpace(combinedText));
-            combinedText = "";
+            if (combinedText !== "") {
+              linesOfText.push(removeInnerWhiteSpace(combinedText));
+              combinedText = "";
+            }
             break;
           default:
-            if (text.trim().length !== 0) {
+            if (text.trim() !== "") {
               combinedText = combinedText + text;
             }
         }

@@ -1,6 +1,6 @@
 # Rheinland-Pfalz - Kabinett Dreyer III
 
-Ministerpräsidentin:
+Ministerpräsidentin, Staatskanzlei:
 * Name: Malu Dreyer
 * Partei: SPD
 * Profilbild: ![Malu Dreyer](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg)
