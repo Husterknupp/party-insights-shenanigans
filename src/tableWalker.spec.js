@@ -7,7 +7,6 @@ import {
 } from "./landesregierungen.js";
 
 // todo
-//  * rename extractors -> src
 //  * consider moving helper functions together into one file
 //  * make `bundesregierung`, `ministerpraesidenten` also use the new API
 
