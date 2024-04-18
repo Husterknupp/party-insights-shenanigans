@@ -7,8 +7,9 @@ import {
 } from "./landesregierungen.js";
 
 // todo
-// * rename extractors -> src
-// * consider moving helper functions together into one file
+//  * rename extractors -> src
+//  * consider moving helper functions together into one file
+//  * make `bundesregierung`, `ministerpraesidenten` also use the new API
 
 /* Assumptions:
  * Height of a row: First regular cell (td, not th) of first column defines the height
@@ -32,17 +33,10 @@ describe("tableWalker", () => {
 <table>
     <thead>
     <tr>
-        <th style="width:35%" tabindex="0" title="Aufsteigend sortieren">
-            Amt
-        </th>
-        <th>Bild
-        </th>
-        <th style="width:20%" tabindex="0" title="Aufsteigend sortieren">
-            Name
-        </th>
-        <th colspan="2" style="width:10%" tabindex="0"
-            title="Aufsteigend sortieren">Partei
-        </th>
+        <th> Amt </th>
+        <th>Bild </th>
+        <th> Name </th>
+        <th colspan="2">Partei </th>
     </tr>
     </thead>
     <tbody>
@@ -64,8 +58,7 @@ describe("tableWalker", () => {
                            title="Sozialdemokratische Partei Deutschlands">SPD</a>
         </td>
     </tr>
-    <tr>
-    </tr>
+    <tr> </tr>
     </tbody>
 </table>  
   `;
@@ -305,7 +298,7 @@ describe("tableWalker", () => {
     }
 
     expect(ministerRows.length).toBe(10);
-    expect(ministerRows[0].amt).toContain("Ministerpräsidentin");
+    expect(ministerRows[0].amt).toEqual("Ministerpräsidentin, Staatskanzlei");
     expect(ministerRows[0].name).toContain("Malu Dreyer");
     expect(ministerRows[0].party).toContain("SPD");
     expect(ministerRows[0].imageUrl).toEqual(

@@ -4,7 +4,7 @@
 
 import { load } from "cheerio";
 
-function removeWhiteSpace(text) {
+function removeInnerWhiteSpace(text) {
   // Line breaks in HTML can cause weird amount of whitespace.
   // Removes also inner linebreaks.
   return text.replace(/\s+/g, " ").trim();
@@ -27,6 +27,14 @@ export default function tableWalker(html) {
   VARIANT A
   const wot = tableWalker(
     html,
+    relevantTable=[
+      "Kabinett",
+      "Landesregierung",
+      "Mitglieder der Staatsregierung",
+      "Amtierende Regierungschefs",
+      "Zusammensetzung",
+      "Senat",
+    ],
     amtColumn=["amt", ressort"],
     ministerNameColumn=["amtsinhaber", "name"],
     ...
@@ -77,7 +85,7 @@ export default function tableWalker(html) {
     const maybePreviousCol = headers[headerIdx - 1]?.colEnd;
     const colStart = maybePreviousCol + 1 || 0;
     const colEnd = colStart + parseIntOr($(header).attr("colspan"), 1) - 1;
-    const linesOfText = [removeWhiteSpace($(header).text())];
+    const linesOfText = [removeInnerWhiteSpace($(header).text())];
     headers.push({ colStart, colEnd, linesOfText });
   });
 
@@ -128,18 +136,32 @@ export default function tableWalker(html) {
       $(cell._cheerioEl).find("sup").remove();
 
       const linesOfText = [];
-      let text = "";
+      let combinedText = "";
       const nodes = $(cell._cheerioEl).contents().toArray();
-      for (let i = 0; i < nodes.length; i++) {
-        const part = $(nodes[i]).text();
-        if (part.trim().length !== 0) {
-          text = text + part;
+      for (const node of nodes) {
+        const text = $(node).text();
+        switch (node.name) {
+          case "p":
+            if (combinedText !== "") {
+              linesOfText.push(removeInnerWhiteSpace(combinedText));
+              combinedText = "";
+            }
+            if (text.trim().length !== 0) {
+              linesOfText.push(removeInnerWhiteSpace(text));
+            }
+            break;
+          case "br":
+            linesOfText.push(removeInnerWhiteSpace(combinedText));
+            combinedText = "";
+            break;
+          default:
+            if (text.trim().length !== 0) {
+              combinedText = combinedText + text;
+            }
         }
-
-        if (text !== "" && (nodes[i].name === "br" || i === nodes.length - 1)) {
-          linesOfText.push(removeWhiteSpace(text));
-          text = "";
-        }
+      }
+      if (combinedText !== "") {
+        linesOfText.push(removeInnerWhiteSpace(combinedText));
       }
 
       let imageUrl = $(cell._cheerioEl).find("img").last().attr("src");

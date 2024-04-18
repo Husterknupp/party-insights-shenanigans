@@ -20,8 +20,8 @@ export function createMinister(amt, ministerName, party, imageUrl) {
     return {
       amt: amt.linesOfText.join(", "),
       name: ministerName.linesOfText[ministerName.linesOfText.length - 1],
-      party: party.linesOfText[0],
       imageUrl: imageUrl.imageUrl,
+      party: party.linesOfText[0],
     };
   } catch (e) {
     console.error(
@@ -169,6 +169,7 @@ async function _extract(bundesland) {
   console.log(`\nfound ${result.length} minister\n`);
   console.log(result);
 
+  // todo also add URL of cabinet to output files
   writeAsJson(
     `output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.json`,
     result,
