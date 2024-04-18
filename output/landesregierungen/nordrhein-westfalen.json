@@ -1,0 +1,80 @@
+[
+  {
+    "amt": "Ministerpräsident, Staatskanzlei",
+    "name": "Hendrik Wüst",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg/400px-Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Wirtschaft, Industrie, Klimaschutz und Energie (gleichzeitig: Stellvertreterin des Ministerpräsidenten)",
+    "name": "Mona Neubaur",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2022-08-29-Mona_Neubaur-hart_aber_fair-9989.jpg/400px-2022-08-29-Mona_Neubaur-hart_aber_fair-9989.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Finanzen",
+    "name": "Marcus Optendrenk",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/MarcusOptendrenk_CDU-Politiker_%28cropped%29.jpg/400px-MarcusOptendrenk_CDU-Politiker_%28cropped%29.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Inneres",
+    "name": "Herbert Reul",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Reul%2C_Herbert-1.jpg/400px-Reul%2C_Herbert-1.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Arbeit, Gesundheit und Soziales",
+    "name": "Karl-Josef Laumann",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/20181003_M%C3%BCnsterland_Giro%2C_Karl-Josef_Laumann%2C_Coesfeld_%2807844%29.jpg/400px-20181003_M%C3%BCnsterland_Giro%2C_Karl-Josef_Laumann%2C_Coesfeld_%2807844%29.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Justiz",
+    "name": "Benjamin Limbach",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/LDK_Bielefeld_25.-26.6.2022_%2852172671262%29_%28cropped%29.jpg/400px-LDK_Bielefeld_25.-26.6.2022_%2852172671262%29_%28cropped%29.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Schule und Bildung",
+    "name": "Dorothee Feller",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/20181003_M%C3%BCnsterland_Giro%2C_Dorothee_Feller%2C_Coesfeld_%2807842%29.jpg/400px-20181003_M%C3%BCnsterland_Giro%2C_Dorothee_Feller%2C_Coesfeld_%2807842%29.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Umwelt, Naturschutz und Verkehr",
+    "name": "Oliver Krischer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Krischer%2C_Oliver-1283.jpg/400px-Krischer%2C_Oliver-1283.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Landwirtschaft und Verbraucherschutz",
+    "name": "Silke Gorißen",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Verleihung_des_Staatspreises_des_Landes_Nordrhein-Westfalen_an_Angela_Merkel-1857.jpg/400px-Verleihung_des_Staatspreises_des_Landes_Nordrhein-Westfalen_an_Angela_Merkel-1857.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Kinder, Jugend, Familie, Gleichstellung, Flucht und Integration",
+    "name": "Josefine Paul",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Josefine_Paul_2020.jpg/400px-Josefine_Paul_2020.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Heimat, Kommunales, Bau und Digitalisierung",
+    "name": "Ina Scharrenbach",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Ina_Scharrenbach_%282017%29.jpg/400px-Ina_Scharrenbach_%282017%29.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Kultur und Wissenschaft",
+    "name": "Ina Brandes",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Pressetermin_zum_Start_des_E-Tarifs_eezy.nrw-7593.jpg/400px-Pressetermin_zum_Start_des_E-Tarifs_eezy.nrw-7593.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Bundes- und Europaangelegenheiten, Internationales sowie Medien, Chef der Staatskanzlei",
+    "name": "Nathanael Liminski",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Nathanael_Liminski_Grimme-Preis_2018.jpg/400px-Nathanael_Liminski_Grimme-Preis_2018.jpg",
+    "party": "CDU"
+  }
+]
