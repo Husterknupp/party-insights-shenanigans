@@ -1,0 +1,56 @@
+[
+  {
+    "amt": "Präsident des Senats und Bürgermeister, Senator für Angelegenheiten der Religionsgemeinschaften, Senator für Kultur",
+    "name": "Andreas Bovenschulte",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/2023-05-14_Wahlabend_Bremen_by_Sandro_Halank%E2%80%93052.jpg/400px-2023-05-14_Wahlabend_Bremen_by_Sandro_Halank%E2%80%93052.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Stellvertreter des Präsidenten des Senats und Bürgermeister, Senator für Finanzen",
+    "name": "Björn Fecker",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Fecker%2C_Bj%C3%B6rn-1.jpg/400px-Fecker%2C_Bj%C3%B6rn-1.jpg",
+    "party": "Grüne"
+  },
+  {
+    "amt": "Senatorin für Kinder und Bildung",
+    "name": "Sascha Karolin Aulepp",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Aulepp%2C_Sascha_Karolin-9217.jpg/400px-Aulepp%2C_Sascha_Karolin-9217.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Senatorin für Gesundheit, Frauen und Verbraucherschutz",
+    "name": "Claudia Bernhard",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Claudia_Bernhard-4714.jpg/400px-Claudia_Bernhard-4714.jpg",
+    "party": "Linke"
+  },
+  {
+    "amt": "Senator für Inneres und Sport",
+    "name": "Ulrich Mäurer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ulrich_M%C3%A4urer.jpg/400px-Ulrich_M%C3%A4urer.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Senatorin für Umwelt, Klima und Wissenschaft",
+    "name": "Kathrin Moosdorf",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Placeholder_staff_photo.svg/400px-Placeholder_staff_photo.svg",
+    "party": "Grüne"
+  },
+  {
+    "amt": "Senatorin für Justiz und Verfassung (gleichzeitig: Senatorin für Arbeit, Soziales, Jugend und Integration)",
+    "name": "Claudia Schilling",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Schilling%2C_Claudia-1.jpg/400px-Schilling%2C_Claudia-1.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Senatorin für Bau, Mobilität und Stadtentwicklung",
+    "name": "Özlem Ünsal",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/%C3%96zlem_%C3%9Cnsal_%28cropped%29.jpg/400px-%C3%96zlem_%C3%9Cnsal_%28cropped%29.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Senatorin für Wirtschaft, Häfen und Transformation",
+    "name": "Kristina Vogt",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/2023-05-14_Wahlabend_Bremen_by_Sandro_Halank%E2%80%93112.jpg/400px-2023-05-14_Wahlabend_Bremen_by_Sandro_Halank%E2%80%93112.jpg",
+    "party": "Linke"
+  }
+]

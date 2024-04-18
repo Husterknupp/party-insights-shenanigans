@@ -10,7 +10,7 @@ function formatImageUrl(minister) {
   const usefulImage = !(
     minister.imageUrl === null ||
     minister.imageUrl.includes("replace_this_image") ||
-    minister.imageUrl.includes("Portrait_Placeholder")
+    minister.imageUrl.includes("Placeholder")
   );
 
   if (usefulImage) {
