@@ -1,6 +1,6 @@
 # Niedersachsen - Kabinett Weil III
 
-Ministerpräsident:
+Ministerpräsident, Staatskanzlei:
 * Name: Stephan Weil
 * Partei: SPD
 * Profilbild: ![Stephan Weil](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Weil%2C_Stephan.jpg/400px-Weil%2C_Stephan.jpg)
