@@ -206,7 +206,7 @@ export default async function extract() {
       case "Niedersachsen":
       case "Mecklenburg-Vorpommern":
       case "Hessen":
-      // case "Hamburg":
+      case "Hamburg":
       // case "Bremen":
       // case "Brandenburg":
       case "Berlin":
