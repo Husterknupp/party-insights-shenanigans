@@ -1,6 +1,6 @@
 # Hessen - Kabinett Rhein II
 
-Ministerpräsident:
+Ministerpräsident, Staatskanzlei:
 * Name: Boris Rhein
 * Partei: CDU
 * Profilbild: ![Boris Rhein](https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/BORIS-RHEIN-4363.jpg/400px-BORIS-RHEIN-4363.jpg)
