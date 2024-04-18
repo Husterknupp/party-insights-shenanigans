@@ -20,7 +20,7 @@ export function createMinister(amt, ministerName, party, imageUrl) {
     return {
       amt: amt.linesOfText.join(", "),
       name: ministerName.linesOfText[ministerName.linesOfText.length - 1],
-      imageUrl: imageUrl.imageUrl,
+      imageUrl: imageUrl?.imageUrl || null, // todo un-do once data fixed
       party: party.linesOfText[0],
     };
   } catch (e) {
@@ -143,8 +143,9 @@ async function _extract(bundesland) {
       amt === undefined ||
       ministerName === undefined ||
       party === undefined
+      /* || imageUrl === undefined todo un-do once data fixed */
     ) {
-      console.error("Something's missing: ", {
+      console.error("This politician misses some detail: ", {
         amt,
         ministerName,
         party,
@@ -204,11 +205,11 @@ export default async function extract() {
       case "Rheinland-Pfalz":
       case "Nordrhein-Westfalen":
       case "Niedersachsen":
-      // case "Mecklenburg-Vorpommern": /* Platzhalter-Bild fehlt 18.4.24 */
+      case "Mecklenburg-Vorpommern": /* Platzhalter-Bild fehlt 18.4.24 todo un-do once data fixed https://de.wikipedia.org/w/index.php?title=Kabinett_Schwesig_II&stable=1 */
       case "Hessen":
       case "Hamburg":
       case "Bremen":
-      // case "Brandenburg": /* Platzhalter-Bild fehlt 18.4.24 */
+      case "Brandenburg": /* Platzhalter-Bild fehlt 18.4.24 todo un-do once data fixed https://de.wikipedia.org/wiki/Kabinett_Woidke_III */
       case "Berlin":
       case "NEVER": {
         await _extract(bundesland);
