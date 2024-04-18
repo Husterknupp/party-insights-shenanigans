@@ -13,12 +13,12 @@ Ministerin der Finanzen (gleichzeitig: Stellvertretende Ministerpräsidentin):
 Ministerin für Justiz und Gesundheit:
 * Name: Kerstin von der Decken
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Allgemeine und Berufliche Bildung, Wissenschaft, Forschung und Kultur:
 * Name: Karin Prien
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Inneres, Kommunales, Wohnen und Sport:
 * Name: Sabine Sütterlin-Waack
@@ -28,7 +28,7 @@ Ministerin für Inneres, Kommunales, Wohnen und Sport:
 Minister für Energiewende, Klimaschutz, Umwelt und Natur:
 * Name: Tobias Goldschmidt
 * Partei: B’90/Die Grünen
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Minister für Wirtschaft, Verkehr, Arbeit, Technologie und Tourismus:
 * Name: Claus Ruhe Madsen
@@ -43,9 +43,9 @@ Ministerin für Soziales, Jugend, Familie, Senioren, Integration und Gleichstell
 Minister für Landwirtschaft, ländliche Räume, Europa und Verbraucherschutz:
 * Name: Werner Schwarz
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Chef der Staatskanzlei:
 * Name: Dirk Schrödter
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*

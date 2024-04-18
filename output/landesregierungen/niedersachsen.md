@@ -33,7 +33,7 @@ Finanzen:
 Justiz:
 * Name: Kathrin Wahlmann
 * Partei: SPD
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Ernährung, Landwirtschaft und Verbraucherschutz:
 * Name: Miriam Staudte
@@ -53,4 +53,4 @@ Soziales, Arbeit, Gesundheit und Gleichstellung:
 Bundes- und Europaangelegenheiten und Regionale Entwicklung:
 * Name: Wiebke Osigus
 * Partei: SPD
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*

@@ -18,7 +18,7 @@ Behörde für Justiz und Verbraucherschutz:
 Behörde für Schule und Berufsbildung:
 * Name: Ksenija Bekeris
 * Partei: SPD
-* Profilbild: ![Ksenija Bekeris](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png)
+* Profilbild: *Kein Bild verfügbar*
 
 Behörde für Kultur und Medien:
 * Name: Carsten Brosda
@@ -28,7 +28,7 @@ Behörde für Kultur und Medien:
 Behörde für Arbeit, Gesundheit, Soziales, Familie und Integration:
 * Name: Melanie Schlotzhauer
 * Partei: SPD
-* Profilbild: ![Melanie Schlotzhauer](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png)
+* Profilbild: *Kein Bild verfügbar*
 
 Behörde für Wirtschaft und Innovation:
 * Name: Melanie Leonhard
@@ -38,7 +38,7 @@ Behörde für Wirtschaft und Innovation:
 Behörde für Stadtentwicklung und Wohnen:
 * Name: Karen Pein
 * Partei: SPD
-* Profilbild: ![Karen Pein](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png)
+* Profilbild: *Kein Bild verfügbar*
 
 Behörde für Umwelt, Klima, Energie und Agrarwirtschaft:
 * Name: Jens Kerstan
@@ -58,4 +58,4 @@ Behörde für Inneres und Sport:
 Finanzbehörde:
 * Name: Andreas Dressel
 * Partei: SPD
-* Profilbild: ![Andreas Dressel](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png)
+* Profilbild: *Kein Bild verfügbar*
