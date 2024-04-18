@@ -204,12 +204,12 @@ export default async function extract() {
       case "Rheinland-Pfalz":
       case "Nordrhein-Westfalen":
       case "Niedersachsen":
-      case "Mecklenburg-Vorpommern":
+      // case "Mecklenburg-Vorpommern": /* Platzhalter-Bild fehlt 18.4.24 */
       case "Hessen":
       case "Hamburg":
       case "Bremen":
-      // case "Brandenburg":
-      // case "Berlin":
+      // case "Brandenburg": /* Platzhalter-Bild fehlt 18.4.24 */
+      case "Berlin":
       case "NEVER": {
         await _extract(bundesland);
         break;

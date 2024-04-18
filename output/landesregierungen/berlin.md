@@ -1,6 +1,6 @@
 # Berlin - Senat Wegner
 
-Regierender Bürgermeister:
+Regierender Bürgermeister, Senatskanzlei:
 * Name: Kai Wegner
 * Partei: CDU
 * Profilbild: ![Kai Wegner](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93110.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93110.jpg)
