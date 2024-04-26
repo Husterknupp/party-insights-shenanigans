@@ -59,7 +59,7 @@ export function getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings) {
   );
 }
 
-function isColumnHeaderLike(cell, searchStrings) {
+export function isColumnHeaderLike(cell, searchStrings) {
   for (const searchString of searchStrings) {
     if (
       cell.header.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
@@ -151,7 +151,7 @@ async function _extract(bundesland) {
         party,
         imageUrl,
       });
-      console.log("\nThis is what we have so far: ", result);
+      console.log(`\nError with cabinet ${bundesland.urlCabinet}`);
       throw new Error("Could not extract table info");
     }
 
