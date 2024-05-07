@@ -46,9 +46,9 @@ Arbeit, Soziales, Gleichstellung, Integration, Vielfalt und Antidiskriminierung:
 * Profilbild: ![Cansel Kiziltepe](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93139.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93139.jpg)
 
 Mobilität, Verkehr, Klimaschutz und Umwelt:
-* Name: Manja Schreiner
+* Name: Ute Bonde
 * Partei: CDU
-* Profilbild: ![Manja Schreiner](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93074.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93074.jpg)
+* Profilbild: *Kein Bild verfügbar*
 
 Justiz und Verbraucherschutz:
 * Name: Felor Badenberg
