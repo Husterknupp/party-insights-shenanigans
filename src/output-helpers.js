@@ -7,14 +7,16 @@ export function writeAsJson(fileName, output) {
 }
 
 function formatImageUrl(minister) {
-  const usefulImage =
-    minister.imageUrl !== null &&
-    !minister.imageUrl.includes("replace_this_image");
+  const usefulImage = !(
+    minister.imageUrl === null ||
+    minister.imageUrl.includes("replace_this_image") ||
+    minister.imageUrl.includes("Placeholder")
+  );
 
   if (usefulImage) {
     return `* Profilbild: ![${minister.name}](${minister.imageUrl})`;
   } else {
-    return "* Profilbild: *No image available*";
+    return "* Profilbild: *Kein Bild verfügbar*";
   }
 }
 

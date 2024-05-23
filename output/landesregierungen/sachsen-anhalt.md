@@ -18,7 +18,7 @@ Ministerin für Infrastruktur und Digitales (gleichzeitig: Zweite Stellvertreter
 Staatsminister und Chef der Staatskanzlei, Minister für Kultur:
 * Name: Rainer Robra
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Arbeit, Soziales, Gesundheit und Gleichstellung:
 * Name: Petra Grimm-Benne
@@ -28,7 +28,7 @@ Ministerin für Arbeit, Soziales, Gesundheit und Gleichstellung:
 Ministerin für Inneres und Sport:
 * Name: Tamara Zieschang
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten:
 * Name: Sven Schulze
@@ -38,7 +38,7 @@ Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten:
 Minister der Finanzen:
 * Name: Michael Richter
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Bildung:
 * Name: Eva Feußner
@@ -48,4 +48,4 @@ Ministerin für Bildung:
 Ministerin für Justiz und Verbraucherschutz:
 * Name: Franziska Weidinger
 * Partei: CDU
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*

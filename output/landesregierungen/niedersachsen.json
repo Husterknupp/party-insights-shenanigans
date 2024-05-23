@@ -1,0 +1,68 @@
+[
+  {
+    "amt": "Ministerpräsident, Staatskanzlei",
+    "name": "Stephan Weil",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Weil%2C_Stephan.jpg/400px-Weil%2C_Stephan.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Kultus (gleichzeitig: Stellvertreterin des Ministerpräsidenten)",
+    "name": "Julia Hamburg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hamburg%2C_Julia_Willie.jpg/400px-Hamburg%2C_Julia_Willie.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Inneres und Sport",
+    "name": "Daniela Behrens",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Behrens_Daniela_042_icv2.tif/400px-Behrens_Daniela_042_icv2.png",
+    "party": "SPD"
+  },
+  {
+    "amt": "Wirtschaft, Bauen, Verkehr und Digitalisierung",
+    "name": "Olaf Lies",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Umwelt, Energie und Klimaschutz",
+    "name": "Christian Meyer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Meyer%2C_Christian.jpg/400px-Meyer%2C_Christian.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Finanzen",
+    "name": "Gerald Heere",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/GeraldHeere.jpg/400px-GeraldHeere.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Justiz",
+    "name": "Kathrin Wahlmann",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Ernährung, Landwirtschaft und Verbraucherschutz",
+    "name": "Miriam Staudte",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Staudte%2C_Miriam.jpg/400px-Staudte%2C_Miriam.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Wissenschaft und Kultur",
+    "name": "Falko Mohrs",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Falko_Mohrs_%282021%29_cropped.jpg/400px-Falko_Mohrs_%282021%29_cropped.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Soziales, Arbeit, Gesundheit und Gleichstellung",
+    "name": "Andreas Philippi",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Dr._Andreas_Philippi_%282021%29.jpg/400px-Dr._Andreas_Philippi_%282021%29.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Bundes- und Europaangelegenheiten und Regionale Entwicklung",
+    "name": "Wiebke Osigus",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
+    "party": "SPD"
+  }
+]

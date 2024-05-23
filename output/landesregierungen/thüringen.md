@@ -18,7 +18,7 @@ Minister für Inneres und Kommunales:
 Minister(in) für Umwelt, Energie und Naturschutz:
 * Name: Bernhard Stengele
 * Partei: Bündnis 90/Die Grünen
-* Profilbild: *No image available*
+* Profilbild: *Kein Bild verfügbar*
 
 Chef der Staatskanzlei und Minister für Kultur, Bundes- und Europaangelegenheiten:
 * Name: Benjamin-Immanuel Hoff

@@ -1,0 +1,74 @@
+[
+  {
+    "amt": "Präsident des Senats und Erster Bürgermeister, Senatskanzlei",
+    "name": "Peter Tschentscher",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2019-07-06_BeachVolleyball_Weltmeisterschaft_Hamburg_2019_StP_0538_LR10_by_Stepro.jpg/400px-2019-07-06_BeachVolleyball_Weltmeisterschaft_Hamburg_2019_StP_0538_LR10_by_Stepro.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Behörde für Wissenschaft, Forschung, Gleichstellung und Bezirke (gleichzeitig: Zweite Bürgermeisterin)",
+    "name": "Katharina Fegebank",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Fegebank_19_%28cropped%29.jpeg/400px-Fegebank_19_%28cropped%29.jpeg",
+    "party": "B’90/Grüne"
+  },
+  {
+    "amt": "Behörde für Justiz und Verbraucherschutz",
+    "name": "Anna Gallina",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Anna_Gallina_2018_by_Jenny_Paul_%28cropped%29.jpg/400px-Anna_Gallina_2018_by_Jenny_Paul_%28cropped%29.jpg",
+    "party": "B’90/Grüne"
+  },
+  {
+    "amt": "Behörde für Schule und Berufsbildung",
+    "name": "Ksenija Bekeris",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
+    "party": "SPD"
+  },
+  {
+    "amt": "Behörde für Kultur und Medien",
+    "name": "Carsten Brosda",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Senator_Dr._Carsten_Brosda.jpg/400px-Senator_Dr._Carsten_Brosda.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Behörde für Arbeit, Gesundheit, Soziales, Familie und Integration",
+    "name": "Melanie Schlotzhauer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
+    "party": "SPD"
+  },
+  {
+    "amt": "Behörde für Wirtschaft und Innovation",
+    "name": "Melanie Leonhard",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2019-04-12_Sitzung_des_Bundesrates_by_Olaf_Kosinsky-0054.jpg/400px-2019-04-12_Sitzung_des_Bundesrates_by_Olaf_Kosinsky-0054.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Behörde für Stadtentwicklung und Wohnen",
+    "name": "Karen Pein",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
+    "party": "SPD"
+  },
+  {
+    "amt": "Behörde für Umwelt, Klima, Energie und Agrarwirtschaft",
+    "name": "Jens Kerstan",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/2018-09-26_Jens_Kerstan_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%932.jpg/400px-2018-09-26_Jens_Kerstan_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%932.jpg",
+    "party": "B’90/Grüne"
+  },
+  {
+    "amt": "Behörde für Verkehr und Mobilitätswende",
+    "name": "Anjes Tjarks",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/2018-09-26_Dr._Anjes_Tjarks_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%931.jpg/400px-2018-09-26_Dr._Anjes_Tjarks_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%931.jpg",
+    "party": "B’90/Grüne"
+  },
+  {
+    "amt": "Behörde für Inneres und Sport",
+    "name": "Andy Grote",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/2018-09-26_Andy_Grote_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%932.jpg/400px-2018-09-26_Andy_Grote_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%932.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Finanzbehörde",
+    "name": "Andreas Dressel",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
+    "party": "SPD"
+  }
+]

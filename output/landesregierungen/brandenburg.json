@@ -1,0 +1,68 @@
+[
+  {
+    "amt": "Ministerpräsident, Staatskanzlei",
+    "name": "Dietmar Woidke",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg/400px-2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister des Innern und für Kommunales (gleichzeitig: Erster stellvertretender Ministerpräsident)",
+    "name": "Michael Stübgen",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/St%C3%BCbgen%2C_Michael-0895.jpg/400px-St%C3%BCbgen%2C_Michael-0895.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Ministerin für Soziales, Gesundheit, Integration und Verbraucherschutz (gleichzeitig: Zweite stellvertretende Ministerpräsidentin)",
+    "name": "Ursula Nonnemacher",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Landtagsprojekt_Brandenburg_Ursula_Nonnemacher_by_Olaf_Kosinsky-1.jpg/400px-Landtagsprojekt_Brandenburg_Ursula_Nonnemacher_by_Olaf_Kosinsky-1.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Ministerin der Justiz",
+    "name": "Susanne Hoffmann",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/20-01-22-Susanne-Hoffmann_DSF5394.jpg/400px-20-01-22-Susanne-Hoffmann_DSF5394.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Ministerin der Finanzen und für Europa",
+    "name": "Katrin Lange",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister für Infrastruktur und Landesplanung",
+    "name": "Rainer Genilke",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/16-03-09-Rainer-Genilke_RR26779.jpg/400px-16-03-09-Rainer-Genilke_RR26779.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Minister für Wirtschaft, Arbeit und Energie",
+    "name": "Jörg Steinbach",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/J%C3%B6rg_Steinbach.jpg/400px-J%C3%B6rg_Steinbach.jpg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister(in) für Bildung, Jugend und Sport",
+    "name": "Steffen Freiberg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister für Landwirtschaft, Umwelt und Klimaschutz",
+    "name": "Axel Vogel",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/16-03-10-Axel-Vogel_RR26864.jpg/400px-16-03-10-Axel-Vogel_RR26864.jpg",
+    "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Ministerin für Wissenschaft, Forschung und Kultur",
+    "name": "Manja Schüle",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Chefin der Staatskanzlei",
+    "name": "Kathrin Schneider",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
+    "party": "SPD"
+  }
+]
