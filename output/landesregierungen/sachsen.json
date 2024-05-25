@@ -2,13 +2,19 @@
   {
     "amt": "Ministerpräsident, Staatskanzlei",
     "name": "Michael Kretschmer",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93049.jpg/400px-2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93049.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2022-03-28_Michael_Kretschmer_%28cropped%29.jpg/400px-2022-03-28_Michael_Kretschmer_%28cropped%29.jpg",
     "party": "CDU"
   },
   {
-    "amt": "Staatsministerin für Soziales, Gesundheit und Gesellschaftlichen Zusammenhalt (gleichzeitig: Stellvertreterin des Ministerpräsidenten)",
-    "name": "Petra Köpping",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93016.jpg/400px-2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93016.jpg",
+    "amt": "Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten)",
+    "name": "Wolfram Günther",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wolfram_G%C3%BCnther_Pressefoto.jpg/400px-Wolfram_G%C3%BCnther_Pressefoto.jpg",
+    "party": "B’90/Die Grünen"
+  },
+  {
+    "amt": "Staatsminister für Wirtschaft, Arbeit und Verkehr (gleichzeitig: Zweiter Stellvertreter des Ministerpräsidenten)",
+    "name": "Martin Dulig",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/220909_Portr%C3%A4t_Martin_Dulig_Wikipedia-9118.jpg/400px-220909_Portr%C3%A4t_Martin_Dulig_Wikipedia-9118.jpg",
     "party": "SPD"
   },
   {
