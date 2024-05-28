@@ -18,7 +18,7 @@ Ministerin für Justiz und Gesundheit:
 Ministerin für Allgemeine und Berufliche Bildung, Wissenschaft, Forschung und Kultur:
 * Name: Karin Prien
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Karin Prien](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Karin_Prien-2024-msu-6025-.jpg/400px-Karin_Prien-2024-msu-6025-.jpg)
 
 Ministerin für Inneres, Kommunales, Wohnen und Sport:
 * Name: Sabine Sütterlin-Waack
