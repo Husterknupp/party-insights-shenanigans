@@ -17,5 +17,5 @@ async function run() {
 }
 
 run()
-  .then(() => console.log("All done. Ite domum!"))
+  .then(() => console.log("All done! Ite domum."))
   .catch(console.error);
