@@ -87,7 +87,7 @@ function findRelevantTable(html) {
     const found = $(`h2:contains("${o}")`);
     if (found.length !== 0) {
       console.log(`found table '${o}'`);
-      const result = found.nextAll("table").first();
+      const result = found.parent().nextAll("table").first();
       return result.html();
     }
   }
