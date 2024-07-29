@@ -5,10 +5,15 @@ Ministerpräsident:
 * Partei: CDU
 * Profilbild: ![Daniel Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Daniel_G%C3%BCnther_%282017%29.jpg/400px-Daniel_G%C3%BCnther_%282017%29.jpg)
 
-Ministerin der Finanzen (gleichzeitig: Stellvertretende Ministerpräsidentin):
-* Name: Monika Heinold
+Stellvertretende Ministerpräsidentin:
+* Name: Aminata Touré (ab Juli 2024)
 * Partei: B’90/Die Grünen
-* Profilbild: ![Monika Heinold](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/1454-ri-102-Gruene_Monika_Heinold_%28cropped%29.jpg/400px-1454-ri-102-Gruene_Monika_Heinold_%28cropped%29.jpg)
+* Profilbild: ![Aminata Touré (ab Juli 2024)](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Aminata_Tour%C3%A9_%28Juli_2021%2C_Kiel%29.jpg/400px-Aminata_Tour%C3%A9_%28Juli_2021%2C_Kiel%29.jpg)
+
+Ministerin der Finanzen:
+* Name: Silke Schneider (ab Juli 2024)
+* Partei: B’90/Die Grünen
+* Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Justiz und Gesundheit:
 * Name: Kerstin von der Decken

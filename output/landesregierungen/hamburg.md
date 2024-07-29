@@ -38,7 +38,7 @@ Behörde für Wirtschaft und Innovation:
 Behörde für Stadtentwicklung und Wohnen:
 * Name: Karen Pein
 * Partei: SPD
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Karen Pein](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Karen_Pein.jpg/400px-Karen_Pein.jpg)
 
 Behörde für Umwelt, Klima, Energie und Agrarwirtschaft:
 * Name: Jens Kerstan
