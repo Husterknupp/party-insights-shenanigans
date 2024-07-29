@@ -210,8 +210,7 @@ export default async function extract() {
       case "Hamburg":
       case "Bremen":
       case "Brandenburg":
-      case "Berlin":
-      case "NEVER": {
+      case "Berlin": {
         await _extract(bundesland);
         break;
       }
@@ -221,5 +220,7 @@ export default async function extract() {
     }
   }
 
-  console.log(`Bundeslaender ${notMapped.join(", ")} not mapped yet.`);
+  if (notMapped.length > 0) {
+    console.log(`Bundeslaender ${notMapped.join(", ")} not mapped yet.`);
+  }
 }
