@@ -1,9 +1,9 @@
-# Rheinland-Pfalz - Kabinett Dreyer III
+# Rheinland-Pfalz - Kabinett Schweitzer
 
-Ministerpräsidentin, Staatskanzlei:
-* Name: Malu Dreyer
+Ministerpräsident, Staatskanzlei:
+* Name: Alexander Schweitzer
 * Partei: SPD
-* Profilbild: ![Malu Dreyer](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg)
+* Profilbild: ![Alexander Schweitzer](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg/400px-2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg)
 
 Ministerin für Familie, Frauen, Kultur und Integration:
 * Name: Katharina Binz
@@ -35,15 +35,15 @@ Ministerin für Bildung:
 * Partei: SPD
 * Profilbild: ![Stefanie Hubig](https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2016-11-17_-_Stefanie_Hubig_-_0363.jpg/400px-2016-11-17_-_Stefanie_Hubig_-_0363.jpg)
 
-Minister für Arbeit, Soziales, Transformation und Digitalisierung:
-* Name: Alexander Schweitzer
+Ministerin für Arbeit, Soziales, Transformation und Digitalisierung:
+* Name: Dörte Schall
 * Partei: SPD
-* Profilbild: ![Alexander Schweitzer](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg/400px-2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg)
+* Profilbild: ![Dörte Schall](https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f)
 
 Minister für Wissenschaft und Gesundheit:
 * Name: Clemens Hoch
 * Partei: SPD
-* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Minister_Clemens_Hoch.jpg/400px-Minister_Clemens_Hoch.jpg)
+* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f)
 
 Ministerin für Klimaschutz, Umwelt, Energie und Mobilität:
 * Name: Katrin Eder

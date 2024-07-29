@@ -56,6 +56,6 @@ Staatsminister für Regionalentwicklung:
 * Profilbild: ![Thomas Schmidt](https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MJK21321_Thomas_Schmidt.jpg/400px-MJK21321_Thomas_Schmidt.jpg)
 
 Chef der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien:
-* Name: Oliver Schenk
+* Name: Conrad Clemens
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Conrad Clemens](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5751.jpg/400px-2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5751.jpg)

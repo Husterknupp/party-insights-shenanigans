@@ -80,14 +80,18 @@ function indexAmt($rows) {
   throw Error("Couldn't find amt column");
 }
 
-function findRelevantTable($cheerio) {
+export function findRelevantTable($cheerio) {
   const options = ["Amtierende Regierungschefs", "Zusammensetzung"];
   for (const o of options) {
     // language=JQuery-CSS
     const found = $cheerio(`h2:contains("${o}")`);
     if (found.length !== 0) {
       console.log(`found table '${o}'`);
-      return found.siblings().next("table:first").find("tr");
+      const nextTable = found.parent().nextAll("table").first().find("tr");
+      if (nextTable.length === 0) {
+        throw Error(`headline ${o} has no table next to it`);
+      }
+      return nextTable;
     }
   }
   throw Error(
@@ -133,6 +137,10 @@ export default async function extract() {
       party,
     });
   });
+
+  if (rows.length === 0) {
+    throw Error("result set size is 0. Something went wrong.");
+  }
 
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b));
 

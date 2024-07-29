@@ -61,10 +61,10 @@ Nordrhein-Westfalen:
 * Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg/400px-Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg)
 
 Rheinland-Pfalz:
-* Name: Malu Dreyer
+* Name: Alexander Schweitzer
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Dreyer_III
-* Profilbild: ![Malu Dreyer](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg)
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Schweitzer
+* Profilbild: ![Alexander Schweitzer](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg/400px-2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg)
 
 Saarland:
 * Name: Anke Rehlinger

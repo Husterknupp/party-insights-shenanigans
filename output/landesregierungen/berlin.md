@@ -52,5 +52,5 @@ Mobilität, Verkehr, Klimaschutz und Umwelt:
 
 Justiz und Verbraucherschutz:
 * Name: Felor Badenberg
-* Partei: parteilos (von der CDU nominiert)
+* Partei: CDU (zunächst parteilos)
 * Profilbild: ![Felor Badenberg](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Felor_Badenberg_Portrait.jpg/400px-Felor_Badenberg_Portrait.jpg)
