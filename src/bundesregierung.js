@@ -80,7 +80,7 @@ function indexAmt($rows) {
   throw Error("Couldn't find amt column");
 }
 
-function findRelevantTable($cheerio) {
+export function findRelevantTable($cheerio) {
   const options = ["Amtierende Regierungschefs", "Zusammensetzung"];
   for (const o of options) {
     // language=JQuery-CSS
