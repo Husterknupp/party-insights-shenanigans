@@ -43,7 +43,7 @@ Ministerin für Arbeit, Soziales, Transformation und Digitalisierung:
 Minister für Wissenschaft und Gesundheit:
 * Name: Clemens Hoch
 * Partei: SPD
-* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f)
+* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch.jpg/400px-2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch.jpg)
 
 Ministerin für Klimaschutz, Umwelt, Energie und Mobilität:
 * Name: Katrin Eder
