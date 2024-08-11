@@ -2,7 +2,7 @@
 // when used in the `each` Cheerio callback.
 // noinspection JSCheckFunctionSignatures
 
-import { load } from "cheerio";
+import { _initializeCheerio } from "./tableWalker_ReScript.res.mjs";
 
 function removeInnerWhiteSpace(text) {
   // Line breaks in HTML can cause weird amount of whitespace.
@@ -19,6 +19,15 @@ function parseIntOr(maybeString, fallback) {
  * tableWalker aims to be a more intuitive approach on how to assign cells to columns.
  */
 export default function tableWalker(html) {
+  /* todo 2.8.24 -  split huge method into smaller methods - high-level overview:
+   * it expects a single table, not a complete document - html argument should have 1 table, not more
+   * initialize cheerio
+   * sanity-check table
+   * get headerCells (including tableheaders, sanityCheck)
+   * get dataCells (including mapping of cells to correct headers)
+   * parse cell content
+   */
+
   /* todo separate somehow location logic ("cell in row X-Y")
       from extraction/parsing of cell content---or does that make no sense after all?
 
@@ -49,13 +58,7 @@ export default function tableWalker(html) {
 
   */
 
-  let $;
-  // noinspection HtmlRequiredLangAttribute
-  if (html.indexOf("<html>") !== -1) {
-    $ = load(html);
-  } else {
-    $ = load(html, null, false);
-  }
+  let $ = _initializeCheerio(html);
 
   const ths = $("th");
 
@@ -77,7 +80,7 @@ export default function tableWalker(html) {
     .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   const rows = $(`tr:has(td)`);
   console.log(
-    `Found ${ths.length} table headers (spanning ${columnCount} columns). ${rows.length} rows (not including rowspans).`,
+    `Found ${ths.length} table headers (spanning ${columnCount} columns). ${rows.length} rows (not including rowspans).`
   );
 
   const headers = [];
@@ -107,11 +110,11 @@ export default function tableWalker(html) {
             (cell) =>
               cell.colStart <= columnIdx &&
               columnIdx <= cell.colEnd &&
-              cell.rowEnd >= rowIndex,
+              cell.rowEnd >= rowIndex
           );
           if (maybeShiftCellRight) {
             console.log(
-              `Row no. ${rowIndex}: At column ${columnIdx} I found a cell of an earlier row... one to the right`,
+              `Row no. ${rowIndex}: At column ${columnIdx} I found a cell of an earlier row... one to the right`
             );
             columnIdx = maybeShiftCellRight.colEnd + 1;
           }
@@ -178,7 +181,7 @@ export default function tableWalker(html) {
 
       const header = headers.find(
         (header) =>
-          header.colStart <= cell.colStart && cell.colStart <= header.colEnd,
+          header.colStart <= cell.colStart && cell.colStart <= header.colEnd
       ).linesOfText[0]; // Hopefully (🤞) header cells have not more than one line of text
 
       // somehow feels weird to expose Cheerio

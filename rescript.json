@@ -9,10 +9,11 @@
     "in-source": true
   },
   "suffix": ".res.mjs",
-  "bs-dependencies": [
-    "@rescript/core"
-  ],
-  "bsc-flags": [
-    "-open RescriptCore"
-  ]
+  "bs-dependencies": ["@rescript/core"],
+  "bsc-flags": ["-open RescriptCore"],
+  "gentypeconfig": {
+    "module": "esmodule",
+    "moduleResolution": "node",
+    "generatedFileExtension": ".res.d.ts"
+  }
 }
