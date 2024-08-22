@@ -10,7 +10,7 @@ Bayern:
 * Name: Markus Söder
 * Partei: CSU
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_S%C3%B6der_III
-* Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/400px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg)
+* Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Markus_Soeder_%28cropped%29.jpg/400px-Markus_Soeder_%28cropped%29.jpg)
 
 Berlin:
 * Name: Kai Wegner
@@ -58,7 +58,7 @@ Nordrhein-Westfalen:
 * Name: Hendrik Wüst
 * Partei: CDU
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_W%C3%BCst_II
-* Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg/400px-Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg)
+* Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Hendrik-W%C3%BCst-CDU-3%E2%80%93LT-NRW-by-Leila-Paul..jpg/400px-Hendrik-W%C3%BCst-CDU-3%E2%80%93LT-NRW-by-Leila-Paul..jpg)
 
 Rheinland-Pfalz:
 * Name: Alexander Schweitzer
