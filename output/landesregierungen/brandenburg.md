@@ -8,7 +8,7 @@ Ministerpräsident, Staatskanzlei:
 Minister des Innern und für Kommunales (gleichzeitig: Erster stellvertretender Ministerpräsident):
 * Name: Michael Stübgen
 * Partei: CDU
-* Profilbild: ![Michael Stübgen](https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/St%C3%BCbgen%2C_Michael-0895.jpg/400px-St%C3%BCbgen%2C_Michael-0895.jpg)
+* Profilbild: ![Michael Stübgen](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Michael_St%C3%BCbgen_%282024%29.jpg/400px-Michael_St%C3%BCbgen_%282024%29.jpg)
 
 Ministerin für Soziales, Gesundheit, Integration und Verbraucherschutz (gleichzeitig: Zweite stellvertretende Ministerpräsidentin):
 * Name: Ursula Nonnemacher
