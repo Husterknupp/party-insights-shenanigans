@@ -58,4 +58,4 @@ Behörde für Inneres und Sport:
 Finanzbehörde:
 * Name: Andreas Dressel
 * Partei: SPD
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Andreas Dressel](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Dressel%2C_Andreas_-_2087.jpg/400px-Dressel%2C_Andreas_-_2087.jpg)

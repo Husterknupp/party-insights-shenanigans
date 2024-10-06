@@ -6,22 +6,22 @@
     "party": "Die Linke"
   },
   {
-    "amt": "Minister für Wirtschaft, Wissenschaft und Digitale Gesellschaft",
-    "name": "Wolfgang Tiefensee",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg/400px-2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg",
-    "party": "SPD"
-  },
-  {
-    "amt": "Minister für Inneres und Kommunales",
+    "amt": "Minister für Inneres und Kommunales (gleichzeitig: Stellvertreter des Ministerpräsidenten)",
     "name": "Georg Maier",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2020-03-04_Th%C3%BCringer_Landtag%2C_erneute_Wahl_des_Ministerpr%C3%A4sidenten_1DX_2752_by_Stepro.jpg/400px-2020-03-04_Th%C3%BCringer_Landtag%2C_erneute_Wahl_des_Ministerpr%C3%A4sidenten_1DX_2752_by_Stepro.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Minister(in) für Umwelt, Energie und Naturschutz",
+    "amt": "Zweite(r) Stellvertreter(in) des Ministerpräsidenten, Minister(in) für Umwelt, Energie und Naturschutz",
     "name": "Bernhard Stengele",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/2024-09-26_Politik%2C_Landesregierung_Th%C3%BCringen_wird_gesch%C3%A4ftsf%C3%BChrend_STP_5732-2_by_Stepro.jpg/400px-2024-09-26_Politik%2C_Landesregierung_Th%C3%BCringen_wird_gesch%C3%A4ftsf%C3%BChrend_STP_5732-2_by_Stepro.jpg",
     "party": "Bündnis 90/Die Grünen"
+  },
+  {
+    "amt": "Minister für Wirtschaft, Wissenschaft und Digitale Gesellschaft",
+    "name": "Wolfgang Tiefensee",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg/400px-2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg",
+    "party": "SPD"
   },
   {
     "amt": "Chef der Staatskanzlei und Minister für Kultur, Bundes- und Europaangelegenheiten",

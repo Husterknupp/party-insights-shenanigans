@@ -5,20 +5,20 @@ Ministerpräsident:
 * Partei: Die Linke
 * Profilbild: ![Bodo Ramelow](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9357.jpg/400px-2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9357.jpg)
 
-Minister für Wirtschaft, Wissenschaft und Digitale Gesellschaft:
-* Name: Wolfgang Tiefensee
-* Partei: SPD
-* Profilbild: ![Wolfgang Tiefensee](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg/400px-2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg)
-
-Minister für Inneres und Kommunales:
+Minister für Inneres und Kommunales (gleichzeitig: Stellvertreter des Ministerpräsidenten):
 * Name: Georg Maier
 * Partei: SPD
 * Profilbild: ![Georg Maier](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2020-03-04_Th%C3%BCringer_Landtag%2C_erneute_Wahl_des_Ministerpr%C3%A4sidenten_1DX_2752_by_Stepro.jpg/400px-2020-03-04_Th%C3%BCringer_Landtag%2C_erneute_Wahl_des_Ministerpr%C3%A4sidenten_1DX_2752_by_Stepro.jpg)
 
-Minister(in) für Umwelt, Energie und Naturschutz:
+Zweite(r) Stellvertreter(in) des Ministerpräsidenten, Minister(in) für Umwelt, Energie und Naturschutz:
 * Name: Bernhard Stengele
 * Partei: Bündnis 90/Die Grünen
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Bernhard Stengele](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/2024-09-26_Politik%2C_Landesregierung_Th%C3%BCringen_wird_gesch%C3%A4ftsf%C3%BChrend_STP_5732-2_by_Stepro.jpg/400px-2024-09-26_Politik%2C_Landesregierung_Th%C3%BCringen_wird_gesch%C3%A4ftsf%C3%BChrend_STP_5732-2_by_Stepro.jpg)
+
+Minister für Wirtschaft, Wissenschaft und Digitale Gesellschaft:
+* Name: Wolfgang Tiefensee
+* Partei: SPD
+* Profilbild: ![Wolfgang Tiefensee](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg/400px-2019-10-27_Wahlabend_Th%C3%BCringen_by_Sandro_Halank%E2%80%9364.jpg)
 
 Chef der Staatskanzlei und Minister für Kultur, Bundes- und Europaangelegenheiten:
 * Name: Benjamin-Immanuel Hoff

@@ -9,7 +9,7 @@ updates:
     versioning-strategy: increase # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#versioning-strategy
     directory: "/" # Location of package manifests
     schedule:
-      interval: weekly
+      interval: monthly
     groups:
       straight-forward:
         update-types:
