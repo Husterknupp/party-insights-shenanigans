@@ -8,7 +8,7 @@ Ministerpräsident:
 Minister für Wissenschaft, Energie, Klimaschutz und Umwelt (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
 * Name: Armin Willingmann
 * Partei: SPD
-* Profilbild: ![Armin Willingmann](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/2018-09_Tierparkfest_10_Armin_Willingmann.jpg/400px-2018-09_Tierparkfest_10_Armin_Willingmann.jpg)
+* Profilbild: ![Armin Willingmann](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/EnMK23_armin_willingmann_nilz_boehme.jpg/400px-EnMK23_armin_willingmann_nilz_boehme.jpg)
 
 Ministerin für Infrastruktur und Digitales (gleichzeitig: Zweite Stellvertreterin des Ministerpräsidenten):
 * Name: Lydia Hüskens
