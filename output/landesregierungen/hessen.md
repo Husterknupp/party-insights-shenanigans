@@ -38,7 +38,7 @@ Kultus, Bildung und Chancen:
 Familie, Senioren, Sport, Gesundheit und Pflege:
 * Name: Diana Stolz
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Diana Stolz](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/WP_Diana_Stolz_2024.jpg/400px-WP_Diana_Stolz_2024.jpg)
 
 Digitalisierung und Innovation:
 * Name: Kristina Sinemus
