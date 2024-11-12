@@ -16,14 +16,14 @@ Bundesminister für besondere Aufgaben • Chef des Bundeskanzleramtes:
 * Profilbild: ![Wolfgang Schmidt](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Wolfgang_Schmidt%2C_Kimberly_Emerson%2C_and_John_B._Emerson%2C_4th_of_July_2014_%28cropped%29.jpg/400px-Wolfgang_Schmidt%2C_Kimberly_Emerson%2C_and_John_B._Emerson%2C_4th_of_July_2014_%28cropped%29.jpg)
 
 Bundesministerium der Finanzen (BMF):
-* Name: Christian Lindner
-* Partei: FDP
-* Profilbild: ![Christian Lindner](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/2020-02-14_Christian_Lindner_%28Bundestagsprojekt_2020%29_by_Sandro_Halank%E2%80%932.jpg/400px-2020-02-14_Christian_Lindner_%28Bundestagsprojekt_2020%29_by_Sandro_Halank%E2%80%932.jpg)
+* Name: Jörg Kukies
+* Partei: SPD
+* Profilbild: ![Jörg Kukies](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/J%C3%B6rg_Kukies_%28born_1968%29_at_World_Economic_Forum_Davos_2023.png/400px-J%C3%B6rg_Kukies_%28born_1968%29_at_World_Economic_Forum_Davos_2023.png)
 
 Bundesministerium der Justiz (BMJ):
-* Name: Marco Buschmann
-* Partei: FDP
-* Profilbild: ![Marco Buschmann](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2021-12-07_Unterzeichnung_des_Koalitionsvertrages_der_20._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93112_%28cropped%29.jpg/400px-2021-12-07_Unterzeichnung_des_Koalitionsvertrages_der_20._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93112_%28cropped%29.jpg)
+* Name: Volker Wissing
+* Partei: parteilos
+* Profilbild: ![Volker Wissing](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Volker_Wissing-2632.jpg/400px-Volker_Wissing-2632.jpg)
 
 Bundesministerium der Verteidigung (BMVg):
 * Name: Boris Pistorius
@@ -41,13 +41,13 @@ Bundesministerium für Arbeit und Soziales (BMAS):
 * Profilbild: ![Hubertus Heil](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Landtagswahl_Nds_2013_by_Stepro_IMG_9157_%28cropped%29.JPG/400px-Landtagswahl_Nds_2013_by_Stepro_IMG_9157_%28cropped%29.JPG)
 
 Bundesministerium für Bildung und Forschung (BMBF):
-* Name: Bettina Stark-Watzinger
-* Partei: FDP
-* Profilbild: ![Bettina Stark-Watzinger](https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/2018-05-10_Bettina_Stark-Watzinger-7710.jpg/400px-2018-05-10_Bettina_Stark-Watzinger-7710.jpg)
+* Name: Cem Özdemir
+* Partei: Bündnis 90/Die Grünen
+* Profilbild: ![Cem Özdemir](https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cem_%C3%96zdemir_MdB_%28cropped%29.jpg/400px-Cem_%C3%96zdemir_MdB_%28cropped%29.jpg)
 
 Bundesministerium für Digitales und Verkehr (BMDV):
 * Name: Volker Wissing
-* Partei: FDP
+* Partei: parteilos, vormals FDP
 * Profilbild: ![Volker Wissing](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Volker_Wissing-2632.jpg/400px-Volker_Wissing-2632.jpg)
 
 Bundesministerium für Ernährung und Landwirtschaft (BMEL):
