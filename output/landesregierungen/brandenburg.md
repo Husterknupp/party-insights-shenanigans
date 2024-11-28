@@ -5,7 +5,7 @@ Ministerpräsident, Staatskanzlei:
 * Partei: SPD
 * Profilbild: ![Dietmar Woidke](https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg/400px-2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg)
 
-Minister des Innern und für Kommunales (gleichzeitig: Erster stellvertretender Ministerpräsident):
+Minister des Innern und für Kommunales (gleichzeitig: Erster stellvertretender Ministerpräsident, Alleiniger stellvertretender Ministerpräsident):
 * Name: Michael Stübgen
 * Partei: CDU
 * Profilbild: ![Michael Stübgen](https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Michael_St%C3%BCbgen_%282024%29.jpg/400px-Michael_St%C3%BCbgen_%282024%29.jpg)
