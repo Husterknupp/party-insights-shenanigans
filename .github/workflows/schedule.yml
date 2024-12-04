@@ -16,10 +16,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      - run: ls -la output/ministerpraesidenten/Dietmar\ Woidke.jpg # Debugging (4.12.24)
       - run: yarn --frozen-lockfile
       - run: yarn test
       - run: yarn start
       # ACTUAL CHECK
+      - run: ls -la output/ministerpraesidenten/Dietmar\ Woidke.jpg # Debugging (4.12.24)
       - name: Compare output with checked-in version
         run: |
           git status --porcelain
