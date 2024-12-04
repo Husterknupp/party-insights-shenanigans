@@ -5,18 +5,23 @@ import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
 function createImageFiles(ministerpraesidenten) {
   ministerpraesidenten.forEach((ministerpraesident) => {
-    console.log("Download file for " + ministerpraesident.name);
     axios
       .get(ministerpraesident.imageUrl, { responseType: "arraybuffer" })
-      .then((image) =>
+      .then((image) => {
+        console.log("Downloaded file for " + ministerpraesident.name);
+        // Debugging (4.12.24)
+        // This creates a bigger file, when executed on GitHub runner,
+        // compared to running on my local computer (35.666KB vs 35.173KB)
+        // content-length: 35173 (my computer)
+        console.log(`content-length: ${image.headers.getContentLength()}`);
         writeFileSync(
           "output/ministerpraesidenten/" + ministerpraesident.name + ".jpg",
           image.data,
           {
             encoding: "base64",
           },
-        ),
-      );
+        );
+      });
   });
 }
 
