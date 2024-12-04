@@ -6,7 +6,13 @@ import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 function createImageFiles(ministerpraesidenten) {
   ministerpraesidenten.forEach((ministerpraesident) => {
     axios
-      .get(ministerpraesident.imageUrl, { responseType: "arraybuffer" })
+      .get(ministerpraesident.imageUrl, {
+        responseType: "arraybuffer",
+        headers: {
+          /* Image content size may differ, depending on the cached version */
+          "Cache-Control": "no-cache",
+        },
+      })
       .then((image) => {
         console.log("Downloaded file for " + ministerpraesident.name);
         // Debugging (4.12.24)
