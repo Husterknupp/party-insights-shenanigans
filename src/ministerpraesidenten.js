@@ -12,7 +12,7 @@ function createImageFiles(ministerpraesidenten) {
         // Debugging (4.12.24)
         // This creates a bigger file, when executed on GitHub runner,
         // compared to running on my local computer (35.666KB vs 35.173KB)
-        // content-length: 35173 (my computer)
+        // content-length: 35173 (cURL, node and also in browser), 35666 (GitHub runner)
         console.log(`content-length: ${image.headers.getContentLength()}`);
         writeFileSync(
           "output/ministerpraesidenten/" + ministerpraesident.name + ".jpg",
