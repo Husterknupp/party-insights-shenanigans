@@ -33,7 +33,7 @@ Ministerin für Inneres, Kommunales, Wohnen und Sport:
 Minister für Energiewende, Klimaschutz, Umwelt und Natur:
 * Name: Tobias Goldschmidt
 * Partei: B’90/Die Grünen
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Tobias Goldschmidt](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tobias_Goldschmidt_%282024%29.jpg/400px-Tobias_Goldschmidt_%282024%29.jpg)
 
 Minister für Wirtschaft, Verkehr, Arbeit, Technologie und Tourismus:
 * Name: Claus Ruhe Madsen
