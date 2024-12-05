@@ -1,27 +1,24 @@
 import axios from "axios";
 import { load } from "cheerio";
-import { writeFileSync } from "fs";
+import { writeFileSync, mkdirSync } from "fs";
 import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
 function createImageFiles(ministerpraesidenten) {
+  mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
   ministerpraesidenten.forEach((ministerpraesident) => {
     axios
       .get(ministerpraesident.imageUrl, {
         responseType: "arraybuffer",
-        headers: {
-          /* Image content size may differ, depending on the cached version */
-          "Cache-Control": "no-cache",
-        },
       })
       .then((image) => {
         console.log("Downloaded file for " + ministerpraesident.name);
-        // Debugging (4.12.24)
-        // This creates a bigger file, when executed on GitHub runner,
-        // compared to running on my local computer (35.666KB vs 35.173KB)
-        // content-length: 35173 (cURL, node and also in browser), 35666 (GitHub runner)
-        console.log(`content-length: ${image.headers.getContentLength()}`);
+
+        // We store images in a separate directory so that we can exclude them from version control.
+        //   Initially we did that, but diffing images is hard (now, relying on the image URL as the source of truth)
         writeFileSync(
-          "output/ministerpraesidenten/" + ministerpraesident.name + ".jpg",
+          "output-images/ministerpraesidenten/" +
+            ministerpraesident.name +
+            ".jpg",
           image.data,
           {
             encoding: "base64",
@@ -81,12 +78,9 @@ function saveToOutputfiles(ministerpraesidenten) {
     stateA.localeCompare(stateB),
   );
 
-  writeAsJson(
-    "output/ministerpraesidenten/ministerpraesidenten.json",
-    ministerpraesidenten,
-  );
+  writeAsJson("output/ministerpraesidenten.json", ministerpraesidenten);
   writeAsMarkdown(
-    "output/ministerpraesidenten/ministerpraesidenten.md",
+    "output/ministerpraesidenten.md",
     "Ministerpräsidenten",
     "state",
     ministerpraesidenten,

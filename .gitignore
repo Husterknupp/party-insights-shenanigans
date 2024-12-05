@@ -1,4 +1,9 @@
+# IDE
 .idea
 .history/
 
+# BUILD ARTIFACTS
 node_modules
+
+# APPLICATION
+output-images/
