@@ -16,10 +16,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+      - run: | # Debugging (4.12.24)
+          curl -I "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg/400px-2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -H "Accept-Language: en-US"
+      - run: ls -la output/ministerpraesidenten/Dietmar\ Woidke.jpg # Debugging (4.12.24)
       - run: yarn --frozen-lockfile
       - run: yarn test
       - run: yarn start
       # ACTUAL CHECK
+      - run: ls -la output/ministerpraesidenten/Dietmar\ Woidke.jpg # Debugging (4.12.24)
       - name: Compare output with checked-in version
         run: |
           git status --porcelain
