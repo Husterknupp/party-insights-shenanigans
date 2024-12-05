@@ -1,7 +1,11 @@
+# IDE
 .idea
 .history/
 
+# BUILD ARTIFACTS
 node_modules
-
 /lib/
 .bsb.lock
+
+# APPLICATION
+output-images/

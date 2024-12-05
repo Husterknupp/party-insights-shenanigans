@@ -187,7 +187,7 @@ export default async function extract() {
   // IntelliJ not sure what's your problem
   // noinspection JSCheckFunctionSignatures
   const bundeslaender = JSON.parse(
-    readFileSync("./output/ministerpraesidenten/ministerpraesidenten.json", {
+    readFileSync("./output/ministerpraesidenten.json", {
       encoding: "UTF-8",
     }),
   );
