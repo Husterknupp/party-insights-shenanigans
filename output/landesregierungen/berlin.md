@@ -48,7 +48,7 @@ Arbeit, Soziales, Gleichstellung, Integration, Vielfalt und Antidiskriminierung:
 Mobilität, Verkehr, Klimaschutz und Umwelt:
 * Name: Ute Bonde
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Ute Bonde](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/2024-12-05_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93082.jpg/400px-2024-12-05_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93082.jpg)
 
 Justiz und Verbraucherschutz:
 * Name: Felor Badenberg
