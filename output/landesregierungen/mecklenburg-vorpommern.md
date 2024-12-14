@@ -11,9 +11,9 @@ Bildung und Kindertagesstätten (gleichzeitig: Stellvertreterin der Ministerprä
 * Profilbild: ![Simone Oldenburg](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/2020_LINKE_Oldenburg%2C_Simone_OK9968.jpg/400px-2020_LINKE_Oldenburg%2C_Simone_OK9968.jpg)
 
 Wirtschaft, Infrastruktur, Tourismus und Arbeit:
-* Name: Reinhard Meyer
-* Partei: SPD
-* Profilbild: ![Reinhard Meyer](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Reinhard_Meyer.jpg/400px-Reinhard_Meyer.jpg)
+* Name: Wolfgang Blank
+* Partei: parteilos
+* Profilbild: *Kein Bild verfügbar*
 
 Inneres, Bau und Digitalisierung:
 * Name: Christian Pegel

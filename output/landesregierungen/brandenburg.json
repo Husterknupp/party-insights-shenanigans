@@ -6,49 +6,25 @@
     "party": "SPD"
   },
   {
-    "amt": "Minister des Innern und für Kommunales (gleichzeitig: Erster stellvertretender Ministerpräsident, Alleiniger stellvertretender Ministerpräsident)",
-    "name": "Michael Stübgen",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Michael_St%C3%BCbgen_%282024%29.jpg/400px-Michael_St%C3%BCbgen_%282024%29.jpg",
-    "party": "CDU"
+    "amt": "Minister der Finanzen und für Europa (gleichzeitig: Stellvertreter des Ministerpräsidenten)",
+    "name": "Robert Crumbach",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
+    "party": "BSW"
   },
   {
-    "amt": "Zweite stellvertretende Ministerpräsidentin",
-    "name": "Ursula Nonnemacher",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Landtagsprojekt_Brandenburg_Ursula_Nonnemacher_by_Olaf_Kosinsky-1.jpg/400px-Landtagsprojekt_Brandenburg_Ursula_Nonnemacher_by_Olaf_Kosinsky-1.jpg",
-    "party": "Bündnis 90/Die Grünen"
-  },
-  {
-    "amt": "Chefin der Staatskanzlei (gleichzeitig: Ministerin für Soziales, Gesundheit, Integration und Verbraucherschutz)",
-    "name": "Kathrin Schneider",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kathrin_Schneider_bei_Baumpflanzung_Esskastanie_Geisendorf_%2843438430562%29_%28cropped%29.jpg/400px-Kathrin_Schneider_bei_Baumpflanzung_Esskastanie_Geisendorf_%2843438430562%29_%28cropped%29.jpg",
-    "party": "SPD"
-  },
-  {
-    "amt": "Ministerin der Justiz",
-    "name": "Susanne Hoffmann",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/20-01-22-Susanne-Hoffmann_DSF5394.jpg/400px-20-01-22-Susanne-Hoffmann_DSF5394.jpg",
-    "party": "CDU"
-  },
-  {
-    "amt": "Minister für Landwirtschaft, Umwelt und Klimaschutz (gleichzeitig: Ministerin der Finanzen und für Europa)",
+    "amt": "Ministerin des Innern und für Kommunales",
     "name": "Katrin Lange",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
     "party": "SPD"
   },
   {
-    "amt": "Minister für Infrastruktur und Landesplanung",
-    "name": "Rainer Genilke",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/16-03-09-Rainer-Genilke_RR26779.jpg/400px-16-03-09-Rainer-Genilke_RR26779.jpg",
-    "party": "CDU"
-  },
-  {
-    "amt": "Minister für Wirtschaft, Arbeit und Energie",
-    "name": "Jörg Steinbach",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/J%C3%B6rg_Steinbach.jpg/400px-J%C3%B6rg_Steinbach.jpg",
+    "amt": "Ministerin für Land- und Ernährungswirtschaft, Umwelt und Verbraucherschutz",
+    "name": "Hanka Mittelstädt",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
     "party": "SPD"
   },
   {
-    "amt": "Minister(in) für Bildung, Jugend und Sport",
+    "amt": "Minister für Bildung, Jugend und Sport",
     "name": "Steffen Freiberg",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
     "party": "SPD"
@@ -57,6 +33,36 @@
     "amt": "Ministerin für Wissenschaft, Forschung und Kultur",
     "name": "Manja Schüle",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister für Wirtschaft, Arbeit, Energie und Klimaschutz",
+    "name": "Daniel Keller",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Minister der Justiz und für Digitalisierung",
+    "name": "Benjamin Grimm",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
+    "party": "SPD"
+  },
+  {
+    "amt": "Ministerin für Gesundheit und Soziales",
+    "name": "Britta Müller",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/17-04-14-Britta-M%C3%BCller.jpg/400px-17-04-14-Britta-M%C3%BCller.jpg",
+    "party": "parteilos (vom BSW nominiert)"
+  },
+  {
+    "amt": "Minister für Infrastruktur und Landesplanung",
+    "name": "Detlef Tabbert",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/2016-02-29-Detlef_Tabbert-hart_aber_fair-4599.jpg/400px-2016-02-29-Detlef_Tabbert-hart_aber_fair-4599.jpg",
+    "party": "BSW"
+  },
+  {
+    "amt": "Chefin der Staatskanzlei",
+    "name": "Kathrin Schneider",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Kathrin_Schneider_bei_Baumpflanzung_Esskastanie_Geisendorf_%2843438430562%29_%28cropped%29.jpg/400px-Kathrin_Schneider_bei_Baumpflanzung_Esskastanie_Geisendorf_%2843438430562%29_%28cropped%29.jpg",
     "party": "SPD"
   }
 ]
