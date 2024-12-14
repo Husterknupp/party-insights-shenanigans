@@ -21,7 +21,7 @@ Berlin:
 Brandenburg:
 * Name: Dietmar Woidke
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Woidke_III
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Woidke_IV
 * Profilbild: ![Dietmar Woidke](https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg/400px-2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg)
 
 Bremen:
@@ -91,7 +91,7 @@ Schleswig-Holstein:
 * Profilbild: ![Daniel Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Daniel_G%C3%BCnther_%282017%29.jpg/400px-Daniel_G%C3%BCnther_%282017%29.jpg)
 
 Thüringen:
-* Name: Bodo Ramelow
-* Partei: Linke
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Ramelow_II
-* Profilbild: ![Bodo Ramelow](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/2011-05-18-landtagsprojekt-erfurt-073.jpg/400px-2011-05-18-landtagsprojekt-erfurt-073.jpg)
+* Name: Mario Voigt
+* Partei: CDU
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Voigt_(Th%C3%BCringen)
+* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mario_Voigt_Portr%C3%A4t_2024.jpg/400px-Mario_Voigt_Portr%C3%A4t_2024.jpg)

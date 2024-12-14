@@ -7,7 +7,7 @@ Ministerpräsident:
 
 Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
 * Name: Wolfram Günther
-* Partei: B’90/Die Grünen
+* Partei: Bündnis 90/Die Grünen
 * Profilbild: ![Wolfram Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wolfram_G%C3%BCnther_Pressefoto.jpg/400px-Wolfram_G%C3%BCnther_Pressefoto.jpg)
 
 Staatsminister für Wirtschaft, Arbeit und Verkehr (gleichzeitig: Zweiter Stellvertreter des Ministerpräsidenten):
@@ -27,7 +27,7 @@ Staatsminister der Finanzen:
 
 Staatsministerin der Justiz und für Demokratie, Europa und Gleichstellung:
 * Name: Katja Meier
-* Partei: B’90/Die Grünen
+* Partei: Bündnis 90/Die Grünen
 * Profilbild: ![Katja Meier](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Katja_Meier_Pressefoto.jpg/400px-Katja_Meier_Pressefoto.jpg)
 
 Staatsminister für Kultus:
