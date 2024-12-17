@@ -3,7 +3,7 @@
 Ministerpräsident:
 * Name: Mario Voigt
 * Partei: CDU
-* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mario_Voigt_Portr%C3%A4t_2024.jpg/400px-Mario_Voigt_Portr%C3%A4t_2024.jpg)
+* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg)
 
 Stellvertreterin des Ministerpräsidenten, Finanzministerin:
 * Name: Katja Wolf
@@ -33,7 +33,7 @@ Minister für Umwelt, Energie, Naturschutz und Forsten:
 Ministerin für Justiz, Migration und Verbraucherschutz:
 * Name: Beate Meißner
 * Partei: CDU
-* Profilbild: ![Beate Meißner](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Beate_Mei%C3%9Fner_Portr%C3%A4t_2024.jpg/400px-Beate_Mei%C3%9Fner_Portr%C3%A4t_2024.jpg)
+* Profilbild: ![Beate Meißner](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg/400px-2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg)
 
 Ministerin für Soziales, Gesundheit, Arbeit und Familie:
 * Name: Katharina Schenk
@@ -48,4 +48,4 @@ Minister für Digitales und Infrastruktur:
 Minister für Bildung, Wissenschaft und Kultur:
 * Name: Christian Tischner
 * Partei: CDU
-* Profilbild: ![Christian Tischner](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Christian_Tischner_Portr%C3%A4t_2024.jpg/400px-Christian_Tischner_Portr%C3%A4t_2024.jpg)
+* Profilbild: ![Christian Tischner](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Landtagsprojekt_Th%C3%BCringen_Christian_Tischner_by_Olaf_Kosinsky-1.jpg/400px-Landtagsprojekt_Th%C3%BCringen_Christian_Tischner_by_Olaf_Kosinsky-1.jpg)
