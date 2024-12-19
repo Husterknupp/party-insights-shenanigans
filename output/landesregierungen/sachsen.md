@@ -1,19 +1,14 @@
-# Sachsen - Kabinett Kretschmer II
+# Sachsen - Kabinett Kretschmer III
 
-Ministerpräsident:
+Ministerpräsident, Staatskanzlei:
 * Name: Michael Kretschmer
 * Partei: CDU
-* Profilbild: ![Michael Kretschmer](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2022-03-28_Michael_Kretschmer_%28cropped%29.jpg/400px-2022-03-28_Michael_Kretschmer_%28cropped%29.jpg)
+* Profilbild: ![Michael Kretschmer](https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93049.jpg/400px-2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93049.jpg)
 
-Staatsminister für Energie, Klimaschutz, Umwelt und Landwirtschaft (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
-* Name: Wolfram Günther
-* Partei: Bündnis 90/Die Grünen
-* Profilbild: ![Wolfram Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wolfram_G%C3%BCnther_Pressefoto.jpg/400px-Wolfram_G%C3%BCnther_Pressefoto.jpg)
-
-Staatsminister für Wirtschaft, Arbeit und Verkehr (gleichzeitig: Zweiter Stellvertreter des Ministerpräsidenten):
-* Name: Martin Dulig
+Staatsministerin für Soziales, Gesundheit und Gesellschaftlichen Zusammenhalt (gleichzeitig: Stellvertreterin des Ministerpräsidenten):
+* Name: Petra Köpping
 * Partei: SPD
-* Profilbild: ![Martin Dulig](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/220909_Portr%C3%A4t_Martin_Dulig_Wikipedia-9118.jpg/400px-220909_Portr%C3%A4t_Martin_Dulig_Wikipedia-9118.jpg)
+* Profilbild: ![Petra Köpping](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93016.jpg/400px-2024-09-01_Wahlabend_Sachsen_by_Sandro_Halank%E2%80%93016.jpg)
 
 Staatsminister des Innern:
 * Name: Armin Schuster
@@ -21,41 +16,41 @@ Staatsminister des Innern:
 * Profilbild: ![Armin Schuster](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Armin_Schuster_%282020%29.jpg/400px-Armin_Schuster_%282020%29.jpg)
 
 Staatsminister der Finanzen:
-* Name: Hartmut Vorjohann
-* Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
-
-Staatsministerin der Justiz und für Demokratie, Europa und Gleichstellung:
-* Name: Katja Meier
-* Partei: Bündnis 90/Die Grünen
-* Profilbild: ![Katja Meier](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Katja_Meier_Pressefoto.jpg/400px-Katja_Meier_Pressefoto.jpg)
-
-Staatsminister für Kultus:
 * Name: Christian Piwarz
 * Partei: CDU
-* Profilbild: ![Christian Piwarz](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Christian_Piwarz_by_Stepro_IMG_1416_LR50.jpg/400px-Christian_Piwarz_by_Stepro_IMG_1416_LR50.jpg)
+* Profilbild: ![Christian Piwarz](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93031.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93031.jpg)
+
+Staatsminister für Umwelt und Landwirtschaft:
+* Name: Georg-Ludwig von Breitenbuch
+* Partei: CDU
+* Profilbild: ![Georg-Ludwig von Breitenbuch](https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93123.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93123.jpg)
+
+Staatsminister für Kultus:
+* Name: Conrad Clemens
+* Partei: CDU
+* Profilbild: ![Conrad Clemens](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5752.jpg/400px-2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5752.jpg)
 
 Staatsminister für Wissenschaft:
 * Name: Sebastian Gemkow
 * Partei: CDU
-* Profilbild: ![Sebastian Gemkow](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2016-12-15_Sebastian_Gemkow_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%931.jpg/400px-2016-12-15_Sebastian_Gemkow_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%931.jpg)
+* Profilbild: ![Sebastian Gemkow](https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93019.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93019.jpg)
 
 Staatsministerin für Kultur und Tourismus:
 * Name: Barbara Klepsch
 * Partei: CDU
-* Profilbild: ![Barbara Klepsch](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2016-12-15_Barbara_Klepsch_by_Sandro_Halank%E2%80%931.jpg/400px-2016-12-15_Barbara_Klepsch_by_Sandro_Halank%E2%80%931.jpg)
+* Profilbild: ![Barbara Klepsch](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93042.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93042.jpg)
 
-Staatsministerin für Soziales und Gesellschaftlichen Zusammenhalt:
-* Name: Petra Köpping
+Staatsminister für Wirtschaft, Arbeit, Energie und Klimaschutz:
+* Name: Dirk Panter
 * Partei: SPD
-* Profilbild: ![Petra Köpping](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2016-12-15_Petra_K%C3%B6pping_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%934.jpg/400px-2016-12-15_Petra_K%C3%B6pping_%28Landtagsprojekt_Sachsen%29_by_Sandro_Halank%E2%80%934.jpg)
+* Profilbild: ![Dirk Panter](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93063.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93063.jpg)
 
-Staatsminister für Regionalentwicklung:
-* Name: Thomas Schmidt
+Staatsministerin der Justiz:
+* Name: Constanze Geiert
 * Partei: CDU
-* Profilbild: ![Thomas Schmidt](https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MJK21321_Thomas_Schmidt.jpg/400px-MJK21321_Thomas_Schmidt.jpg)
+* Profilbild: *Kein Bild verfügbar*
 
-Chef der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien:
-* Name: Conrad Clemens
+Staatsministerin für Infrastruktur und Landesentwicklung:
+* Name: Regina Kraushaar
 * Partei: CDU
-* Profilbild: ![Conrad Clemens](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5751.jpg/400px-2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5751.jpg)
+* Profilbild: *Kein Bild verfügbar*
