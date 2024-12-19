@@ -75,7 +75,7 @@ Saarland:
 Sachsen:
 * Name: Michael Kretschmer
 * Partei: CDU
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Kretschmer_II
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Kretschmer_III
 * Profilbild: ![Michael Kretschmer](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Michael_Kretschmer-v2_Pawel-Sosnowski_-_Querformat_%28cropped%29.jpg/400px-Michael_Kretschmer-v2_Pawel-Sosnowski_-_Querformat_%28cropped%29.jpg)
 
 Sachsen-Anhalt:
@@ -94,4 +94,4 @@ Thüringen:
 * Name: Mario Voigt
 * Partei: CDU
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_Voigt_(Th%C3%BCringen)
-* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93004.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93004.jpg)
+* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg)

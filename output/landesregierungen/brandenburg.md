@@ -43,7 +43,7 @@ Minister der Justiz und für Digitalisierung:
 Ministerin für Gesundheit und Soziales:
 * Name: Britta Müller
 * Partei: parteilos (vom BSW nominiert)
-* Profilbild: ![Britta Müller](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/17-04-14-Britta-M%C3%BCller.jpg/400px-17-04-14-Britta-M%C3%BCller.jpg)
+* Profilbild: *Kein Bild verfügbar*
 
 Minister für Infrastruktur und Landesplanung:
 * Name: Detlef Tabbert

@@ -5,12 +5,12 @@ Ministerpräsident:
 * Partei: CDU
 * Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg)
 
-Stellvertreterin des Ministerpräsidenten, Finanzministerin:
+Stellvertretende Ministerpräsidentin, Finanzministerin:
 * Name: Katja Wolf
 * Partei: BSW
 * Profilbild: ![Katja Wolf](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_3008_by_Stepro.jpg/400px-2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_3008_by_Stepro.jpg)
 
-Zweiter Stellvertreter des Ministerpräsidenten, Minister für Inneres, Kommunales und Landesentwicklung:
+Zweiter Stellvertretender Ministerpräsident, Minister für Inneres, Kommunales und Landesentwicklung:
 * Name: Georg Maier
 * Partei: SPD
 * Profilbild: ![Georg Maier](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/2024-09-01_Politik%2C_Landtagswahl_Th%C3%BCringen_STP_4375_by_Stepro.jpg/400px-2024-09-01_Politik%2C_Landtagswahl_Th%C3%BCringen_STP_4375_by_Stepro.jpg)
