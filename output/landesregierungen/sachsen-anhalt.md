@@ -28,7 +28,7 @@ Ministerin für Arbeit, Soziales, Gesundheit und Gleichstellung:
 Ministerin für Inneres und Sport:
 * Name: Tamara Zieschang
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Tamara Zieschang](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/2023-05-28_Motorsport%2C_DTM%2C_Oschersleben_1DX_5400_by_Stepro.jpg/400px-2023-05-28_Motorsport%2C_DTM%2C_Oschersleben_1DX_5400_by_Stepro.jpg)
 
 Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten:
 * Name: Sven Schulze

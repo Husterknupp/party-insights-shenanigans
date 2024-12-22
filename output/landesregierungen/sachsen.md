@@ -28,12 +28,12 @@ Staatsminister für Umwelt und Landwirtschaft:
 Staatsminister für Kultus:
 * Name: Conrad Clemens
 * Partei: CDU
-* Profilbild: ![Conrad Clemens](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5752.jpg/400px-2019-11-22_Conrad_Clemens_CDU_Parteitag_by_OlafKosinsky_MG_5752.jpg)
+* Profilbild: ![Conrad Clemens](https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/2024-12-19_S%C3%A4chsischer_Landtag_%E2%80%93_5._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93022.jpg/400px-2024-12-19_S%C3%A4chsischer_Landtag_%E2%80%93_5._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93022.jpg)
 
 Staatsminister für Wissenschaft:
 * Name: Sebastian Gemkow
 * Partei: CDU
-* Profilbild: ![Sebastian Gemkow](https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93019.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93019.jpg)
+* Profilbild: ![Sebastian Gemkow](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/2024-12-19_S%C3%A4chsischer_Landtag_%E2%80%93_5._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93012.jpg/400px-2024-12-19_S%C3%A4chsischer_Landtag_%E2%80%93_5._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93012.jpg)
 
 Staatsministerin für Kultur und Tourismus:
 * Name: Barbara Klepsch
@@ -43,14 +43,14 @@ Staatsministerin für Kultur und Tourismus:
 Staatsminister für Wirtschaft, Arbeit, Energie und Klimaschutz:
 * Name: Dirk Panter
 * Partei: SPD
-* Profilbild: ![Dirk Panter](https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93063.jpg/400px-2024-12-18_S%C3%A4chsischer_Landtag_%E2%80%93_4._Sitzung_der_8._Wahlperiode_by_Sandro_Halank%E2%80%93063.jpg)
+* Profilbild: ![Dirk Panter](https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93012.jpg/400px-2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93012.jpg)
 
 Staatsministerin der Justiz:
 * Name: Constanze Geiert
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Constanze Geiert](https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93013.jpg/400px-2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93013.jpg)
 
 Staatsministerin für Infrastruktur und Landesentwicklung:
 * Name: Regina Kraushaar
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Regina Kraushaar](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93001.jpg/400px-2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93001.jpg)
