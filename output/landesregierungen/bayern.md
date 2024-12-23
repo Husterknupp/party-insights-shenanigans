@@ -3,7 +3,7 @@
 Ministerpräsident:
 * Name: Markus Söder
 * Partei: CSU
-* Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/400px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg)
+* Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/2024-10-24_Politik%2C_Ministerpr%C3%A4sidentenkonferenz_2024_Leipzig_STP_7957_by_Stepro_%28cropped%29.jpg/400px-2024-10-24_Politik%2C_Ministerpr%C3%A4sidentenkonferenz_2024_Leipzig_STP_7957_by_Stepro_%28cropped%29.jpg)
 
 Wirtschaft, Landesentwicklung und Energie (gleichzeitig: Stellvertretender Ministerpräsident):
 * Name: Hubert Aiwanger
