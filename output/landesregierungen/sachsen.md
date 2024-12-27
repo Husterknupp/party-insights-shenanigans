@@ -13,7 +13,7 @@ Staatsministerin für Soziales, Gesundheit und Gesellschaftlichen Zusammenhalt (
 Staatsminister des Innern:
 * Name: Armin Schuster
 * Partei: CDU
-* Profilbild: ![Armin Schuster](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Armin_Schuster_%282020%29.jpg/400px-Armin_Schuster_%282020%29.jpg)
+* Profilbild: ![Armin Schuster](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93043.jpg/400px-2024-12-19_Ernennung_Kabinett_Kretschmer_III_by_Sandro_Halank%E2%80%93043.jpg)
 
 Staatsminister der Finanzen:
 * Name: Christian Piwarz
