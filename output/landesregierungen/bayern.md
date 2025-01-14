@@ -38,7 +38,7 @@ Justiz:
 Unterricht und Kultus:
 * Name: Anna Stolz
 * Partei: FW
-* Profilbild: ![Anna Stolz](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Kultusministerin_Anna_Stolz_%282%29.jpg/400px-Kultusministerin_Anna_Stolz_%282%29.jpg)
+* Profilbild: ![Anna Stolz](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Anna_Stolz_2024_StMUK_%28cropped%29.jpg/400px-Anna_Stolz_2024_StMUK_%28cropped%29.jpg)
 
 Wissenschaft und Kunst:
 * Name: Markus Blume
