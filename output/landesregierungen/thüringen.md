@@ -43,7 +43,7 @@ Ministerin für Soziales, Gesundheit, Arbeit und Familie:
 Minister für Digitales und Infrastruktur:
 * Name: Steffen Schütz
 * Partei: BSW
-* Profilbild: ![Steffen Schütz](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_2954_by_Stepro.jpg/400px-2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_2954_by_Stepro.jpg)
+* Profilbild: ![Steffen Schütz](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/2024-11-22_Politik%2C_Vorstellung_Regierungsvertrag_%28Koalitionsvertrag%29_Th%C3%BCringen_zwischen_CDU%2C_BSW_und_SPD_STP_1291.jpg/400px-2024-11-22_Politik%2C_Vorstellung_Regierungsvertrag_%28Koalitionsvertrag%29_Th%C3%BCringen_zwischen_CDU%2C_BSW_und_SPD_STP_1291.jpg)
 
 Minister für Bildung, Wissenschaft und Kultur:
 * Name: Christian Tischner

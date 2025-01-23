@@ -18,7 +18,7 @@ Bundesminister für besondere Aufgaben • Chef des Bundeskanzleramtes:
 Bundesministerium der Finanzen (BMF):
 * Name: Jörg Kukies
 * Partei: SPD
-* Profilbild: ![Jörg Kukies](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/J%C3%B6rg_Kukies_%28born_1968%29_at_World_Economic_Forum_Davos_2023.png/400px-J%C3%B6rg_Kukies_%28born_1968%29_at_World_Economic_Forum_Davos_2023.png)
+* Profilbild: ![Jörg Kukies](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/J%C3%B6rg_Kukies_at_World_Economic_Forum_Davos_2023_%283x4_cropped%29.png/400px-J%C3%B6rg_Kukies_at_World_Economic_Forum_Davos_2023_%283x4_cropped%29.png)
 
 Bundesministerium der Justiz (BMJ):
 * Name: Volker Wissing
