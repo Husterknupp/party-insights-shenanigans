@@ -3,7 +3,7 @@
 Ministerpräsidentin, Staatskanzlei:
 * Name: Manuela Schwesig
 * Partei: SPD
-* Profilbild: ![Manuela Schwesig](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/23_08_28_BSPC_DSCF7008_1.jpg/400px-23_08_28_BSPC_DSCF7008_1.jpg)
+* Profilbild: ![Manuela Schwesig](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Manuela_Schwesig_2023_2.jpg/400px-Manuela_Schwesig_2023_2.jpg)
 
 Bildung und Kindertagesstätten (gleichzeitig: Stellvertreterin der Ministerpräsidentin):
 * Name: Simone Oldenburg
