@@ -60,3 +60,8 @@ Migrate one JavaScript method after the other (not the complete file), let run u
    - eventually, migrate all smaller functions of tableWalker to ReScript
    - make tableWalker.js -> TableWalker.res
 2. Continue migration with landesregierungen.js
+
+## More Thoughts
+
+- unit tests in ReScript: [ReScript Jest](https://github.com/glennsl/rescript-jest)
+- or with Zora: [ReScript Zora](https://github.com/dusty-phillips/rescript-zora)

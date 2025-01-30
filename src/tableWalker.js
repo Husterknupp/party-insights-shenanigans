@@ -2,7 +2,36 @@
 // when used in the `each` Cheerio callback.
 // noinspection JSCheckFunctionSignatures
 
-import { _initializeCheerio } from "./tableWalker_ReScript.res.mjs";
+import {
+  _initializeCheerio,
+  _sanityCheckHeaders,
+} from "./tableWalker_ReScript.res.mjs";
+
+function _getHeaderCells(cheerio) {
+  const ths = cheerio("th");
+  _sanityCheckHeaders(ths);
+
+  const columnCount = ths
+    .toArray()
+    .map((th) => parseIntOr(th.attribs.colspan, 1))
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+
+  console.log(
+    `Found ${ths.length} table headers (spanning ${columnCount} columns).`
+  );
+
+  const headers = [];
+  ths.each((headerIdx, header) => {
+    const maybePreviousCol = headers[headerIdx - 1]?.colEnd;
+    const colStart = maybePreviousCol + 1 || 0;
+    const colEnd =
+      colStart + parseIntOr(cheerio(header).attr("colspan"), 1) - 1;
+    const linesOfText = [removeInnerWhiteSpace(cheerio(header).text())];
+    headers.push({ colStart, colEnd, linesOfText });
+  });
+
+  return headers;
+}
 
 function removeInnerWhiteSpace(text) {
   // Line breaks in HTML can cause weird amount of whitespace.
@@ -60,38 +89,10 @@ export default function tableWalker(html) {
 
   let $ = _initializeCheerio(html);
 
-  const ths = $("th");
+  const headerCells = _getHeaderCells($);
 
-  let parent = null;
-  for (const el of ths.toArray()) {
-    if (parent === null) {
-      parent = el.parent;
-    } else if (el.parent === parent) {
-      // Deliberately left blank - this is good, we have no problem
-    } else {
-      const text = el.children.map((el) => el.data);
-      throw new Error(`Multiple headline rows - that's bad. <th>${text}</th>`);
-    }
-  }
-
-  const columnCount = ths
-    .toArray()
-    .map((th) => parseIntOr(th.attribs.colspan, 1))
-    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   const rows = $(`tr:has(td)`);
-  console.log(
-    `Found ${ths.length} table headers (spanning ${columnCount} columns). ${rows.length} rows (not including rowspans).`
-  );
-
-  const headers = [];
-  ths.each((headerIdx, header) => {
-    const maybePreviousCol = headers[headerIdx - 1]?.colEnd;
-    const colStart = maybePreviousCol + 1 || 0;
-    const colEnd = colStart + parseIntOr($(header).attr("colspan"), 1) - 1;
-    const linesOfText = [removeInnerWhiteSpace($(header).text())];
-    headers.push({ colStart, colEnd, linesOfText });
-  });
-
+  console.log(`Found ${rows.length} rows (not including rowspans).`);
   const allCells = [];
   rows.each((rowIndex, row) => {
     // columnIdx basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
@@ -179,7 +180,7 @@ export default function tableWalker(html) {
         imageUrl = "https:" + parts.join("/");
       }
 
-      const header = headers.find(
+      const header = headerCells.find(
         (header) =>
           header.colStart <= cell.colStart && cell.colStart <= header.colEnd
       ).linesOfText[0]; // Hopefully (🤞) header cells have not more than one line of text

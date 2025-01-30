@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "res:build": "rescript",
     "res:clean": "rescript clean",
     "res:dev": "rescript -w"
