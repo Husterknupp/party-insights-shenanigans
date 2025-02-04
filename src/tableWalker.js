@@ -44,66 +44,21 @@ function parseIntOr(maybeString, fallback) {
   return Number.isNaN(parsed) ? fallback : parsed;
 }
 
-/**
- * tableWalker aims to be a more intuitive approach on how to assign cells to columns.
- */
-export default function tableWalker(html) {
-  /* todo 2.8.24 -  split huge method into smaller methods - high-level overview:
-   * it expects a single table, not a complete document - html argument should have 1 table, not more
-   * initialize cheerio
-   * sanity-check table
-   * get headerCells (including tableheaders, sanityCheck)
-   * get dataCells (including mapping of cells to correct headers)
-   * parse cell content
-   */
-
-  /* todo separate somehow location logic ("cell in row X-Y")
-      from extraction/parsing of cell content---or does that make no sense after all?
-
-  MAKE THE tableWalker API MORE CONCISE - SOME IDEAS
-
-  VARIANT A
-  const wot = tableWalker(
-    html,
-    relevantTable=[
-      "Kabinett",
-      "Landesregierung",
-      "Mitglieder der Staatsregierung",
-      "Amtierende Regierungschefs",
-      "Zusammensetzung",
-      "Senat",
-    ],
-    amtColumn=["amt", ressort"],
-    ministerNameColumn=["amtsinhaber", "name"],
-    ...
-  )
-
-  VARIANT B
-  const wot = tableWalker(
-    html,
-    {mainColumn: ["amt", ressort"], mainColumnAlias: 'amt'},
-    {columns: [headerText: ["amtsinhaber", "name",], alias: ]}
-  )
-
-  */
-
-  let $ = _initializeCheerio(html);
-
-  const headerCells = _getHeaderCells($);
-
-  const rows = $(`tr:has(td)`);
+function _getDataCells(cheerio) {
+  const rows = cheerio(`tr:has(td)`);
   console.log(`Found ${rows.length} rows (not including rowspans).`);
+
   const allCells = [];
   rows.each((rowIndex, row) => {
-    // columnIdx basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
+    // `columnIdx` basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
     // So even the first `<td>` of a `<tr>` can be in some column that is not index 0, because another row's cells have rowspan >1.
     // See test "Staatssekretaer has correct colStart and doesnt mess up Partei column"
     let columnIdx = 0;
-    $(row)
+    cheerio(row)
       .find("td")
       .each((_, cell) => {
-        const colSpan = parseIntOr($(cell).attr("colspan"), 1);
-        const rowSpan = parseIntOr($(cell).attr("rowspan"), 1);
+        const colSpan = parseIntOr(cheerio(cell).attr("colspan"), 1);
+        const rowSpan = parseIntOr(cheerio(cell).attr("rowspan"), 1);
 
         let maybeShiftCellRight = undefined;
         do {
@@ -134,66 +89,122 @@ export default function tableWalker(html) {
       });
   });
 
-  return allCells
-    .map((cell) => {
-      $(cell._cheerioEl).find("small").remove();
-      $(cell._cheerioEl).find("sup").remove();
+  return allCells;
+}
 
-      const linesOfText = [];
-      let combinedText = "";
-      const nodes = $(cell._cheerioEl).contents().toArray();
-      for (const node of nodes) {
-        const text = $(node).text();
-        switch (node.name) {
-          case "p":
-            if (combinedText !== "") {
-              linesOfText.push(removeInnerWhiteSpace(combinedText));
-              combinedText = "";
-            }
-            if (text.trim() !== "") {
-              linesOfText.push(removeInnerWhiteSpace(text));
-            }
-            break;
-          case "br":
-            if (combinedText !== "") {
-              linesOfText.push(removeInnerWhiteSpace(combinedText));
-              combinedText = "";
-            }
-            break;
-          default:
-            if (text.trim() !== "") {
-              combinedText = combinedText + text;
-            }
+function _extractTextFromCell(cheerio, cell) {
+  cheerio(cell._cheerioEl).find("small").remove();
+  cheerio(cell._cheerioEl).find("sup").remove();
+
+  const linesOfText = [];
+  let combinedText = "";
+  const nodes = cheerio(cell._cheerioEl).contents().toArray();
+
+  for (const node of nodes) {
+    const text = cheerio(node).text();
+    switch (node.name) {
+      case "p":
+        if (combinedText !== "") {
+          linesOfText.push(removeInnerWhiteSpace(combinedText));
+          combinedText = "";
         }
-      }
-      if (combinedText !== "") {
-        linesOfText.push(removeInnerWhiteSpace(combinedText));
-      }
+        if (text.trim() !== "") {
+          linesOfText.push(removeInnerWhiteSpace(text));
+        }
+        break;
+      case "br":
+        if (combinedText !== "") {
+          linesOfText.push(removeInnerWhiteSpace(combinedText));
+          combinedText = "";
+        }
+        break;
+      default:
+        if (text.trim() !== "") {
+          combinedText = combinedText + text;
+        }
+    }
+  }
 
-      let imageUrl = $(cell._cheerioEl).find("img").last().attr("src");
-      if (imageUrl !== undefined) {
-        // Resize image to non-thumb size
-        // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-        let parts = imageUrl.split("/");
-        parts = parts.filter((_, index) => index !== parts.length - 1);
-        parts.push("400px-" + parts[parts.length - 1].replace(".tif", ".png"));
-        imageUrl = "https:" + parts.join("/");
-      }
+  if (combinedText !== "") {
+    linesOfText.push(removeInnerWhiteSpace(combinedText));
+  }
 
-      const header = headerCells.find(
-        (header) =>
-          header.colStart <= cell.colStart && cell.colStart <= header.colEnd
-      ).linesOfText[0]; // Hopefully (🤞) header cells have not more than one line of text
+  return linesOfText;
+}
 
-      // somehow feels weird to expose Cheerio
+function _extractAndResizeImageUrl(cheerio, cell) {
+  let imageUrl = cheerio(cell._cheerioEl).find("img").last().attr("src");
+  if (imageUrl !== undefined) {
+    // Resize image to non-thumb size
+    // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
+    let parts = imageUrl.split("/");
+    parts = parts.filter((_, index) => index !== parts.length - 1);
+    parts.push("400px-" + parts[parts.length - 1].replace(".tif", ".png"));
+    imageUrl = "https:" + parts.join("/");
+  }
+  return imageUrl;
+}
+
+function _findHeaderTextForCell(headerCells, cell) {
+  return headerCells.find(
+    (header) =>
+      header.colStart <= cell.colStart && cell.colStart <= header.colEnd
+  ).linesOfText[0]; // Hopefully (🤞) header cells have not more than one line of text
+}
+
+function _cellHasContent(cell) {
+  // Cells with no useful value - seem only confusing for user
+  return cell.linesOfText.length !== 0 || cell.imageUrl !== undefined;
+}
+
+/**
+ * tableWalker aims to be a more intuitive approach on how to assign cells to columns.
+ */
+export default function tableWalker(html) {
+  /* MAKE THE tableWalker API MORE CONCISE - SOME IDEAS
+
+  VARIANT A
+  const wot = tableWalker(
+    html,
+    relevantTable=[
+      "Kabinett",
+      "Landesregierung",
+      "Mitglieder der Staatsregierung",
+      "Amtierende Regierungschefs",
+      "Zusammensetzung",
+      "Senat",
+    ],
+    amtColumn=["amt", ressort"],
+    ministerNameColumn=["amtsinhaber", "name"],
+    ...
+  )
+
+  VARIANT B
+  const wot = tableWalker(
+    html,
+    {mainColumn: ["amt", ressort"], mainColumnAlias: 'amt'},
+    {columns: [headerText: ["amtsinhaber", "name",], alias: ]}
+  )
+
+  */
+
+  let $ = _initializeCheerio(html);
+
+  const headerCells = _getHeaderCells($);
+  const dataCells = _getDataCells($);
+
+  return dataCells
+    .map((cell) => {
+      const linesOfText = _extractTextFromCell($, cell);
+      const imageUrl = _extractAndResizeImageUrl($, cell);
+      const headerText = _findHeaderTextForCell(headerCells, cell);
+
+      // It somehow feels weird to expose Cheerio
       delete cell._cheerioEl;
 
       // `linesOfText` instead of a single text field because for some columns, we can ignore parts of
       // a cell's text---while in other columns all text is relevant. With this list, the caller can decide.
-      return { ...cell, imageUrl, header, linesOfText };
+      return { ...cell, imageUrl, header: headerText, linesOfText };
     })
-    .filter((cell) => {
-      // Cells with no useful value - seem only confusing for user
-      return cell.linesOfText.length !== 0 || cell.imageUrl !== undefined;
-    });
+    .filter(_cellHasContent);
 }

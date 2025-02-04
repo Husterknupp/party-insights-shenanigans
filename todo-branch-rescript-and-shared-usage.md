@@ -53,12 +53,11 @@ Then, call from inside landesregierungen file (and other extractors), call the s
 Migrate one JavaScript method after the other (not the complete file), let run unit tests, commit, expect extractor output to be equivalent.
 
 1. Start with tableWalker.js
-   - keep it as js
-   - refactor one giant method into smaller methods
-   - run unit tests and extractor code often
-   - ReScript: How to generate .d.ts files? (Should be helpful for unit tests, even if jest doesn't understand TypeScript)
-   - eventually, migrate all smaller functions of tableWalker to ReScript
-   - make tableWalker.js -> TableWalker.res
+   - [x] keep it as js
+   - [x] refactor one giant method into smaller methods
+   - [x] run unit tests and extractor code often
+   - [ ] eventually, migrate all smaller functions of tableWalker to ReScript
+   - [ ] make tableWalker.js -> TableWalker.res
 2. Continue migration with landesregierungen.js
 
 ## More Thoughts
