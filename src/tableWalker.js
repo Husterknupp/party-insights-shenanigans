@@ -5,33 +5,8 @@
 import {
   _initializeCheerio,
   _sanityCheckHeaders,
+  _getHeaderCells,
 } from "./tableWalker_ReScript.res.mjs";
-
-function _getHeaderCells(cheerio) {
-  const ths = cheerio("th");
-  _sanityCheckHeaders(ths);
-
-  const columnCount = ths
-    .toArray()
-    .map((th) => parseIntOr(th.attribs.colspan, 1))
-    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
-
-  console.log(
-    `Found ${ths.length} table headers (spanning ${columnCount} columns).`
-  );
-
-  const headers = [];
-  ths.each((headerIdx, header) => {
-    const maybePreviousCol = headers[headerIdx - 1]?.colEnd;
-    const colStart = maybePreviousCol + 1 || 0;
-    const colEnd =
-      colStart + parseIntOr(cheerio(header).attr("colspan"), 1) - 1;
-    const linesOfText = [removeInnerWhiteSpace(cheerio(header).text())];
-    headers.push({ colStart, colEnd, linesOfText });
-  });
-
-  return headers;
-}
 
 function removeInnerWhiteSpace(text) {
   // Line breaks in HTML can cause weird amount of whitespace.
