@@ -11,12 +11,12 @@ Find scraped Wikipedia content in `output/` directory.
 
 This will execute the ETL pipeline:
 
-1. download Wikipedia pages with politician/cabinet info tables (Bund und Länder)
-2. get relevant infos from html tables (names, parties, ministerial position, etc.)
-3. write infos to json and markdown files
+1. download Wikipedia pages with politician/cabinet info tables (Bund und Länder) 2. get relevant infos from html tables (names, parties, ministerial position, etc.)
+2. write infos to json and markdown files
 
 ```shell
 yarn install
+yarn res:build
 yarn start
 ```
 
@@ -24,5 +24,6 @@ yarn start
 
 ```shell
 yarn install
+yarn res:build
 yarn test
 ```
