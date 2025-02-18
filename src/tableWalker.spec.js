@@ -244,8 +244,6 @@ describe("tableWalker", () => {
 </table>
 `;
 
-    // todo run this test (9.11.24)
-    // $ NODE_OPTIONS='--experimental-vm-modules' npx jest -t "handles two image nodes in one cell well"
     const cells = tableWalker(table);
 
     expect(cells.length).toBe(1);

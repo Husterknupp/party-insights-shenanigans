@@ -3,68 +3,15 @@
 // noinspection JSCheckFunctionSignatures
 
 import {
-  _initializeCheerio,
-  _sanityCheckHeaders,
+  _loadCheerio,
   _getHeaderCells,
+  _getDataCells,
 } from "./tableWalker_ReScript.res.mjs";
 
 function removeInnerWhiteSpace(text) {
   // Line breaks in HTML can cause weird amount of whitespace.
   // Removes also inner linebreaks.
   return text.replace(/\s+/g, " ").trim();
-}
-
-function parseIntOr(maybeString, fallback) {
-  const parsed = Number.parseInt(maybeString);
-  return Number.isNaN(parsed) ? fallback : parsed;
-}
-
-function _getDataCells(cheerio) {
-  const rows = cheerio(`tr:has(td)`);
-  console.log(`Found ${rows.length} rows (not including rowspans).`);
-
-  const allCells = [];
-  rows.each((rowIndex, row) => {
-    // `columnIdx` basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
-    // So even the first `<td>` of a `<tr>` can be in some column that is not index 0, because another row's cells have rowspan >1.
-    // See test "Staatssekretaer has correct colStart and doesnt mess up Partei column"
-    let columnIdx = 0;
-    cheerio(row)
-      .find("td")
-      .each((_, cell) => {
-        const colSpan = parseIntOr(cheerio(cell).attr("colspan"), 1);
-        const rowSpan = parseIntOr(cheerio(cell).attr("rowspan"), 1);
-
-        let maybeShiftCellRight = undefined;
-        do {
-          maybeShiftCellRight = allCells.find(
-            (cell) =>
-              cell.colStart <= columnIdx &&
-              columnIdx <= cell.colEnd &&
-              cell.rowEnd >= rowIndex
-          );
-          if (maybeShiftCellRight) {
-            console.log(
-              `Row no. ${rowIndex}: At column ${columnIdx} I found a cell of an earlier row... one to the right`
-            );
-            columnIdx = maybeShiftCellRight.colEnd + 1;
-          }
-        } while (maybeShiftCellRight !== undefined);
-
-        // We need all cells regardless of their content because later
-        // column/row index calculation is based on also the empty cells.
-        allCells.push({
-          colStart: columnIdx,
-          colEnd: columnIdx + colSpan - 1,
-          rowStart: rowIndex,
-          rowEnd: rowIndex + rowSpan - 1,
-          _cheerioEl: cell,
-        });
-        columnIdx += colSpan;
-      });
-  });
-
-  return allCells;
 }
 
 function _extractTextFromCell(cheerio, cell) {
@@ -163,7 +110,7 @@ export default function tableWalker(html) {
 
   */
 
-  let $ = _initializeCheerio(html);
+  let $ = _loadCheerio(html);
 
   const headerCells = _getHeaderCells($);
   const dataCells = _getDataCells($);

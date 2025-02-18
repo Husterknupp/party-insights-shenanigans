@@ -78,11 +78,45 @@ function getColspanInt(element) {
   }
 }
 
+function getRowspan(element) {
+  let match = element.type;
+  if (match !== "style" && match !== "tag" && match !== "script") {
+    return Exn.raiseError("Trying to get 'rowspan' from non-element node");
+  }
+  let rowspan = Core__Nullable.getExn(element.attribs).rowspan;
+  if (rowspan == null) {
+    return "1";
+  } else {
+    return rowspan;
+  }
+}
+
+function getRowspanInt(element) {
+  let parsed = Core__Int.fromString(getRowspan(element), undefined);
+  if (parsed !== undefined) {
+    return parsed;
+  } else {
+    return 1;
+  }
+}
+
 function getText(element, loadedCheerio) {
   return loadedCheerio(undefined, {
     TAG: "CheerioElement",
     _0: element
   }).text();
+}
+
+function getLengthString(queriedCheerio) {
+  return queriedCheerio.length.toString();
+}
+
+function each(queriedCheerio, callback) {
+  queriedCheerio.each(callback);
+}
+
+function find(queriedCheerio, queryString) {
+  return queriedCheerio.find(queryString);
 }
 
 let CheerioFacade = {
@@ -97,10 +131,15 @@ let CheerioFacade = {
   getName: getName,
   getColspan: getColspan,
   getColspanInt: getColspanInt,
-  getText: getText
+  getRowspan: getRowspan,
+  getRowspanInt: getRowspanInt,
+  getText: getText,
+  getLengthString: getLengthString,
+  each: each,
+  find: find
 };
 
-function _initializeCheerio(html) {
+function _loadCheerio(html) {
   if (html.indexOf("<html>") !== -1) {
     return load(html, null, true);
   } else {
@@ -110,8 +149,12 @@ function _initializeCheerio(html) {
 
 function _sanityCheckHeaders(cheerioWithHeaders) {
   let headerElements = cheerioWithHeaders.toArray();
-  let element = Core__Option.getExn(headerElements[0], undefined);
-  let parent = Belt_Option.getExn(element.parent);
+  let firstHeader = Core__Option.getExn(headerElements[0], undefined);
+  if (firstHeader.name !== "th") {
+    console.log(firstHeader);
+    Core__Error.panic("Queried cheerio was expected to contain any headers. But it doesn't");
+  }
+  let parent = Belt_Option.getExn(firstHeader.parent);
   let maybeInvalidHeader = headerElements.find(header => Belt_Option.getExn(header.parent) !== parent);
   if (maybeInvalidHeader === undefined) {
     return;
@@ -158,12 +201,64 @@ function _getHeaderCells(loadedCheerio) {
   });
 }
 
+function _getDataCells(cheerio) {
+  let rows = cheerio(undefined, {
+    TAG: "String",
+    _0: "tr:has(td)"
+  });
+  console.log("Found " + rows.length.toString() + " rows (not including rowspans).");
+  let allCells = [];
+  rows.each((rowIndex, row) => {
+    let columnIdx = {
+      contents: 0
+    };
+    let callback = (param, cell) => {
+      let colSpan = getColspanInt(cell);
+      let rowSpan = getRowspanInt(cell);
+      let shiftRight = () => {
+        while (true) {
+          let maybeShiftCellRight = allCells.find(cell => {
+            if (cell.colStart <= columnIdx.contents && columnIdx.contents <= cell.colEnd) {
+              return cell.rowEnd >= rowIndex;
+            } else {
+              return false;
+            }
+          });
+          if (maybeShiftCellRight === undefined) {
+            return;
+          }
+          console.log("Row no. " + rowIndex.toString() + ": At column " + columnIdx.contents.toString() + " I found a cell of an earlier row... one to the right");
+          columnIdx.contents = maybeShiftCellRight.colEnd + 1 | 0;
+          continue;
+        };
+      };
+      shiftRight();
+      allCells.push({
+        colStart: columnIdx.contents,
+        colEnd: (columnIdx.contents + colSpan | 0) - 1 | 0,
+        rowStart: rowIndex,
+        rowEnd: (rowIndex + rowSpan | 0) - 1 | 0,
+        _cheerioEl: Primitive_option.some(cell)
+      });
+      columnIdx.contents = columnIdx.contents + colSpan | 0;
+    };
+    let queriedCheerio = cheerio(undefined, {
+      TAG: "CheerioElement",
+      _0: row
+    });
+    let queriedCheerio$1 = queriedCheerio.find("td");
+    queriedCheerio$1.each(callback);
+  });
+  return allCells;
+}
+
 export {
   CheerioFacade,
-  _initializeCheerio,
+  _loadCheerio,
   _sanityCheckHeaders,
   parseIntOr,
   removeInnerWhiteSpace,
   _getHeaderCells,
+  _getDataCells,
 }
 /* cheerio Not a pure module */
