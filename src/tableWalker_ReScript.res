@@ -245,60 +245,51 @@ type rec dataCell = {
   _cheerioEl: option<CheerioFacade.cheerioElement>,
 }
 
+let getStartIndexForCell = (allCells, ~initialColumnIdx, ~rowIndex) => {
+  let rec shiftRight = columnIdx => {
+    let maybeShiftCellRight = allCells->Array.find(cell => {
+      cell.colStart <= columnIdx && columnIdx <= cell.colEnd && cell.rowEnd >= rowIndex
+    })
+
+    switch maybeShiftCellRight {
+    | Some(shiftCell) => {
+        Console.log(
+          `Row no. ${rowIndex->Int.toString}: At column ${columnIdx->Int.toString} I found a cell of an earlier row... one to the right`,
+        )
+        shiftRight(shiftCell.colEnd + 1)
+      }
+    | None => columnIdx
+    }
+  }
+
+  shiftRight(initialColumnIdx)
+}
+
 let _getDataCells: CheerioFacade.loadedCheerio<'a> => array<dataCell> = cheerio => {
   let rows = cheerio(None, CheerioFacade.String("tr:has(td)"))
   Console.log(`Found ${CheerioFacade.getLengthString(rows)} rows (not including rowspans).`)
 
   let allCells = []
-
   CheerioFacade.each(rows, (rowIndex, row) => {
+    let dataCells = cheerio(None, CheerioFacade.CheerioElement(row))->CheerioFacade.find("td")
+
     // `columnIdx` basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
     // So even the first `<td>` of a `<tr>` can be in some column that is not index 0, because another row's cells have rowspan >1.
     // See test "Staatssekretaer has correct colStart and doesnt mess up Partei column"
     let columnIdx = ref(0)
-    CheerioFacade.each(cheerio(None, CheerioFacade.CheerioElement(row))->CheerioFacade.find("td"), (
-      _,
-      cell,
-    ) => {
-      let colSpan = CheerioFacade.getColspanInt(cell)
-      let rowSpan = CheerioFacade.getRowspanInt(cell)
 
-      let rec shiftRight = () => {
-        let maybeShiftCellRight = allCells->Array.find(
-          cell => {
-            cell.colStart <= columnIdx.contents &&
-            columnIdx.contents <= cell.colEnd &&
-            cell.rowEnd >= rowIndex
-          },
-        )
-
-        switch maybeShiftCellRight {
-        | Some(shiftCell) => {
-            Console.log(
-              `Row no. ${rowIndex->Int.toString}: At column ${columnIdx.contents->Int.toString} I found a cell of an earlier row... one to the right`,
-            )
-            columnIdx := shiftCell.colEnd + 1
-            shiftRight()
-          }
-        | None => ()
-        }
-      }
-
-      shiftRight()
+    CheerioFacade.each(dataCells, (_, cell) => {
+      let colStart = getStartIndexForCell(allCells, ~initialColumnIdx=columnIdx.contents, ~rowIndex)
+      let colEnd = colStart + CheerioFacade.getColspanInt(cell) - 1
+      let rowEnd = rowIndex + CheerioFacade.getRowspanInt(cell) - 1
 
       // We need all cells regardless of their content because later
       // column/row index calculation is based on also the empty cells.
       allCells
-      ->Array.push({
-        colStart: columnIdx.contents,
-        colEnd: columnIdx.contents + colSpan - 1,
-        rowStart: rowIndex,
-        rowEnd: rowIndex + rowSpan - 1,
-        _cheerioEl: Some(cell),
-      })
+      ->Array.push({colStart, colEnd, rowStart: rowIndex, rowEnd, _cheerioEl: Some(cell)})
       ->ignore
 
-      columnIdx := columnIdx.contents + colSpan
+      columnIdx := colEnd + 1
     })
   })
 

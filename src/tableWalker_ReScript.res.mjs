@@ -201,6 +201,26 @@ function _getHeaderCells(loadedCheerio) {
   });
 }
 
+function getStartIndexForCell(allCells, initialColumnIdx, rowIndex) {
+  let _columnIdx = initialColumnIdx;
+  while (true) {
+    let columnIdx = _columnIdx;
+    let maybeShiftCellRight = allCells.find(cell => {
+      if (cell.colStart <= columnIdx && columnIdx <= cell.colEnd) {
+        return cell.rowEnd >= rowIndex;
+      } else {
+        return false;
+      }
+    });
+    if (maybeShiftCellRight === undefined) {
+      return columnIdx;
+    }
+    console.log("Row no. " + rowIndex.toString() + ": At column " + columnIdx.toString() + " I found a cell of an earlier row... one to the right");
+    _columnIdx = maybeShiftCellRight.colEnd + 1 | 0;
+    continue;
+  };
+}
+
 function _getDataCells(cheerio) {
   let rows = cheerio(undefined, {
     TAG: "String",
@@ -209,45 +229,27 @@ function _getDataCells(cheerio) {
   console.log("Found " + rows.length.toString() + " rows (not including rowspans).");
   let allCells = [];
   rows.each((rowIndex, row) => {
-    let columnIdx = {
-      contents: 0
-    };
-    let callback = (param, cell) => {
-      let colSpan = getColspanInt(cell);
-      let rowSpan = getRowspanInt(cell);
-      let shiftRight = () => {
-        while (true) {
-          let maybeShiftCellRight = allCells.find(cell => {
-            if (cell.colStart <= columnIdx.contents && columnIdx.contents <= cell.colEnd) {
-              return cell.rowEnd >= rowIndex;
-            } else {
-              return false;
-            }
-          });
-          if (maybeShiftCellRight === undefined) {
-            return;
-          }
-          console.log("Row no. " + rowIndex.toString() + ": At column " + columnIdx.contents.toString() + " I found a cell of an earlier row... one to the right");
-          columnIdx.contents = maybeShiftCellRight.colEnd + 1 | 0;
-          continue;
-        };
-      };
-      shiftRight();
-      allCells.push({
-        colStart: columnIdx.contents,
-        colEnd: (columnIdx.contents + colSpan | 0) - 1 | 0,
-        rowStart: rowIndex,
-        rowEnd: (rowIndex + rowSpan | 0) - 1 | 0,
-        _cheerioEl: Primitive_option.some(cell)
-      });
-      columnIdx.contents = columnIdx.contents + colSpan | 0;
-    };
     let queriedCheerio = cheerio(undefined, {
       TAG: "CheerioElement",
       _0: row
     });
-    let queriedCheerio$1 = queriedCheerio.find("td");
-    queriedCheerio$1.each(callback);
+    let dataCells = queriedCheerio.find("td");
+    let columnIdx = {
+      contents: 0
+    };
+    dataCells.each((param, cell) => {
+      let colStart = getStartIndexForCell(allCells, columnIdx.contents, rowIndex);
+      let colEnd = (colStart + getColspanInt(cell) | 0) - 1 | 0;
+      let rowEnd = (rowIndex + getRowspanInt(cell) | 0) - 1 | 0;
+      allCells.push({
+        colStart: colStart,
+        colEnd: colEnd,
+        rowStart: rowIndex,
+        rowEnd: rowEnd,
+        _cheerioEl: Primitive_option.some(cell)
+      });
+      columnIdx.contents = colEnd + 1 | 0;
+    });
   });
   return allCells;
 }
@@ -259,6 +261,7 @@ export {
   parseIntOr,
   removeInnerWhiteSpace,
   _getHeaderCells,
+  getStartIndexForCell,
   _getDataCells,
 }
 /* cheerio Not a pure module */
