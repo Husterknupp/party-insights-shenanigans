@@ -68,7 +68,8 @@ module CheerioFacade = {
     "cheerio"
 
   type basicAcceptedElems = CheerioElement(cheerioElement) | String(string)
-  type loadedCheerio<'a> = (option<'a>, basicAcceptedElems) => queriedCheerio
+  type unsafeJsCheerio
+  type loadedCheerio = (option<unsafeJsCheerio>, basicAcceptedElems) => queriedCheerio
 
   // %raw because I couldn't make the type of basicAcceptedElems work
   let applyElementToCheerioUnsafe = %raw(`
@@ -79,7 +80,7 @@ module CheerioFacade = {
   let load = (html, maybeOptions, isDocument) => {
     let loadedCheerio = cheerio["load"](html, maybeOptions, isDocument)
 
-    let betterSelectorFunction: loadedCheerio<'a> = (unsafeFromJsLand, basicAcceptedElems) => {
+    let betterSelectorFunction: loadedCheerio = (unsafeFromJsLand, basicAcceptedElems) => {
       let result = switch (unsafeFromJsLand, basicAcceptedElems) {
       | (Some(stringOrElement), _) => applyElementToCheerioUnsafe(stringOrElement, loadedCheerio)
       | (None, String(str)) => applyElementToCheerioUnsafe(str, loadedCheerio)
@@ -209,7 +210,7 @@ type headerCell = {
   linesOfText: array<string>,
 }
 
-let _getHeaderCells: CheerioFacade.loadedCheerio<'a> => array<headerCell> = loadedCheerio => {
+let _getHeaderCells: CheerioFacade.loadedCheerio => array<headerCell> = loadedCheerio => {
   let ths = loadedCheerio(None, CheerioFacade.String("th"))
   _sanityCheckHeaders(ths)
 
@@ -265,7 +266,7 @@ let getStartIndexForCell = (allCells, ~initialColumnIdx, ~rowIndex) => {
   shiftRight(initialColumnIdx)
 }
 
-let _getDataCells: CheerioFacade.loadedCheerio<'a> => array<dataCell> = cheerio => {
+let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
   let rows = cheerio(None, CheerioFacade.String("tr:has(td)"))
   Console.log(`Found ${CheerioFacade.getLengthString(rows)} rows (not including rowspans).`)
 
