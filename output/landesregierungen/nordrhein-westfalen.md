@@ -3,7 +3,7 @@
 Ministerpräsident, Staatskanzlei:
 * Name: Hendrik Wüst
 * Partei: CDU
-* Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg/400px-Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg)
+* Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Inauguration_of_the_LUNA_Analog_Facility-4541_%28cropped%29.jpg/400px-Inauguration_of_the_LUNA_Analog_Facility-4541_%28cropped%29.jpg)
 
 Wirtschaft, Industrie, Klimaschutz und Energie (gleichzeitig: Stellvertreterin des Ministerpräsidenten):
 * Name: Mona Neubaur
