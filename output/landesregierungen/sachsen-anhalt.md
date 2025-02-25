@@ -3,7 +3,7 @@
 Ministerpräsident:
 * Name: Reiner Haseloff
 * Partei: CDU
-* Profilbild: ![Reiner Haseloff](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg/400px-Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg)
+* Profilbild: ![Reiner Haseloff](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93090.jpg/400px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93090.jpg)
 
 Minister für Wissenschaft, Energie, Klimaschutz und Umwelt (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
 * Name: Armin Willingmann
