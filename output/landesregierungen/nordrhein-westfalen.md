@@ -23,7 +23,7 @@ Inneres:
 Arbeit, Gesundheit und Soziales:
 * Name: Karl-Josef Laumann
 * Partei: CDU
-* Profilbild: ![Karl-Josef Laumann](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/20181003_M%C3%BCnsterland_Giro%2C_Karl-Josef_Laumann%2C_Coesfeld_%2807844%29.jpg/400px-20181003_M%C3%BCnsterland_Giro%2C_Karl-Josef_Laumann%2C_Coesfeld_%2807844%29.jpg)
+* Profilbild: ![Karl-Josef Laumann](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93038.jpg/400px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93038.jpg)
 
 Justiz:
 * Name: Benjamin Limbach
@@ -53,7 +53,7 @@ Kinder, Jugend, Familie, Gleichstellung, Flucht und Integration:
 Heimat, Kommunales, Bau und Digitalisierung:
 * Name: Ina Scharrenbach
 * Partei: CDU
-* Profilbild: ![Ina Scharrenbach](https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Ina_Scharrenbach_%282017%29.jpg/400px-Ina_Scharrenbach_%282017%29.jpg)
+* Profilbild: ![Ina Scharrenbach](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93039.jpg/400px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93039.jpg)
 
 Kultur und Wissenschaft:
 * Name: Ina Brandes

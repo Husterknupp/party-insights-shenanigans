@@ -7,6 +7,12 @@ export function writeAsJson(fileName, output) {
 }
 
 function formatImageUrl(minister) {
+  console.assert(
+    minister.imageUrl !== undefined,
+    "`imageUrl` must not be undefined but it is",
+    minister
+  );
+
   const usefulImage = !(
     minister.imageUrl === null ||
     minister.imageUrl.includes("replace_this_image") ||
@@ -29,7 +35,7 @@ export function writeAsMarkdown(fileName, title, headingField, data) {
         Object.keys(minister)
           // Have the image as last because it looks shitty between two text items
           .sort((keyA, keyB) =>
-            keyA === "imageUrl" ? 1 : keyB === "imageUrl" ? -1 : 0,
+            keyA === "imageUrl" ? 1 : keyB === "imageUrl" ? -1 : 0
           )
           .map((key) => {
             const formatActions = {

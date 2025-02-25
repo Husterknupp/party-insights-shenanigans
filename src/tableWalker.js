@@ -77,7 +77,7 @@ export default function tableWalker(html) {
     .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   const rows = $(`tr:has(td)`);
   console.log(
-    `Found ${ths.length} table headers (spanning ${columnCount} columns). ${rows.length} rows (not including rowspans).`,
+    `Found ${ths.length} table headers (spanning ${columnCount} columns). ${rows.length} rows (not including rowspans).`
   );
 
   const headers = [];
@@ -107,11 +107,11 @@ export default function tableWalker(html) {
             (cell) =>
               cell.colStart <= columnIdx &&
               columnIdx <= cell.colEnd &&
-              cell.rowEnd >= rowIndex,
+              cell.rowEnd >= rowIndex
           );
           if (maybeShiftCellRight) {
             console.log(
-              `Row no. ${rowIndex}: At column ${columnIdx} I found a cell of an earlier row... one to the right`,
+              `Row no. ${rowIndex}: At column ${columnIdx} I found a cell of an earlier row... one to the right`
             );
             columnIdx = maybeShiftCellRight.colEnd + 1;
           }
@@ -178,7 +178,7 @@ export default function tableWalker(html) {
 
       const header = headers.find(
         (header) =>
-          header.colStart <= cell.colStart && cell.colStart <= header.colEnd,
+          header.colStart <= cell.colStart && cell.colStart <= header.colEnd
       ).linesOfText[0]; // Hopefully (🤞) header cells have not more than one line of text
 
       // somehow feels weird to expose Cheerio
@@ -189,7 +189,11 @@ export default function tableWalker(html) {
       return { ...cell, imageUrl, header, linesOfText };
     })
     .filter((cell) => {
-      // Cells with no useful value - seem only confusing for user
-      return cell.linesOfText.length !== 0 || cell.imageUrl !== undefined;
+      // Cells with no useful value seem only confusing for user -- we filter them out.
+      if (cell.linesOfText.length === 0 && cell.imageUrl === undefined) {
+        return false;
+      } else {
+        return true;
+      }
     });
 }

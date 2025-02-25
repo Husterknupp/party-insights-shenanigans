@@ -25,9 +25,11 @@
   },
   {
     "amt": "Minister der Justiz",
-    "name": "Herbert Mertin",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/FDP_Fraktion_RLP_Herbert_Mertin_2.jpg/400px-FDP_Fraktion_RLP_Herbert_Mertin_2.jpg",
-    "party": "FDP"
+    "name": "derzeit vakant",
+    "imageUrl": [
+      "Placeholder"
+    ],
+    "party": "derzeit vakant"
   },
   {
     "amt": "Minister des Innern und für Sport",
