@@ -28,12 +28,12 @@ Ministerin für Wirtschaft, Landwirtschaft und Ländlichen Raum:
 Minister für Umwelt, Energie, Naturschutz und Forsten:
 * Name: Tilo Kummer
 * Partei: BSW
-* Profilbild: ![Tilo Kummer](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/2024-09-26_Politik%2C_Th%C3%BCringer_Landtag%2C_Konstituierung_STP_5907_by_Stepro.jpg/400px-2024-09-26_Politik%2C_Th%C3%BCringer_Landtag%2C_Konstituierung_STP_5907_by_Stepro.jpg)
+* Profilbild: ![Tilo Kummer](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93060.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93060.jpg)
 
 Ministerin für Justiz, Migration und Verbraucherschutz:
 * Name: Beate Meißner
 * Partei: CDU
-* Profilbild: ![Beate Meißner](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg/400px-2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg)
+* Profilbild: ![Beate Meißner](https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93053.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93053.jpg)
 
 Ministerin für Soziales, Gesundheit, Arbeit und Familie:
 * Name: Katharina Schenk
