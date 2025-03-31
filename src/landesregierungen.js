@@ -26,7 +26,7 @@ export function createMinister(amt, ministerName, party, imageUrl) {
   } catch (e) {
     console.error(
       `Cannot create minister object for name ${JSON.stringify(ministerName)}. Message:`,
-      e.message,
+      e.message
     );
     throw e;
   }
@@ -44,18 +44,18 @@ export function getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings) {
   // There might be two columns of the same header.
   // Eg, tables often have more than one "name" column.
   const relevantCells = cells.filter((cell) =>
-    isColumnHeaderLike(cell, searchStrings),
+    isColumnHeaderLike(cell, searchStrings)
   );
   if (relevantCells.length === 0) {
     return [];
   }
 
   const firstColumnWithThatName = relevantCells.sort(
-    (cellA, cellB) => 0 - (cellB.colStart - cellA.colStart),
+    (cellA, cellB) => 0 - (cellB.colStart - cellA.colStart)
   )[0].colStart;
 
   return relevantCells.filter(
-    (cell) => cell.colStart === firstColumnWithThatName,
+    (cell) => cell.colStart === firstColumnWithThatName
   );
 }
 
@@ -92,7 +92,7 @@ function findRelevantTable(html) {
     }
   }
   throw Error(
-    "Couldn't find relevant table with any of the names " + options.toString(),
+    "Couldn't find relevant table with any of the names " + options.toString()
   );
 }
 
@@ -120,7 +120,7 @@ async function _extract(bundesland) {
   const amtSearch = ["amt", "ressort"];
   const amtColumn = getAllCellsOfFirstColumnWithHeaderLike(cells, amtSearch);
   if (amtColumn.length === 0) {
-    throw new Error(`Found no cells for headers ${searchStrings.toString()}`);
+    throw new Error(`Found no cells for headers ${amtSearch.toString()}`);
   }
 
   const result = [];
@@ -140,10 +140,22 @@ async function _extract(bundesland) {
     ]);
 
     if (
+      ministerName.linesOfText[0] === "Herbert Mertin" &&
+      imageUrl.linesOfText[0] === "derzeit vakant" &&
+      bundesland.urlCabinet ===
+        "https://de.wikipedia.org/wiki/Kabinett_Schweitzer"
+    ) {
+      // For Rheinland-Pfalz, there is an imageUrl undefined.
+      // We expect this case and need to treat it specially. The former minister ceased and there is no replacement yet
+      const ministerName = { linesOfText: ["derzeit vakant"] };
+      const party = { linesOfText: ["derzeit vakant"] };
+      const imageUrl = { imageUrl: ["Placeholder"] };
+      result.push(createMinister(amt, ministerName, party, imageUrl));
+    } else if (
       amt === undefined ||
       ministerName === undefined ||
       party === undefined ||
-      imageUrl === undefined
+      imageUrl?.imageUrl === undefined
     ) {
       console.error("This politician misses some detail: ", {
         amt,
@@ -153,18 +165,18 @@ async function _extract(bundesland) {
       });
       console.log(`\nError with cabinet ${bundesland.urlCabinet}`);
       throw new Error("Could not extract table info");
-    }
+    } else {
+      const sameName = result.find((minister) =>
+        ministerName.linesOfText.includes(minister.name)
+      );
+      if (sameName !== undefined) {
+        const subTitle = sameName.amt;
+        sameName.amt = `${amt.linesOfText.join(", ")} (gleichzeitig: ${subTitle})`;
+        continue;
+      }
 
-    const sameName = result.find((minister) =>
-      ministerName.linesOfText.includes(minister.name),
-    );
-    if (sameName !== undefined) {
-      const subTitle = sameName.amt;
-      sameName.amt = `${amt.linesOfText.join(", ")} (gleichzeitig: ${subTitle})`;
-      continue;
+      result.push(createMinister(amt, ministerName, party, imageUrl));
     }
-
-    result.push(createMinister(amt, ministerName, party, imageUrl));
   }
 
   console.log(`\nfound ${result.length} minister\n`);
@@ -173,13 +185,13 @@ async function _extract(bundesland) {
   // todo also add URL of cabinet to output files
   writeAsJson(
     `output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.json`,
-    result,
+    result
   );
   writeAsMarkdown(
     `output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.md`,
     bundesland.state + " - " + cabinetName,
     "amt",
-    result,
+    result
   );
 }
 
@@ -189,7 +201,7 @@ export default async function extract() {
   const bundeslaender = JSON.parse(
     readFileSync("./output/ministerpraesidenten.json", {
       encoding: "UTF-8",
-    }),
+    })
   );
 
   const notMapped = [];

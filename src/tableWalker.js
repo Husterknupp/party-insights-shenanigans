@@ -30,7 +30,7 @@ function _findHeaderTextForCell(headerCells, cell) {
 }
 
 function _cellHasContent(cell) {
-  // Cells with no useful value - seem only confusing for user
+  // Cells with no useful value - seem only confusing for user -- we filter them out.
   return cell.linesOfText.length !== 0 || cell.imageUrl !== undefined;
 }
 

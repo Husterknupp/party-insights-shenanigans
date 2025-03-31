@@ -10,15 +10,20 @@ Bildung und Kindertagesstätten (gleichzeitig: Stellvertreterin der Ministerprä
 * Partei: Die Linke
 * Profilbild: ![Simone Oldenburg](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/2020_LINKE_Oldenburg%2C_Simone_OK9968.jpg/400px-2020_LINKE_Oldenburg%2C_Simone_OK9968.jpg)
 
-Wirtschaft, Infrastruktur, Tourismus und Arbeit:
-* Name: Wolfgang Blank
-* Partei: parteilos
-* Profilbild: *Kein Bild verfügbar*
-
 Inneres, Bau und Digitalisierung:
 * Name: Christian Pegel
 * Partei: SPD
 * Profilbild: ![Christian Pegel](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/18-05-2017-Christian_Pegel-JonasR.jpg/400px-18-05-2017-Christian_Pegel-JonasR.jpg)
+
+Justiz, Gleichstellung und Verbraucherschutz:
+* Name: Jacqueline Bernhardt
+* Partei: Die Linke
+* Profilbild: ![Jacqueline Bernhardt](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/17-05-18-Jacqueline_Bernhardt_RR79524.jpg/400px-17-05-18-Jacqueline_Bernhardt_RR79524.jpg)
+
+Wirtschaft, Infrastruktur, Tourismus und Arbeit:
+* Name: Wolfgang Blank
+* Partei: parteilos
+* Profilbild: *Kein Bild verfügbar*
 
 Soziales, Gesundheit und Sport:
 * Name: Stefanie Drese
@@ -39,8 +44,3 @@ Finanzen:
 * Name: Heiko Geue
 * Partei: SPD
 * Profilbild: *Kein Bild verfügbar*
-
-Justiz, Gleichstellung und Verbraucherschutz:
-* Name: Jacqueline Bernhardt
-* Partei: Die Linke
-* Profilbild: ![Jacqueline Bernhardt](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/17-05-18-Jacqueline_Bernhardt_RR79524.jpg/400px-17-05-18-Jacqueline_Bernhardt_RR79524.jpg)

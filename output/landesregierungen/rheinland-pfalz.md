@@ -21,9 +21,9 @@ Ministerin der Finanzen:
 * Profilbild: ![Doris Ahnen](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Doris_Ahnen-7462.jpg/400px-Doris_Ahnen-7462.jpg)
 
 Minister der Justiz:
-* Name: Herbert Mertin
-* Partei: FDP
-* Profilbild: ![Herbert Mertin](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/FDP_Fraktion_RLP_Herbert_Mertin_2.jpg/400px-FDP_Fraktion_RLP_Herbert_Mertin_2.jpg)
+* Name: derzeit vakant
+* Partei: derzeit vakant
+* Profilbild: *Kein Bild verfügbar*
 
 Minister des Innern und für Sport:
 * Name: Michael Ebling
