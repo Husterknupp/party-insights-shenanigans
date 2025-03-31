@@ -6,53 +6,8 @@ import {
   _loadCheerio,
   _getHeaderCells,
   _getDataCells,
+  _extractTextFromCell,
 } from "./tableWalker_ReScript.res.mjs";
-
-function removeInnerWhiteSpace(text) {
-  // Line breaks in HTML can cause weird amount of whitespace.
-  // Removes also inner linebreaks.
-  return text.replace(/\s+/g, " ").trim();
-}
-
-function _extractTextFromCell(cheerio, cell) {
-  cheerio(cell._cheerioEl).find("small").remove();
-  cheerio(cell._cheerioEl).find("sup").remove();
-
-  const linesOfText = [];
-  let combinedText = "";
-  const nodes = cheerio(cell._cheerioEl).contents().toArray();
-
-  for (const node of nodes) {
-    const text = cheerio(node).text();
-    switch (node.name) {
-      case "p":
-        if (combinedText !== "") {
-          linesOfText.push(removeInnerWhiteSpace(combinedText));
-          combinedText = "";
-        }
-        if (text.trim() !== "") {
-          linesOfText.push(removeInnerWhiteSpace(text));
-        }
-        break;
-      case "br":
-        if (combinedText !== "") {
-          linesOfText.push(removeInnerWhiteSpace(combinedText));
-          combinedText = "";
-        }
-        break;
-      default:
-        if (text.trim() !== "") {
-          combinedText = combinedText + text;
-        }
-    }
-  }
-
-  if (combinedText !== "") {
-    linesOfText.push(removeInnerWhiteSpace(combinedText));
-  }
-
-  return linesOfText;
-}
 
 function _extractAndResizeImageUrl(cheerio, cell) {
   let imageUrl = cheerio(cell._cheerioEl).find("img").last().attr("src");

@@ -61,6 +61,8 @@ module CheerioFacade = {
     "length": int,
     "each": ((int, cheerioElement) => unit) => unit,
     "find": string => queriedCheerio,
+    "remove": unit => queriedCheerio,
+    "contents": unit => queriedCheerio,
   }
 
   @module
@@ -100,7 +102,7 @@ module CheerioFacade = {
   let getType: cheerioElement => elementType = element => element["type"]
   let getData: cheerioElement => string = element => {
     if (
-      getType(element) !== #text || getType(element) !== #comment || getType(element) !== #directive
+      getType(element) !== #text && getType(element) !== #comment && getType(element) !== #directive
     ) {
       Exn.raiseError("Trying to get 'data' from non-text element")
     }
@@ -137,7 +139,7 @@ module CheerioFacade = {
     | Some(parsed) => parsed
     | None => 1
     }
-  let getText = (element, loadedCheerio) => {
+  let getText: (cheerioElement, loadedCheerio) => string = (element, loadedCheerio) => {
     loadedCheerio(None, CheerioElement(element))["text"]()
   }
   let getLengthString: queriedCheerio => string = queriedCheerio => {
@@ -149,6 +151,10 @@ module CheerioFacade = {
   let find: (queriedCheerio, string) => queriedCheerio = (queriedCheerio, queryString) => {
     queriedCheerio["find"](queryString)
   }
+  let remove: queriedCheerio => queriedCheerio = queriedCheerio => {
+    queriedCheerio["remove"]()
+  }
+  let contents: queriedCheerio => queriedCheerio = queriedCheerio => queriedCheerio["contents"]()
 }
 
 let _loadCheerio = html =>
@@ -295,4 +301,73 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
   })
 
   allCells
+}
+
+let removeInnerWhiteSpace = text => {
+  // Line breaks in HTML can cause weird amount of whitespace.
+  // Removes also inner linebreaks.
+  String.replaceAllRegExp(text, /\s+/g, " ")->String.trim
+}
+
+/**
+ * Removes all line breaks that are not between <p> or <br> tags.
+ * This is necessary because the HTML source code of the page contains
+ * a lot of line breaks that are not visible in the browser.
+ * This function removes those line breaks to make the text more readable.
+ */
+let removeInvisibleSourceLineBreaks = (
+  cheerio: CheerioFacade.loadedCheerio,
+  node: CheerioFacade.cheerioElement,
+) => {
+  let result = []
+  let nodes =
+    cheerio(None, CheerioElement(node))
+    ->CheerioFacade.contents
+    ->CheerioFacade.cheerioToElementArray
+
+  let combinedText = Array.reduce(nodes, "", (acc, node) => {
+    let text = CheerioFacade.getText(node, cheerio)
+    let result: string = switch CheerioFacade.getName(node) {
+    | "p" =>
+      if acc !== "" {
+        result->Array.push(removeInnerWhiteSpace(acc))
+      }
+      if String.trim(text) !== "" {
+        result->Array.push(removeInnerWhiteSpace(text))
+      }
+      ""
+    | "br" =>
+      if acc !== "" {
+        result->Array.push(removeInnerWhiteSpace(acc))
+      }
+      ""
+    | _ =>
+      if String.trim(text) !== "" {
+        acc ++ text
+      } else {
+        acc
+      }
+    }
+    result
+  })
+
+  if combinedText !== "" {
+    result->Array.push(removeInnerWhiteSpace(combinedText))
+  }
+
+  result
+}
+
+let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
+  cheerio(None, CheerioElement(cell._cheerioEl->Option.getExn))
+  ->CheerioFacade.find("small")
+  ->CheerioFacade.remove
+  ->ignore
+
+  cheerio(None, CheerioElement(cell._cheerioEl->Option.getExn))
+  ->CheerioFacade.find("sup")
+  ->CheerioFacade.remove
+  ->ignore
+
+  removeInvisibleSourceLineBreaks(cheerio, cell._cheerioEl->Option.getExn)
 }

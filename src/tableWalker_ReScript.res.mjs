@@ -46,7 +46,7 @@ function getType(element) {
 }
 
 function getData(element) {
-  if (element.type !== "text" || element.type !== "comment" || element.type !== "directive") {
+  if (element.type !== "text" && element.type !== "comment" && element.type !== "directive") {
     Exn.raiseError("Trying to get 'data' from non-text element");
   }
   return element.data;
@@ -119,6 +119,14 @@ function find(queriedCheerio, queryString) {
   return queriedCheerio.find(queryString);
 }
 
+function remove(queriedCheerio) {
+  return queriedCheerio.remove();
+}
+
+function contents(queriedCheerio) {
+  return queriedCheerio.contents();
+}
+
 let CheerioFacade = {
   applyElementToCheerioUnsafe: applyElementToCheerioUnsafe,
   load: load,
@@ -136,7 +144,9 @@ let CheerioFacade = {
   getText: getText,
   getLengthString: getLengthString,
   each: each,
-  find: find
+  find: find,
+  remove: remove,
+  contents: contents
 };
 
 function _loadCheerio(html) {
@@ -254,14 +264,75 @@ function _getDataCells(cheerio) {
   return allCells;
 }
 
+function removeInnerWhiteSpace$1(text) {
+  return text.replaceAll(/\s+/g, " ").trim();
+}
+
+function removeInvisibleSourceLineBreaks(cheerio, node) {
+  let result = [];
+  let queriedCheerio = cheerio(undefined, {
+    TAG: "CheerioElement",
+    _0: node
+  });
+  let queriedCheerio$1 = queriedCheerio.contents();
+  let nodes = queriedCheerio$1.toArray();
+  let combinedText = Core__Array.reduce(nodes, "", (acc, node) => {
+    let text = getText(node, cheerio);
+    let match = node.name;
+    switch (match) {
+      case "br" :
+        if (acc !== "") {
+          result.push(removeInnerWhiteSpace$1(acc));
+        }
+        return "";
+      case "p" :
+        if (acc !== "") {
+          result.push(removeInnerWhiteSpace$1(acc));
+        }
+        if (text.trim() !== "") {
+          result.push(removeInnerWhiteSpace$1(text));
+        }
+        return "";
+      default:
+        if (text.trim() !== "") {
+          return acc + text;
+        } else {
+          return acc;
+        }
+    }
+  });
+  if (combinedText !== "") {
+    result.push(removeInnerWhiteSpace$1(combinedText));
+  }
+  return result;
+}
+
+function _extractTextFromCell(cheerio, cell) {
+  let queriedCheerio = cheerio(undefined, {
+    TAG: "CheerioElement",
+    _0: Core__Option.getExn(cell._cheerioEl, undefined)
+  });
+  let queriedCheerio$1 = queriedCheerio.find("small");
+  queriedCheerio$1.remove();
+  let queriedCheerio$2 = cheerio(undefined, {
+    TAG: "CheerioElement",
+    _0: Core__Option.getExn(cell._cheerioEl, undefined)
+  });
+  let queriedCheerio$3 = queriedCheerio$2.find("sup");
+  queriedCheerio$3.remove();
+  return removeInvisibleSourceLineBreaks(cheerio, Core__Option.getExn(cell._cheerioEl, undefined));
+}
+
 export {
   CheerioFacade,
   _loadCheerio,
   _sanityCheckHeaders,
   parseIntOr,
-  removeInnerWhiteSpace,
   _getHeaderCells,
   getStartIndexForCell,
   _getDataCells,
+  removeInnerWhiteSpace$1 as removeInnerWhiteSpace,
+  removeInvisibleSourceLineBreaks,
+  _extractTextFromCell,
 }
 /* cheerio Not a pure module */
