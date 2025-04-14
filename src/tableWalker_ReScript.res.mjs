@@ -127,6 +127,14 @@ function contents(queriedCheerio) {
   return queriedCheerio.contents();
 }
 
+function getLast(queriedCheerio) {
+  return queriedCheerio.last();
+}
+
+function getSrc(element) {
+  return Primitive_option.fromNullable(element.attr("src"));
+}
+
 let CheerioFacade = {
   applyElementToCheerioUnsafe: applyElementToCheerioUnsafe,
   load: load,
@@ -146,7 +154,9 @@ let CheerioFacade = {
   each: each,
   find: find,
   remove: remove,
-  contents: contents
+  contents: contents,
+  getLast: getLast,
+  getSrc: getSrc
 };
 
 function _loadCheerio(html) {
@@ -323,6 +333,25 @@ function _extractTextFromCell(cheerio, cell) {
   return removeInvisibleSourceLineBreaks(cheerio, Core__Option.getExn(cell._cheerioEl, undefined));
 }
 
+function _extractAndResizeImageUrl(cheerio, cell) {
+  let queriedCheerio = cheerio(undefined, {
+    TAG: "CheerioElement",
+    _0: Core__Option.getExn(cell._cheerioEl, undefined)
+  });
+  let queriedCheerio$1 = queriedCheerio.find("img");
+  let imageElement = queriedCheerio$1.last();
+  let url = Primitive_option.fromNullable(imageElement.attr("src"));
+  if (url === undefined) {
+    return;
+  }
+  let parts = url.split("/");
+  let filtered = parts.filter((param, index) => index !== (parts.length - 1 | 0));
+  let lastPart = Core__Option.getExn(filtered[filtered.length - 1 | 0], undefined);
+  let newLastPart = "400px-" + lastPart.replace(/\.tif$/, ".png");
+  filtered.push(newLastPart);
+  return "https:" + filtered.join("/");
+}
+
 export {
   CheerioFacade,
   _loadCheerio,
@@ -334,5 +363,6 @@ export {
   removeInnerWhiteSpace$1 as removeInnerWhiteSpace,
   removeInvisibleSourceLineBreaks,
   _extractTextFromCell,
+  _extractAndResizeImageUrl,
 }
 /* cheerio Not a pure module */

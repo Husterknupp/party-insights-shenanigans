@@ -48,6 +48,9 @@ module CheerioFacade = {
 
     // type ParentNode = Document | Element | CDATA;
     // type ChildNode = Text | Comment | ProcessingInstruction | Element | CDATA | Document;
+
+    // This seems to be jquery API--not sure how this ends up in the domhandler API
+    "attr": string => Nullable.t<string>,
   }
 
   // cheerio's load function return type:
@@ -63,6 +66,7 @@ module CheerioFacade = {
     "find": string => queriedCheerio,
     "remove": unit => queriedCheerio,
     "contents": unit => queriedCheerio,
+    "last": unit => cheerioElement,
   }
 
   @module
@@ -155,6 +159,12 @@ module CheerioFacade = {
     queriedCheerio["remove"]()
   }
   let contents: queriedCheerio => queriedCheerio = queriedCheerio => queriedCheerio["contents"]()
+  let getLast: queriedCheerio => cheerioElement = queriedCheerio => {
+    queriedCheerio["last"]()
+  }
+  let getSrc: cheerioElement => option<string> = element => {
+    element["attr"]("src")->Nullable.toOption
+  }
 }
 
 let _loadCheerio = html =>
@@ -370,4 +380,23 @@ let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell
   ->ignore
 
   removeInvisibleSourceLineBreaks(cheerio, cell._cheerioEl->Option.getExn)
+}
+
+let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
+  let imageElement =
+    cheerio(None, CheerioElement(cell._cheerioEl->Option.getExn))
+    ->CheerioFacade.find("img")
+    ->CheerioFacade.getLast
+
+  switch CheerioFacade.getSrc(imageElement) {
+  | None => None
+  | Some(url) => {
+      let parts = String.split(url, "/")
+      let filtered = Array.filterWithIndex(parts, (_, index) => index !== Array.length(parts) - 1)
+      let lastPart = filtered->Array.get(Array.length(filtered) - 1)->Option.getExn
+      let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, /\.tif$/, ".png")
+      filtered->Array.push(newLastPart)->ignore
+      Some("https:" ++ Array.join(filtered, "/"))
+    }
+  }
 }

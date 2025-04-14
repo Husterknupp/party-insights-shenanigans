@@ -7,20 +7,8 @@ import {
   _getHeaderCells,
   _getDataCells,
   _extractTextFromCell,
+  _extractAndResizeImageUrl,
 } from "./tableWalker_ReScript.res.mjs";
-
-function _extractAndResizeImageUrl(cheerio, cell) {
-  let imageUrl = cheerio(cell._cheerioEl).find("img").last().attr("src");
-  if (imageUrl !== undefined) {
-    // Resize image to non-thumb size
-    // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-    let parts = imageUrl.split("/");
-    parts = parts.filter((_, index) => index !== parts.length - 1);
-    parts.push("400px-" + parts[parts.length - 1].replace(".tif", ".png"));
-    imageUrl = "https:" + parts.join("/");
-  }
-  return imageUrl;
-}
 
 function _findHeaderTextForCell(headerCells, cell) {
   return headerCells.find(
