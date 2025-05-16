@@ -274,10 +274,6 @@ function _getDataCells(cheerio) {
   return allCells;
 }
 
-function removeInnerWhiteSpace$1(text) {
-  return text.replaceAll(/\s+/g, " ").trim();
-}
-
 function removeInvisibleSourceLineBreaks(cheerio, node) {
   let result = [];
   let queriedCheerio = cheerio(undefined, {
@@ -286,34 +282,74 @@ function removeInvisibleSourceLineBreaks(cheerio, node) {
   });
   let queriedCheerio$1 = queriedCheerio.contents();
   let nodes = queriedCheerio$1.toArray();
-  let combinedText = Core__Array.reduce(nodes, "", (acc, node) => {
+  Core__Option.forEach(Core__Array.reduce(nodes.map(node => {
     let text = getText(node, cheerio);
     let match = node.name;
     switch (match) {
       case "br" :
-        if (acc !== "") {
-          result.push(removeInnerWhiteSpace$1(acc));
-        }
-        return "";
+        return {
+          TAG: "Block",
+          _0: undefined
+        };
       case "p" :
-        if (acc !== "") {
-          result.push(removeInnerWhiteSpace$1(acc));
-        }
         if (text.trim() !== "") {
-          result.push(removeInnerWhiteSpace$1(text));
+          return {
+            TAG: "Block",
+            _0: text
+          };
         }
-        return "";
-      default:
-        if (text.trim() !== "") {
-          return acc + text;
-        } else {
-          return acc;
+        if (text.trim() === "") {
+          return {
+            TAG: "Block",
+            _0: undefined
+          };
         }
+        break;
     }
+    if (text.trim() !== "") {
+      return {
+        TAG: "Inline",
+        _0: text
+      };
+    } else {
+      return {
+        TAG: "Inline",
+        _0: undefined
+      };
+    }
+  }), undefined, (maybeAcc, node) => {
+    if (node.TAG === "Block") {
+      let text = node._0;
+      if (text !== undefined) {
+        if (maybeAcc !== undefined) {
+          result.push(removeInnerWhiteSpace(maybeAcc));
+          result.push(removeInnerWhiteSpace(text));
+        } else {
+          result.push(removeInnerWhiteSpace(text));
+        }
+        return;
+      } else if (maybeAcc !== undefined) {
+        result.push(removeInnerWhiteSpace(maybeAcc));
+        return;
+      } else {
+        return;
+      }
+    }
+    let text$1 = node._0;
+    if (text$1 !== undefined) {
+      if (maybeAcc !== undefined) {
+        return maybeAcc + text$1;
+      } else {
+        return text$1;
+      }
+    } else if (maybeAcc !== undefined) {
+      return maybeAcc;
+    } else {
+      return;
+    }
+  }), text => {
+    result.push(removeInnerWhiteSpace(text));
   });
-  if (combinedText !== "") {
-    result.push(removeInnerWhiteSpace$1(combinedText));
-  }
   return result;
 }
 
@@ -398,10 +434,10 @@ export {
   _loadCheerio,
   _sanityCheckHeaders,
   parseIntOr,
+  removeInnerWhiteSpace,
   _getHeaderCells,
   getStartIndexForCell,
   _getDataCells,
-  removeInnerWhiteSpace$1 as removeInnerWhiteSpace,
   removeInvisibleSourceLineBreaks,
   _extractTextFromCell,
   _extractAndResizeImageUrl,

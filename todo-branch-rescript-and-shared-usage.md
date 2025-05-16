@@ -4,15 +4,15 @@ Für die Nachwelt
 
 ## 2 August 2024
 
-I tried to do a bit much when I started in May 2024. Result of that time were two files:
+I tried to do a bit much when I started in May 2024. The result of that time were two files:
 
 - HtmlService.res
 - Politicianservice.res
 - (and their corresponding js transpilations)
 
-Today, I think it makes more sense to start smaller. Not switch from JavaScript to ReScript and at the same time, refactor the architecture. That's too much stuff where I can't test the intermediate results!
+Today, I think it makes more sense to start smaller. Not switch from JavaScript to ReScript, and at the same time, refactor the architecture. That's too much stuff where I can't test the intermediate results!
 
-### Eventually It Should Look Like This
+### Eventually, It Should Look Like This
 
 Here's the final structure how I want it to be:
 

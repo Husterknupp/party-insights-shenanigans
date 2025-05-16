@@ -313,11 +313,7 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
   allCells
 }
 
-let removeInnerWhiteSpace = text => {
-  // Line breaks in HTML can cause weird amount of whitespace.
-  // Removes also inner linebreaks.
-  String.replaceAllRegExp(text, /\s+/g, " ")->String.trim
-}
+type textTypes = Block(option<string>) | Inline(option<string>)
 
 /**
  * Removes all line breaks that are not between <p> or <br> tags.
@@ -335,35 +331,40 @@ let removeInvisibleSourceLineBreaks = (
     ->CheerioFacade.contents
     ->CheerioFacade.cheerioToElementArray
 
-  let combinedText = Array.reduce(nodes, "", (acc, node) => {
+  Array.map(nodes, node => {
     let text = CheerioFacade.getText(node, cheerio)
-    let result: string = switch CheerioFacade.getName(node) {
-    | "p" =>
-      if acc !== "" {
-        result->Array.push(removeInnerWhiteSpace(acc))
-      }
-      if String.trim(text) !== "" {
-        result->Array.push(removeInnerWhiteSpace(text))
-      }
-      ""
-    | "br" =>
-      if acc !== "" {
-        result->Array.push(removeInnerWhiteSpace(acc))
-      }
-      ""
-    | _ =>
-      if String.trim(text) !== "" {
-        acc ++ text
-      } else {
-        acc
-      }
+    switch CheerioFacade.getName(node) {
+    | "p" if String.trim(text) !== "" => Block(Some(text))
+    | "p" if String.trim(text) === "" => Block(None)
+    | "br" => Block(None)
+    | _ if String.trim(text) !== "" => Inline(Some(text))
+    | _ => Inline(None)
     }
-    result
   })
-
-  if combinedText !== "" {
-    result->Array.push(removeInnerWhiteSpace(combinedText))
-  }
+  ->Array.reduce(None, (maybeAcc, node) => {
+    switch (node, maybeAcc) {
+    | (Block(Some(text)), Some(acc)) => {
+        result->Array.push(removeInnerWhiteSpace(acc))
+        result->Array.push(removeInnerWhiteSpace(text))
+        None
+      }
+    | (Block(Some(text)), None) => {
+        result->Array.push(removeInnerWhiteSpace(text))
+        None
+      }
+    | (Block(None), Some(acc)) => {
+        result->Array.push(removeInnerWhiteSpace(acc))
+        None
+      }
+    | (Inline(Some(text)), Some(acc)) => Some(acc ++ text)
+    | (Inline(None), Some(acc)) => Some(acc)
+    | (Inline(Some(text)), None) => Some(text)
+    | _ => None
+    }
+  })
+  ->Option.forEach(text => {
+    result->Array.push(removeInnerWhiteSpace(text))
+  })
 
   result
 }
