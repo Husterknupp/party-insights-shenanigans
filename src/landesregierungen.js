@@ -6,7 +6,7 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
-import tableWalker from "./tableWalker.js";
+import { tableWalker } from "./tableWalker_ReScript.res.mjs";
 
 function sameRow(cellA, cellB) {
   return (

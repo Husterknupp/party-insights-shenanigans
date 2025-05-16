@@ -1,12 +1,14 @@
-import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
-import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
-import tableWalker from "./tableWalker.js";
+import { tableWalker } from "./tableWalker_ReScript.res.mjs";
+
 import {
   createMinister,
   getAllCellsOfFirstColumnWithHeaderLike,
   getLastCellOfFirstColumnWithHeaderLike,
   isColumnHeaderLike,
 } from "./landesregierungen.js";
+
+import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
+import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 
 // todo
 //  * consider moving helper functions together into one file
@@ -676,7 +678,7 @@ describe("tableWalker", () => {
 `;
 
     expect(() => tableWalker(table02)).toThrow(
-      "Cannot read properties of undefined (reading 'linesOfText')"
+      'Panic! Could not find matching header. Cell\'s content is "img". Cell is located at col 2 (colEnd: 2), row 1 (rowEnd: 1)'
     );
   });
 

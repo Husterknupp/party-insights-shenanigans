@@ -254,7 +254,7 @@ let _getHeaderCells: CheerioFacade.loadedCheerio => array<headerCell> = loadedCh
   })
 }
 
-type rec dataCell = {
+type dataCell = {
   colStart: int,
   colEnd: int,
   rowStart: int,
@@ -388,15 +388,79 @@ let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dat
     ->CheerioFacade.find("img")
     ->CheerioFacade.getLast
 
-  switch CheerioFacade.getSrc(imageElement) {
-  | None => None
-  | Some(url) => {
-      let parts = String.split(url, "/")
-      let filtered = Array.filterWithIndex(parts, (_, index) => index !== Array.length(parts) - 1)
-      let lastPart = filtered->Array.get(Array.length(filtered) - 1)->Option.getExn
-      let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, /\.tif$/, ".png")
-      filtered->Array.push(newLastPart)->ignore
-      Some("https:" ++ Array.join(filtered, "/"))
-    }
+  CheerioFacade.getSrc(imageElement)->Option.map(src => {
+    let parts = String.split(src, "/")
+    let filtered = Array.filterWithIndex(parts, (_, index) => index !== Array.length(parts) - 1)
+    let lastPart = filtered->Array.get(Array.length(filtered) - 1)->Option.getExn
+    let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, /\.tif$/, ".png")
+    filtered->Array.push(newLastPart)->ignore
+    "https:" ++ Array.join(filtered, "/")
+  })
+}
+
+let _findHeaderTextForCell = (
+  headerCells: array<headerCell>,
+  cell: dataCell,
+  content: array<string>,
+) => {
+  let header =
+    headerCells->Array.find(header =>
+      header.colStart <= cell.colStart && cell.colStart <= header.colEnd
+    )
+  switch header {
+  | Some(header) => header.linesOfText->Array.get(0)->Option.getExn // Hopefully (🤞) header cells have not more than one line of text
+  | None =>
+    Error.panic(
+      `Could not find matching header. Cell's content is "${content->Array.join(
+          "",
+        )}". Cell is located at col ${cell.colStart->Int.toString} (colEnd: ${cell.colEnd->Int.toString}), row ${cell.rowStart->Int.toString} (rowEnd: ${cell.rowEnd->Int.toString})`,
+    )
   }
+}
+
+type tableCell = {
+  colStart: int,
+  colEnd: int,
+  rowStart: int,
+  rowEnd: int,
+  imageUrl: option<string>,
+  header: string,
+  linesOfText: array<string>,
+}
+
+let _cellHasContent = (cell: tableCell) => {
+  // Cells with no useful value - seem only confusing for user -- we filter them out.
+  cell.linesOfText->Array.length !== 0 || cell.imageUrl->Option.isSome
+}
+
+/**
+ * tableWalker aims to be a more intuitive approach on how to assign cells to columns.
+ * 
+ * Find more ideas on API change in the todo markdown file.
+ */
+let tableWalker: string => array<tableCell> = (html: string) => {
+  let cheerio = _loadCheerio(html)
+  let headerCells = _getHeaderCells(cheerio)
+  let dataCells = _getDataCells(cheerio)
+
+  let tableCells =
+    dataCells
+    ->Array.map(cell => {
+      let linesOfText = _extractTextFromCell(cheerio, cell)
+      let imageUrl = _extractAndResizeImageUrl(cheerio, cell)
+      let header = _findHeaderTextForCell(headerCells, cell, linesOfText)
+
+      {
+        colStart: cell.colStart,
+        colEnd: cell.colEnd,
+        rowStart: cell.rowStart,
+        rowEnd: cell.rowEnd,
+        imageUrl,
+        header,
+        linesOfText,
+      }
+    })
+    ->Array.filter(_cellHasContent)
+
+  tableCells
 }

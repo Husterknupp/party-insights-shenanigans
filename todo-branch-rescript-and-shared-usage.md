@@ -12,7 +12,7 @@ I tried to do a bit much when I started in May 2024. Result of that time were tw
 
 Today, I think it makes more sense to start smaller. Not switch from JavaScript to ReScript and at the same time, refactor the architecture. That's too much stuff where I can't test the intermediate results!
 
-### Eventually It Should Look Like ...
+### Eventually It Should Look Like This
 
 Here's the final structure how I want it to be:
 
@@ -48,7 +48,7 @@ Then, call from inside landesregierungen file (and other extractors), call the s
     console.log(`Done with cabinet ${htmlService.cabinetName(response.data)}`)
 ```
 
-### But Until Then, ...
+### But Until Then, I Will
 
 Migrate one JavaScript method after the other (not the complete file), let run unit tests, commit, expect extractor output to be equivalent.
 
@@ -64,3 +64,43 @@ Migrate one JavaScript method after the other (not the complete file), let run u
 
 - unit tests in ReScript: [ReScript Jest](https://github.com/glennsl/rescript-jest)
 - or with Zora: [ReScript Zora](https://github.com/dusty-phillips/rescript-zora)
+- Ideas on a more concise API of TableWalker service
+
+```text
+  /*
+  MAKE THE tableWalker API MORE CONCISE - SOME IDEAS
+
+  VARIANT A
+  const wot = tableWalker(
+    html,
+    relevantTable=[
+      "Kabinett",
+      "Landesregierung",
+      "Mitglieder der Staatsregierung",
+      "Amtierende Regierungschefs",
+      "Zusammensetzung",
+      "Senat",
+    ],
+    amtColumn=["amt", ressort"],
+    ministerNameColumn=["amtsinhaber", "name"],
+    ...
+  )
+
+  VARIANT B
+  const wot = tableWalker(
+    html,
+    {mainColumn: ["amt", ressort"], mainColumnAlias: 'amt'},
+    {columns: [headerText: ["amtsinhaber", "name",], alias: ]}
+  )
+
+  VARIANT C
+  const tableCells = tableWalker
+    .config(
+      wikiTableHeaderOptions=["Kabinett", "Landesregierung", "Mitglieder der Staatsregierung", "Amtierende Regierungschefs", "Zusammensetzung", "Senat"],
+      amtColumnOptions=["amt", ressort"],
+      ...
+    )
+    .parse(html)
+ */
+
+```

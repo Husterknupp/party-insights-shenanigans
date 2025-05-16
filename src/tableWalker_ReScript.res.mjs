@@ -340,16 +340,57 @@ function _extractAndResizeImageUrl(cheerio, cell) {
   });
   let queriedCheerio$1 = queriedCheerio.find("img");
   let imageElement = queriedCheerio$1.last();
-  let url = Primitive_option.fromNullable(imageElement.attr("src"));
-  if (url === undefined) {
-    return;
+  return Core__Option.map(Primitive_option.fromNullable(imageElement.attr("src")), src => {
+    let parts = src.split("/");
+    let filtered = parts.filter((param, index) => index !== (parts.length - 1 | 0));
+    let lastPart = Core__Option.getExn(filtered[filtered.length - 1 | 0], undefined);
+    let newLastPart = "400px-" + lastPart.replace(/\.tif$/, ".png");
+    filtered.push(newLastPart);
+    return "https:" + filtered.join("/");
+  });
+}
+
+function _findHeaderTextForCell(headerCells, cell, content) {
+  let header = headerCells.find(header => {
+    if (header.colStart <= cell.colStart) {
+      return cell.colStart <= header.colEnd;
+    } else {
+      return false;
+    }
+  });
+  if (header !== undefined) {
+    return Core__Option.getExn(header.linesOfText[0], undefined);
+  } else {
+    return Core__Error.panic("Could not find matching header. Cell's content is \"" + content.join("") + "\". Cell is located at col " + cell.colStart.toString() + " (colEnd: " + cell.colEnd.toString() + "), row " + cell.rowStart.toString() + " (rowEnd: " + cell.rowEnd.toString() + ")");
   }
-  let parts = url.split("/");
-  let filtered = parts.filter((param, index) => index !== (parts.length - 1 | 0));
-  let lastPart = Core__Option.getExn(filtered[filtered.length - 1 | 0], undefined);
-  let newLastPart = "400px-" + lastPart.replace(/\.tif$/, ".png");
-  filtered.push(newLastPart);
-  return "https:" + filtered.join("/");
+}
+
+function _cellHasContent(cell) {
+  if (cell.linesOfText.length !== 0) {
+    return true;
+  } else {
+    return Core__Option.isSome(cell.imageUrl);
+  }
+}
+
+function tableWalker(html) {
+  let cheerio = _loadCheerio(html);
+  let headerCells = _getHeaderCells(cheerio);
+  let dataCells = _getDataCells(cheerio);
+  return dataCells.map(cell => {
+    let linesOfText = _extractTextFromCell(cheerio, cell);
+    let imageUrl = _extractAndResizeImageUrl(cheerio, cell);
+    let header = _findHeaderTextForCell(headerCells, cell, linesOfText);
+    return {
+      colStart: cell.colStart,
+      colEnd: cell.colEnd,
+      rowStart: cell.rowStart,
+      rowEnd: cell.rowEnd,
+      imageUrl: imageUrl,
+      header: header,
+      linesOfText: linesOfText
+    };
+  }).filter(_cellHasContent);
 }
 
 export {
@@ -364,5 +405,8 @@ export {
   removeInvisibleSourceLineBreaks,
   _extractTextFromCell,
   _extractAndResizeImageUrl,
+  _findHeaderTextForCell,
+  _cellHasContent,
+  tableWalker,
 }
 /* cheerio Not a pure module */
