@@ -56,8 +56,8 @@ Migrate one JavaScript method after the other (not the complete file), let run u
    - [x] keep it as js
    - [x] refactor one giant method into smaller methods
    - [x] run unit tests and extractor code often
-   - [ ] eventually, migrate all smaller functions of tableWalker to ReScript
-   - [ ] make tableWalker.js -> TableWalker.res
+   - [x] eventually, migrate all smaller functions of tableWalker to ReScript
+   - [x] make tableWalker.js -> TableWalker.res
 2. Continue migration with landesregierungen.js
 
 ## More Thoughts
