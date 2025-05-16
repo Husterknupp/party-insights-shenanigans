@@ -275,82 +275,44 @@ function _getDataCells(cheerio) {
 }
 
 function removeInvisibleSourceLineBreaks(cheerio, node) {
-  let result = [];
+  let lines = [];
   let queriedCheerio = cheerio(undefined, {
     TAG: "CheerioElement",
     _0: node
   });
   let queriedCheerio$1 = queriedCheerio.contents();
   let nodes = queriedCheerio$1.toArray();
-  Core__Option.forEach(Core__Array.reduce(nodes.map(node => {
-    let text = getText(node, cheerio);
-    let match = node.name;
-    switch (match) {
-      case "br" :
-        return {
-          TAG: "Block",
-          _0: undefined
-        };
-      case "p" :
-        if (text.trim() !== "") {
-          return {
-            TAG: "Block",
-            _0: text
-          };
-        }
-        if (text.trim() === "") {
-          return {
-            TAG: "Block",
-            _0: undefined
-          };
-        }
-        break;
+  let currentInlineText = {
+    contents: ""
+  };
+  let flushInlineText = () => {
+    if (currentInlineText.contents !== "") {
+      lines.push(removeInnerWhiteSpace(currentInlineText.contents));
+      currentInlineText.contents = "";
+      return;
     }
-    if (text.trim() !== "") {
-      return {
-        TAG: "Inline",
-        _0: text
-      };
-    } else {
-      return {
-        TAG: "Inline",
-        _0: undefined
-      };
-    }
-  }), undefined, (maybeAcc, node) => {
-    if (node.TAG === "Block") {
-      let text = node._0;
-      if (text !== undefined) {
-        if (maybeAcc !== undefined) {
-          result.push(removeInnerWhiteSpace(maybeAcc));
-          result.push(removeInnerWhiteSpace(text));
-        } else {
-          result.push(removeInnerWhiteSpace(text));
-        }
-        return;
-      } else if (maybeAcc !== undefined) {
-        result.push(removeInnerWhiteSpace(maybeAcc));
+    
+  };
+  nodes.forEach(node => {
+    let text = getText(node, cheerio).trim();
+    let nodeName = node.name;
+    if (nodeName === "p" || nodeName === "br") {
+      flushInlineText();
+      if (nodeName === "p" && text !== "") {
+        lines.push(removeInnerWhiteSpace(text));
         return;
       } else {
         return;
       }
-    }
-    let text$1 = node._0;
-    if (text$1 !== undefined) {
-      if (maybeAcc !== undefined) {
-        return maybeAcc + text$1;
-      } else {
-        return text$1;
-      }
-    } else if (maybeAcc !== undefined) {
-      return maybeAcc;
+    } else if (text !== "") {
+      currentInlineText.contents = currentInlineText.contents + " " + text;
+      return;
     } else {
       return;
     }
-  }), text => {
-    result.push(removeInnerWhiteSpace(text));
   });
-  return result;
+  flushInlineText();
+  return lines;
 }
 
 function _extractTextFromCell(cheerio, cell) {

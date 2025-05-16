@@ -313,8 +313,6 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
   allCells
 }
 
-type textTypes = Block(option<string>) | Inline(option<string>)
-
 /**
  * Removes all line breaks that are not between <p> or <br> tags.
  * This is necessary because the HTML source code of the page contains
@@ -325,48 +323,40 @@ let removeInvisibleSourceLineBreaks = (
   cheerio: CheerioFacade.loadedCheerio,
   node: CheerioFacade.cheerioElement,
 ) => {
-  let result = []
+  let lines = []
   let nodes =
     cheerio(None, CheerioElement(node))
     ->CheerioFacade.contents
     ->CheerioFacade.cheerioToElementArray
 
-  Array.map(nodes, node => {
-    let text = CheerioFacade.getText(node, cheerio)
-    switch CheerioFacade.getName(node) {
-    | "p" if String.trim(text) !== "" => Block(Some(text))
-    | "p" if String.trim(text) === "" => Block(None)
-    | "br" => Block(None)
-    | _ if String.trim(text) !== "" => Inline(Some(text))
-    | _ => Inline(None)
+  let currentInlineText = ref("")
+  let flushInlineText = () => {
+    if currentInlineText.contents !== "" {
+      lines->Array.push(removeInnerWhiteSpace(currentInlineText.contents))
+      currentInlineText := ""
     }
-  })
-  ->Array.reduce(None, (maybeAcc, node) => {
-    switch (node, maybeAcc) {
-    | (Block(Some(text)), Some(acc)) => {
-        result->Array.push(removeInnerWhiteSpace(acc))
-        result->Array.push(removeInnerWhiteSpace(text))
-        None
+  }
+
+  nodes->Array.forEach(node => {
+    let text = CheerioFacade.getText(node, cheerio)->String.trim
+    let nodeName = CheerioFacade.getName(node)
+
+    if nodeName === "p" || nodeName === "br" {
+      // Block elements - flush any inline text and add paragraph content
+      flushInlineText()
+      if nodeName === "p" && text !== "" {
+        lines->Array.push(removeInnerWhiteSpace(text))
       }
-    | (Block(Some(text)), None) => {
-        result->Array.push(removeInnerWhiteSpace(text))
-        None
-      }
-    | (Block(None), Some(acc)) => {
-        result->Array.push(removeInnerWhiteSpace(acc))
-        None
-      }
-    | (Inline(Some(text)), Some(acc)) => Some(acc ++ text)
-    | (Inline(None), Some(acc)) => Some(acc)
-    | (Inline(Some(text)), None) => Some(text)
-    | _ => None
+    } else if text !== "" {
+      // Inline elements - accumulate text and flush in the end
+      currentInlineText := currentInlineText.contents ++ " " ++ text
     }
-  })
-  ->Option.forEach(text => {
-    result->Array.push(removeInnerWhiteSpace(text))
   })
 
-  result
+  // Flush any remaining inline text
+  flushInlineText()
+
+  lines
 }
 
 let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
