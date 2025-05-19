@@ -2,61 +2,59 @@
   {
     "amt": "Ministerpräsident, Staatskanzlei",
     "name": "Alexander Schweitzer",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg/400px-2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93120.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93120.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Ministerin für Familie, Frauen, Kultur und Integration",
+    "amt": "Stellvertreterin des Ministerpräsidenten, Familie, Frauen, Kultur und Integration",
     "name": "Katharina Binz",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f",
     "party": "B’90/Die Grünen"
   },
   {
-    "amt": "Ministerin für Wirtschaft, Verkehr, Landwirtschaft und Weinbau",
+    "amt": "Wirtschaft, Verkehr, Landwirtschaft und Weinbau",
     "name": "Daniela Schmitt",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2016-11-17_-_Daniela_Schmitt_-_0341.jpg/400px-2016-11-17_-_Daniela_Schmitt_-_0341.jpg",
     "party": "FDP"
   },
   {
-    "amt": "Ministerin der Finanzen",
+    "amt": "Finanzen",
     "name": "Doris Ahnen",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Doris_Ahnen-7462.jpg/400px-Doris_Ahnen-7462.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Minister der Justiz",
-    "name": "derzeit vakant",
-    "imageUrl": [
-      "Placeholder"
-    ],
-    "party": "derzeit vakant"
+    "amt": "Justiz",
+    "name": ".mw-parser-output .fussnoten-marke{font-style:normal;font-variant:normal;font-weight:normal;unicode-bidi:isolate;white-space:nowrap}.mw-parser-output sup.fussnoten-marke{font-size:0.75rem}.mw-parser-output .fussnoten-etui sup{margin-left:-0.15rem}.mw-parser-output span.fussnoten-inhalt{padding-left:0.1rem}.mw-parser-output span.fussnoten-inhalt+span.fussnoten-inhalt{padding-left:0.15rem}.mw-parser-output .fussnoten-block{margin-bottom:0.1rem}.mw-parser-output div.fussnoten-inhalt{display:inline-block;padding-left:0.8rem;text-indent:-0.8rem}.mw-parser-output div.fussnoten-inhalt p,.mw-parser-output div.fussnoten-inhalt dl,.mw-parser-output div.fussnoten-inhalt ol,.mw-parser-output div.fussnoten-inhalt ul{text-indent:0}.mw-parser-output div.fussnoten-inhalt.fussnoten-floatfix{display:block}.mw-parser-output .fussnoten-box{margin-top:0.5rem;padding-left:0.8rem}.mw-parser-output .fussnoten-box,.mw-parser-output div.fussnoten-inhalt{font-size:94%}.mw-parser-output .fussnoten-box div.fussnoten-inhalt,.mw-parser-output span.fussnoten-inhalt,.mw-parser-output .fussnoten-inhalt .reference-text{font-size:inherit}.mw-parser-output .fussnoten-inhalt .reference-text{display:inline}.mw-parser-output .fussnoten-linie{display:inline-block;position:relative;top:-1em;border-top:solid 1px #808080;width:8rem}.mw-parser-output .fussnoten-linie+p,.mw-parser-output .fussnoten-linie+dl,.mw-parser-output .fussnoten-linie+ol,.mw-parser-output .fussnoten-linie+ul,.mw-parser-output .fussnoten-linie+link+div{margin-top:-1em}.mw-parser-output .annotationpair-m:target .fussnoten-marke,.mw-parser-output .fussnoten-inhalt:target{background-color:var(--background-color-progressive-subtle,#f1f4fd);box-shadow:0 0 0 0.25em var(--background-color-progressive-subtle,#f1f4fd)}.mw-parser-output .annotationpair-m:target .fussnoten-marke,.mw-parser-output .fussnoten-inhalt:target .fussnoten-marke{font-weight:bold}",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/FDP_Fraktion_RLP_Philipp_Fernis_8.jpg/400px-FDP_Fraktion_RLP_Philipp_Fernis_8.jpg",
+    "party": "FDP"
   },
   {
-    "amt": "Minister des Innern und für Sport",
+    "amt": "Inneres und Sport",
     "name": "Michael Ebling",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg/400px-2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Ministerin für Bildung",
-    "name": "Stefanie Hubig",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2016-11-17_-_Stefanie_Hubig_-_0363.jpg/400px-2016-11-17_-_Stefanie_Hubig_-_0363.jpg",
+    "amt": "Bildung",
+    "name": "Sven Teuber",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Sven_Teuber_%282021%29.tif/400px-Sven_Teuber_%282021%29.png",
     "party": "SPD"
   },
   {
-    "amt": "Ministerin für Arbeit, Soziales, Transformation und Digitalisierung",
+    "amt": "Arbeit, Soziales, Transformation und Digitalisierung",
     "name": "Dörte Schall",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/ColognePride_2022-Samstag-Stra%C3%9Fenfest-1605-Politik_Block-8656.jpg/400px-ColognePride_2022-Samstag-Stra%C3%9Fenfest-1605-Politik_Block-8656.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Minister für Wissenschaft und Gesundheit",
+    "amt": "Wissenschaft und Gesundheit",
     "name": "Clemens Hoch",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch.jpg/400px-2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Clemens_Hoch.jpg/400px-Clemens_Hoch.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Ministerin für Klimaschutz, Umwelt, Energie und Mobilität",
+    "amt": "Klimaschutz, Umwelt, Energie und Mobilität",
     "name": "Katrin Eder",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg/400px-Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg",
     "party": "B’90/Die Grünen"
