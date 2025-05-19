@@ -23,14 +23,14 @@ function indexParty($rows) {
     if (found.length !== 0) {
       if (found.attr("colspan") > 1) {
         console.warn(
-          `[WARN] colspan ${found.attr("colspan")} for party column`,
+          `[WARN] colspan ${found.attr("colspan")} for party column`
         );
       }
 
       console.log(
         `found party column with name '${found
           .text()
-          .trim()}' at index ${found.index()}`,
+          .trim()}' at index ${found.index()}`
       );
       return found.index();
     }
@@ -53,7 +53,7 @@ function indexName($rows) {
       console.log(
         `found name column with name '${found
           .text()
-          .trim()}' at index ${found.index()}`,
+          .trim()}' at index ${found.index()}`
       );
       return found.index();
     }
@@ -72,7 +72,7 @@ function indexAmt($rows) {
       console.log(
         `found amt column with name '${found
           .text()
-          .trim()}' at index ${found.index()}`,
+          .trim()}' at index ${found.index()}`
       );
       return found.index();
     }
@@ -95,13 +95,13 @@ export function findRelevantTable($cheerio) {
     }
   }
   throw Error(
-    "Couldn't find relevant table with any of the names " + options.toString(),
+    "Couldn't find relevant table with any of the names " + options.toString()
   );
 }
 
 export default async function extract() {
   const response = await axios.get(
-    "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)#Zusammensetzung",
+    "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)#Zusammensetzung"
   );
   const $ = load(response.data);
 
@@ -119,7 +119,14 @@ export default async function extract() {
     if (cells.length === 0) return; // for table header
 
     // const state = $(cells[0]).find('[style="display:none;"]').text().trim();
-    const amt = $(cells[amtIdx]).find("br").replaceWith(" • ").end().text();
+    let amt = $(cells[amtIdx])
+      .find("br")
+      .replaceWith(" • ")
+      .end()
+      .text()
+      .trim();
+
+    amt = amt.replace(/\n/g, " • ");
 
     // const amt = $(cells[amtIdx]).text();
     const name = $(cells[nameIdx]).find("a:nth-of-type(1)").text();
@@ -149,6 +156,6 @@ export default async function extract() {
     "output/bundesregierung.md",
     "Bundesregierung",
     "amt",
-    result,
+    result
   );
 }
