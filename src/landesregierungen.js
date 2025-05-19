@@ -6,36 +6,14 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
+import { sameRow, createPolitician } from "./landesregierungen.res.mjs";
+
 import { tableWalker } from "./tableWalker_ReScript.res.mjs";
-
-function sameRow(cellA, cellB) {
-  return (
-    (cellB.rowStart <= cellA.rowStart && cellA.rowStart <= cellB.rowEnd) ||
-    (cellB.rowStart <= cellA.rowEnd && cellA.rowEnd <= cellB.rowEnd)
-  );
-}
-
-export function createMinister(amt, ministerName, party, imageUrl) {
-  try {
-    return {
-      amt: amt.linesOfText.join(", "),
-      name: ministerName.linesOfText[ministerName.linesOfText.length - 1],
-      imageUrl: imageUrl.imageUrl,
-      party: party.linesOfText[0],
-    };
-  } catch (e) {
-    console.error(
-      `Cannot create minister object for name ${JSON.stringify(ministerName)}. Message:`,
-      e.message
-    );
-    throw e;
-  }
-}
 
 export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
   const result = getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings);
 
-  // Using findLast here because during one term of office more than one person can have the Ministerial position.
+  // Using the last element here here because during one term of office more than one person can have the Ministerial position.
   // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
   return result.pop();
 }
@@ -150,7 +128,7 @@ async function _extract(bundesland) {
       const ministerName = { linesOfText: ["derzeit vakant"] };
       const party = { linesOfText: ["derzeit vakant"] };
       const imageUrl = { imageUrl: ["Placeholder"] };
-      result.push(createMinister(amt, ministerName, party, imageUrl));
+      result.push(createPolitician(amt, ministerName, party, imageUrl));
     } else if (
       amt === undefined ||
       ministerName === undefined ||
@@ -175,11 +153,11 @@ async function _extract(bundesland) {
         continue;
       }
 
-      result.push(createMinister(amt, ministerName, party, imageUrl));
+      result.push(createPolitician(amt, ministerName, party, imageUrl));
     }
   }
 
-  console.log(`\nfound ${result.length} minister\n`);
+  console.log(`\nfound ${result.length} politicians\n`);
   console.log(result);
 
   // todo also add URL of cabinet to output files

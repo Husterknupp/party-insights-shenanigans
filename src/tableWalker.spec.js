@@ -1,11 +1,12 @@
 import { tableWalker } from "./tableWalker_ReScript.res.mjs";
 
 import {
-  createMinister,
   getAllCellsOfFirstColumnWithHeaderLike,
   getLastCellOfFirstColumnWithHeaderLike,
   isColumnHeaderLike,
 } from "./landesregierungen.js";
+
+import { createPolitician } from "./landesregierungen.res.mjs";
 
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
@@ -182,7 +183,7 @@ describe("integration tests", () => {
       ]);
       const imageUrl = getLastCellOfFirstColumnWithHeaderLike(row, ["foto"]);
 
-      ministerRows.push(createMinister(amt, ministerName, party, imageUrl));
+      ministerRows.push(createPolitician(amt, ministerName, party, imageUrl));
     }
 
     expect(ministerRows.length).toBe(10);
