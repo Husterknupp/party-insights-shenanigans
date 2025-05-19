@@ -6,7 +6,7 @@
     "party": "SPD"
   },
   {
-    "amt": "Behörde für Wissenschaft, Forschung, Gleichstellung und Bezirke (gleichzeitig: Zweite Bürgermeisterin)",
+    "amt": "Behörde für Umwelt, Klima, Energie und Agrarwirtschaft (gleichzeitig: Zweite Bürgermeisterin)",
     "name": "Katharina Fegebank",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Fegebank_19_%28cropped%29.jpeg/400px-Fegebank_19_%28cropped%29.jpeg",
     "party": "B’90/Grüne"
@@ -18,7 +18,7 @@
     "party": "B’90/Grüne"
   },
   {
-    "amt": "Behörde für Schule und Berufsbildung",
+    "amt": "Behörde für Schule, Familie und Berufsbildung",
     "name": "Ksenija Bekeris",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
     "party": "SPD"
@@ -30,13 +30,13 @@
     "party": "SPD"
   },
   {
-    "amt": "Behörde für Arbeit, Gesundheit, Soziales, Familie und Integration",
+    "amt": "Behörde für Gesundheit, Soziales und Integration",
     "name": "Melanie Schlotzhauer",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
     "party": "SPD"
   },
   {
-    "amt": "Behörde für Wirtschaft und Innovation",
+    "amt": "Behörde für Wirtschaft, Arbeit und Innovation",
     "name": "Melanie Leonhard",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2019-04-12_Sitzung_des_Bundesrates_by_Olaf_Kosinsky-0054.jpg/400px-2019-04-12_Sitzung_des_Bundesrates_by_Olaf_Kosinsky-0054.jpg",
     "party": "SPD"
@@ -48,9 +48,9 @@
     "party": "SPD"
   },
   {
-    "amt": "Behörde für Umwelt, Klima, Energie und Agrarwirtschaft",
-    "name": "Jens Kerstan",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/2018-09-26_Jens_Kerstan_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%932.jpg/400px-2018-09-26_Jens_Kerstan_%28WLP_Hamburg%29_by_Sandro_Halank%E2%80%932.jpg",
+    "amt": "Behörde für Wissenschaft, Forschung und Gleichstellung",
+    "name": "Maryam Blumenthal",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_Placeholder.png/400px-Portrait_Placeholder.png",
     "party": "B’90/Grüne"
   },
   {
@@ -66,7 +66,7 @@
     "party": "SPD"
   },
   {
-    "amt": "Finanzbehörde",
+    "amt": "Behörde für Finanzen und Bezirke",
     "name": "Andreas Dressel",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Dressel%2C_Andreas_-_2087.jpg/400px-Dressel%2C_Andreas_-_2087.jpg",
     "party": "SPD"
