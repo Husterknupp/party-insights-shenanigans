@@ -168,7 +168,7 @@ module CheerioFacade = {
 }
 
 let _loadCheerio = html =>
-  if Js_string2.indexOf(html, "<html>") !== -1 {
+  if String.indexOf(html, "<html>") !== -1 {
     CheerioFacade.load(html, null, true)
   } else {
     CheerioFacade.load(html, null, false)
