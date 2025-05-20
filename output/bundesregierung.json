@@ -1,33 +1,27 @@
 [
   {
     "amt": "Auswärtiges Amt (AA)",
-    "name": "Annalena Baerbock",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Meeting_between_N._Dendias_and_A._Baerbock_at_the_Munich_Security_Conference_%2849535210281%29_%28cropped%29.jpg/400px-Meeting_between_N._Dendias_and_A._Baerbock_at_the_Munich_Security_Conference_%2849535210281%29_%28cropped%29.jpg",
-    "party": "Bündnis 90/Die Grünen"
+    "name": "Johann Wadephul",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Wadephul%2C_Johann-1249.jpg/400px-Wadephul%2C_Johann-1249.jpg",
+    "party": "CDU"
   },
   {
     "amt": "Bundeskanzler",
-    "name": "Olaf Scholz",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Olaf_Scholz_-_Deutscher_Radiopreis_2016_01.jpg/400px-Olaf_Scholz_-_Deutscher_Radiopreis_2016_01.jpg",
-    "party": "SPD"
+    "name": "Friedrich Merz",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93076_%28cropped%29.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93076_%28cropped%29.jpg",
+    "party": "CDU"
   },
   {
     "amt": "Bundesminister für besondere Aufgaben • Chef des Bundeskanzleramtes",
-    "name": "Wolfgang Schmidt",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Wolfgang_Schmidt%2C_Kimberly_Emerson%2C_and_John_B._Emerson%2C_4th_of_July_2014_%28cropped%29.jpg/400px-Wolfgang_Schmidt%2C_Kimberly_Emerson%2C_and_John_B._Emerson%2C_4th_of_July_2014_%28cropped%29.jpg",
-    "party": "SPD"
+    "name": "Thorsten Frei",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Thorsten_Frei_2023_%28cropped%29.jpg/400px-Thorsten_Frei_2023_%28cropped%29.jpg",
+    "party": "CDU"
   },
   {
-    "amt": "Bundesministerium der Finanzen (BMF)",
-    "name": "Jörg Kukies",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/J%C3%B6rg_Kukies_at_World_Economic_Forum_Davos_2023_%283x4_cropped%29.png/400px-J%C3%B6rg_Kukies_at_World_Economic_Forum_Davos_2023_%283x4_cropped%29.png",
+    "amt": "Bundesministerium der Justiz und für Verbraucherschutz (BMJV)",
+    "name": "Stefanie Hubig",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93118.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93118.jpg",
     "party": "SPD"
-  },
-  {
-    "amt": "Bundesministerium der Justiz (BMJ)",
-    "name": "Volker Wissing",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Volker_Wissing-2632.jpg/400px-Volker_Wissing-2632.jpg",
-    "party": "parteilos"
   },
   {
     "amt": "Bundesministerium der Verteidigung (BMVg)",
@@ -36,69 +30,81 @@
     "party": "SPD"
   },
   {
-    "amt": "Bundesministerium des Innern und für Heimat (BMI)",
-    "name": "Nancy Faeser",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Portr%C3%A4t_von_Nancy_Faeser_2023_%28cropped%29.jpg/400px-Portr%C3%A4t_von_Nancy_Faeser_2023_%28cropped%29.jpg",
-    "party": "SPD"
+    "amt": "Bundesministerium des Innern (BMI)",
+    "name": "Alexander Dobrindt",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg",
+    "party": "CSU"
   },
   {
     "amt": "Bundesministerium für Arbeit und Soziales (BMAS)",
-    "name": "Hubertus Heil",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Landtagswahl_Nds_2013_by_Stepro_IMG_9157_%28cropped%29.JPG/400px-Landtagswahl_Nds_2013_by_Stepro_IMG_9157_%28cropped%29.JPG",
+    "name": "Bärbel Bas",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93033.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93033.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Bundesministerium für Bildung und Forschung (BMBF)",
-    "name": "Cem Özdemir",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cem_%C3%96zdemir_MdB_%28cropped%29.jpg/400px-Cem_%C3%96zdemir_MdB_%28cropped%29.jpg",
-    "party": "Bündnis 90/Die Grünen"
+    "amt": "Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend (BMBFSFJ)",
+    "name": "Karin Prien",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93083.jpg/400px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93083.jpg",
+    "party": "CDU"
   },
   {
-    "amt": "Bundesministerium für Digitales und Verkehr (BMDV)",
-    "name": "Volker Wissing",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Volker_Wissing-2632.jpg/400px-Volker_Wissing-2632.jpg",
-    "party": "parteilos, vormals FDP"
+    "amt": "Bundesministerium für Digitales und Staatsmodernisierung (BMDS)",
+    "name": "Karsten Wildberger",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_%28Martin_Rulsch%29_040_%28cropped%29.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_%28Martin_Rulsch%29_040_%28cropped%29.jpg",
+    "party": "CDU"
   },
   {
-    "amt": "Bundesministerium für Ernährung und Landwirtschaft (BMEL)",
-    "name": "Cem Özdemir",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Cem_%C3%96zdemir_MdB_%28cropped%29.jpg/400px-Cem_%C3%96zdemir_MdB_%28cropped%29.jpg",
-    "party": "Bündnis 90/Die Grünen"
-  },
-  {
-    "amt": "Bundesministerium für Familie, Senioren, Frauen und Jugend (BMFSFJ)",
-    "name": "Lisa Paus",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/2020-02-14_Lisa_Paus_%28KPFC%29_01.jpg/400px-2020-02-14_Lisa_Paus_%28KPFC%29_01.jpg",
-    "party": "Bündnis 90/Die Grünen"
+    "amt": "Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR)",
+    "name": "Dorothee Bär",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Hart_aber_fair_2024-12-02-8076.jpg/400px-Hart_aber_fair_2024-12-02-8076.jpg",
+    "party": "CSU"
   },
   {
     "amt": "Bundesministerium für Gesundheit (BMG)",
-    "name": "Karl Lauterbach",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/MJK_67610_Karl_Lauterbach_%28Bundestag_2020%29.jpg/400px-MJK_67610_Karl_Lauterbach_%28Bundestag_2020%29.jpg",
+    "name": "Nina Warken",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2020-02-13_Deutscher_Bundestag_IMG_3091_by_Stepro.jpg/400px-2020-02-13_Deutscher_Bundestag_IMG_3091_by_Stepro.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Bundesministerium für Landwirtschaft, Ernährung und Heimat (BMELH)",
+    "name": "Alois Rainer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_%28Martin_Rulsch%29_160.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_%28Martin_Rulsch%29_160.jpg",
+    "party": "CSU"
+  },
+  {
+    "amt": "Bundesministerium für Umwelt, Klimaschutz, Naturschutz und nukleare Sicherheit (BMUKN)",
+    "name": "Carsten Schneider",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93038.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93038.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz (BMUV)",
-    "name": "Steffi Lemke",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/WLP14-ri-0758-_Steffi_Lemke_%28B%C3%BCndnis_90-Die_Gr%C3%BCnen%29.jpg/400px-WLP14-ri-0758-_Steffi_Lemke_%28B%C3%BCndnis_90-Die_Gr%C3%BCnen%29.jpg",
-    "party": "Bündnis 90/Die Grünen"
+    "amt": "Bundesministerium für Verkehr (BMV)",
+    "name": "Patrick Schnieder",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Schnieder%2C_Patrick-1239.jpg/400px-Schnieder%2C_Patrick-1239.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Bundesministerium für Wirtschaft und Energie (BMWE)",
+    "name": "Katherina Reiche",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2016-12-06_Katherina_Reiche_CDU_Parteitag_by_OlafKosinsky_BT0A6440.jpg/400px-2016-12-06_Katherina_Reiche_CDU_Parteitag_by_OlafKosinsky_BT0A6440.jpg",
+    "party": "CDU"
   },
   {
     "amt": "Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung (BMZ)",
-    "name": "Svenja Schulze",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/2493ri_SPD%2C_Svenja_Schulze.jpg/400px-2493ri_SPD%2C_Svenja_Schulze.jpg",
+    "name": "Reem Alabali-Radovan",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93035.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93035.jpg",
     "party": "SPD"
   },
   {
     "amt": "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)",
-    "name": "Klara Geywitz",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/16-03-09-Klara-Geywitz_RR26591.jpg/400px-16-03-09-Klara-Geywitz_RR26591.jpg",
+    "name": "Verena Hubertz",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93034.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93034.jpg",
     "party": "SPD"
   },
   {
-    "amt": "Stellvertreter des Bundeskanzlers • Bundesministerium für Wirtschaft und Klimaschutz (BMWK)",
-    "name": "Robert Habeck",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Maischberger_-_2018-06-20-6558_%28cropped%29.jpg/400px-Maischberger_-_2018-06-20-6558_%28cropped%29.jpg",
-    "party": "Bündnis 90/Die Grünen"
+    "amt": "Stellvertreter des Bundeskanzlers • Bundesministerium der Finanzen (BMF)",
+    "name": "Lars Klingbeil",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4265_Crop_3.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4265_Crop_3.jpg",
+    "party": "SPD"
   }
 ]

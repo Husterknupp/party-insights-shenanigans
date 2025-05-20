@@ -33,7 +33,7 @@ Bremen:
 Hamburg:
 * Name: Peter Tschentscher
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Senat_Tschentscher_II
+* Kabinett: https://de.wikipedia.org/wiki/Senat_Tschentscher_III
 * Profilbild: ![Peter Tschentscher](https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Peter_Tschentscher_2019.jpg/400px-Peter_Tschentscher_2019.jpg)
 
 Hessen:
@@ -70,7 +70,7 @@ Saarland:
 * Name: Anke Rehlinger
 * Partei: SPD
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_Rehlinger
-* Profilbild: ![Anke Rehlinger](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/2017-03-19_Anke_Rehlinger_SPD_Parteitag_by_Olaf_Kosinsky-3.jpg/400px-2017-03-19_Anke_Rehlinger_SPD_Parteitag_by_Olaf_Kosinsky-3.jpg)
+* Profilbild: ![Anke Rehlinger](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Hart_aber_fair_2025-03-10-1292.jpg/400px-Hart_aber_fair_2025-03-10-1292.jpg)
 
 Sachsen:
 * Name: Michael Kretschmer
