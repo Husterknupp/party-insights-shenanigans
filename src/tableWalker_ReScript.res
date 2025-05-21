@@ -313,6 +313,18 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
   allCells
 }
 
+let concatenate = (a, b) => {
+  let isPunctuation = c => {
+    c == "." || c == "," || c == "?" || c == "!" || c == ":" || c == ";"
+  }
+
+  switch String.charAt(b, 0) {
+  | "" => a
+  | firstChar if isPunctuation(firstChar) => a ++ b
+  | _ => a ++ " " ++ b
+  }
+}
+
 /**
  * Removes all line breaks that are not between <p> or <br> tags.
  * This is necessary because the HTML source code of the page contains
@@ -349,7 +361,8 @@ let removeInvisibleSourceLineBreaks = (
       }
     } else if text !== "" {
       // Inline elements - accumulate text and flush in the end
-      currentInlineText := currentInlineText.contents ++ " " ++ text
+      currentInlineText := concatenate(currentInlineText.contents, text)
+      // currentInlineText := currentInlineText.contents ++ " " ++ text
     }
   })
 
@@ -444,6 +457,8 @@ let tableWalker: string => array<tableCell> = (html: string) => {
       let imageUrl = _extractAndResizeImageUrl(cheerio, cell)
       let header = _findHeaderTextForCell(headerCells, cell, linesOfText)
 
+      // todo rework and filter out cells w/o content
+      // make this map function return option<tableCell> and filter out None
       {
         colStart: cell.colStart,
         colEnd: cell.colEnd,

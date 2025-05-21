@@ -274,6 +274,24 @@ function _getDataCells(cheerio) {
   return allCells;
 }
 
+function concatenate(a, b) {
+  let isPunctuation = c => {
+    if (c === "." || c === "," || c === "?" || c === "!" || c === ":") {
+      return true;
+    } else {
+      return c === ";";
+    }
+  };
+  let firstChar = b.charAt(0);
+  if (firstChar === "") {
+    return a;
+  } else if (isPunctuation(firstChar)) {
+    return a + b;
+  } else {
+    return a + " " + b;
+  }
+}
+
 function removeInvisibleSourceLineBreaks(cheerio, node) {
   let lines = [];
   let queriedCheerio = cheerio(undefined, {
@@ -305,7 +323,7 @@ function removeInvisibleSourceLineBreaks(cheerio, node) {
         return;
       }
     } else if (text !== "") {
-      currentInlineText.contents = currentInlineText.contents + " " + text;
+      currentInlineText.contents = concatenate(currentInlineText.contents, text);
       return;
     } else {
       return;
@@ -400,6 +418,7 @@ export {
   _getHeaderCells,
   getStartIndexForCell,
   _getDataCells,
+  concatenate,
   removeInvisibleSourceLineBreaks,
   _extractTextFromCell,
   _extractAndResizeImageUrl,

@@ -1,4 +1,8 @@
-import { tableWalker } from "./tableWalker_ReScript.res.mjs";
+import {
+  _loadCheerio,
+  removeInvisibleSourceLineBreaks,
+  tableWalker,
+} from "./tableWalker_ReScript.res.mjs";
 
 import {
   getAllCellsOfFirstColumnWithHeaderLike,
@@ -11,17 +15,59 @@ import { createPolitician } from "./landesregierungen.res.mjs";
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 
-// todo
-//  * consider moving helper functions together into one file
-//  * make `bundesregierung`, `ministerpraesidenten` also use the new API
+describe("removeInvisibleSourceLineBreaks", () => {
+  test("splits lines at <p> node", () => {
+    const html = "<div><p>This is a paragraph.</p>And another paragraph.</div>";
+    const $ = _loadCheerio(html);
+    const node = $("div");
 
-/* Assumptions:
- * Height of a row: First regular cell (td, not th) of first column defines the height
- *  (if first data cell has rowspan=3, that means that for all later columns 2,3,4,... for this row they are expected to have also 3 cells)
- * Multiple headline rows: Only 1 row of `th`s gets considered
- */
+    const lines = removeInvisibleSourceLineBreaks($, node);
+
+    expect(lines).toEqual(["This is a paragraph.", "And another paragraph."]);
+  });
+
+  test("splits lines at <br> tags", () => {
+    const html = "<div>First line<br>Second line</div>";
+    const $ = _loadCheerio(html);
+    const node = $("div");
+
+    const lines = removeInvisibleSourceLineBreaks($, node);
+
+    expect(lines).toEqual(["First line", "Second line"]);
+  });
+
+  test("concatenates two nodes with space", () => {
+    const html = "<div>hello<span>world</span></div>";
+    const $ = _loadCheerio(html);
+    const node = $("div");
+
+    const lines = removeInvisibleSourceLineBreaks($, node);
+
+    expect(lines).toEqual(["hello world"]);
+  });
+
+  test("concatenates two nodes with punctuation (no space)", () => {
+    const html = "<div>more complex<span>, actually</span></div>";
+    const $ = _loadCheerio(html);
+    const node = $("div");
+
+    const lines = removeInvisibleSourceLineBreaks($, node);
+
+    expect(lines).toEqual(["more complex, actually"]);
+  });
+});
 
 describe("integration tests", () => {
+  // todo
+  //  * consider moving helper functions together into one file
+  //  * make `bundesregierung`, `ministerpraesidenten` also use the new API
+
+  /* Assumptions:
+   * Height of a row: First regular cell (td, not th) of first column defines the height
+   *  (if first data cell has rowspan=3, that means that for all later columns 2,3,4,... for this row they are expected to have also 3 cells)
+   * Multiple headline rows: Only 1 row of `th`s gets considered
+   */
+
   test("handles special cell with two rows of Ämter in the same cell well", () => {
     // https://de.wikipedia.org/wiki/Senat_Tschentscher_II
     const table = `
