@@ -49,10 +49,10 @@ Mecklenburg-Vorpommern:
 * Profilbild: ![Manuela Schwesig](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Manuela_Schwesig_2.jpg/400px-Manuela_Schwesig_2.jpg)
 
 Niedersachsen:
-* Name: Stephan Weil
+* Name: Olaf Lies
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Weil_III
-* Profilbild: ![Stephan Weil](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Weil%2C_Stephan.jpg/400px-Weil%2C_Stephan.jpg)
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Lies
+* Profilbild: ![Olaf Lies](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg)
 
 Nordrhein-Westfalen:
 * Name: Hendrik Wüst

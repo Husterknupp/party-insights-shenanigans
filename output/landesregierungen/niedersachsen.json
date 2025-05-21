@@ -1,8 +1,8 @@
 [
   {
     "amt": "Ministerpräsident, Staatskanzlei",
-    "name": "Stephan Weil",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Weil%2C_Stephan.jpg/400px-Weil%2C_Stephan.jpg",
+    "name": "Olaf Lies",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg",
     "party": "SPD"
   },
   {
@@ -12,15 +12,15 @@
     "party": "Bündnis 90/Die Grünen"
   },
   {
-    "amt": "Inneres und Sport",
+    "amt": "Inneres, Sport und Digitalisierung",
     "name": "Daniela Behrens",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Behrens_Daniela_042_icv2.tif/400px-Behrens_Daniela_042_icv2.png",
     "party": "SPD"
   },
   {
-    "amt": "Wirtschaft, Bauen, Verkehr und Digitalisierung",
-    "name": "Olaf Lies",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg",
+    "amt": "Wirtschaft, Verkehr und Bauen",
+    "name": "Grant Hendrik Tonne",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Tonne%2C_Grant_Hendrik_crop.jpg/400px-Tonne%2C_Grant_Hendrik_crop.jpg",
     "party": "SPD"
   },
   {
@@ -60,8 +60,8 @@
     "party": "SPD"
   },
   {
-    "amt": "Bundes- und Europaangelegenheiten und Regionale Entwicklung",
-    "name": "Wiebke Osigus",
+    "amt": "Europa und Regionale Landesentwicklung in der Staatskanzlei",
+    "name": "Melanie Walter",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/400px-Silver_-_replace_this_image_female.svg",
     "party": "SPD"
   }
