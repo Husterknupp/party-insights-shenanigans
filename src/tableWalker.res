@@ -1,174 +1,4 @@
-module CheerioFacade = {
-  //    field "name" not available for type "text"
-  //    e.g., <div>, <span>
-  //  type tagNode = {...node, "name": string}
-  //  type dataNode = {...node, "data": string}
-  //  type cheerioElement = TagNode(tagNode) | DataNode(dataNode)
-
-  type elementType = [
-    | #root
-    | #text
-    | #directive
-    | #comment
-    | #script
-    | #style
-    | #tag
-    | #cdata
-    | #doctype
-  ]
-
-  // see node_modules/domhandler/lib/node.d.ts -> class "Node"
-  type rec cheerioElement = {
-    // class Node
-    //    special type: "ParentNode"
-    "parent": option<cheerioElement>,
-    //    special type: "ChildNode"
-    "prev": option<cheerioElement>,
-    //    special type: "ChildNode"
-    "next": option<cheerioElement>,
-    //    e.g., "tag" (<div>, <span>), "text" (has 'data' attribute)
-    "type": elementType,
-    // END class Node
-
-    // class DataNode (`DataNode extends Node`)
-    //    only type="text" (`Text extends DataNode`)
-    "data": string,
-    // END class DataNode
-
-    // class Element (`Element extends NodeWithChildren extends Node`)
-    //    only type="tag"
-    "name": string,
-    "attribs": Nullable.t<{
-      "colspan": Nullable.t<string>,
-      "rowspan": Nullable.t<string>,
-    }>,
-    //    children can only be type: "ChildNode"
-    "children": array<cheerioElement>,
-    // END class Element
-
-    // type ParentNode = Document | Element | CDATA;
-    // type ChildNode = Text | Comment | ProcessingInstruction | Element | CDATA | Document;
-
-    // This seems to be jquery API--not sure how this ends up in the domhandler API
-    "attr": string => Nullable.t<string>,
-  }
-
-  // cheerio's load function return type:
-  //  * node_modules/cheerio/src/load.ts
-  //  * https://rescript-lang.org/docs/manual/v12.0.0/variant#interop-with-javascript
-  //  * https://rescript-lang.org/docs/manual/v11.0.0/bind-to-js-function#modeling-polymorphic-function
-  //  * https://rescript-lang.org/docs/manual/v12.0.0/scoped-polymorphic-types
-
-  type rec queriedCheerio = {
-    "toArray": unit => array<cheerioElement>,
-    "text": unit => string,
-    "length": int,
-    "each": ((int, cheerioElement) => unit) => unit,
-    "find": string => queriedCheerio,
-    "remove": unit => queriedCheerio,
-    "contents": unit => queriedCheerio,
-    "last": unit => cheerioElement,
-  }
-
-  @module
-  external cheerio: {"load": (string, Nullable.t<'CheerioOptions>, bool) => 'a => queriedCheerio} =
-    "cheerio"
-
-  type basicAcceptedElems = AnyNode(cheerioElement) | StringSelector(string)
-  type unsafeJsCheerio
-  type loadedCheerio = (option<unsafeJsCheerio>, basicAcceptedElems) => queriedCheerio
-
-  // %raw because I couldn't make the type of basicAcceptedElems work
-  let applyElementToCheerioUnsafe = %raw(`
-      function(element, selectorFunction) {
-        return selectorFunction(element)
-      }
-    `)
-  let load = (html, maybeOptions, isDocument) => {
-    let loadedCheerio = cheerio["load"](html, maybeOptions, isDocument)
-
-    let betterSelectorFunction: loadedCheerio = (unsafeFromJsLand, basicAcceptedElems) => {
-      let result = switch (unsafeFromJsLand, basicAcceptedElems) {
-      | (Some(stringOrElement), _) => applyElementToCheerioUnsafe(stringOrElement, loadedCheerio)
-      | (None, StringSelector(str)) => applyElementToCheerioUnsafe(str, loadedCheerio)
-      | (None, AnyNode(el)) => applyElementToCheerioUnsafe(el, loadedCheerio)
-      }
-      result
-    }
-
-    betterSelectorFunction
-  }
-  let cheerioToElementArray: queriedCheerio => array<cheerioElement> = queriedCheerio => {
-    queriedCheerio["toArray"]()
-  }
-  let getParent = element => element["parent"]
-  let getParentExn = element => Option.getExn(element["parent"])
-  let getChildren = element => element["children"]
-  let getType: cheerioElement => elementType = element => element["type"]
-  let getData: cheerioElement => string = element => {
-    if (
-      getType(element) !== #text && getType(element) !== #comment && getType(element) !== #directive
-    ) {
-      Error.panic("Trying to get 'data' from non-text element")
-    }
-    element["data"]
-  }
-  let getName: cheerioElement => string = element => element["name"]
-  let getColspan = element => {
-    switch getType(element) {
-    | #tag | #script | #style =>
-      switch Nullable.toOption(Nullable.getExn(element["attribs"])["colspan"]) {
-      | Some(colspan) => colspan
-      | None => "1"
-      }
-    | _ => Error.panic("Trying to get 'colspan' from non-element node")
-    }
-  }
-  let getColspanInt = element =>
-    switch Int.fromString(getColspan(element)) {
-    | Some(parsed) => parsed
-    | None => 1
-    }
-  let getRowspan = element => {
-    switch getType(element) {
-    | #tag | #script | #style =>
-      switch Nullable.toOption(Nullable.getExn(element["attribs"])["rowspan"]) {
-      | Some(rowspan) => rowspan
-      | None => "1"
-      }
-    | _ => Error.panic("Trying to get 'rowspan' from non-element node")
-    }
-  }
-  let getRowspanInt = element =>
-    switch Int.fromString(getRowspan(element)) {
-    | Some(parsed) => parsed
-    | None => 1
-    }
-  let getText: (cheerioElement, loadedCheerio) => string = (element, loadedCheerio) => {
-    loadedCheerio(None, AnyNode(element))["text"]()
-  }
-  let getLengthString: queriedCheerio => string = queriedCheerio => {
-    queriedCheerio["length"]->Int.toString
-  }
-  let each: (queriedCheerio, 'a) => unit = (queriedCheerio, callback) => {
-    queriedCheerio["each"](callback)
-  }
-  let find: (queriedCheerio, string) => queriedCheerio = (queriedCheerio, queryString) => {
-    queriedCheerio["find"](queryString)
-  }
-  let remove: queriedCheerio => queriedCheerio = queriedCheerio => {
-    queriedCheerio["remove"]()
-  }
-  let contents: queriedCheerio => queriedCheerio = queriedCheerio => queriedCheerio["contents"]()
-  let getLast: queriedCheerio => cheerioElement = queriedCheerio => {
-    queriedCheerio["last"]()
-  }
-  let getSrc: cheerioElement => option<string> = element => {
-    element["attr"]("src")->Nullable.toOption
-  }
-}
-
-let _loadCheerio = html =>
+let loadCheerio = html =>
   if String.indexOf(html, "<html>") !== -1 {
     CheerioFacade.load(html, null, true)
   } else {
@@ -209,13 +39,7 @@ let _sanityCheckHeaders: CheerioFacade.queriedCheerio => unit = cheerioWithHeade
   }
 }
 
-let parseIntOr = (maybeString, fallback) =>
-  switch Int.fromString(maybeString) {
-  | Some(n) => n
-  | None => fallback
-  }
-
-let removeInnerWhiteSpace = text => {
+let _removeInnerWhiteSpace = text => {
   // Line breaks in HTML can cause weird amount of whitespace.
   // Removes also inner linebreaks.
   text->String.replaceRegExp(/\s+/g, " ")->String.trim
@@ -250,7 +74,7 @@ let _getHeaderCells: CheerioFacade.loadedCheerio => array<headerCell> = loadedCh
     | None => 0
     }
     let colEnd = colStart + CheerioFacade.getColspanInt(header) - 1
-    let linesOfText = [removeInnerWhiteSpace(CheerioFacade.getText(header, loadedCheerio))]
+    let linesOfText = [_removeInnerWhiteSpace(CheerioFacade.getText(header, loadedCheerio))]
     headers->Array.concat([{colStart, colEnd, linesOfText}])
   })
 }
@@ -263,7 +87,7 @@ type dataCell = {
   _cheerioEl: option<CheerioFacade.cheerioElement>,
 }
 
-let getStartIndexForCell = (allCells, ~initialColumnIdx, ~rowIndex) => {
+let _getStartIndexForCell = (allCells, ~initialColumnIdx, ~rowIndex) => {
   let rec shiftRight = columnIdx => {
     let maybeShiftCellRight = allCells->Array.find(cell => {
       cell.colStart <= columnIdx && columnIdx <= cell.colEnd && cell.rowEnd >= rowIndex
@@ -297,7 +121,11 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
     let columnIdx = ref(0)
 
     CheerioFacade.each(dataCells, (_, cell) => {
-      let colStart = getStartIndexForCell(allCells, ~initialColumnIdx=columnIdx.contents, ~rowIndex)
+      let colStart = _getStartIndexForCell(
+        allCells,
+        ~initialColumnIdx=columnIdx.contents,
+        ~rowIndex,
+      )
       let colEnd = colStart + CheerioFacade.getColspanInt(cell) - 1
       let rowEnd = rowIndex + CheerioFacade.getRowspanInt(cell) - 1
 
@@ -314,7 +142,7 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
   allCells
 }
 
-let concatenate = (a, b) => {
+let _concatenate = (a, b) => {
   let isPunctuation = c => {
     c == "." || c == "," || c == "?" || c == "!" || c == ":" || c == ";"
   }
@@ -345,7 +173,7 @@ let removeInvisibleSourceLineBreaks = (
   let currentInlineText = ref("")
   let flushInlineText = () => {
     if currentInlineText.contents !== "" {
-      lines->Array.push(removeInnerWhiteSpace(currentInlineText.contents))
+      lines->Array.push(_removeInnerWhiteSpace(currentInlineText.contents))
       currentInlineText := ""
     }
   }
@@ -358,11 +186,11 @@ let removeInvisibleSourceLineBreaks = (
       // Block elements - flush any inline text and add paragraph content
       flushInlineText()
       if nodeName === "p" && text !== "" {
-        lines->Array.push(removeInnerWhiteSpace(text))
+        lines->Array.push(_removeInnerWhiteSpace(text))
       }
     } else if text !== "" {
       // Inline elements - accumulate text and flush in the end
-      currentInlineText := concatenate(currentInlineText.contents, text)
+      currentInlineText := _concatenate(currentInlineText.contents, text)
       // currentInlineText := currentInlineText.contents ++ " " ++ text
     }
   })
@@ -423,6 +251,13 @@ let _findHeaderTextForCell = (
   }
 }
 
+let _cellHasContent = (cell: tableCell) => {
+  // Cells may have no content (e.g. empty cells)
+  // or they may have an imageUrl but no text, or vice versa (option<imageUrl>).
+  // We filter out those cells that have no content at all because they are not useful.
+  cell.linesOfText->Array.length !== 0 || cell.imageUrl->Option.isSome
+}
+
 // For simplicity and I'm not sure if and how things will be merged
 // later. There exists a copy of this type in landesregierungen.res
 // and should be kept in sync with it.
@@ -436,20 +271,13 @@ type tableCell = {
   linesOfText: array<string>,
 }
 
-let _cellHasContent = (cell: tableCell) => {
-  // Cells may have no content (e.g. empty cells)
-  // or they may have an imageUrl but no text, or vice versa (option<imageUrl>).
-  // We filter out those cells that have no content at all because they are not useful.
-  cell.linesOfText->Array.length !== 0 || cell.imageUrl->Option.isSome
-}
-
 /**
  * tableWalker aims to be a more intuitive approach on how to assign cells to columns.
  * 
  * Find more ideas on API change in the todo markdown file.
  */
 let tableWalker: string => array<tableCell> = (html: string) => {
-  let cheerio = _loadCheerio(html)
+  let cheerio = loadCheerio(html)
   let headerCells = _getHeaderCells(cheerio)
   let dataCells = _getDataCells(cheerio)
 

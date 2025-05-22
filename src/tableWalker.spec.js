@@ -1,5 +1,5 @@
 import {
-  _loadCheerio,
+  loadCheerio,
   removeInvisibleSourceLineBreaks,
   tableWalker,
 } from "./tableWalker.res.mjs";
@@ -18,7 +18,7 @@ import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 describe("removeInvisibleSourceLineBreaks", () => {
   test("splits lines at <p> node", () => {
     const html = "<div><p>This is a paragraph.</p>And another paragraph.</div>";
-    const $ = _loadCheerio(html);
+    const $ = loadCheerio(html);
     const node = $("div");
 
     const lines = removeInvisibleSourceLineBreaks($, node);
@@ -28,7 +28,7 @@ describe("removeInvisibleSourceLineBreaks", () => {
 
   test("splits lines at <br> tags", () => {
     const html = "<div>First line<br>Second line</div>";
-    const $ = _loadCheerio(html);
+    const $ = loadCheerio(html);
     const node = $("div");
 
     const lines = removeInvisibleSourceLineBreaks($, node);
@@ -38,7 +38,7 @@ describe("removeInvisibleSourceLineBreaks", () => {
 
   test("concatenates two nodes with space", () => {
     const html = "<div>hello<span>world</span></div>";
-    const $ = _loadCheerio(html);
+    const $ = loadCheerio(html);
     const node = $("div");
 
     const lines = removeInvisibleSourceLineBreaks($, node);
@@ -48,7 +48,7 @@ describe("removeInvisibleSourceLineBreaks", () => {
 
   test("concatenates two nodes with punctuation (no space)", () => {
     const html = "<div>more complex<span>, actually</span></div>";
-    const $ = _loadCheerio(html);
+    const $ = loadCheerio(html);
     const node = $("div");
 
     const lines = removeInvisibleSourceLineBreaks($, node);
