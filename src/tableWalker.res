@@ -437,7 +437,9 @@ type tableCell = {
 }
 
 let _cellHasContent = (cell: tableCell) => {
-  // Cells with no useful value - seem only confusing for user -- we filter them out.
+  // Cells may have no content (e.g. empty cells)
+  // or they may have an imageUrl but no text, or vice versa (option<imageUrl>).
+  // We filter out those cells that have no content at all because they are not useful.
   cell.linesOfText->Array.length !== 0 || cell.imageUrl->Option.isSome
 }
 
@@ -458,8 +460,6 @@ let tableWalker: string => array<tableCell> = (html: string) => {
       let imageUrl = _extractAndResizeImageUrl(cheerio, cell)
       let header = _findHeaderTextForCell(headerCells, cell, linesOfText)
 
-      // todo rework and filter out cells w/o content
-      // make this map function return option<tableCell> and filter out None
       {
         colStart: cell.colStart,
         colEnd: cell.colEnd,
