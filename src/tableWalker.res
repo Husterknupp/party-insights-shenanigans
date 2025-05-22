@@ -109,7 +109,7 @@ module CheerioFacade = {
     if (
       getType(element) !== #text && getType(element) !== #comment && getType(element) !== #directive
     ) {
-      Exn.raiseError("Trying to get 'data' from non-text element")
+      Error.panic("Trying to get 'data' from non-text element")
     }
     element["data"]
   }
@@ -121,7 +121,7 @@ module CheerioFacade = {
       | Some(colspan) => colspan
       | None => "1"
       }
-    | _ => Exn.raiseError("Trying to get 'colspan' from non-element node")
+    | _ => Error.panic("Trying to get 'colspan' from non-element node")
     }
   }
   let getColspanInt = element =>
@@ -136,7 +136,7 @@ module CheerioFacade = {
       | Some(rowspan) => rowspan
       | None => "1"
       }
-    | _ => Exn.raiseError("Trying to get 'rowspan' from non-element node")
+    | _ => Error.panic("Trying to get 'rowspan' from non-element node")
     }
   }
   let getRowspanInt = element =>

@@ -2,7 +2,7 @@ import {
   _loadCheerio,
   removeInvisibleSourceLineBreaks,
   tableWalker,
-} from "./tableWalker_ReScript.res.mjs";
+} from "./tableWalker.res.mjs";
 
 import {
   getAllCellsOfFirstColumnWithHeaderLike,

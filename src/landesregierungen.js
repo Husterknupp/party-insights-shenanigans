@@ -8,7 +8,7 @@ import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
 import { sameRow, createPolitician } from "./landesregierungen.res.mjs";
 
-import { tableWalker } from "./tableWalker_ReScript.res.mjs";
+import { tableWalker } from "./tableWalker.res.mjs";
 
 export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
   const result = getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings);
