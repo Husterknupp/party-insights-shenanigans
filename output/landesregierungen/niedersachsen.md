@@ -10,12 +10,12 @@ Kultus (gleichzeitig: Stellvertreterin des Ministerpräsidenten):
 * Partei: Bündnis 90/Die Grünen
 * Profilbild: ![Julia Hamburg](https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hamburg%2C_Julia_Willie.jpg/400px-Hamburg%2C_Julia_Willie.jpg)
 
-Niedersächsisches Ministerium für Inneres, Sport und Digitalisierung:
+Inneres, Sport und Digitalisierung:
 * Name: Daniela Behrens
 * Partei: SPD
 * Profilbild: ![Daniela Behrens](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Behrens_Daniela_042_icv2.tif/400px-Behrens_Daniela_042_icv2.png)
 
-Niedersächsisches Ministerium für Wirtschaft, Verkehr und Bauen:
+Wirtschaft, Verkehr und Bauen:
 * Name: Grant Hendrik Tonne
 * Partei: SPD
 * Profilbild: ![Grant Hendrik Tonne](https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Tonne%2C_Grant_Hendrik_crop.jpg/400px-Tonne%2C_Grant_Hendrik_crop.jpg)
