@@ -3,7 +3,6 @@
 import * as Exn from "rescript/lib/es6/Exn.js";
 import * as Cheerio from "cheerio";
 import * as Core__Int from "@rescript/core/src/Core__Int.res.mjs";
-import * as Belt_Option from "rescript/lib/es6/Belt_Option.js";
 import * as Core__Array from "@rescript/core/src/Core__Array.res.mjs";
 import * as Core__Error from "@rescript/core/src/Core__Error.res.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.res.mjs";
@@ -34,7 +33,7 @@ function getParent(element) {
 }
 
 function getParentExn(element) {
-  return Belt_Option.getExn(element.parent);
+  return Core__Option.getExn(element.parent, undefined);
 }
 
 function getChildren(element) {
@@ -102,7 +101,7 @@ function getRowspanInt(element) {
 
 function getText(element, loadedCheerio) {
   return loadedCheerio(undefined, {
-    TAG: "CheerioElement",
+    TAG: "AnyNode",
     _0: element
   }).text();
 }
@@ -174,8 +173,8 @@ function _sanityCheckHeaders(cheerioWithHeaders) {
     console.log(firstHeader);
     Core__Error.panic("Queried cheerio was expected to contain any headers. But it doesn't");
   }
-  let parent = Belt_Option.getExn(firstHeader.parent);
-  let maybeInvalidHeader = headerElements.find(header => Belt_Option.getExn(header.parent) !== parent);
+  let parent = Core__Option.getExn(firstHeader.parent, undefined);
+  let maybeInvalidHeader = headerElements.find(header => Core__Option.getExn(header.parent, undefined) !== parent);
   if (maybeInvalidHeader === undefined) {
     return;
   }
@@ -201,7 +200,7 @@ function removeInnerWhiteSpace(text) {
 
 function _getHeaderCells(loadedCheerio) {
   let ths = loadedCheerio(undefined, {
-    TAG: "String",
+    TAG: "StringSelector",
     _0: "th"
   });
   _sanityCheckHeaders(ths);
@@ -243,14 +242,14 @@ function getStartIndexForCell(allCells, initialColumnIdx, rowIndex) {
 
 function _getDataCells(cheerio) {
   let rows = cheerio(undefined, {
-    TAG: "String",
+    TAG: "StringSelector",
     _0: "tr:has(td)"
   });
   console.log("Found " + rows.length.toString() + " rows (not including rowspans).");
   let allCells = [];
   rows.each((rowIndex, row) => {
     let queriedCheerio = cheerio(undefined, {
-      TAG: "CheerioElement",
+      TAG: "AnyNode",
       _0: row
     });
     let dataCells = queriedCheerio.find("td");
@@ -295,7 +294,7 @@ function concatenate(a, b) {
 function removeInvisibleSourceLineBreaks(cheerio, node) {
   let lines = [];
   let queriedCheerio = cheerio(undefined, {
-    TAG: "CheerioElement",
+    TAG: "AnyNode",
     _0: node
   });
   let queriedCheerio$1 = queriedCheerio.contents();
@@ -335,13 +334,13 @@ function removeInvisibleSourceLineBreaks(cheerio, node) {
 
 function _extractTextFromCell(cheerio, cell) {
   let queriedCheerio = cheerio(undefined, {
-    TAG: "CheerioElement",
+    TAG: "AnyNode",
     _0: Core__Option.getExn(cell._cheerioEl, undefined)
   });
   let queriedCheerio$1 = queriedCheerio.find("small");
   queriedCheerio$1.remove();
   let queriedCheerio$2 = cheerio(undefined, {
-    TAG: "CheerioElement",
+    TAG: "AnyNode",
     _0: Core__Option.getExn(cell._cheerioEl, undefined)
   });
   let queriedCheerio$3 = queriedCheerio$2.find("sup");
@@ -351,7 +350,7 @@ function _extractTextFromCell(cheerio, cell) {
 
 function _extractAndResizeImageUrl(cheerio, cell) {
   let queriedCheerio = cheerio(undefined, {
-    TAG: "CheerioElement",
+    TAG: "AnyNode",
     _0: Core__Option.getExn(cell._cheerioEl, undefined)
   });
   let queriedCheerio$1 = queriedCheerio.find("img");

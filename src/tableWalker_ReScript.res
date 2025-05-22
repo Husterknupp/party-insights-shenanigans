@@ -54,6 +54,7 @@ module CheerioFacade = {
   }
 
   // cheerio's load function return type:
+  //  * node_modules/cheerio/src/load.ts
   //  * https://rescript-lang.org/docs/manual/v12.0.0/variant#interop-with-javascript
   //  * https://rescript-lang.org/docs/manual/v11.0.0/bind-to-js-function#modeling-polymorphic-function
   //  * https://rescript-lang.org/docs/manual/v12.0.0/scoped-polymorphic-types
@@ -73,7 +74,7 @@ module CheerioFacade = {
   external cheerio: {"load": (string, Nullable.t<'CheerioOptions>, bool) => 'a => queriedCheerio} =
     "cheerio"
 
-  type basicAcceptedElems = CheerioElement(cheerioElement) | String(string)
+  type basicAcceptedElems = AnyNode(cheerioElement) | StringSelector(string)
   type unsafeJsCheerio
   type loadedCheerio = (option<unsafeJsCheerio>, basicAcceptedElems) => queriedCheerio
 
@@ -89,8 +90,8 @@ module CheerioFacade = {
     let betterSelectorFunction: loadedCheerio = (unsafeFromJsLand, basicAcceptedElems) => {
       let result = switch (unsafeFromJsLand, basicAcceptedElems) {
       | (Some(stringOrElement), _) => applyElementToCheerioUnsafe(stringOrElement, loadedCheerio)
-      | (None, String(str)) => applyElementToCheerioUnsafe(str, loadedCheerio)
-      | (None, CheerioElement(el)) => applyElementToCheerioUnsafe(el, loadedCheerio)
+      | (None, StringSelector(str)) => applyElementToCheerioUnsafe(str, loadedCheerio)
+      | (None, AnyNode(el)) => applyElementToCheerioUnsafe(el, loadedCheerio)
       }
       result
     }
@@ -101,7 +102,7 @@ module CheerioFacade = {
     queriedCheerio["toArray"]()
   }
   let getParent = element => element["parent"]
-  let getParentExn = element => Belt_Option.getExn(element["parent"])
+  let getParentExn = element => Option.getExn(element["parent"])
   let getChildren = element => element["children"]
   let getType: cheerioElement => elementType = element => element["type"]
   let getData: cheerioElement => string = element => {
@@ -144,7 +145,7 @@ module CheerioFacade = {
     | None => 1
     }
   let getText: (cheerioElement, loadedCheerio) => string = (element, loadedCheerio) => {
-    loadedCheerio(None, CheerioElement(element))["text"]()
+    loadedCheerio(None, AnyNode(element))["text"]()
   }
   let getLengthString: queriedCheerio => string = queriedCheerio => {
     queriedCheerio["length"]->Int.toString
@@ -227,7 +228,7 @@ type headerCell = {
 }
 
 let _getHeaderCells: CheerioFacade.loadedCheerio => array<headerCell> = loadedCheerio => {
-  let ths = loadedCheerio(None, CheerioFacade.String("th"))
+  let ths = loadedCheerio(None, CheerioFacade.StringSelector("th"))
   _sanityCheckHeaders(ths)
 
   let thElements = CheerioFacade.cheerioToElementArray(ths)
@@ -283,12 +284,12 @@ let getStartIndexForCell = (allCells, ~initialColumnIdx, ~rowIndex) => {
 }
 
 let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
-  let rows = cheerio(None, CheerioFacade.String("tr:has(td)"))
+  let rows = cheerio(None, CheerioFacade.StringSelector("tr:has(td)"))
   Console.log(`Found ${CheerioFacade.getLengthString(rows)} rows (not including rowspans).`)
 
   let allCells = []
   CheerioFacade.each(rows, (rowIndex, row) => {
-    let dataCells = cheerio(None, CheerioFacade.CheerioElement(row))->CheerioFacade.find("td")
+    let dataCells = cheerio(None, CheerioFacade.AnyNode(row))->CheerioFacade.find("td")
 
     // `columnIdx` basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
     // So even the first `<td>` of a `<tr>` can be in some column that is not index 0, because another row's cells have rowspan >1.
@@ -337,7 +338,7 @@ let removeInvisibleSourceLineBreaks = (
 ) => {
   let lines = []
   let nodes =
-    cheerio(None, CheerioElement(node))
+    cheerio(None, AnyNode(node))
     ->CheerioFacade.contents
     ->CheerioFacade.cheerioToElementArray
 
@@ -373,12 +374,12 @@ let removeInvisibleSourceLineBreaks = (
 }
 
 let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
-  cheerio(None, CheerioElement(cell._cheerioEl->Option.getExn))
+  cheerio(None, AnyNode(cell._cheerioEl->Option.getExn))
   ->CheerioFacade.find("small")
   ->CheerioFacade.remove
   ->ignore
 
-  cheerio(None, CheerioElement(cell._cheerioEl->Option.getExn))
+  cheerio(None, AnyNode(cell._cheerioEl->Option.getExn))
   ->CheerioFacade.find("sup")
   ->CheerioFacade.remove
   ->ignore
@@ -388,7 +389,7 @@ let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell
 
 let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
   let imageElement =
-    cheerio(None, CheerioElement(cell._cheerioEl->Option.getExn))
+    cheerio(None, AnyNode(cell._cheerioEl->Option.getExn))
     ->CheerioFacade.find("img")
     ->CheerioFacade.getLast
 
