@@ -3,6 +3,7 @@ name: "Unit Tests"
 on:
   push:
   pull_request:
+    types: [opened, reopened]
 
 jobs:
   schedule:
