@@ -16,9 +16,9 @@ Finanzen (gleichzeitig: Bürgermeister):
 * Profilbild: ![Stefan Evers](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Stefan_Evers%2C_Finanzsenator_von_Berlin%2C_%28Tobias_Koch%2C_202%29.jpg/400px-Stefan_Evers%2C_Finanzsenator_von_Berlin%2C_%28Tobias_Koch%2C_202%29.jpg)
 
 Kultur und Gesellschaftlicher Zusammenhalt:
-* Name: Joe Chialo
-* Partei: CDU
-* Profilbild: ![Joe Chialo](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Joe_Chialo.jpg/400px-Joe_Chialo.jpg)
+* Name: Sarah Wedl-Wilson
+* Partei: parteilos (von der CDU nominiert)
+* Profilbild: ![Sarah Wedl-Wilson](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93001.jpg/400px-2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93001.jpg)
 
 Stadtentwicklung, Bauen und Wohnen:
 * Name: Christian Gaebler
