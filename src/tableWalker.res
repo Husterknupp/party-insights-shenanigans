@@ -251,13 +251,6 @@ let _findHeaderTextForCell = (
   }
 }
 
-let _cellHasContent = (cell: tableCell) => {
-  // Cells may have no content (e.g. empty cells)
-  // or they may have an imageUrl but no text, or vice versa (option<imageUrl>).
-  // We filter out those cells that have no content at all because they are not useful.
-  cell.linesOfText->Array.length !== 0 || cell.imageUrl->Option.isSome
-}
-
 // For simplicity and I'm not sure if and how things will be merged
 // later. There exists a copy of this type in landesregierungen.res
 // and should be kept in sync with it.
@@ -269,6 +262,13 @@ type tableCell = {
   imageUrl: option<string>,
   header: string,
   linesOfText: array<string>,
+}
+
+let _cellHasContent = (cell: tableCell) => {
+  // Cells may have no content (e.g. empty cells)
+  // or they may have an imageUrl but no text, or vice versa (option<imageUrl>).
+  // We filter out those cells that have no content at all because they are not useful.
+  cell.linesOfText->Array.length !== 0 || cell.imageUrl->Option.isSome
 }
 
 /**
