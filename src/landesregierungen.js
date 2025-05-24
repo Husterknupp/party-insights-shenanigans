@@ -6,9 +6,9 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
-import { sameRow, createPolitician } from "./landesregierungen.res.mjs";
+import { sameRow, createPolitician } from "./landesregierungen.mjs";
 
-import { tableWalker } from "./tableWalker.res.mjs";
+import { tableWalker } from "./tableWalker.mjs";
 
 export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
   const result = getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings);
