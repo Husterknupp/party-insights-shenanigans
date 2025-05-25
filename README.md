@@ -5,7 +5,7 @@ Find scraped Wikipedia content in `output/` directory.
 ## Dev Setup
 
 - install Node.js (find correct node version in [.nvmrc](./.nvmrc) file)
-- run `yarn install`
+- run `npm ci`
 
 ## Run Main Script
 
@@ -15,15 +15,15 @@ This will execute the ETL pipeline:
 2. write infos to json and markdown files
 
 ```shell
-yarn install
-yarn res:build
-yarn start
+npm ci
+npm run res:build
+npm start
 ```
 
 ## Run Tests
 
 ```shell
-yarn install
-yarn res:build
-yarn test
+npm ci
+npm run res:build
+npm test
 ```
