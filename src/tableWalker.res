@@ -42,7 +42,7 @@ let _sanityCheckHeaders: CheerioFacade.queriedCheerio => unit = cheerioWithHeade
 let _removeInnerWhiteSpace = text => {
   // Line breaks in HTML can cause weird amount of whitespace.
   // Removes also inner linebreaks.
-  text->String.replaceRegExp(/\s+/g, " ")->String.trim
+  text->String.replaceRegExp(%re("/\s+/g"), " ")->String.trim
 }
 
 type headerCell = {
@@ -225,7 +225,7 @@ let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dat
     let parts = String.split(src, "/")
     let filtered = Array.filterWithIndex(parts, (_, index) => index !== Array.length(parts) - 1)
     let lastPart = filtered->Array.get(Array.length(filtered) - 1)->Option.getExn
-    let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, /\.tif$/, ".png")
+    let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, %re("/\.tif$/"), ".png")
     filtered->Array.push(newLastPart)->ignore
     "https:" ++ Array.join(filtered, "/")
   })

@@ -2,7 +2,7 @@ import {
   loadCheerio,
   removeInvisibleSourceLineBreaks,
   tableWalker,
-} from "./tableWalker.mjs";
+} from "./tableWalker.res.mjs";
 
 import {
   getAllCellsOfFirstColumnWithHeaderLike,
@@ -10,7 +10,7 @@ import {
   isColumnHeaderLike,
 } from "./landesregierungen.js";
 
-import { createPolitician } from "./landesregierungen.mjs";
+import { createPolitician } from "./landesregierungen.res.mjs";
 
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
