@@ -4,13 +4,13 @@ import {
   tableWalker,
 } from "./tableWalker.res.mjs";
 
+import { getLastCellOfFirstColumnWithHeaderLike } from "./landesregierungen.js";
+
 import {
   getAllCellsOfFirstColumnWithHeaderLike,
-  getLastCellOfFirstColumnWithHeaderLike,
+  createPolitician,
   isColumnHeaderLike,
-} from "./landesregierungen.js";
-
-import { createPolitician } from "./landesregierungen.res.mjs";
+} from "./landesregierungen.res.mjs";
 
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";

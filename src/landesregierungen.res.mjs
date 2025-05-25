@@ -22,8 +22,33 @@ function createPolitician(amt, politicianName, party, imageUrl) {
         };
 }
 
+function isColumnHeaderLike(cell, searchStrings) {
+  return searchStrings.some(function (searchString) {
+              var lowerSearchString = searchString.toLowerCase();
+              var lowerHeader = cell.header.toLowerCase();
+              return lowerHeader.includes(lowerSearchString);
+            });
+}
+
+function getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings) {
+  var relevantCells = cells.filter(function (cell) {
+        return isColumnHeaderLike(cell, searchStrings);
+      });
+  if (relevantCells.length <= 0) {
+    return [];
+  }
+  var firstColumnWithThatName = Core__Option.getExn(relevantCells.toSorted(function (cellA, cellB) {
+              return - (cellB.colStart - cellA.colStart | 0);
+            })[0], "There should always be at least one cell with the given header. Search strings: " + searchStrings.join(", "));
+  return relevantCells.filter(function (cell) {
+              return cell.colStart === firstColumnWithThatName.colStart;
+            });
+}
+
 export {
   sameRow ,
   createPolitician ,
+  isColumnHeaderLike ,
+  getAllCellsOfFirstColumnWithHeaderLike ,
 }
 /* No side effect */

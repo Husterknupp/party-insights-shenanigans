@@ -6,7 +6,11 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
-import { sameRow, createPolitician } from "./landesregierungen.res.mjs";
+import {
+  sameRow,
+  createPolitician,
+  getAllCellsOfFirstColumnWithHeaderLike,
+} from "./landesregierungen.res.mjs";
 
 import { tableWalker } from "./tableWalker.res.mjs";
 
@@ -16,36 +20,6 @@ export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
   // Using the last element here here because during one term of office more than one person can have the Ministerial position.
   // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
   return result.pop();
-}
-
-export function getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings) {
-  // There might be two columns of the same header.
-  // Eg, tables often have more than one "name" column.
-  const relevantCells = cells.filter((cell) =>
-    isColumnHeaderLike(cell, searchStrings)
-  );
-  if (relevantCells.length === 0) {
-    return [];
-  }
-
-  const firstColumnWithThatName = relevantCells.sort(
-    (cellA, cellB) => 0 - (cellB.colStart - cellA.colStart)
-  )[0].colStart;
-
-  return relevantCells.filter(
-    (cell) => cell.colStart === firstColumnWithThatName
-  );
-}
-
-export function isColumnHeaderLike(cell, searchStrings) {
-  for (const searchString of searchStrings) {
-    if (
-      cell.header.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
-    ) {
-      return true;
-    }
-  }
-  return false;
 }
 
 function findRelevantTable(html) {
