@@ -10,17 +10,10 @@ import {
   sameRow,
   createPolitician,
   getAllCellsOfFirstColumnWithHeaderLike,
+  getLastCellOfFirstColumnWithHeaderLike,
 } from "./landesregierungen.res.mjs";
 
 import { tableWalker } from "./tableWalker.res.mjs";
-
-export function getLastCellOfFirstColumnWithHeaderLike(cells, searchStrings) {
-  const result = getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings);
-
-  // Using the last element here here because during one term of office more than one person can have the Ministerial position.
-  // Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
-  return result.pop();
-}
 
 function findRelevantTable(html) {
   // todo combine cheerio dependencies to single file (findRelevantTable, tableWalker)

@@ -82,3 +82,19 @@ let getAllCellsOfFirstColumnWithHeaderLike = (
     []
   }
 }
+
+/**
+  Returns the last cell of the first column that has a header like one of the
+   search strings.
+
+  If no such column exists, `Option.None` is returned.
+
+  Rationale:
+  1) There might be two columns of the same header.
+   Eg, tables often have more than one "name" column. 
+  2) During one term of office more than one person can have the Ministerial position.
+   Wikipedia puts all those persons in one row, the latest person at the bottom of a row.
+ */
+let getLastCellOfFirstColumnWithHeaderLike = (cells, searchStrings) => {
+  getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings)->Array.pop
+}

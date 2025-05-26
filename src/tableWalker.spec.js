@@ -4,9 +4,8 @@ import {
   tableWalker,
 } from "./tableWalker.res.mjs";
 
-import { getLastCellOfFirstColumnWithHeaderLike } from "./landesregierungen.js";
-
 import {
+  getLastCellOfFirstColumnWithHeaderLike,
   getAllCellsOfFirstColumnWithHeaderLike,
   createPolitician,
   isColumnHeaderLike,
