@@ -20,11 +20,11 @@ type elementType = [
 type rec cheerioElement = {
   // class Node
   //    special type: "ParentNode"
-  "parent": option<cheerioElement>,
+  "parent": Nullable.t<cheerioElement>,
   //    special type: "ChildNode"
-  "prev": option<cheerioElement>,
+  "prev": Nullable.t<cheerioElement>,
   //    special type: "ChildNode"
-  "next": option<cheerioElement>,
+  "next": Nullable.t<cheerioElement>,
   //    e.g., "tag" (<div>, <span>), "text" (has 'data' attribute)
   "type": elementType,
   // END class Node
@@ -47,9 +47,6 @@ type rec cheerioElement = {
 
   // type ParentNode = Document | Element | CDATA;
   // type ChildNode = Text | Comment | ProcessingInstruction | Element | CDATA | Document;
-
-  // This seems to be jquery API--not sure how this ends up in the domhandler API
-  "attr": string => Nullable.t<string>,
 }
 
 // cheerio's load function return type:
@@ -60,20 +57,27 @@ type rec cheerioElement = {
 
 type rec queriedCheerio = {
   "toArray": unit => array<cheerioElement>,
-  "text": unit => string,
   "length": int,
   "each": ((int, cheerioElement) => unit) => unit,
   "find": string => queriedCheerio,
   "remove": unit => queriedCheerio,
+  "last": unit => queriedCheerio,
+  "parent": unit => queriedCheerio,
+  "nextAll": Nullable.t<string> => queriedCheerio,
+  "first": unit => queriedCheerio,
+  "text": unit => string,
   "contents": unit => queriedCheerio,
-  "last": unit => cheerioElement,
+  "html": unit => string,
+  // This seems to be jquery API--not sure how this ends up in the domhandler API
+  "attr": string => Nullable.t<string>,
 }
 
 @module
 external cheerio: {"load": (string, Nullable.t<'CheerioOptions>, bool) => 'a => queriedCheerio} =
   "cheerio"
 
-type basicAcceptedElems = AnyNode(cheerioElement) | StringSelector(string)
+type basicAcceptedElems =
+  QueriedCheerio(queriedCheerio) | CheerioElement(cheerioElement) | StringSelector(string)
 type unsafeJsCheerio
 type loadedCheerio = (option<unsafeJsCheerio>, basicAcceptedElems) => queriedCheerio
 
@@ -91,18 +95,25 @@ let load = (html, maybeOptions, isDocument) => {
     let result = switch (unsafeFromJsLand, basicAcceptedElems) {
     | (Some(stringOrElement), _) => applyElementToCheerioUnsafe(stringOrElement, loadedCheerio)
     | (None, StringSelector(str)) => applyElementToCheerioUnsafe(str, loadedCheerio)
-    | (None, AnyNode(el)) => applyElementToCheerioUnsafe(el, loadedCheerio)
+    | (None, QueriedCheerio(el)) => applyElementToCheerioUnsafe(el, loadedCheerio)
+    | (None, CheerioElement(el)) => applyElementToCheerioUnsafe(el, loadedCheerio)
     }
     result
   }
 
   betterSelectorFunction
 }
+let loadCheerio = html =>
+  if String.indexOf(html, "<html>") !== -1 {
+    load(html, null, true)
+  } else {
+    load(html, null, false)
+  }
 let cheerioToElementArray: queriedCheerio => array<cheerioElement> = queriedCheerio => {
   queriedCheerio["toArray"]()
 }
-let getParent = element => element["parent"]
-let getParentExn = element => Option.getExn(element["parent"])
+let getParent: queriedCheerio => queriedCheerio = element => element["parent"]()
+let getParentExn: cheerioElement => cheerioElement = element => Nullable.getExn(element["parent"])
 let getChildren = element => element["children"]
 let getType: cheerioElement => elementType = element => element["type"]
 let getData: cheerioElement => string = element => {
@@ -145,7 +156,13 @@ let getRowspanInt = element =>
   | None => 1
   }
 let getText: (cheerioElement, loadedCheerio) => string = (element, loadedCheerio) => {
-  loadedCheerio(None, AnyNode(element))["text"]()
+  loadedCheerio(None, CheerioElement(element))["text"]()
+}
+let getTextByString: (loadedCheerio, string) => string = (loadedCheerio, searchString) => {
+  loadedCheerio(None, StringSelector(searchString))["text"]()
+}
+let getLength: queriedCheerio => int = queriedCheerio => {
+  queriedCheerio["length"]
 }
 let getLengthString: queriedCheerio => string = queriedCheerio => {
   queriedCheerio["length"]->Int.toString
@@ -160,9 +177,21 @@ let remove: queriedCheerio => queriedCheerio = queriedCheerio => {
   queriedCheerio["remove"]()
 }
 let contents: queriedCheerio => queriedCheerio = queriedCheerio => queriedCheerio["contents"]()
-let getLast: queriedCheerio => cheerioElement = queriedCheerio => {
+let getLast: queriedCheerio => queriedCheerio = queriedCheerio => {
   queriedCheerio["last"]()
 }
-let getSrc: cheerioElement => option<string> = element => {
+let getSrc: queriedCheerio => option<string> = element => {
   element["attr"]("src")->Nullable.toOption
+}
+let getNextAll: (queriedCheerio, option<string>) => queriedCheerio = (element, maybeSelector) => {
+  switch maybeSelector {
+  | Some(selector) => element["nextAll"](Value(selector))
+  | None => element["nextAll"](Undefined)
+  }
+}
+let getFirst: queriedCheerio => queriedCheerio = element => {
+  element["first"]()
+}
+let getHtml: queriedCheerio => string = queriedCheerio => {
+  queriedCheerio["html"]()
 }

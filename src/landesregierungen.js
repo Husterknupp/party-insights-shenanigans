@@ -3,7 +3,6 @@
 
 import { readFileSync } from "fs";
 import axios from "axios";
-import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
 import {
@@ -11,40 +10,11 @@ import {
   createPolitician,
   getAllCellsOfFirstColumnWithHeaderLike,
   getLastCellOfFirstColumnWithHeaderLike,
+  findRelevantTable,
+  findCabinetName,
 } from "./landesregierungen.res.mjs";
 
 import { tableWalker } from "./tableWalker.res.mjs";
-
-function findRelevantTable(html) {
-  // todo combine cheerio dependencies to single file (findRelevantTable, tableWalker)
-  const $ = load(html);
-
-  const options = [
-    "Kabinett",
-    "Landesregierung",
-    "Mitglieder der Staatsregierung",
-    "Amtierende Regierungschefs",
-    "Zusammensetzung",
-    "Senat",
-  ];
-  for (const o of options) {
-    // language=JQuery-CSS
-    const found = $(`h2:contains("${o}")`);
-    if (found.length !== 0) {
-      console.log(`found table '${o}'`);
-      const result = found.parent().nextAll("table").first();
-      return result.html();
-    }
-  }
-  throw Error(
-    "Couldn't find relevant table with any of the names " + options.toString()
-  );
-}
-
-function findCabinetName(html) {
-  const $ = load(html);
-  return $("h1").text();
-}
 
 async function _extract(bundesland) {
   console.log(`\nextracting ${bundesland.urlCabinet} (${bundesland.state})`);

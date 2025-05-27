@@ -1,10 +1,3 @@
-let loadCheerio = html =>
-  if String.indexOf(html, "<html>") !== -1 {
-    CheerioFacade.load(html, null, true)
-  } else {
-    CheerioFacade.load(html, null, false)
-  }
-
 let _sanityCheckHeaders: CheerioFacade.queriedCheerio => unit = cheerioWithHeaders => {
   let headerElements = CheerioFacade.cheerioToElementArray(cheerioWithHeaders)
   let firstHeader = headerElements[0]->Option.getExn
@@ -27,8 +20,7 @@ let _sanityCheckHeaders: CheerioFacade.queriedCheerio => unit = cheerioWithHeade
       let expected = parent->CheerioFacade.getName
       let actual =
         invalidHeader
-        ->CheerioFacade.getParent
-        ->Option.getExn
+        ->CheerioFacade.getParentExn
         ->CheerioFacade.getName
 
       Error.panic(
@@ -113,7 +105,7 @@ let _getDataCells: CheerioFacade.loadedCheerio => array<dataCell> = cheerio => {
 
   let allCells = []
   CheerioFacade.each(rows, (rowIndex, row) => {
-    let dataCells = cheerio(None, CheerioFacade.AnyNode(row))->CheerioFacade.find("td")
+    let dataCells = cheerio(None, CheerioFacade.CheerioElement(row))->CheerioFacade.find("td")
 
     // `columnIdx` basically imitates the browser behavior which moves a cell to the right when cells from other rows are blocking.
     // So even the first `<td>` of a `<tr>` can be in some column that is not index 0, because another row's cells have rowspan >1.
@@ -166,7 +158,7 @@ let removeInvisibleSourceLineBreaks = (
 ) => {
   let lines = []
   let nodes =
-    cheerio(None, AnyNode(node))
+    cheerio(None, CheerioFacade.CheerioElement(node))
     ->CheerioFacade.contents
     ->CheerioFacade.cheerioToElementArray
 
@@ -202,12 +194,12 @@ let removeInvisibleSourceLineBreaks = (
 }
 
 let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
-  cheerio(None, AnyNode(cell._cheerioEl->Option.getExn))
+  cheerio(None, CheerioFacade.CheerioElement(cell._cheerioEl->Option.getExn))
   ->CheerioFacade.find("small")
   ->CheerioFacade.remove
   ->ignore
 
-  cheerio(None, AnyNode(cell._cheerioEl->Option.getExn))
+  cheerio(None, CheerioFacade.CheerioElement(cell._cheerioEl->Option.getExn))
   ->CheerioFacade.find("sup")
   ->CheerioFacade.remove
   ->ignore
@@ -217,7 +209,7 @@ let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell
 
 let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
   let imageElement =
-    cheerio(None, AnyNode(cell._cheerioEl->Option.getExn))
+    cheerio(None, CheerioFacade.CheerioElement(cell._cheerioEl->Option.getExn))
     ->CheerioFacade.find("img")
     ->CheerioFacade.getLast
 
@@ -277,7 +269,7 @@ let _cellHasContent = (cell: tableCell) => {
  * Find more ideas on API change in the todo markdown file.
  */
 let tableWalker: string => array<tableCell> = (html: string) => {
-  let cheerio = loadCheerio(html)
+  let cheerio = CheerioFacade.loadCheerio(html)
   let headerCells = _getHeaderCells(cheerio)
   let dataCells = _getDataCells(cheerio)
 

@@ -98,3 +98,43 @@ let getAllCellsOfFirstColumnWithHeaderLike = (
 let getLastCellOfFirstColumnWithHeaderLike = (cells, searchStrings) => {
   getAllCellsOfFirstColumnWithHeaderLike(cells, searchStrings)->Array.pop
 }
+
+let findRelevantTable = html => {
+  // todo combine cheerio dependencies to single file (findRelevantTable, tableWalker)
+  let loadedCheerio = CheerioFacade.loadCheerio(html)
+
+  let options = [
+    "Kabinett",
+    "Landesregierung",
+    "Mitglieder der Staatsregierung",
+    "Amtierende Regierungschefs",
+    "Zusammensetzung",
+    "Senat",
+  ]
+
+  let maybeResult = options->Array.findMap(o => {
+    let found = loadedCheerio(None, StringSelector(`h2:contains("${o}")`))
+    if found->CheerioFacade.getLength !== 0 {
+      Console.log(`found table '${o}'`)
+      found
+      ->CheerioFacade.getParent
+      ->CheerioFacade.getNextAll(Some("table"))
+      ->CheerioFacade.getFirst
+      ->CheerioFacade.getHtml
+      ->Some
+    } else {
+      None
+    }
+  })
+
+  switch maybeResult {
+  | Some(html) => html
+  | None =>
+    Error.panic("Could not find relevant table with any of the names " ++ options->Array.join(", "))
+  }
+}
+
+let findCabinetName = html => {
+  let loadedCheerio = CheerioFacade.loadCheerio(html)
+  CheerioFacade.getTextByString(loadedCheerio, "h1")
+}

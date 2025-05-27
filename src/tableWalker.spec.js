@@ -1,5 +1,6 @@
+import { loadCheerio } from "./cheerioFacade.res.mjs";
+
 import {
-  loadCheerio,
   removeInvisibleSourceLineBreaks,
   tableWalker,
 } from "./tableWalker.res.mjs";
