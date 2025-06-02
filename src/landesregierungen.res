@@ -17,29 +17,43 @@ let sameRow = (cellA: tableCell, cellB: tableCell) => {
 }
 
 type politician = {
-  amt: string,
+  mutable amt: string,
   name: string,
   imageUrl: string,
   party: string,
 }
 
-let createPolitician = (
+let createPoliticianAndAddToList = (
   amt: tableCell,
   politicianName: tableCell,
   party: tableCell,
   imageUrl: tableCell,
+  result: array<politician>,
 ) => {
-  let message = `Cannot create politician object for name ${JSON.stringifyAny(
-      politicianName,
-    )->Option.getExn}`
+  let sameName =
+    result->Array.find(minister => politicianName.linesOfText->Array.includes(minister.name))
 
-  {
-    amt: Array.join(amt.linesOfText, ", "),
-    name: politicianName.linesOfText[Array.length(politicianName.linesOfText) - 1]->Option.getExn(
-      ~message,
-    ),
-    imageUrl: imageUrl.imageUrl->Option.getExn(~message),
-    party: party.linesOfText[0]->Option.getExn(~message),
+  switch sameName {
+  | Some(sameName) => {
+      let subTitle = sameName.amt
+      sameName.amt = `${amt.linesOfText->Array.join(", ")} (gleichzeitig: ${subTitle})`
+    }
+  | None => {
+      let message = `Cannot create politician object for name ${JSON.stringifyAny(
+          politicianName,
+        )->Option.getExn}`
+
+      let newPolitician = {
+        amt: Array.join(amt.linesOfText, ", "),
+        name: politicianName.linesOfText[
+          Array.length(politicianName.linesOfText) - 1
+        ]->Option.getExn(~message),
+        imageUrl: imageUrl.imageUrl->Option.getExn(~message),
+        party: party.linesOfText[0]->Option.getExn(~message),
+      }
+
+      result->Array.push(newPolitician)
+    }
   }
 }
 
@@ -137,4 +151,54 @@ let findRelevantTable = html => {
 let findCabinetName = html => {
   let loadedCheerio = CheerioFacade.loadCheerio(html)
   CheerioFacade.getTextByString(loadedCheerio, "h1")
+}
+
+let validateCells = cells => {
+  if Array.length(cells) !== 0 {
+    Console.log(`TableWalker worked successfully\n`)
+    true
+  } else {
+    Console.error("found 0 tableWalker cells - aborting")
+    false
+  }
+}
+
+type ministerpraesident = {
+  state: string,
+  name: string,
+  party: string,
+  imageUrl: string,
+  urlCabinet: string,
+}
+
+let _panicOnMissingDetails = (amt, ministerName, party, imageUrl, bundesland) => {
+  Console.log5("This politician misses some detail: ", amt, ministerName, party, imageUrl)
+  Console.log(`\nError with cabinet ${bundesland.urlCabinet}`)
+  Error.panic("Could not extract table info")
+}
+
+let extractPoliticians = (
+  amtColumn: array<tableCell>,
+  cells: array<tableCell>,
+  bundesland: ministerpraesident,
+): array<politician> => {
+  let result: array<politician> = []
+  amtColumn->Array.forEach(amt => {
+    if amt.linesOfText->Array.length === 0 {
+      Error.panic(`amt.linesOfText is empty for amt: ${JSON.stringifyAny(amt)->Option.getExn}`)
+    }
+
+    let row = cells->Array.filter(cell => sameRow(cell, amt))
+    let ministerName = getLastCellOfFirstColumnWithHeaderLike(row, ["amtsinhaber", "name"])
+    let party = getLastCellOfFirstColumnWithHeaderLike(row, ["partei", "parteien"])
+    let imageUrl = getLastCellOfFirstColumnWithHeaderLike(row, ["foto", "bild"])
+
+    switch (ministerName, party, imageUrl) {
+    | (Some(ministerName), Some(party), Some(imageUrl)) =>
+      createPoliticianAndAddToList(amt, ministerName, party, imageUrl, result)
+    | _ => _panicOnMissingDetails(amt, ministerName, party, imageUrl, bundesland)
+    }
+  })
+
+  result
 }

@@ -37,6 +37,8 @@ type rec cheerioElement = {
   // class Element (`Element extends NodeWithChildren extends Node`)
   //    only type="tag"
   "name": string,
+  // todo replace with usage of queriedCheerio.attr() ?
+  // -> That seems to be the way to go (would need to change function signatures)
   "attribs": Nullable.t<{
     "colspan": Nullable.t<string>,
     "rowspan": Nullable.t<string>,

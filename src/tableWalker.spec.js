@@ -8,8 +8,9 @@ import {
 import {
   getLastCellOfFirstColumnWithHeaderLike,
   getAllCellsOfFirstColumnWithHeaderLike,
-  createPolitician,
+  createPoliticianAndAddToList,
   isColumnHeaderLike,
+  sameRow,
 } from "./landesregierungen.res.mjs";
 
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
@@ -113,13 +114,6 @@ describe("integration tests", () => {
       "Senatskanzlei",
     ]);
   });
-
-  function sameRow(cell, ministerpraesident) {
-    return (
-      ministerpraesident.rowStart <= cell.rowStart &&
-      cell.rowStart <= ministerpraesident.rowEnd
-    );
-  }
 
   test("Staatssekretär has correct colStart and doesnt mess up Partei column", () => {
     const cells = tableWalker(kabinettDreyer);
@@ -229,7 +223,13 @@ describe("integration tests", () => {
       ]);
       const imageUrl = getLastCellOfFirstColumnWithHeaderLike(row, ["foto"]);
 
-      ministerRows.push(createPolitician(amt, ministerName, party, imageUrl));
+      createPoliticianAndAddToList(
+        amt,
+        ministerName,
+        party,
+        imageUrl,
+        ministerRows
+      );
     }
 
     expect(ministerRows.length).toBe(10);
