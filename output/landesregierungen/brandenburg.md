@@ -10,10 +10,10 @@ Minister der Finanzen und für Europa (gleichzeitig: Stellvertreter des Minister
 * Partei: BSW
 * Profilbild: *Kein Bild verfügbar*
 
-Ministerin des Innern und für Kommunales:
-* Name: Katrin Lange
-* Partei: SPD
-* Profilbild: *Kein Bild verfügbar*
+Minister(in) des Innern und für Kommunales:
+* Name: René Wilke
+* Partei: parteilos (von der SPD nominiert)
+* Profilbild: ![René Wilke](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/16-03-10-Ren%C3%A9-Wilke_RR27134.jpg/400px-16-03-10-Ren%C3%A9-Wilke_RR27134.jpg)
 
 Ministerin für Land- und Ernährungswirtschaft, Umwelt und Verbraucherschutz:
 * Name: Hanka Mittelstädt

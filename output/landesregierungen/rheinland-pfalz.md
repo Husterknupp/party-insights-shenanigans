@@ -3,49 +3,49 @@
 Ministerpräsident, Staatskanzlei:
 * Name: Alexander Schweitzer
 * Partei: SPD
-* Profilbild: ![Alexander Schweitzer](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg/400px-2014-02-20_-_Alexander_Schweitzer_-_Landesregierung_Rheinland-Pfalz_-_2676.jpg)
+* Profilbild: ![Alexander Schweitzer](https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93120.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93120.jpg)
 
-Ministerin für Familie, Frauen, Kultur und Integration:
+Stellvertreterin des Ministerpräsidenten, Familie, Frauen, Kultur und Integration:
 * Name: Katharina Binz
 * Partei: B’90/Die Grünen
 * Profilbild: ![Katharina Binz](https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f)
 
-Ministerin für Wirtschaft, Verkehr, Landwirtschaft und Weinbau:
+Wirtschaft, Verkehr, Landwirtschaft und Weinbau:
 * Name: Daniela Schmitt
 * Partei: FDP
 * Profilbild: ![Daniela Schmitt](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/2016-11-17_-_Daniela_Schmitt_-_0341.jpg/400px-2016-11-17_-_Daniela_Schmitt_-_0341.jpg)
 
-Ministerin der Finanzen:
+Finanzen:
 * Name: Doris Ahnen
 * Partei: SPD
 * Profilbild: ![Doris Ahnen](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Doris_Ahnen-7462.jpg/400px-Doris_Ahnen-7462.jpg)
 
-Minister der Justiz:
-* Name: derzeit vakant
-* Partei: derzeit vakant
-* Profilbild: *Kein Bild verfügbar*
+Justiz:
+* Name: .mw-parser-output .fussnoten-marke{font-style:normal;font-variant:normal;font-weight:normal;unicode-bidi:isolate;white-space:nowrap}.mw-parser-output sup.fussnoten-marke{font-size:0.75rem}.mw-parser-output .fussnoten-etui sup{margin-left:-0.15rem}.mw-parser-output span.fussnoten-inhalt{padding-left:0.1rem}.mw-parser-output span.fussnoten-inhalt+span.fussnoten-inhalt{padding-left:0.15rem}.mw-parser-output .fussnoten-block{margin-bottom:0.1rem}.mw-parser-output div.fussnoten-inhalt{display:inline-block;padding-left:0.8rem;text-indent:-0.8rem}.mw-parser-output div.fussnoten-inhalt p,.mw-parser-output div.fussnoten-inhalt dl,.mw-parser-output div.fussnoten-inhalt ol,.mw-parser-output div.fussnoten-inhalt ul{text-indent:0}.mw-parser-output div.fussnoten-inhalt.fussnoten-floatfix{display:block}.mw-parser-output .fussnoten-box{margin-top:0.5rem;padding-left:0.8rem}.mw-parser-output .fussnoten-box,.mw-parser-output div.fussnoten-inhalt{font-size:94%}.mw-parser-output .fussnoten-box div.fussnoten-inhalt,.mw-parser-output span.fussnoten-inhalt,.mw-parser-output .fussnoten-inhalt .reference-text{font-size:inherit}.mw-parser-output .fussnoten-inhalt .reference-text{display:inline}.mw-parser-output .fussnoten-linie{display:inline-block;position:relative;top:-1em;border-top:solid 1px #808080;width:8rem}.mw-parser-output .fussnoten-linie+p,.mw-parser-output .fussnoten-linie+dl,.mw-parser-output .fussnoten-linie+ol,.mw-parser-output .fussnoten-linie+ul,.mw-parser-output .fussnoten-linie+link+div{margin-top:-1em}.mw-parser-output .annotationpair-m:target .fussnoten-marke,.mw-parser-output .fussnoten-inhalt:target{background-color:var(--background-color-progressive-subtle,#f1f4fd);box-shadow:0 0 0 0.25em var(--background-color-progressive-subtle,#f1f4fd)}.mw-parser-output .annotationpair-m:target .fussnoten-marke,.mw-parser-output .fussnoten-inhalt:target .fussnoten-marke{font-weight:bold}
+* Partei: FDP
+* Profilbild: ![.mw-parser-output .fussnoten-marke{font-style:normal;font-variant:normal;font-weight:normal;unicode-bidi:isolate;white-space:nowrap}.mw-parser-output sup.fussnoten-marke{font-size:0.75rem}.mw-parser-output .fussnoten-etui sup{margin-left:-0.15rem}.mw-parser-output span.fussnoten-inhalt{padding-left:0.1rem}.mw-parser-output span.fussnoten-inhalt+span.fussnoten-inhalt{padding-left:0.15rem}.mw-parser-output .fussnoten-block{margin-bottom:0.1rem}.mw-parser-output div.fussnoten-inhalt{display:inline-block;padding-left:0.8rem;text-indent:-0.8rem}.mw-parser-output div.fussnoten-inhalt p,.mw-parser-output div.fussnoten-inhalt dl,.mw-parser-output div.fussnoten-inhalt ol,.mw-parser-output div.fussnoten-inhalt ul{text-indent:0}.mw-parser-output div.fussnoten-inhalt.fussnoten-floatfix{display:block}.mw-parser-output .fussnoten-box{margin-top:0.5rem;padding-left:0.8rem}.mw-parser-output .fussnoten-box,.mw-parser-output div.fussnoten-inhalt{font-size:94%}.mw-parser-output .fussnoten-box div.fussnoten-inhalt,.mw-parser-output span.fussnoten-inhalt,.mw-parser-output .fussnoten-inhalt .reference-text{font-size:inherit}.mw-parser-output .fussnoten-inhalt .reference-text{display:inline}.mw-parser-output .fussnoten-linie{display:inline-block;position:relative;top:-1em;border-top:solid 1px #808080;width:8rem}.mw-parser-output .fussnoten-linie+p,.mw-parser-output .fussnoten-linie+dl,.mw-parser-output .fussnoten-linie+ol,.mw-parser-output .fussnoten-linie+ul,.mw-parser-output .fussnoten-linie+link+div{margin-top:-1em}.mw-parser-output .annotationpair-m:target .fussnoten-marke,.mw-parser-output .fussnoten-inhalt:target{background-color:var(--background-color-progressive-subtle,#f1f4fd);box-shadow:0 0 0 0.25em var(--background-color-progressive-subtle,#f1f4fd)}.mw-parser-output .annotationpair-m:target .fussnoten-marke,.mw-parser-output .fussnoten-inhalt:target .fussnoten-marke{font-weight:bold}](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/FDP_Fraktion_RLP_Philipp_Fernis_8.jpg/400px-FDP_Fraktion_RLP_Philipp_Fernis_8.jpg)
 
-Minister des Innern und für Sport:
+Inneres und Sport:
 * Name: Michael Ebling
 * Partei: SPD
 * Profilbild: ![Michael Ebling](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg/400px-2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg)
 
-Ministerin für Bildung:
-* Name: Stefanie Hubig
+Bildung:
+* Name: Sven Teuber
 * Partei: SPD
-* Profilbild: ![Stefanie Hubig](https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2016-11-17_-_Stefanie_Hubig_-_0363.jpg/400px-2016-11-17_-_Stefanie_Hubig_-_0363.jpg)
+* Profilbild: ![Sven Teuber](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Sven_Teuber_%282021%29.tif/400px-Sven_Teuber_%282021%29.png)
 
-Ministerin für Arbeit, Soziales, Transformation und Digitalisierung:
+Arbeit, Soziales, Transformation und Digitalisierung:
 * Name: Dörte Schall
 * Partei: SPD
-* Profilbild: ![Dörte Schall](https://upload.wikimedia.org/wikipedia/commons/9/9f/400px-9f)
+* Profilbild: ![Dörte Schall](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/ColognePride_2022-Samstag-Stra%C3%9Fenfest-1605-Politik_Block-8656.jpg/400px-ColognePride_2022-Samstag-Stra%C3%9Fenfest-1605-Politik_Block-8656.jpg)
 
-Minister für Wissenschaft und Gesundheit:
+Wissenschaft und Gesundheit:
 * Name: Clemens Hoch
 * Partei: SPD
-* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch.jpg/400px-2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch.jpg)
+* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Clemens_Hoch.jpg/400px-Clemens_Hoch.jpg)
 
-Ministerin für Klimaschutz, Umwelt, Energie und Mobilität:
+Klimaschutz, Umwelt, Energie und Mobilität:
 * Name: Katrin Eder
 * Partei: B’90/Die Grünen
 * Profilbild: ![Katrin Eder](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg/400px-Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg)

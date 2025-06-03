@@ -33,7 +33,7 @@ Bremen:
 Hamburg:
 * Name: Peter Tschentscher
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Senat_Tschentscher_II
+* Kabinett: https://de.wikipedia.org/wiki/Senat_Tschentscher_III
 * Profilbild: ![Peter Tschentscher](https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Peter_Tschentscher_2019.jpg/400px-Peter_Tschentscher_2019.jpg)
 
 Hessen:
@@ -49,10 +49,10 @@ Mecklenburg-Vorpommern:
 * Profilbild: ![Manuela Schwesig](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Manuela_Schwesig_2.jpg/400px-Manuela_Schwesig_2.jpg)
 
 Niedersachsen:
-* Name: Stephan Weil
+* Name: Olaf Lies
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Weil_III
-* Profilbild: ![Stephan Weil](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Weil%2C_Stephan.jpg/400px-Weil%2C_Stephan.jpg)
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Lies
+* Profilbild: ![Olaf Lies](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg)
 
 Nordrhein-Westfalen:
 * Name: Hendrik Wüst
@@ -70,7 +70,7 @@ Saarland:
 * Name: Anke Rehlinger
 * Partei: SPD
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_Rehlinger
-* Profilbild: ![Anke Rehlinger](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/2017-03-19_Anke_Rehlinger_SPD_Parteitag_by_Olaf_Kosinsky-3.jpg/400px-2017-03-19_Anke_Rehlinger_SPD_Parteitag_by_Olaf_Kosinsky-3.jpg)
+* Profilbild: ![Anke Rehlinger](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Hart_aber_fair_2025-03-10-1292.jpg/400px-Hart_aber_fair_2025-03-10-1292.jpg)
 
 Sachsen:
 * Name: Michael Kretschmer
