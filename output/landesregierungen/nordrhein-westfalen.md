@@ -60,7 +60,7 @@ Kultur und Wissenschaft:
 * Partei: CDU
 * Profilbild: ![Ina Brandes](https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Pressetermin_zum_Start_des_E-Tarifs_eezy.nrw-7593.jpg/400px-Pressetermin_zum_Start_des_E-Tarifs_eezy.nrw-7593.jpg)
 
-Bundes- und Europaangelegenheiten, Internationales sowie Medien, Chef der Staatskanzlei:
+Bundes- und Europaangelegenheiten, Internationales sowie Medien in der Staatskanzlei, Chef der Staatskanzlei:
 * Name: Nathanael Liminski
 * Partei: CDU
 * Profilbild: ![Nathanael Liminski](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Nathanael_Liminski_Grimme-Preis_2018.jpg/400px-Nathanael_Liminski_Grimme-Preis_2018.jpg)
