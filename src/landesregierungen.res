@@ -132,7 +132,7 @@ let findRelevantTable = html => {
   })
 
   switch maybeResult {
-  | Some(html) => html
+  | Some(html) => TableWalker.TableHtml(html)
   | None =>
     Error.panic("Could not find relevant table with any of the names " ++ options->Array.join(", "))
   }

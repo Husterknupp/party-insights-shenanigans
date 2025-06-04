@@ -1,3 +1,5 @@
+type tableHtml = TableHtml(string)
+
 let _sanityCheckHeaders: CheerioFacade.queriedCheerio => unit = cheerioWithHeaders => {
   let headerElements = CheerioFacade.cheerioToElementArray(cheerioWithHeaders)
   let firstHeader = headerElements[0]->Option.getExn
@@ -268,7 +270,7 @@ let _cellHasContent = (cell: tableCell) => {
  * 
  * Find more ideas on API change in the todo markdown file.
  */
-let tableWalker: string => array<tableCell> = (html: string) => {
+let tableWalker = (TableHtml(html)) => {
   let cheerio = CheerioFacade.loadCheerio(html)
   let headerCells = _getHeaderCells(cheerio)
   let dataCells = _getDataCells(cheerio)
