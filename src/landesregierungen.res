@@ -244,6 +244,7 @@ let deserializeMinisterpraesidenten = fileName => {
     ministerpraesidenten->Array.map(jsonObject => {
       switch JSON.Decode.object(jsonObject) {
       | Some(mp) => {
+          // todo maybe use lib? https://github.com/glennsl/rescript-json-combinators ?
           state: mp
           ->Dict.get("state")
           ->Option.getExn(~message="state field missing")
