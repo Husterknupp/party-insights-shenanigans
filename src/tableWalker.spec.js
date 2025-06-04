@@ -16,6 +16,13 @@ import {
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
 
+function TableHtmlVariant(table) {
+  return {
+    TAG: "TableHtml",
+    _0: table,
+  };
+}
+
 describe("removeInvisibleSourceLineBreaks", () => {
   test("splits lines at <p> node", () => {
     const html = "<div><p>This is a paragraph.</p>And another paragraph.</div>";
@@ -105,7 +112,7 @@ describe("integration tests", () => {
 </table>  
   `;
 
-    const cells = tableWalker(table);
+    const cells = tableWalker(TableHtmlVariant(table));
     const aemter = getAllCellsOfFirstColumnWithHeaderLike(cells, ["amt"]);
 
     expect(aemter).toHaveLength(1);
@@ -116,7 +123,7 @@ describe("integration tests", () => {
   });
 
   test("Staatssekretär has correct colStart and doesnt mess up Partei column", () => {
-    const cells = tableWalker(kabinettDreyer);
+    const cells = tableWalker(TableHtmlVariant(kabinettKretschmer));
     const ministerpraesident = getLastCellOfFirstColumnWithHeaderLike(cells, [
       "amt",
       "ressort",
@@ -179,7 +186,7 @@ describe("integration tests", () => {
 </table>
     `;
 
-    const row = tableWalker(table);
+    const row = tableWalker(TableHtmlVariant(table));
 
     const partyCell = getLastCellOfFirstColumnWithHeaderLike(row, ["Partei"]);
     expect(partyCell.linesOfText[0]).toEqual("CDU");
@@ -194,7 +201,7 @@ describe("integration tests", () => {
   });
 
   test("finding cells works (specific columns of a row)", () => {
-    const cells = tableWalker(kabinettDreyer);
+    const cells = tableWalker(TableHtmlVariant(kabinettDreyer));
 
     // Assumption is that the "Amt" column defines the rows.
     // Ie, all cells between rowStart and rowEnd correspond to one Amt-row.
@@ -293,7 +300,7 @@ describe("tableWalker", () => {
 </table>
 `;
 
-    const cells = tableWalker(table);
+    const cells = tableWalker(TableHtmlVariant(table));
 
     expect(cells.length).toBe(1);
     expect(cells[0].imageUrl).toEqual(
@@ -335,7 +342,7 @@ describe("tableWalker", () => {
 </table>
 `;
 
-    const cells = tableWalker(table);
+    const cells = tableWalker(TableHtmlVariant(table));
     let lastElement = (arr) => arr.toReversed()[0];
 
     expect(lastElement(cells[0].linesOfText)).toEqual("Petra Olschowski");
@@ -369,13 +376,13 @@ describe("tableWalker", () => {
 </table>
 `;
 
-    const cells = tableWalker(table03);
+    const cells = tableWalker(TableHtmlVariant(table03));
 
     expect(cells[0].linesOfText[0]).toEqual("Armin Schuster");
   });
 
   test("Person with two Ämter is handled properly", () => {
-    const cells = tableWalker(kabinettKretschmer);
+    const cells = tableWalker(TableHtmlVariant(kabinettKretschmer));
 
     const giesela = cells.find(
       (cell) => cell.linesOfText[0] === "Gisela Reetz"
@@ -410,7 +417,7 @@ describe("tableWalker", () => {
 </table>
 `;
 
-    expect(tableWalker(table01)).toEqual([
+    expect(tableWalker(TableHtmlVariant(table01))).toEqual([
       {
         linesOfText: ["bla"],
         imageUrl: undefined,
@@ -494,7 +501,7 @@ describe("tableWalker", () => {
     </table>
     `;
 
-    expect(tableWalker(table)).toEqual([
+    expect(tableWalker(TableHtmlVariant(table))).toEqual([
       {
         header: "Spalte 1",
         linesOfText: ["1A"],
@@ -591,7 +598,7 @@ describe("tableWalker", () => {
     </table>
     `;
 
-      expect(tableWalker(table)).toEqual([
+      expect(tableWalker(TableHtmlVariant(table))).toEqual([
         {
           header: "Spalte 1",
           linesOfText: ["1A"],
@@ -724,7 +731,7 @@ describe("tableWalker", () => {
 </table>
 `;
 
-    expect(() => tableWalker(table02)).toThrow(
+    expect(() => tableWalker(TableHtmlVariant(table02))).toThrow(
       'Panic! Could not find matching header. Cell\'s content is "img". Cell is located at col 2 (colEnd: 2), row 1 (rowEnd: 1)'
     );
   });
