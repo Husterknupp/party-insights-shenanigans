@@ -3,7 +3,7 @@
 
 import axios from "axios";
 import { load } from "cheerio";
-import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
+import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 
 function urlForResizedImage(image) {
   // Resize image to non-thumb size
@@ -152,10 +152,5 @@ export default async function extract() {
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b));
 
   writeAsJson("output/bundesregierung.json", result);
-  writeAsMarkdown(
-    "output/bundesregierung.md",
-    "Bundesregierung",
-    "amt",
-    result
-  );
+  writeAsMarkdown("output/bundesregierung.md", "Bundesregierung", result);
 }

@@ -16,9 +16,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - run: yarn --frozen-lockfile
-      - run: yarn test
-      - run: yarn start
+          cache: "npm"
+      - run: npm ci
+      - run: npm run res:build
+      - run: npm start
       # ACTUAL CHECK
       - name: Compare output with checked-in version
         run: |

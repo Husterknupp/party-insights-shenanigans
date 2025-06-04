@@ -4,6 +4,9 @@
 
 # BUILD ARTIFACTS
 node_modules
+/lib/
+.bsb.lock
+*.res.mjs
 
 # APPLICATION
 output-images/
