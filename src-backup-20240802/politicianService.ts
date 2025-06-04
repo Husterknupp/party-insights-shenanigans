@@ -1,4 +1,0 @@
-// todo
-// politicoScan
-// getAllCellsOfFirstColumnWithHeaderLike
-// getLastCellOfFirstColumnWithHeaderLike

@@ -1,18 +1,17 @@
-# Migration Notes
+# Architecture Refactoring of the Parsing Logic
 
-Für die Nachwelt
+Plan to finish refactoring and streamlining the API.
 
-## 2 August 2024
+## History
 
-I tried to do a bit much when I started in May 2024. The result of that time were two files:
+I tried to do a bit much when I started in May 2024. So, in August 2024, I simplified the plan to not refactor and migrate at the sametime. In the end of May of 2025, finally I had one extractor and all its dependencies fully migrated to ReScript.
 
-- HtmlService.res
-- Politicianservice.res
-- (and their corresponding js transpilations)
+What's left now, is:
 
-Today, I think it makes more sense to start smaller. Not switch from JavaScript to ReScript, and at the same time, refactor the architecture. That's too much stuff where I can't test the intermediate results!
+- [ ] Refactor the architecture of the html/table parsing, and the politician scanning
+- [ ] Migrate the remaining two extractor files from JS to ReScript
 
-### Eventually, It Should Look Like This
+## Eventually, It Should Look Like This
 
 Here's the final structure how I want it to be:
 
@@ -48,19 +47,6 @@ Then, call from inside landesregierungen file (and other extractors), call the s
       // ... write the result to json, markdown files
     console.log(`Done with cabinet ${cabinetName} (${result.length} politicians)`);
 ```
-
-### But Until Then, I Will
-
-Migrate one JavaScript method after the other (not the complete file), let run unit tests, commit, expect extractor output to be equivalent.
-
-1. Start with tableWalker.js
-   - [x] keep it as js
-   - [x] refactor one giant method into smaller methods
-   - [x] run unit tests and extractor code often
-   - [x] eventually, migrate all smaller functions of tableWalker to ReScript
-   - [x] make tableWalker.js -> TableWalker.res
-2. Continue migration with landesregierungen.js
-   - [x] Done.
 
 ## More Thoughts
 
