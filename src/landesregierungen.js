@@ -1,53 +1,6 @@
-// $rows.find(`th:contains("${o}")`).attr IntelliJ cannot find - deactivate warning to not annoy me too much
-// noinspection JSUnresolvedFunction
-
 import { readFileSync } from "fs";
-import axios from "axios";
-import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
 
-import {
-  getAllCellsOfFirstColumnWithHeaderLike,
-  findRelevantTable,
-  findCabinetName,
-  validateCells,
-  extractPoliticians,
-} from "./landesregierungen.res.mjs";
-
-import { tableWalker } from "./tableWalker.res.mjs";
-
-async function _extract(bundesland) {
-  console.log(`\nextracting ${bundesland.urlCabinet} (${bundesland.state})`);
-
-  const response = await axios.get(bundesland.urlCabinet);
-  const cabinetName = findCabinetName(response.data);
-  const relevantTable = findRelevantTable(response.data);
-  const cells = tableWalker(relevantTable);
-
-  if (!validateCells(cells)) return;
-
-  const amtSearch = ["amt", "ressort"];
-  const amtColumn = getAllCellsOfFirstColumnWithHeaderLike(cells, amtSearch);
-  if (amtColumn.length === 0) {
-    throw new Error(`Found no cells for headers ${amtSearch.toString()}`);
-  }
-
-  const result = extractPoliticians(amtColumn, cells, bundesland);
-
-  console.log(`\nfound ${result.length} politicians\n`);
-  console.log(result);
-
-  // todo also add URL of cabinet to output files
-  writeAsJson(
-    `output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.json`,
-    result
-  );
-  writeAsMarkdown(
-    `output/landesregierungen/${bundesland.state.toLocaleLowerCase()}.md`,
-    bundesland.state + " - " + cabinetName,
-    "amt",
-    result
-  );
-}
+import { _extract } from "./landesregierungen.res.mjs";
 
 export default async function extract() {
   // IntelliJ not sure what's your problem

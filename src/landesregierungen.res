@@ -1,15 +1,5 @@
-// For simplicity and I'm not sure if and how things will be merged
-// later. This is a copy of the type in tableWalker.res
-// and should be kept in sync with it.
-type tableCell = {
-  colStart: int,
-  colEnd: int,
-  rowStart: int,
-  rowEnd: int,
-  imageUrl: option<string>,
-  header: string,
-  linesOfText: array<string>,
-}
+// Alias because I'm lazy
+type tableCell = TableWalker.tableCell
 
 let sameRow = (cellA: tableCell, cellB: tableCell) => {
   (cellB.rowStart <= cellA.rowStart && cellA.rowStart <= cellB.rowEnd) ||
@@ -153,13 +143,11 @@ let findCabinetName = html => {
   CheerioFacade.getTextByString(loadedCheerio, "h1")
 }
 
-let validateCells = cells => {
+let _checkCellsAreValid = cells => {
   if Array.length(cells) !== 0 {
     Console.log(`TableWalker worked successfully\n`)
-    true
   } else {
-    Console.error("found 0 tableWalker cells - aborting")
-    false
+    Error.panic("found 0 tableWalker cells - aborting")
   }
 }
 
@@ -201,4 +189,57 @@ let extractPoliticians = (
   })
 
   result
+}
+
+let fetchAndPrepareTableData = async bundesland => {
+  let response: Axios.response<string> = await Axios.get(bundesland.urlCabinet, None)
+
+  let cabinetName = findCabinetName(response.data)
+  let relevantTable = findRelevantTable(response.data)
+  let cells = TableWalker.tableWalker(relevantTable)
+  _checkCellsAreValid(cells)
+
+  (cabinetName, cells)
+}
+
+let _extract = async (bundesland: ministerpraesident) => {
+  Console.log(`\nextracting ${bundesland.urlCabinet} (${bundesland.state})`)
+  let (cabinetName, cells) = await fetchAndPrepareTableData(bundesland)
+
+  let amtSearch = ["amt", "ressort"]
+  let amtColumn = getAllCellsOfFirstColumnWithHeaderLike(cells, amtSearch)
+  let result = switch amtColumn->Array.length {
+  | length if length > 0 => extractPoliticians(amtColumn, cells, bundesland)
+  | _ => Error.panic(`Found no cells for headers ${amtSearch->Array.join(", ")}`)
+  }
+
+  Console.log(`\nfound ${result->Array.length->Int.toString} politicians\n`)
+  Console.log(result)
+
+  // todo also add URL of cabinet to output files
+  OutputHelpers.writeAsJson(
+    `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.json`,
+    result->Array.map(p => {
+      let result: OutputHelpers.politician = {
+        amt: p.amt,
+        name: p.name,
+        imageUrl: p.imageUrl,
+        party: p.party,
+      }
+      result
+    }),
+  )
+  OutputHelpers.writeAsMarkdown(
+    `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.md`,
+    `${bundesland.state} - ${cabinetName}`,
+    result->Array.map(p => {
+      let result: OutputHelpers.politician = {
+        amt: p.amt,
+        name: p.name,
+        imageUrl: p.imageUrl,
+        party: p.party,
+      }
+      result
+    }),
+  )
 }

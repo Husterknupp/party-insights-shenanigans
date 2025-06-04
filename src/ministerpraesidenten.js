@@ -1,7 +1,7 @@
 import axios from "axios";
 import { load } from "cheerio";
 import { writeFileSync, mkdirSync } from "fs";
-import { writeAsJson, writeAsMarkdown } from "./output-helpers.js";
+import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 
 function createImageFiles(ministerpraesidenten) {
   mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
@@ -22,7 +22,7 @@ function createImageFiles(ministerpraesidenten) {
           image.data,
           {
             encoding: "base64",
-          },
+          }
         );
       });
   });
@@ -66,7 +66,7 @@ function findPoliticians(html) {
 
   if (result.length === 0) {
     throw new Error(
-      `Could not extract any Ministerpräsidenten. Searched for '${wikiHeadline}'`,
+      `Could not extract any Ministerpräsidenten. Searched for '${wikiHeadline}'`
     );
   }
 
@@ -75,22 +75,21 @@ function findPoliticians(html) {
 
 function saveToOutputfiles(ministerpraesidenten) {
   ministerpraesidenten.sort(({ state: stateA }, { state: stateB }) =>
-    stateA.localeCompare(stateB),
+    stateA.localeCompare(stateB)
   );
 
   writeAsJson("output/ministerpraesidenten.json", ministerpraesidenten);
   writeAsMarkdown(
     "output/ministerpraesidenten.md",
     "Ministerpräsidenten",
-    "state",
-    ministerpraesidenten,
+    ministerpraesidenten
   );
   createImageFiles(ministerpraesidenten);
 }
 
 export default async function extract() {
   const wikiResponse = await axios.get(
-    "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten",
+    "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten"
   );
   const ministerpraesidenten = findPoliticians(wikiResponse.data);
   saveToOutputfiles(ministerpraesidenten);
