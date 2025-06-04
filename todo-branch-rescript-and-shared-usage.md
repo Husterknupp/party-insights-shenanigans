@@ -42,10 +42,11 @@ Then, call from inside landesregierungen file (and other extractors), call the s
 
 ```js
 # landesregierungen.js
-    const tableCells = htmlService.parseTableWithNameLike(response.data, ["Kabinett", "Landesregierung", ..])
+    const response = getWikiArticle("Liste_der_Landesregierungen_in_Deutschland");
+    const (tableCells, cabinetName) = htmlService.parseTableWithNameLike(response.data, ["Kabinett", "Landesregierung", ..])
     const result = politicianService.politicoScan(tableCells, columnNames /*{ amt, ministerName, party, image }*/)
-      ...
-    console.log(`Done with cabinet ${htmlService.cabinetName(response.data)}`)
+      // ... write the result to json, markdown files
+    console.log(`Done with cabinet ${cabinetName} (${result.length} politicians)`);
 ```
 
 ### But Until Then, I Will
@@ -59,6 +60,7 @@ Migrate one JavaScript method after the other (not the complete file), let run u
    - [x] eventually, migrate all smaller functions of tableWalker to ReScript
    - [x] make tableWalker.js -> TableWalker.res
 2. Continue migration with landesregierungen.js
+   - [x] Done.
 
 ## More Thoughts
 
