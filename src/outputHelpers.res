@@ -5,8 +5,11 @@ module NodeJs = {
     encoding?: string,
   }
 
-  @val @module("node:fs")
+  @module("node:fs")
   external writeFileSyncWith: (string, string, writeFileOptions) => unit = "writeFileSync"
+
+  @module("node:fs")
+  external readFileSync: (string, writeFileOptions) => string = "readFileSync"
 }
 
 // mix of BUNDESREGIERUNG, MINISTERPRÄSIDENTEN, and LANDESREGIERUNGEN

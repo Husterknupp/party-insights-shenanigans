@@ -1,6 +1,6 @@
 import extractMinisterpraesidenten from "./src/ministerpraesidenten.js";
 import extractBundesregierung from "./src/bundesregierung.js";
-import extractLandesregierungen from "./src/landesregierungen.js";
+import { extract as extractLandesregierungen } from "./src/landesregierungen.res.mjs";
 
 async function run() {
   console.log("Start ministerpräsidenten");

@@ -216,30 +216,98 @@ let _extract = async (bundesland: ministerpraesident) => {
   Console.log(`\nfound ${result->Array.length->Int.toString} politicians\n`)
   Console.log(result)
 
+  let toOutputType = (p: politician): OutputHelpers.politician => {
+    {
+      amt: p.amt,
+      name: p.name,
+      imageUrl: p.imageUrl,
+      party: p.party,
+    }
+  }
+
   // todo also add URL of cabinet to output files
   OutputHelpers.writeAsJson(
     `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.json`,
-    result->Array.map(p => {
-      let result: OutputHelpers.politician = {
-        amt: p.amt,
-        name: p.name,
-        imageUrl: p.imageUrl,
-        party: p.party,
-      }
-      result
-    }),
+    result->Array.map(toOutputType),
   )
   OutputHelpers.writeAsMarkdown(
     `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.md`,
     `${bundesland.state} - ${cabinetName}`,
-    result->Array.map(p => {
-      let result: OutputHelpers.politician = {
-        amt: p.amt,
-        name: p.name,
-        imageUrl: p.imageUrl,
-        party: p.party,
-      }
-      result
-    }),
+    result->Array.map(toOutputType),
   )
+}
+
+let deserializeMinisterpraesidenten = fileName => {
+  let json = OutputHelpers.NodeJs.readFileSync(fileName, {encoding: "utf-8"})->JSON.parseExn
+  switch JSON.Decode.array(json) {
+  | Some(ministerpraesidenten) =>
+    ministerpraesidenten->Array.map(jsonObject => {
+      switch JSON.Decode.object(jsonObject) {
+      | Some(mp) => {
+          state: mp
+          ->Dict.get("state")
+          ->Option.getExn(~message="state field missing")
+          ->JSON.Decode.string
+          ->Option.getExn(~message="state field expected to be a string"),
+          name: mp
+          ->Dict.get("name")
+          ->Option.getExn(~message="name field missing")
+          ->JSON.Decode.string
+          ->Option.getExn(~message="name field expected to be a string"),
+          party: mp
+          ->Dict.get("party")
+          ->Option.getExn(~message="party field missing")
+          ->JSON.Decode.string
+          ->Option.getExn(~message="party field expected to be a string"),
+          imageUrl: mp
+          ->Dict.get("imageUrl")
+          ->Option.getExn(~message="imageUrl field missing")
+          ->JSON.Decode.string
+          ->Option.getExn(~message="imageUrl field expected to be a string"),
+          urlCabinet: mp
+          ->Dict.get("urlCabinet")
+          ->Option.getExn(~message="urlCabinet field missing")
+          ->JSON.Decode.string
+          ->Option.getExn(~message="urlCabinet field expected to be a string"),
+        }
+      | None => Error.panic(`Error deserializing single ministerpraesident object from ${fileName}`)
+      }
+    })
+  | None => Error.panic(`Error deserializing ministerpraesidenten array from ${fileName}`)
+  }
+}
+
+let extract = async () => {
+  let ministerpraesidenten = deserializeMinisterpraesidenten("./output/ministerpraesidenten.json")
+
+  let promises = ministerpraesidenten->Array.map(async mp => {
+    switch mp.state {
+    | "Sachsen"
+    | "Baden-Württemberg"
+    | "Bayern"
+    | "Thüringen"
+    | "Schleswig-Holstein"
+    | "Sachsen-Anhalt"
+    | "Saarland"
+    | "Rheinland-Pfalz"
+    | "Nordrhein-Westfalen"
+    | "Niedersachsen"
+    | "Mecklenburg-Vorpommern"
+    | "Hessen"
+    | "Hamburg"
+    | "Bremen"
+    | "Brandenburg"
+    | "Berlin" => {
+        await _extract(mp)
+        None
+      }
+    | _ => Some(mp.state)
+    }
+  })
+
+  let notMapped = (await Promise.all(promises))->Array.keepSome
+
+  if notMapped->Array.length > 0 {
+    Console.log(`Bundesländer ${notMapped->Array.join(", ")} not mapped yet.`)
+  }
 }
