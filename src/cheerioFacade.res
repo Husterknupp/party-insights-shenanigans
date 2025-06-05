@@ -160,6 +160,9 @@ let getRowspanInt = element =>
 let getText: (cheerioElement, loadedCheerio) => string = (element, loadedCheerio) => {
   loadedCheerio(None, CheerioElement(element))["text"]()
 }
+let getTextFromQueriedCheerio: queriedCheerio => string = queriedCheerio => {
+  queriedCheerio["text"]()
+}
 let getTextByString: (loadedCheerio, string) => string = (loadedCheerio, searchString) => {
   loadedCheerio(None, StringSelector(searchString))["text"]()
 }

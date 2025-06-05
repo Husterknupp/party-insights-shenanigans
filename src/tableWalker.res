@@ -89,9 +89,12 @@ let _getStartIndexForCell = (allCells, ~initialColumnIdx, ~rowIndex) => {
 
     switch maybeShiftCellRight {
     | Some(shiftCell) => {
-        Console.log(
-          `Row no. ${rowIndex->Int.toString}: At column ${columnIdx->Int.toString} I found a cell of an earlier row... one to the right`,
-        )
+        let debug = false
+        if debug {
+          Console.log(
+            `Row no. ${rowIndex->Int.toString}: At column ${columnIdx->Int.toString} I found a cell of an earlier row... one to the right`,
+          )
+        }
         shiftRight(shiftCell.colEnd + 1)
       }
     | None => columnIdx

@@ -119,7 +119,7 @@ let findRelevantTable = html => {
   let maybeResult = options->Array.findMap(o => {
     let found = loadedCheerio(None, StringSelector(`h2:contains("${o}")`))
     if found->CheerioFacade.getLength !== 0 {
-      Console.log(`found table '${o}'`)
+      Console.log(`found table '${found->CheerioFacade.getTextFromQueriedCheerio}'`)
       found
       ->CheerioFacade.getParent
       ->CheerioFacade.getNextAll(Some("table"))
@@ -145,7 +145,7 @@ let findCabinetName = html => {
 
 let _checkCellsAreValid = cells => {
   if Array.length(cells) !== 0 {
-    Console.log(`TableWalker worked successfully\n`)
+    Console.log(`TableWalker worked successfully`)
   } else {
     Error.panic("found 0 tableWalker cells - aborting")
   }
@@ -193,6 +193,7 @@ let extractPoliticians = (
 
 let fetchAndPrepareTableData = async bundesland => {
   let response: Axios.response<string> = await Axios.get(bundesland.urlCabinet, None)
+  Console.log(`\n✅ ${bundesland.urlCabinet} loaded successfully (${bundesland.state})`)
 
   let cabinetName = findCabinetName(response.data)
   let relevantTable = findRelevantTable(response.data)
@@ -203,18 +204,17 @@ let fetchAndPrepareTableData = async bundesland => {
 }
 
 let _extract = async (bundesland: ministerpraesident) => {
-  Console.log(`\nextracting ${bundesland.urlCabinet} (${bundesland.state})`)
   let (cabinetName, cells) = await fetchAndPrepareTableData(bundesland)
 
   let amtSearch = ["amt", "ressort"]
   let amtColumn = getAllCellsOfFirstColumnWithHeaderLike(cells, amtSearch)
+
   let result = switch amtColumn->Array.length {
   | length if length > 0 => extractPoliticians(amtColumn, cells, bundesland)
   | _ => Error.panic(`Found no cells for headers ${amtSearch->Array.join(", ")}`)
   }
 
-  Console.log(`\nfound ${result->Array.length->Int.toString} politicians\n`)
-  Console.log(result)
+  Console.log(`found ${result->Array.length->Int.toString} politicians\n`)
 
   let toOutputType = (p: politician): OutputHelpers.politician => {
     {
