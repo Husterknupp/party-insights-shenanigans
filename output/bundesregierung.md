@@ -73,7 +73,7 @@ Bundesministerium für Verkehr (BMV):
 Bundesministerium für Wirtschaft und Energie (BMWE):
 * Name: Katherina Reiche
 * Partei: CDU
-* Profilbild: ![Katherina Reiche](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2016-12-06_Katherina_Reiche_CDU_Parteitag_by_OlafKosinsky_BT0A6440.jpg/400px-2016-12-06_Katherina_Reiche_CDU_Parteitag_by_OlafKosinsky_BT0A6440.jpg)
+* Profilbild: ![Katherina Reiche](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Katherina_Reiche_2025-05-15_%28cropped%29.jpg/400px-Katherina_Reiche_2025-05-15_%28cropped%29.jpg)
 
 Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung (BMZ):
 * Name: Reem Alabali-Radovan

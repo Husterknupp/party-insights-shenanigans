@@ -17,7 +17,7 @@ Finanzen (gleichzeitig: Bürgermeister):
 
 Kultur und Gesellschaftlicher Zusammenhalt:
 * Name: Sarah Wedl-Wilson
-* Partei: parteilos (von der CDU nominiert)
+* Partei: parteilos
 * Profilbild: ![Sarah Wedl-Wilson](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93001.jpg/400px-2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93001.jpg)
 
 Stadtentwicklung, Bauen und Wohnen:
@@ -43,14 +43,14 @@ Wissenschaft, Gesundheit und Pflege:
 Arbeit, Soziales, Gleichstellung, Integration, Vielfalt und Antidiskriminierung:
 * Name: Cansel Kiziltepe
 * Partei: SPD
-* Profilbild: ![Cansel Kiziltepe](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93139.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93139.jpg)
+* Profilbild: ![Cansel Kiziltepe](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93027.jpg/400px-2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93027.jpg)
 
 Mobilität, Verkehr, Klimaschutz und Umwelt:
 * Name: Ute Bonde
 * Partei: CDU
-* Profilbild: ![Ute Bonde](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/2024-12-05_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93082.jpg/400px-2024-12-05_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93082.jpg)
+* Profilbild: ![Ute Bonde](https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93022.jpg/400px-2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93022.jpg)
 
 Justiz und Verbraucherschutz:
 * Name: Felor Badenberg
-* Partei: CDU (zunächst parteilos)
+* Partei: CDU
 * Profilbild: ![Felor Badenberg](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Felor_Badenberg_Portrait.jpg/400px-Felor_Badenberg_Portrait.jpg)

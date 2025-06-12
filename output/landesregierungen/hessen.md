@@ -10,7 +10,7 @@ Wirtschaft, Energie, Verkehr, Wohnen und ländlicher Raum (gleichzeitig: Stellve
 * Partei: SPD
 * Profilbild: ![Kaweh Mansoori](https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Kaweh_Mansoori_%282021%29.jpg/400px-Kaweh_Mansoori_%282021%29.jpg)
 
-Bundes- und Europaangelegenheiten, Internationales und Entbürokratisierung:
+Bundes- und Europaangelegenheiten, Internationales und Entbürokratisierung in der Staatskanzlei:
 * Name: Manfred Pentz
 * Partei: CDU
 * Profilbild: ![Manfred Pentz](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/M-pentz.jpg/400px-M-pentz.jpg)
