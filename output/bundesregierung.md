@@ -76,9 +76,9 @@ Bundesministerium für Wirtschaft und Energie (BMWE):
 * Profilbild: ![Katherina Reiche](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Katherina_Reiche_2025-05-15_%28cropped%29.jpg/400px-Katherina_Reiche_2025-05-15_%28cropped%29.jpg)
 
 Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung (BMZ):
-* Name: Reem Alabali-Radovan
+* Name: Reem Alabali Radovan
 * Partei: SPD
-* Profilbild: ![Reem Alabali-Radovan](https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93035.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93035.jpg)
+* Profilbild: ![Reem Alabali Radovan](https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93035.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93035.jpg)
 
 Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen (BMWSB):
 * Name: Verena Hubertz
