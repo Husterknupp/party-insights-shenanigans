@@ -40,10 +40,10 @@ Minister der Finanzen:
 * Partei: CDU
 * Profilbild: *Kein Bild verfügbar*
 
-Ministerin für Bildung:
-* Name: Eva Feußner
+Minister(in) für Bildung:
+* Name: Jan Riedel
 * Partei: CDU
-* Profilbild: ![Eva Feußner](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Eva_Feussner_2211.jpg/400px-Eva_Feussner_2211.jpg)
+* Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Justiz und Verbraucherschutz:
 * Name: Franziska Weidinger

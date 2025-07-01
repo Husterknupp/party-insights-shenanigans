@@ -16,7 +16,7 @@ Berlin:
 * Name: Kai Wegner
 * Partei: CDU
 * Kabinett: https://de.wikipedia.org/wiki/Senat_Wegner
-* Profilbild: ![Kai Wegner](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/2014-09-09_-_Kai_Wegner_MdB_-_7002.jpg/400px-2014-09-09_-_Kai_Wegner_MdB_-_7002.jpg)
+* Profilbild: ![Kai Wegner](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93110.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93110.jpg)
 
 Brandenburg:
 * Name: Dietmar Woidke
