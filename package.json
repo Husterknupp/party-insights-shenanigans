@@ -24,10 +24,10 @@
   },
   "dependencies": {
     "@rescript/core": "^1.6.1",
-    "axios": "^1.8.4",
-    "cheerio": "^1.0.0",
+    "axios": "^1.10.0",
+    "cheerio": "^1.1.0",
     "jest": "^29.7.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.2",
     "rescript": "^11.1.4"
   }
 }
