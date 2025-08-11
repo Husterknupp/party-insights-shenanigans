@@ -43,7 +43,7 @@ Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend (BMBFSFJ):
 Bundesministerium für Digitales und Staatsmodernisierung (BMDS):
 * Name: Karsten Wildberger
 * Partei: CDU
-* Profilbild: ![Karsten Wildberger](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_%28Martin_Rulsch%29_040_%28cropped%29.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_%28Martin_Rulsch%29_040_%28cropped%29.jpg)
+* Profilbild: ![Karsten Wildberger](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Karsten_WILDBERGER_%28Federal_Minister_for_Digital_and_State_Modernisation%2C_Germany%29.jpg/400px-Karsten_WILDBERGER_%28Federal_Minister_for_Digital_and_State_Modernisation%2C_Germany%29.jpg)
 
 Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR):
 * Name: Dorothee Bär
