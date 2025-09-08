@@ -10,7 +10,7 @@ Bildung und Kindertagesstätten (gleichzeitig: Stellvertreterin der Ministerprä
 * Partei: Die Linke
 * Profilbild: ![Simone Oldenburg](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/2020_LINKE_Oldenburg%2C_Simone_OK9968.jpg/400px-2020_LINKE_Oldenburg%2C_Simone_OK9968.jpg)
 
-Inneres, Bau und Digitalisierung:
+Inneres und Bau:
 * Name: Christian Pegel
 * Partei: SPD
 * Profilbild: ![Christian Pegel](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/18-05-2017-Christian_Pegel-JonasR.jpg/400px-18-05-2017-Christian_Pegel-JonasR.jpg)
@@ -40,7 +40,7 @@ Klimaschutz, Landwirtschaft, ländliche Räume und Umwelt:
 * Partei: SPD
 * Profilbild: ![Till Backhaus](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Till_Backhaus_SPD.jpg/400px-Till_Backhaus_SPD.jpg)
 
-Finanzen:
+Finanzen und Digitalisierung:
 * Name: Heiko Geue
 * Partei: SPD
 * Profilbild: *Kein Bild verfügbar*
