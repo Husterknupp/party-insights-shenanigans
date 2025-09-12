@@ -42,7 +42,7 @@ Minister der Justiz und für Digitalisierung:
 
 Ministerin für Gesundheit und Soziales:
 * Name: Britta Müller
-* Partei: parteilos (vom BSW nominiert)
+* Partei: BSW (bis September 2025 parteilos)
 * Profilbild: *Kein Bild verfügbar*
 
 Minister für Infrastruktur und Landesplanung:
