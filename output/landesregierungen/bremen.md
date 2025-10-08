@@ -26,9 +26,9 @@ Senator für Inneres und Sport:
 * Profilbild: ![Ulrich Mäurer](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ulrich_M%C3%A4urer.jpg/400px-Ulrich_M%C3%A4urer.jpg)
 
 Senatorin für Umwelt, Klima und Wissenschaft:
-* Name: Kathrin Moosdorf
+* Name: Björn Fecker ( kommissarisch )
 * Partei: Grüne
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Björn Fecker ( kommissarisch )](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Fecker%2C_Bj%C3%B6rn-1.jpg/400px-Fecker%2C_Bj%C3%B6rn-1.jpg)
 
 Senatorin für Justiz und Verfassung (gleichzeitig: Senatorin für Arbeit, Soziales, Jugend und Integration):
 * Name: Claudia Schilling
