@@ -10,10 +10,10 @@ Stellvertreter des Präsidenten des Senats und Bürgermeister, Senator für Fina
 * Partei: Grüne
 * Profilbild: ![Björn Fecker](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Fecker%2C_Bj%C3%B6rn-1.jpg/400px-Fecker%2C_Bj%C3%B6rn-1.jpg)
 
-Senatorin für Kinder und Bildung:
-* Name: Sascha Karolin Aulepp
+Senator(in) für Kinder und Bildung:
+* Name: Mark Rackles
 * Partei: SPD
-* Profilbild: ![Sascha Karolin Aulepp](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Aulepp%2C_Sascha_Karolin-9217.jpg/400px-Aulepp%2C_Sascha_Karolin-9217.jpg)
+* Profilbild: ![Mark Rackles](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Mark_Rackles_%288263484933%29.jpg/400px-Mark_Rackles_%288263484933%29.jpg)
 
 Senatorin für Gesundheit, Frauen und Verbraucherschutz:
 * Name: Claudia Bernhard
