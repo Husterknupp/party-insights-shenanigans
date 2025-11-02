@@ -25,11 +25,6 @@ Bundesministerium der Verteidigung (BMVg):
 * Partei: SPD
 * Profilbild: ![Boris Pistorius](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Boris_Pistorius_%282019%29_%28cropped%29.jpg/400px-Boris_Pistorius_%282019%29_%28cropped%29.jpg)
 
-Bundesministerium des Innern (BMI):
-* Name: Alexander Dobrindt
-* Partei: CSU
-* Profilbild: ![Alexander Dobrindt](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg)
-
 Bundesministerium für Arbeit und Soziales (BMAS):
 * Name: Bärbel Bas
 * Partei: SPD
@@ -89,3 +84,8 @@ Stellvertreter des Bundeskanzlers • Bundesministerium der Finanzen (BMF):
 * Name: Lars Klingbeil
 * Partei: SPD
 * Profilbild: ![Lars Klingbeil](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4265_Crop_3.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4265_Crop_3.jpg)
+
+Vertreter nach § 22 (1) S. 2 Alt. 1 GO-BReg • Bundesministerium des Innern (BMI):
+* Name: Alexander Dobrindt
+* Partei: CSU
+* Profilbild: ![Alexander Dobrindt](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg/400px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg)
