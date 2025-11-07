@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@rescript/core": "^1.6.1",
-    "axios": "^1.12.2",
+    "axios": "^1.13.2",
     "cheerio": "^1.1.2",
     "jest": "^30.2.0",
     "prettier": "^3.6.2",
