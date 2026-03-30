@@ -20,15 +20,15 @@ Senatorin für Gesundheit, Frauen und Verbraucherschutz:
 * Partei: Linke
 * Profilbild: ![Claudia Bernhard](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Claudia_Bernhard-4714.jpg/400px-Claudia_Bernhard-4714.jpg)
 
-Senator für Inneres und Sport:
-* Name: Ulrich Mäurer
+Senator(in) für Inneres und Sport:
+* Name: Eva Högl
 * Partei: SPD
-* Profilbild: ![Ulrich Mäurer](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ulrich_M%C3%A4urer.jpg/400px-Ulrich_M%C3%A4urer.jpg)
+* Profilbild: ![Eva Högl](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ulrich_M%C3%A4urer.jpg/400px-Ulrich_M%C3%A4urer.jpg)
 
 Senatorin für Umwelt, Klima und Wissenschaft:
-* Name: Björn Fecker ( kommissarisch )
+* Name: Henrike Müller
 * Partei: Grüne
-* Profilbild: ![Björn Fecker ( kommissarisch )](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Fecker%2C_Bj%C3%B6rn-1.jpg/400px-Fecker%2C_Bj%C3%B6rn-1.jpg)
+* Profilbild: *Kein Bild verfügbar*
 
 Senatorin für Justiz und Verfassung (gleichzeitig: Senatorin für Arbeit, Soziales, Jugend und Integration):
 * Name: Claudia Schilling

@@ -33,7 +33,7 @@ Inneres und Sport:
 Bildung:
 * Name: Sven Teuber
 * Partei: SPD
-* Profilbild: ![Sven Teuber](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Sven_Teuber_%282021%29.tif/400px-Sven_Teuber_%282021%29.png)
+* Profilbild: ![Sven Teuber](https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/SvenTeuber2025.png/400px-SvenTeuber2025.png)
 
 Arbeit, Soziales, Transformation und Digitalisierung:
 * Name: Dörte Schall

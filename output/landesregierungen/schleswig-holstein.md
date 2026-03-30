@@ -1,6 +1,6 @@
 # Schleswig-Holstein - Kabinett Günther II
 
-Ministerpräsident:
+Ministerpräsident, Staatskanzlei:
 * Name: Daniel Günther
 * Partei: CDU
 * Profilbild: ![Daniel Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Daniel_G%C3%BCnther_%282017%29.jpg/400px-Daniel_G%C3%BCnther_%282017%29.jpg)
@@ -26,9 +26,9 @@ Ministerin für Allgemeine und Berufliche Bildung, Wissenschaft, Forschung und K
 * Profilbild: *Kein Bild verfügbar*
 
 Ministerin für Inneres, Kommunales, Wohnen und Sport:
-* Name: Sabine Sütterlin-Waack
+* Name: Magdalena Finke
 * Partei: CDU
-* Profilbild: ![Sabine Sütterlin-Waack](https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/S%C3%BCtterlin-Waack%2C_Sabine-1904.jpg/400px-S%C3%BCtterlin-Waack%2C_Sabine-1904.jpg)
+* Profilbild: ![Magdalena Finke](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Magdalena_Finke.jpg/400px-Magdalena_Finke.jpg)
 
 Minister für Energiewende, Klimaschutz, Umwelt und Natur:
 * Name: Tobias Goldschmidt
@@ -41,7 +41,7 @@ Minister für Wirtschaft, Verkehr, Arbeit, Technologie und Tourismus:
 * Profilbild: ![Claus Ruhe Madsen](https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Claus_Ruhe_Madsen_Nov_2021.jpg/400px-Claus_Ruhe_Madsen_Nov_2021.jpg)
 
 Minister für Landwirtschaft, ländliche Räume, Europa und Verbraucherschutz:
-* Name: Werner Schwarz
+* Name: Cornelia Schmachtenberg
 * Partei: CDU
 * Profilbild: *Kein Bild verfügbar*
 

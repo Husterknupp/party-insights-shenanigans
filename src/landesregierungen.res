@@ -192,7 +192,9 @@ let extractPoliticians = (
 }
 
 let fetchAndPrepareTableData = async bundesland => {
-  let response: Axios.response<string> = await Axios.get(bundesland.urlCabinet, None)
+  let headers = {User-Agent: "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)"}
+  let config = Some({headers: headers})
+  let response: Axios.response<string> = await Axios.get(bundesland.urlCabinet, config)
   Console.log(`\n✅ ${bundesland.urlCabinet} loaded successfully (${bundesland.state})`)
 
   let cabinetName = findCabinetName(response.data)

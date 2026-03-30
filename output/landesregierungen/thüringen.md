@@ -23,7 +23,7 @@ Chef der StaatskanzleiMinister für Bundes- und Europaangelegenheiten, Sport und
 Ministerin für Wirtschaft, Landwirtschaft und Ländlichen Raum:
 * Name: Colette Boos-John
 * Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
+* Profilbild: ![Colette Boos-John](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2026-02-04_Th%C3%BCringer_Landtag_STP_6808-2.jpg/400px-2026-02-04_Th%C3%BCringer_Landtag_STP_6808-2.jpg)
 
 Minister für Umwelt, Energie, Naturschutz und Forsten:
 * Name: Tilo Kummer
@@ -48,4 +48,4 @@ Minister für Digitales und Infrastruktur:
 Minister für Bildung, Wissenschaft und Kultur:
 * Name: Christian Tischner
 * Partei: CDU
-* Profilbild: ![Christian Tischner](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Landtagsprojekt_Th%C3%BCringen_Christian_Tischner_by_Olaf_Kosinsky-1.jpg/400px-Landtagsprojekt_Th%C3%BCringen_Christian_Tischner_by_Olaf_Kosinsky-1.jpg)
+* Profilbild: ![Christian Tischner](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/2026-01-18_FIS_Cross-Country_World_Cup_Oberhof_2026_%E2%80%93_Men%27s_10_km_Interval_Start_Classic_by_Sandro_Halank%E2%80%93268.jpg/400px-2026-01-18_FIS_Cross-Country_World_Cup_Oberhof_2026_%E2%80%93_Men%27s_10_km_Interval_Start_Classic_by_Sandro_Halank%E2%80%93268.jpg)

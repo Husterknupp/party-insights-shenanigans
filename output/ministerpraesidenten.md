@@ -10,7 +10,7 @@ Bayern:
 * Name: Markus Söder
 * Partei: CSU
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_S%C3%B6der_III
-* Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Markus_Soeder_%28cropped%29.jpg/400px-Markus_Soeder_%28cropped%29.jpg)
+* Profilbild: ![Markus Söder](https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2022-02-21_Dr._Markus_Soeder-2019.jpg/400px-2022-02-21_Dr._Markus_Soeder-2019.jpg)
 
 Berlin:
 * Name: Kai Wegner
@@ -21,7 +21,7 @@ Berlin:
 Brandenburg:
 * Name: Dietmar Woidke
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Woidke_IV
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Woidke_V
 * Profilbild: ![Dietmar Woidke](https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg/400px-2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg)
 
 Bremen:
@@ -46,19 +46,19 @@ Mecklenburg-Vorpommern:
 * Name: Manuela Schwesig
 * Partei: SPD
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_Schwesig_II
-* Profilbild: ![Manuela Schwesig](https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Manuela_Schwesig_2.jpg/400px-Manuela_Schwesig_2.jpg)
+* Profilbild: ![Manuela Schwesig](https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Manuela_Schwesig_2023_2.jpg/400px-Manuela_Schwesig_2023_2.jpg)
 
 Niedersachsen:
 * Name: Olaf Lies
 * Partei: SPD
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_Lies
-* Profilbild: ![Olaf Lies](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg)
+* Profilbild: ![Olaf Lies](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Olaf_Lies_%282023%29_%28cropped_3x4%29.jpg/400px-Olaf_Lies_%282023%29_%28cropped_3x4%29.jpg)
 
 Nordrhein-Westfalen:
 * Name: Hendrik Wüst
 * Partei: CDU
 * Kabinett: https://de.wikipedia.org/wiki/Kabinett_W%C3%BCst_II
-* Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Hendrik-W%C3%BCst-CDU-3%E2%80%93LT-NRW-by-Leila-Paul..jpg/400px-Hendrik-W%C3%BCst-CDU-3%E2%80%93LT-NRW-by-Leila-Paul..jpg)
+* Profilbild: ![Hendrik Wüst](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg/400px-Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg)
 
 Rheinland-Pfalz:
 * Name: Alexander Schweitzer
@@ -79,10 +79,10 @@ Sachsen:
 * Profilbild: ![Michael Kretschmer](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Michael_Kretschmer-v2_Pawel-Sosnowski_-_Querformat_%28cropped%29.jpg/400px-Michael_Kretschmer-v2_Pawel-Sosnowski_-_Querformat_%28cropped%29.jpg)
 
 Sachsen-Anhalt:
-* Name: Reiner Haseloff
+* Name: Sven Schulze
 * Partei: CDU
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Haseloff_III
-* Profilbild: ![Reiner Haseloff](https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg/400px-Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg)
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Schulze
+* Profilbild: ![Sven Schulze](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg/400px-2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg)
 
 Schleswig-Holstein:
 * Name: Daniel Günther

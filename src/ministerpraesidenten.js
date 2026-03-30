@@ -5,27 +5,40 @@ import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 
 function createImageFiles(ministerpraesidenten) {
   mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
-  ministerpraesidenten.forEach((ministerpraesident) => {
-    axios
-      .get(ministerpraesident.imageUrl, {
-        responseType: "arraybuffer",
-      })
-      .then((image) => {
-        console.log("Downloaded file for " + ministerpraesident.name);
 
-        // We store images in a separate directory so that we can exclude them from version control.
-        //   Initially we did that, but diffing images is hard (now, relying on the image URL as the source of truth)
-        writeFileSync(
-          "output-images/ministerpraesidenten/" +
-            ministerpraesident.name +
-            ".jpg",
-          image.data,
-          {
-            encoding: "base64",
-          }
-        );
+  // Download images sequentially with delay to avoid rate limiting
+  async function downloadWithDelay(index) {
+    if (index >= ministerpraesidenten.length) return;
+
+    const ministerpraesident = ministerpraesidenten[index];
+    try {
+      const image = await axios.get(ministerpraesident.imageUrl, {
+        responseType: "arraybuffer",
+        headers: {
+          "User-Agent": "party-insights-shenanigans/1.0 (contact: https://github.com/Husterknupp/party-insights-shenanigans)",
+        },
       });
-  });
+      console.log("Downloaded file for " + ministerpraesident.name);
+
+      writeFileSync(
+        "output-images/ministerpraesidenten/" +
+          ministerpraesident.name +
+          ".jpg",
+        image.data,
+        {
+          encoding: "base64",
+        }
+      );
+    } catch (err) {
+      console.error("Failed to download image for " + ministerpraesident.name + ": " + err.message);
+    }
+
+    // Wait 1 second before next request to avoid rate limiting
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await downloadWithDelay(index + 1);
+  }
+
+  downloadWithDelay(0);
 }
 
 function findPoliticians(html) {
@@ -89,7 +102,12 @@ function saveToOutputfiles(ministerpraesidenten) {
 
 export default async function extract() {
   const wikiResponse = await axios.get(
-    "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten"
+    "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten",
+    {
+      headers: {
+        "User-Agent": "party-insights-shenanigans/1.0 (contact: https://github.com/Husterknupp/party-insights-shenanigans)",
+      },
+    }
   );
   const ministerpraesidenten = findPoliticians(wikiResponse.data);
   saveToOutputfiles(ministerpraesidenten);
