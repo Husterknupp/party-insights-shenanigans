@@ -3,7 +3,7 @@ import { load } from "cheerio";
 import { writeFileSync, mkdirSync } from "fs";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 
-function createImageFiles(ministerpraesidenten) {
+async function createImageFiles(ministerpraesidenten) {
   mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
 
   // Download images sequentially with delay to avoid rate limiting
@@ -35,10 +35,10 @@ function createImageFiles(ministerpraesidenten) {
 
     // Wait 1 second before next request to avoid rate limiting
     await new Promise(resolve => setTimeout(resolve, 1000));
-    await downloadWithDelay(index + 1);
+    return downloadWithDelay(index + 1);
   }
 
-  downloadWithDelay(0);
+  return await downloadWithDelay(0);
 }
 
 function findPoliticians(html) {
@@ -86,7 +86,7 @@ function findPoliticians(html) {
   return result;
 }
 
-function saveToOutputfiles(ministerpraesidenten) {
+async function saveToOutputfiles(ministerpraesidenten) {
   ministerpraesidenten.sort(({ state: stateA }, { state: stateB }) =>
     stateA.localeCompare(stateB)
   );
@@ -97,7 +97,7 @@ function saveToOutputfiles(ministerpraesidenten) {
     "Ministerpräsidenten",
     ministerpraesidenten
   );
-  createImageFiles(ministerpraesidenten);
+  await createImageFiles(ministerpraesidenten);
 }
 
 export default async function extract() {
@@ -110,5 +110,5 @@ export default async function extract() {
     }
   );
   const ministerpraesidenten = findPoliticians(wikiResponse.data);
-  saveToOutputfiles(ministerpraesidenten);
+  await saveToOutputfiles(ministerpraesidenten);
 }
