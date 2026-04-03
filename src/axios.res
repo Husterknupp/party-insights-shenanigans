@@ -1,5 +1,12 @@
-type axiosRequestConfig
 type request
+
+type axiosHeaders = {
+  @as("User-Agent") userAgent: string,
+}
+
+type axiosRequestConfig = {
+  headers: axiosHeaders,
+}
 
 type response<'dataType> = {
   data: 'dataType,
@@ -15,3 +22,9 @@ type axios<'a> = {get: (string, option<axiosRequestConfig>) => Promise.t<respons
 @module("axios") external defaultExport: axios<'a> = "default"
 
 let get = defaultExport.get
+
+let defaultConfig: axiosRequestConfig = {
+  headers: {
+    userAgent: "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+  },
+}

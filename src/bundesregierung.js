@@ -104,7 +104,7 @@ export default async function extract() {
     "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)#Zusammensetzung",
     {
       headers: {
-        "User-Agent": "party-insights-shenanigans/1.0 (contact: https://github.com/Husterknupp/party-insights-shenanigans)",
+        "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
       },
     }
   );

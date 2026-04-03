@@ -15,7 +15,7 @@ function createImageFiles(ministerpraesidenten) {
       const image = await axios.get(ministerpraesident.imageUrl, {
         responseType: "arraybuffer",
         headers: {
-          "User-Agent": "party-insights-shenanigans/1.0 (contact: https://github.com/Husterknupp/party-insights-shenanigans)",
+          "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
         },
       });
       console.log("Downloaded file for " + ministerpraesident.name);
@@ -105,7 +105,7 @@ export default async function extract() {
     "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten",
     {
       headers: {
-        "User-Agent": "party-insights-shenanigans/1.0 (contact: https://github.com/Husterknupp/party-insights-shenanigans)",
+        "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
       },
     }
   );
