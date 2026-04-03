@@ -35,7 +35,7 @@ async function createImageFiles(ministerpraesidenten) {
 
     // Wait 1 second before next request to avoid rate limiting
     await new Promise(resolve => setTimeout(resolve, 1000));
-    return downloadWithDelay(index + 1);
+    await downloadWithDelay(index + 1);
   }
 
   return await downloadWithDelay(0);
