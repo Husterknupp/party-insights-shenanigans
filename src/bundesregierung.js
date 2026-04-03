@@ -101,7 +101,12 @@ export function findRelevantTable($cheerio) {
 
 export default async function extract() {
   const response = await axios.get(
-    "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)#Zusammensetzung"
+    "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)#Zusammensetzung",
+    {
+      headers: {
+        "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+      },
+    }
   );
   const $ = load(response.data);
 

@@ -1,8 +1,8 @@
 [
   {
-    "amt": "Ministerpräsident",
-    "name": "Reiner Haseloff",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93090.jpg/400px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93090.jpg",
+    "amt": "Ministerpräsident, Staatskanzlei",
+    "name": "Sven Schulze",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg/400px-2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg",
     "party": "CDU"
   },
   {
@@ -36,19 +36,13 @@
     "party": "CDU"
   },
   {
-    "amt": "Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten",
-    "name": "Sven Schulze",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/EPP_Political_Assembly%2C_04-05_May%2C_Munich%2C_Sven_Schulze_%2852871121137%29_%28cropped%29.jpg/400px-EPP_Political_Assembly%2C_04-05_May%2C_Munich%2C_Sven_Schulze_%2852871121137%29_%28cropped%29.jpg",
-    "party": "CDU"
-  },
-  {
-    "amt": "Minister der Finanzen",
+    "amt": "Minister der Finanzen (gleichzeitig: Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten)",
     "name": "Michael Richter",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
     "party": "CDU"
   },
   {
-    "amt": "Minister(in) für Bildung",
+    "amt": "Minister für Bildung",
     "name": "Jan Riedel",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
     "party": "CDU"

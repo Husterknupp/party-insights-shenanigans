@@ -1,9 +1,9 @@
-# Sachsen-Anhalt - Kabinett Haseloff III
+# Sachsen-Anhalt - Kabinett Schulze
 
-Ministerpräsident:
-* Name: Reiner Haseloff
+Ministerpräsident, Staatskanzlei:
+* Name: Sven Schulze
 * Partei: CDU
-* Profilbild: ![Reiner Haseloff](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93090.jpg/400px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93090.jpg)
+* Profilbild: ![Sven Schulze](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg/400px-2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg)
 
 Minister für Wissenschaft, Energie, Klimaschutz und Umwelt (gleichzeitig: Erster Stellvertreter des Ministerpräsidenten):
 * Name: Armin Willingmann
@@ -30,17 +30,12 @@ Ministerin für Inneres und Sport:
 * Partei: CDU
 * Profilbild: ![Tamara Zieschang](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/2023-05-28_Motorsport%2C_DTM%2C_Oschersleben_1DX_5400_by_Stepro.jpg/400px-2023-05-28_Motorsport%2C_DTM%2C_Oschersleben_1DX_5400_by_Stepro.jpg)
 
-Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten:
-* Name: Sven Schulze
-* Partei: CDU
-* Profilbild: ![Sven Schulze](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/EPP_Political_Assembly%2C_04-05_May%2C_Munich%2C_Sven_Schulze_%2852871121137%29_%28cropped%29.jpg/400px-EPP_Political_Assembly%2C_04-05_May%2C_Munich%2C_Sven_Schulze_%2852871121137%29_%28cropped%29.jpg)
-
-Minister der Finanzen:
+Minister der Finanzen (gleichzeitig: Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten):
 * Name: Michael Richter
 * Partei: CDU
 * Profilbild: *Kein Bild verfügbar*
 
-Minister(in) für Bildung:
+Minister für Bildung:
 * Name: Jan Riedel
 * Partei: CDU
 * Profilbild: *Kein Bild verfügbar*

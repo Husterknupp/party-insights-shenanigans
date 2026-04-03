@@ -46,9 +46,9 @@ Landwirtschaft und Verbraucherschutz:
 * Profilbild: ![Silke Gorißen](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Verleihung_des_Staatspreises_des_Landes_Nordrhein-Westfalen_an_Angela_Merkel-1857.jpg/400px-Verleihung_des_Staatspreises_des_Landes_Nordrhein-Westfalen_an_Angela_Merkel-1857.jpg)
 
 Kinder, Jugend, Familie, Gleichstellung, Flucht und Integration:
-* Name: Josefine Paul
+* Name: Verena Schäffer
 * Partei: Bündnis 90/Die Grünen
-* Profilbild: ![Josefine Paul](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Josefine_Paul_2020.jpg/400px-Josefine_Paul_2020.jpg)
+* Profilbild: ![Verena Schäffer](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Verena_Sch%C3%A4ffer_2021.jpg/400px-Verena_Sch%C3%A4ffer_2021.jpg)
 
 Heimat, Kommunales, Bau und Digitalisierung:
 * Name: Ina Scharrenbach

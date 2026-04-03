@@ -10,7 +10,7 @@
     "state": "Bayern",
     "name": "Markus Söder",
     "party": "CSU",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Markus_Soeder_%28cropped%29.jpg/400px-Markus_Soeder_%28cropped%29.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2022-02-21_Dr._Markus_Soeder-2019.jpg/400px-2022-02-21_Dr._Markus_Soeder-2019.jpg",
     "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_S%C3%B6der_III"
   },
   {
@@ -25,7 +25,7 @@
     "name": "Dietmar Woidke",
     "party": "SPD",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg/400px-2017-03-19_Dietmar_Woidke_SPD_Parteitag_by_Olaf_Kosinsky-1.jpg",
-    "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_Woidke_IV"
+    "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_Woidke_V"
   },
   {
     "state": "Bremen",
@@ -52,21 +52,21 @@
     "state": "Mecklenburg-Vorpommern",
     "name": "Manuela Schwesig",
     "party": "SPD",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Manuela_Schwesig_2.jpg/400px-Manuela_Schwesig_2.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Manuela_Schwesig_2023_2.jpg/400px-Manuela_Schwesig_2023_2.jpg",
     "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_Schwesig_II"
   },
   {
     "state": "Niedersachsen",
     "name": "Olaf Lies",
     "party": "SPD",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Olaf_Lies_%282023%29_%28cropped_3x4%29.jpg/400px-Olaf_Lies_%282023%29_%28cropped_3x4%29.jpg",
     "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_Lies"
   },
   {
     "state": "Nordrhein-Westfalen",
     "name": "Hendrik Wüst",
     "party": "CDU",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Hendrik-W%C3%BCst-CDU-3%E2%80%93LT-NRW-by-Leila-Paul..jpg/400px-Hendrik-W%C3%BCst-CDU-3%E2%80%93LT-NRW-by-Leila-Paul..jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg/400px-Er%C3%B6ffnung_ICE-Instandhaltungswerk_K%C3%B6ln-Nippes-9251_%28cropped%29.jpg",
     "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_W%C3%BCst_II"
   },
   {
@@ -92,10 +92,10 @@
   },
   {
     "state": "Sachsen-Anhalt",
-    "name": "Reiner Haseloff",
+    "name": "Sven Schulze",
     "party": "CDU",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg/400px-Reiner_Haseloff_%28Martin_Rulsch%29_09.jpg",
-    "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_Haseloff_III"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg/400px-2024-08-21_Event%2C_CDU%2C_Wahlkampf_mit_Friedrich_Merz_in_Erfurt_2024_STP_3079_by_Stepro.jpg",
+    "urlCabinet": "https://de.wikipedia.org/wiki/Kabinett_Schulze"
   },
   {
     "state": "Schleswig-Holstein",
