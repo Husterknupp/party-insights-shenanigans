@@ -2,7 +2,7 @@ import extractMinisterpraesidenten from "./src/ministerpraesidenten.js";
 import extractBundesregierung from "./src/bundesregierung.js";
 import { extract as extractLandesregierungen } from "./src/landesregierungen.res.mjs";
 
-async function run() {
+export async function run() {
   console.log("Start ministerpräsidenten");
   await extractMinisterpraesidenten();
   console.log("Done with ministerpräsidenten.\n");
@@ -16,6 +16,7 @@ async function run() {
   console.log("Done with landesregierungen.\n");
 }
 
-run()
-  .then(() => console.log("All done! Ite domum."))
-  .catch((err) => { console.error(err); process.exit(1); });
+// Only run when executed directly (not imported by tests)
+if (process.argv[1] === new URL(import.meta.url).pathname) {
+  run().then(() => console.log("All done! Ite domum."));
+}
