@@ -16,6 +16,4 @@ async function run() {
   console.log("Done with landesregierungen.\n");
 }
 
-run()
-  .then(() => console.log("All done! Ite domum."))
-  .catch(console.error);
+run().then(() => console.log("All done! Ite domum."));
