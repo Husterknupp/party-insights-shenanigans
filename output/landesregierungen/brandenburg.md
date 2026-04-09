@@ -13,7 +13,7 @@ Minister des Innern und für Kommunales (gleichzeitig: Stellvertreter des Minist
 Minister der Finanzen:
 * Name: Daniel Keller
 * Partei: SPD
-* Profilbild: ![Daniel Keller](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/DanielKeller_Foto_LinkedIn.jpg/400px-DanielKeller_Foto_LinkedIn.jpg)
+* Profilbild: ![Daniel Keller](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_placeholder.svg/400px-Portrait_placeholder.svg.png)
 
 Ministerin für Wirtschaft, Energie, Klimaschutz und Europa:
 * Name: Martina Klement
