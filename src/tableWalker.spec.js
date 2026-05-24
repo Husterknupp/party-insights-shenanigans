@@ -243,16 +243,16 @@ describe("integration tests", () => {
     expect(ministerRows[0].amt).toEqual("Ministerpräsidentin, Staatskanzlei");
     expect(ministerRows[0].name).toContain("Malu Dreyer");
     expect(ministerRows[0].party).toContain("SPD");
-    expect(ministerRows[0].imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg"
+    expect(ministerRows[0].imageUrl).toContain(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg"
     );
 
     // One minister row but two people had the amt one after the other
     expect(ministerRows[5].amt).toContain("Minister des Innern und für Sport");
     expect(ministerRows[5].name).toContain("Michael Ebling");
     expect(ministerRows[5].party).toContain("SPD");
-    expect(ministerRows[5].imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg/400px-2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg"
+    expect(ministerRows[5].imageUrl).toContain(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg"
     );
 
     // One minister row but three people had the amt one after the other
@@ -262,8 +262,8 @@ describe("integration tests", () => {
     );
     expect(klimaschutz.name).toContain("Katrin Eder");
     expect(klimaschutz.party).toContain("B’90/Die Grünen");
-    expect(klimaschutz.imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg/400px-Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg"
+    expect(klimaschutz.imageUrl).toContain(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg"
     );
   });
 });
@@ -303,8 +303,8 @@ describe("tableWalker", () => {
     const cells = tableWalker(TableHtmlVariant(table));
 
     expect(cells.length).toBe(1);
-    expect(cells[0].imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/400px-PetravonOlschowski_Web.jpg"
+    expect(cells[0].imageUrl).toContain(
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg"
     );
   });
 

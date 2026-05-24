@@ -212,19 +212,14 @@ let _extractTextFromCell = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell
   removeInvisibleSourceLineBreaks(cheerio, cell._cheerioEl->Option.getExn)
 }
 
-let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
+let _extractImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dataCell) => {
   let imageElement =
     cheerio(None, CheerioFacade.CheerioElement(cell._cheerioEl->Option.getExn))
     ->CheerioFacade.find("img")
     ->CheerioFacade.getLast
 
   CheerioFacade.getSrc(imageElement)->Option.map(src => {
-    let parts = String.split(src, "/")
-    let filtered = Array.filterWithIndex(parts, (_, index) => index !== Array.length(parts) - 1)
-    let lastPart = filtered->Array.get(Array.length(filtered) - 1)->Option.getExn
-    let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, %re("/\.tif$/"), ".png")
-    filtered->Array.push(newLastPart)->ignore
-    "https:" ++ Array.join(filtered, "/")
+    "https:" ++ src
   })
 }
 
@@ -282,7 +277,7 @@ let tableWalker = (TableHtml(html)) => {
     dataCells
     ->Array.map(cell => {
       let linesOfText = _extractTextFromCell(cheerio, cell)
-      let imageUrl = _extractAndResizeImageUrl(cheerio, cell)
+      let imageUrl = _extractImageUrl(cheerio, cell)
       let header = _findHeaderTextForCell(headerCells, cell, linesOfText)
 
       {
