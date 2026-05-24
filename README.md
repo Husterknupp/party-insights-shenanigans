@@ -27,3 +27,10 @@ npm ci
 npm run res:build
 npm test
 ```
+
+## Notes for LLM Agents
+
+- **This is a ReScript project.** Source files in `src/` are `.res` (ReScript) — only edit those. The `.res.mjs` files are compiled output and will be overwritten by `npm run res:build`.
+- **Exceptions:** `src/ministerpraesidenten.js`, `src/bundesregierung.js`, and `src/*.spec.js` are plain JavaScript source files with no `.res` counterpart. These may be edited directly.
+- **Before committing:** Always run `npm ci && npm run res:build && npm start` to verify the pipeline completes, and `npm test` to verify tests pass.
+- **Never commit `output/` or `output-images/`** — these are generated artifacts (see `.gitignore`).

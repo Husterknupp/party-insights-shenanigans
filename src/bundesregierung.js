@@ -5,13 +5,9 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 
-function urlForResizedImage(image) {
-  // Resize image to non-thumb size
-  // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-  let parts = image.split("/");
-  parts = parts.filter((_, index) => index !== parts.length - 1);
-  parts.push("400px-" + parts[parts.length - 1]);
-  return "https:" + parts.join("/");
+function urlForOriginalImage(image) {
+  // Use the original thumbnail URL as-is (don't try to resize)
+  return "https:" + image;
 }
 
 function indexParty($rows) {
@@ -137,7 +133,7 @@ export default async function extract() {
     const name = $(cells[nameIdx]).find("a:nth-of-type(1)").text();
 
     const imageSmall = $(cells[imageIdx]).find("img").attr("src");
-    const imageUrl = urlForResizedImage(imageSmall);
+    const imageUrl = urlForOriginalImage(imageSmall);
 
     // const party = $(cells[4]).text().trim();
     const party = $(cells[partyIdx]).text().trim();
