@@ -58,15 +58,14 @@ function findPoliticians(html) {
       const state = $(cells[0]).find('[style="display:none;"]').text().trim();
       const name = $(cells[1]).find("a").text();
       const image = $(cells[2]).find("img").attr("src");
-      // Resize image to non-thumb size
-      // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-      let parts = image.split("/");
-      parts = parts.filter((_, index) => index !== parts.length - 1);
-      parts.push("400px-" + parts[parts.length - 1]);
-      const imageUrl = "https:" + parts.join("/");
+      // Use the original thumbnail URL as-is (don't try to resize)
+      const imageUrl = "https:" + image;
       const party = $(cells[4]).text().trim();
       const cabinet = $(cells[9]).find("a").attr("href");
-      const urlCabinet = "https://de.wikipedia.org" + cabinet;
+      // cabinet may already be a full URL (e.g. //de.wikipedia.org/wiki/...) or just a path (/wiki/...)
+      const urlCabinet = cabinet.startsWith("http") ? cabinet
+        : cabinet.startsWith("//") ? "https:" + cabinet
+        : "https://de.wikipedia.org" + cabinet;
 
       result.push({
         state,
