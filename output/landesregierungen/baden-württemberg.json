@@ -1,14 +1,14 @@
 [
   {
-    "amt": "Ministerpräsident",
-    "name": "Winfried Kretschmann",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/180913_Kretschmann_Hybrid_Faehre_01_%28cropped%29.jpg/400px-180913_Kretschmann_Hybrid_Faehre_01_%28cropped%29.jpg",
+    "amt": "Ministerpräsident, Staatsministerium",
+    "name": "Cem Özdemir",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Baustelle_Mobilit%C3%A4t-_Leitprojekte_f%C3%BCr_die_Verkehrswende_-_49385137551_%28cropped%29.jpg/400px-Baustelle_Mobilit%C3%A4t-_Leitprojekte_f%C3%BCr_die_Verkehrswende_-_49385137551_%28cropped%29.jpg",
     "party": "Grüne"
   },
   {
-    "amt": "Inneres, Digitalisierung und Kommunen (gleichzeitig: Stellvertretender Ministerpräsident)",
-    "name": "Thomas Strobl",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/2018-12-07_Thomas_Strobl_CDU_Pateitag_in_Hamburg-2501.jpg/400px-2018-12-07_Thomas_Strobl_CDU_Pateitag_in_Hamburg-2501.jpg",
+    "amt": "Inneres, Digitalisierung und Europa (gleichzeitig: Stellvertretender Ministerpräsident)",
+    "name": "Manuel Hagel",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Manuel_Hagel_at_Deutsches_Musikfest_2025_P1078385.jpg/400px-Manuel_Hagel_at_Deutsches_Musikfest_2025_P1078385.jpg",
     "party": "CDU"
   },
   {
@@ -18,10 +18,10 @@
     "party": "Grüne"
   },
   {
-    "amt": "Kultus, Jugend und Sport",
-    "name": "Theresa Schopper",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/2012-07-18-Theresa-Schopper-1.jpg/400px-2012-07-18-Theresa-Schopper-1.jpg",
-    "party": "Grüne"
+    "amt": "Kultus",
+    "name": "Andreas Jung",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Andreas-jung.jpg/400px-Andreas-jung.jpg",
+    "party": "CDU"
   },
   {
     "amt": "Wissenschaft, Forschung und Kunst",
@@ -36,45 +36,39 @@
     "party": "Grüne"
   },
   {
-    "amt": "Wirtschaft, Arbeit und Tourismus",
+    "amt": "Wirtschaft, Handwerk und Tourismus",
     "name": "Nicole Hoffmeister-Kraut",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/2019_Schwoermontag_Hoffmeister-Kraut_2.jpg/400px-2019_Schwoermontag_Hoffmeister-Kraut_2.jpg",
     "party": "CDU"
   },
   {
-    "amt": "Soziales, Gesundheit und Integration",
-    "name": "Manfred Lucha",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Manfred_Lucha_2013-by-RaBoe_01.jpg/400px-Manfred_Lucha_2013-by-RaBoe_01.jpg",
+    "amt": "Soziales, Arbeit und Gesundheit",
+    "name": "Oliver Hildenbrand",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/OliverHildenbrand-quer.jpg/400px-OliverHildenbrand-quer.jpg",
     "party": "Grüne"
   },
   {
-    "amt": "Ernährung, Ländlicher Raum und Verbraucherschutz",
-    "name": "Peter Hauk",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/KDBusch.jpg/400px-KDBusch.jpg",
+    "amt": "Justiz und Migration",
+    "name": "Moritz Oppelt",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/400px-Silver_-_replace_this_image_male.svg",
     "party": "CDU"
   },
   {
-    "amt": "Justiz und Migration",
+    "amt": "Verkehr",
+    "name": "Nicole Razavi",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Nicole_Razavi_Bad_Mergentheim_2025_03.jpg/400px-Nicole_Razavi_Bad_Mergentheim_2025_03.jpg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Ländlicher Raum, Landwirtschaft und Heimat",
     "name": "Marion Gentges",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Marion_Gentges-1180806.jpg/400px-Marion_Gentges-1180806.jpg",
     "party": "CDU"
   },
   {
-    "amt": "Verkehr",
-    "name": "Winfried Hermann",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bammental_-_Winfried_Hermann_-_2018-07-13_11-20-24.jpg/400px-Bammental_-_Winfried_Hermann_-_2018-07-13_11-20-24.jpg",
-    "party": "Grüne"
-  },
-  {
     "amt": "Landesentwicklung und Wohnen",
-    "name": "Nicole Razavi",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/2013-05-15_16_-_Razavi%2C_Nicole%2C_MdL_-_LTBW_-_4931.jpg/400px-2013-05-15_16_-_Razavi%2C_Nicole%2C_MdL_-_LTBW_-_4931.jpg",
-    "party": "CDU"
-  },
-  {
-    "amt": "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
-    "name": "Barbara Bosch",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Barbara_Bosch_03-2016_%28cropped%29.jpg/400px-Barbara_Bosch_03-2016_%28cropped%29.jpg",
-    "party": "parteilos"
+    "name": "Theresa Schopper",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/2012-07-18-Theresa-Schopper-1.jpg/400px-2012-07-18-Theresa-Schopper-1.jpg",
+    "party": "Grüne"
   }
 ]

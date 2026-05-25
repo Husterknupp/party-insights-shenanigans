@@ -28,7 +28,7 @@ Arbeit, Gesundheit und Soziales:
 Justiz:
 * Name: Benjamin Limbach
 * Partei: Bündnis 90/Die Grünen
-* Profilbild: ![Benjamin Limbach](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/LDK_Bielefeld_25.-26.6.2022_%2852172671262%29_%28cropped%29.jpg/400px-LDK_Bielefeld_25.-26.6.2022_%2852172671262%29_%28cropped%29.jpg)
+* Profilbild: ![Benjamin Limbach](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Benjamin_Limbach.2025.jpg/400px-Benjamin_Limbach.2025.jpg)
 
 Schule und Bildung:
 * Name: Dorothee Feller
@@ -63,4 +63,4 @@ Kultur und Wissenschaft:
 Bundes- und Europaangelegenheiten, Internationales sowie Medien in der Staatskanzlei, Chef der Staatskanzlei:
 * Name: Nathanael Liminski
 * Partei: CDU
-* Profilbild: ![Nathanael Liminski](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Nathanael_Liminski_Grimme-Preis_2018.jpg/400px-Nathanael_Liminski_Grimme-Preis_2018.jpg)
+* Profilbild: ![Nathanael Liminski](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/MKr350463_Nathanael_Liminski_%282024%29.jpg/400px-MKr350463_Nathanael_Liminski_%282024%29.jpg)

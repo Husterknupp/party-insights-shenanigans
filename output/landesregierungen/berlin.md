@@ -10,15 +10,10 @@ Wirtschaft, Energie und Betriebe (gleichzeitig: Bürgermeisterin):
 * Partei: SPD
 * Profilbild: ![Franziska Giffey](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93011.jpg/400px-2023-04-27_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93011.jpg)
 
-Finanzen (gleichzeitig: Bürgermeister):
+Kultur und Gesellschaftlicher Zusammenhalt (gleichzeitig: Finanzen (gleichzeitig: Bürgermeister)):
 * Name: Stefan Evers
 * Partei: CDU
 * Profilbild: ![Stefan Evers](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Stefan_Evers%2C_Finanzsenator_von_Berlin%2C_%28Tobias_Koch%2C_202%29.jpg/400px-Stefan_Evers%2C_Finanzsenator_von_Berlin%2C_%28Tobias_Koch%2C_202%29.jpg)
-
-Kultur und Gesellschaftlicher Zusammenhalt:
-* Name: Sarah Wedl-Wilson
-* Partei: parteilos
-* Profilbild: ![Sarah Wedl-Wilson](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93001.jpg/400px-2025-05-22_Sitzung_des_Abgeordnetenhauses_von_Berlin_by_Sandro_Halank%E2%80%93001.jpg)
 
 Stadtentwicklung, Bauen und Wohnen:
 * Name: Christian Gaebler
