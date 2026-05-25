@@ -83,9 +83,11 @@ function findPoliticians(html) {
       }
 
       // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path
-      const imageUrl = image.startsWith("http") ? image
+      // Use 500px thumbnail (defined MediaWiki size, see mediawiki.org/wiki/Common_thumbnail_sizes)
+      const imageUrl = (image.startsWith("http") ? image
         : image.startsWith("//") ? "https:" + image
-        : "https://de.wikipedia.org" + image;
+        : "https://de.wikipedia.org" + image)
+        .replace(/\/\d+px-/, "/500px-");
 
       // cabinet may be a full URL, protocol-relative (//de.wikipedia.org/...), or a relative path (/wiki/...)
       const urlCabinet = cabinet.startsWith("http") ? cabinet
