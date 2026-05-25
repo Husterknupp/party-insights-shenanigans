@@ -77,9 +77,10 @@ function findPoliticians(html) {
       if (!image) missing.push("imageUrl");
       if (!cabinet) missing.push("cabinet/kabinett URL");
       if (missing.length > 0) {
-        console.error(`Missing fields for ${context}: ${missing.join(", ")}`);
-        console.error(`  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`);
-        process.exit(1);
+        throw new Error(
+          `Missing fields for ${context}: ${missing.join(", ")}` +
+          `\n  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`
+        );
       }
 
       // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path
