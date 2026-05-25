@@ -13,7 +13,6 @@ async function createImageFiles(ministerpraesidenten) {
     const ministerpraesident = ministerpraesidenten[index];
     if (!ministerpraesident.imageUrl) {
       console.error(`Skipping image download for ${ministerpraesident.name} (${ministerpraesident.state}): imageUrl is ${ministerpraesident.imageUrl}`);
-      await new Promise(resolve => setTimeout(resolve, 1000));
       await downloadWithDelay(index + 1);
       return;
     }
@@ -62,10 +61,10 @@ function findPoliticians(html) {
       const cells = $(row).find("td");
       if (cells.length === 0) return; // for table header
 
-      const state = $(cells[0]).find('[style="display:none;"]').text().trim() || undefined;
-      const name = $(cells[1]).find("a").text().trim() || undefined;
+      const state = $(cells[0]).find('[style="display:none;"]').text().trim();
+      const name = $(cells[1]).find("a").text().trim();
       const image = $(cells[2]).find("img").attr("src");
-      const party = $(cells[4]).text().trim() || undefined;
+      const party = $(cells[4]).text().trim();
       const cabinet = $(cells[9]).find("a").attr("href");
 
       const context = `${state || "(unknown Bundesland)"} / ${name || "(unknown name)"}`;
