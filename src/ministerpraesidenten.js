@@ -11,6 +11,12 @@ async function createImageFiles(ministerpraesidenten) {
     if (index >= ministerpraesidenten.length) return;
 
     const ministerpraesident = ministerpraesidenten[index];
+    if (!ministerpraesident.imageUrl) {
+      console.error(`Skipping image download for ${ministerpraesident.name} (${ministerpraesident.state}): imageUrl is ${ministerpraesident.imageUrl}`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await downloadWithDelay(index + 1);
+      return;
+    }
     try {
       const image = await axios.get(ministerpraesident.imageUrl, {
         responseType: "arraybuffer",
@@ -30,7 +36,8 @@ async function createImageFiles(ministerpraesidenten) {
         }
       );
     } catch (err) {
-      console.error("Failed to download image for " + ministerpraesident.name + ": " + err.message);
+      console.error(`Failed to download image for ${ministerpraesident.name} (${ministerpraesident.state}): ${err.message}`);
+      console.error(`  URL: ${ministerpraesident.imageUrl}`);
     }
 
     // Wait 1 second before next request to avoid rate limiting
@@ -55,18 +62,34 @@ function findPoliticians(html) {
       const cells = $(row).find("td");
       if (cells.length === 0) return; // for table header
 
-      const state = $(cells[0]).find('[style="display:none;"]').text().trim();
-      const name = $(cells[1]).find("a").text();
+      const state = $(cells[0]).find('[style="display:none;"]').text().trim() || undefined;
+      const name = $(cells[1]).find("a").text().trim() || undefined;
       const image = $(cells[2]).find("img").attr("src");
-      // Resize image to non-thumb size
-      // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-      let parts = image.split("/");
-      parts = parts.filter((_, index) => index !== parts.length - 1);
-      parts.push("400px-" + parts[parts.length - 1]);
-      const imageUrl = "https:" + parts.join("/");
-      const party = $(cells[4]).text().trim();
+      const party = $(cells[4]).text().trim() || undefined;
       const cabinet = $(cells[9]).find("a").attr("href");
-      const urlCabinet = "https://de.wikipedia.org" + cabinet;
+
+      const context = `${state || "(unknown Bundesland)"} / ${name || "(unknown name)"}`;
+
+      // Validate: all required fields must be present
+      const missing = [];
+      if (!state) missing.push("state/Bundesland");
+      if (!name) missing.push("name");
+      if (!party) missing.push("party/Partei");
+      if (!image) missing.push("imageUrl");
+      if (!cabinet) missing.push("cabinet/kabinett URL");
+      if (missing.length > 0) {
+        console.error(`Missing fields for ${context}: ${missing.join(", ")}`);
+        console.error(`  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`);
+        process.exit(1);
+      }
+
+      // Use the original thumbnail URL as-is (don't try to resize)
+      const imageUrl = "https:" + image;
+
+      // cabinet may be a full URL, protocol-relative (//de.wikipedia.org/...), or a relative path (/wiki/...)
+      const urlCabinet = cabinet.startsWith("http") ? cabinet
+        : cabinet.startsWith("//") ? "https:" + cabinet
+        : "https://de.wikipedia.org" + cabinet;
 
       result.push({
         state,
@@ -101,14 +124,13 @@ async function saveToOutputfiles(ministerpraesidenten) {
 }
 
 export default async function extract() {
-  const wikiResponse = await axios.get(
-    "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten",
-    {
-      headers: {
-        "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
-      },
-    }
-  );
+  const WIKI_URL = "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten";
+  console.log(`Fetching ${WIKI_URL}`);
+  const wikiResponse = await axios.get(WIKI_URL, {
+    headers: {
+      "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+    },
+  });
   const ministerpraesidenten = findPoliticians(wikiResponse.data);
   await saveToOutputfiles(ministerpraesidenten);
 }
