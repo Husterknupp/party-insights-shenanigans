@@ -83,8 +83,10 @@ function findPoliticians(html) {
         process.exit(1);
       }
 
-      // Use the original thumbnail URL as-is (don't try to resize)
-      const imageUrl = "https:" + image;
+      // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path
+      const imageUrl = image.startsWith("http") ? image
+        : image.startsWith("//") ? "https:" + image
+        : "https://de.wikipedia.org" + image;
 
       // cabinet may be a full URL, protocol-relative (//de.wikipedia.org/...), or a relative path (/wiki/...)
       const urlCabinet = cabinet.startsWith("http") ? cabinet
