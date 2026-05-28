@@ -48,7 +48,7 @@ Bildung:
 Wissenschaft, Weiterbildung und Gesundheit:
 * Name: Clemens Hoch
 * Partei: SPD
-* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Clemens_Hoch.jpg/400px-Clemens_Hoch.jpg)
+* Profilbild: ![Clemens Hoch](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch_%28bearb_Sp%29.jpg/400px-2018-08-14_IHK-1452_%28cropped%29_-_Clemens_Hoch_%28bearb_Sp%29.jpg)
 
 Bundes- und Europaangelegenheiten, Sport, Ehrenamt und Medien, Chef der Staatskanzlei:
 * Name: Marcus Klein
