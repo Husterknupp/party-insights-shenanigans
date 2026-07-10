@@ -184,6 +184,20 @@ let extractPoliticians = (
     switch (ministerName, party, imageUrl) {
     | (Some(ministerName), Some(party), Some(imageUrl)) =>
       createPoliticianAndAddToList(amt, ministerName, party, imageUrl, result)
+    | (Some(ministerName), Some(party), None) => {
+        // Some Wikipedia tables lack a photo column entirely.
+        // Use a placeholder so the pipeline doesn't crash.
+        let placeholderCell: tableCell = {
+          colStart: 0,
+          colEnd: 0,
+          rowStart: 0,
+          rowEnd: 0,
+          imageUrl: Some("https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Portrait_placeholder.svg/400px-Portrait_placeholder.svg.png"),
+          header: "placeholder",
+          linesOfText: [],
+        }
+        createPoliticianAndAddToList(amt, ministerName, party, placeholderCell, result)
+      }
     | _ => _panicOnMissingDetails(amt, ministerName, party, imageUrl, bundesland)
     }
   })
