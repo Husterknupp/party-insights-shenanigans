@@ -3,7 +3,7 @@
 Ministerpräsident, Staatskanzlei:
 * Name: Olaf Lies
 * Partei: SPD
-* Profilbild: ![Olaf Lies](https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Lies_Olaf_%282012%29.jpg/400px-Lies_Olaf_%282012%29.jpg)
+* Profilbild: ![Olaf Lies](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Olaf_Lies_%282023%29_%28cropped_3x4%29.jpg/400px-Olaf_Lies_%282023%29_%28cropped_3x4%29.jpg)
 
 Kultus (gleichzeitig: Stellvertreterin des Ministerpräsidenten):
 * Name: Julia Hamburg
