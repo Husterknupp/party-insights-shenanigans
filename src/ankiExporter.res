@@ -11,8 +11,8 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
       | Some(fields) =>
         (
           {
-            amt: ?(fields->Dict.get("amt")->Option.flatMap(JSON.Decode.string)),
-            state: ?(fields->Dict.get("state")->Option.flatMap(JSON.Decode.string)),
+            amt: ?fields->Dict.get("amt")->Option.flatMap(JSON.Decode.string),
+            state: ?fields->Dict.get("state")->Option.flatMap(JSON.Decode.string),
             name: fields
             ->Dict.get("name")
             ->Option.getExn(~message="name field missing")
@@ -28,7 +28,7 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
             ->Option.getExn(~message="imageUrl field missing")
             ->JSON.Decode.string
             ->Option.getExn(~message="imageUrl field expected to be a string"),
-            urlCabinet: ?(fields->Dict.get("urlCabinet")->Option.flatMap(JSON.Decode.string)),
+            urlCabinet: ?fields->Dict.get("urlCabinet")->Option.flatMap(JSON.Decode.string),
           }: OutputHelpers.politician
         )
 
