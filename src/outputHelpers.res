@@ -30,15 +30,17 @@ let writeAsJson = (fileName: string, output: array<politician>, ~writeFileSyncWi
   }
 }
 
+let hasValidImageUrl = (minister: politician) => {
+  minister.imageUrl != "" &&
+  !(minister.imageUrl->String.includes("replace_this_image")) &&
+  !(minister.imageUrl->String.includes("Placeholder"))
+}
+
 let formatImageUrl = (minister: politician) => {
-  if (
-    minister.imageUrl == "" ||
-    minister.imageUrl->String.includes("replace_this_image") ||
-    minister.imageUrl->String.includes("Placeholder")
-  ) {
-    "*Kein Bild verfügbar*"
-  } else {
+  if hasValidImageUrl(minister) {
     `![${minister.name}](${minister.imageUrl})`
+  } else {
+    "*Kein Bild verfügbar*"
   }
 }
 
