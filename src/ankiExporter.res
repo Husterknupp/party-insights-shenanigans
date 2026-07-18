@@ -56,7 +56,8 @@ let cardFieldsFor = (politician: OutputHelpers.politician) => {
 
 // only the extensions Anki reliably renders inline; anything else falls back to jpg
 let _fileExtensionFor = (imageUrl: string): string => {
-  let withoutQuery = imageUrl->String.split("?")->Array.get(0)->Option.getOr(imageUrl)
+  let withoutHash = imageUrl->String.split("#")->Array.get(0)->Option.getOr(imageUrl)
+  let withoutQuery = withoutHash->String.split("?")->Array.get(0)->Option.getOr(withoutHash)
   switch withoutQuery->String.lastIndexOf(".") {
   | -1 => "jpg"
   | lastDot =>

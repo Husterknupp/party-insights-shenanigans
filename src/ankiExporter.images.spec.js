@@ -27,6 +27,14 @@ describe("_fileExtensionFor", () => {
   it("falls back to jpg when there is no extension at all", () => {
     expect(_fileExtensionFor("https://example.com/foo/bar")).toBe("jpg");
   });
+
+  it("ignores hash fragments when detecting the extension", () => {
+    expect(_fileExtensionFor("https://example.com/foo/bar.png#section")).toBe("png");
+  });
+
+  it("ignores a hash fragment that comes after a query string", () => {
+    expect(_fileExtensionFor("https://example.com/foo/bar.jpg?width=500#section")).toBe("jpg");
+  });
 });
 
 describe("_downloadMediaFor", () => {
