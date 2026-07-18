@@ -68,30 +68,21 @@ let _fileExtensionFor = (imageUrl: string): string => {
   }
 }
 
-// image downloads must never take the whole export down: a slow/broken Wikipedia URL
-// is common and should just yield a text-only card instead of failing all the others
+// a missing imageUrl is an expected, optional field and stays a soft skip (see
+// _downloadMediaFor below) — but a valid URL that fails to download points at a real bug
+// (e.g. the hardcoded-thumbnail-width issue), so that propagates and aborts the export
+// instead of silently shipping a deck with missing images
 let _imageConfig: Axios.axiosRequestConfig = {
   headers: Axios.defaultConfig.headers,
   responseType: "arraybuffer",
 }
 
-let _downloadImage = async (imageUrl: string): option<AnkiExport.mediaData> => {
-  try {
-    let response: Axios.response<AnkiExport.mediaData> = await Axios.get(
-      imageUrl,
-      Some(_imageConfig),
-    )
-    Some(response.data)
-  } catch {
-  | Exn.Error(e) =>
-    Console.log(
-      `⚠️  Skipping broken image ${imageUrl}: ${Exn.message(e)->Option.getOr("unknown error")}`,
-    )
-    None
-  | _ =>
-    Console.log(`⚠️  Skipping broken image ${imageUrl}`)
-    None
-  }
+let _downloadImage = async (imageUrl: string): AnkiExport.mediaData => {
+  let response: Axios.response<AnkiExport.mediaData> = await Axios.get(
+    imageUrl,
+    Some(_imageConfig),
+  )
+  response.data
 }
 
 // filename is index-based (not name-based) so it stays unique even for duplicate names
@@ -103,10 +94,8 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
     Console.log(`⚠️  Skipping missing image for ${politician.name}`)
     None
   } else {
-    switch await _downloadImage(politician.imageUrl) {
-    | Some(data) => Some((`${index->Int.toString}.${_fileExtensionFor(politician.imageUrl)}`, data))
-    | None => None
-    }
+    let data = await _downloadImage(politician.imageUrl)
+    Some((`${index->Int.toString}.${_fileExtensionFor(politician.imageUrl)}`, data))
   }
 }
 

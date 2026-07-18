@@ -75,14 +75,14 @@ describe("_downloadMediaFor", () => {
     expect(axiosGetMock).not.toHaveBeenCalled();
   });
 
-  it("skips (without throwing) when the download rejects", async () => {
+  it("throws when the download rejects", async () => {
     axiosGetMock.mockRejectedValue(new Error("404 Not Found"));
 
-    const result = await _downloadMediaFor(
-      { name: "Jane Doe", party: "N/A", imageUrl: "https://example.com/broken.png" },
-      0,
-    );
-
-    expect(result).toBeUndefined();
+    await expect(
+      _downloadMediaFor(
+        { name: "Jane Doe", party: "N/A", imageUrl: "https://example.com/broken.png" },
+        0,
+      ),
+    ).rejects.toThrow("404 Not Found");
   });
 });
