@@ -31,6 +31,7 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
             urlCabinet: ?fields->Dict.get("urlCabinet")->Option.flatMap(JSON.Decode.string),
           }: OutputHelpers.politician
         )
+
       | None => Error.panic(`Error deserializing single politician object from ${fileName}`)
       }
     })
@@ -53,13 +54,70 @@ let cardFieldsFor = (politician: OutputHelpers.politician) => {
   (front, `${politician.name} (${politician.party})`)
 }
 
+// only the extensions Anki reliably renders inline; anything else falls back to jpg
+let _fileExtensionFor = (imageUrl: string): string => {
+  let withoutHash = imageUrl->String.split("#")->Array.get(0)->Option.getOr(imageUrl)
+  let withoutQuery = withoutHash->String.split("?")->Array.get(0)->Option.getOr(withoutHash)
+  switch withoutQuery->String.lastIndexOf(".") {
+  | -1 => "jpg"
+  | lastDot =>
+    switch withoutQuery->String.sliceToEnd(~start=lastDot + 1)->String.toLowerCase {
+    | ("jpg" | "jpeg" | "png" | "gif" | "webp") as ext => ext
+    | _ => "jpg"
+    }
+  }
+}
+
+// a missing imageUrl is an expected, optional field and stays a soft skip (see
+// _downloadMediaFor below) — but a valid URL that fails to download points at a real bug
+// (e.g. the hardcoded-thumbnail-width issue), so that propagates and aborts the export
+// instead of silently shipping a deck with missing images
+let _imageConfig: Axios.axiosRequestConfig = {
+  headers: Axios.defaultConfig.headers,
+  responseType: "arraybuffer",
+}
+
+let _downloadImage = async (imageUrl: string): AnkiExport.mediaData => {
+  let response: Axios.response<AnkiExport.mediaData> = await Axios.get(
+    imageUrl,
+    Some(_imageConfig),
+  )
+  response.data
+}
+
+// filename is index-based (not name-based) so it stays unique even for duplicate names
+let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int): option<(
+  string,
+  AnkiExport.mediaData,
+)> => {
+  if !OutputHelpers.hasValidImageUrl(politician) {
+    Console.log(`⚠️  Skipping missing image for ${politician.name}`)
+    None
+  } else {
+    let data = await _downloadImage(politician.imageUrl)
+    Some((`${index->Int.toString}.${_fileExtensionFor(politician.imageUrl)}`, data))
+  }
+}
+
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
   let deck = AnkiExport.make(deckName)
-  politicians->Array.forEach(politician => {
+
+  let media = await Promise.all(
+    politicians->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index)),
+  )
+
+  politicians->Array.forEachWithIndex((politician, index) => {
     let (front, back) = cardFieldsFor(politician)
+    let back = switch media->Array.get(index)->Option.flatMap(x => x) {
+    | Some((filename, data)) =>
+      AnkiExport.addMedia(deck, filename, data)
+      `${back}<br><img src="${filename}">`
+    | None => back
+    }
     AnkiExport.addCard(deck, front, back)
   })
+
   let data = await AnkiExport.save(deck)
   AnkiExport.writeFileSync(outputFilePath, data)
   Console.log(`Wrote ${politicians->Array.length->Int.toString} cards to ${outputFilePath}`)
