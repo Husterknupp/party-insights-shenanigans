@@ -5,12 +5,14 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 
-function urlForResizedImage(image) {
+export function urlForResizedImage(image) {
   // Resize image to non-thumb size
   // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
+  // Use 500px thumbnail (defined MediaWiki size, see mediawiki.org/wiki/Common_thumbnail_sizes);
+  // Wikimedia's servers reject non-standard widths like 400px with a 400 Bad Request.
   let parts = image.split("/");
   parts = parts.filter((_, index) => index !== parts.length - 1);
-  parts.push("400px-" + parts[parts.length - 1]);
+  parts.push("500px-" + parts[parts.length - 1]);
   return "https:" + parts.join("/");
 }
 
