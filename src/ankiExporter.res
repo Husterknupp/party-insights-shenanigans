@@ -11,8 +11,8 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
       | Some(fields) =>
         (
           {
-            amt: ?fields->Dict.get("amt")->Option.flatMap(JSON.Decode.string),
-            state: ?fields->Dict.get("state")->Option.flatMap(JSON.Decode.string),
+            amt: ?(fields->Dict.get("amt")->Option.flatMap(JSON.Decode.string)),
+            state: ?(fields->Dict.get("state")->Option.flatMap(JSON.Decode.string)),
             name: fields
             ->Dict.get("name")
             ->Option.getExn(~message="name field missing")
@@ -28,7 +28,7 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
             ->Option.getExn(~message="imageUrl field missing")
             ->JSON.Decode.string
             ->Option.getExn(~message="imageUrl field expected to be a string"),
-            urlCabinet: ?fields->Dict.get("urlCabinet")->Option.flatMap(JSON.Decode.string),
+            urlCabinet: ?(fields->Dict.get("urlCabinet")->Option.flatMap(JSON.Decode.string)),
           }: OutputHelpers.politician
         )
 
@@ -39,19 +39,22 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
   }
 }
 
-// Front: amt (or state, for output files that use that field instead) / Back: name + party
-let cardFieldsFor = (politician: OutputHelpers.politician) => {
-  let front = switch (politician.amt, politician.state) {
+// [Name, Partei, Amt/Ministerium, Profil-Photo] — matches AnkiExport.POLITICIAN_FIELDS'
+// order (multiFieldApkg.js); Profil-Photo is left blank here and filled in by the caller once
+// the image (if any) has been downloaded, since that happens async and per-index in
+// exportJsonFileToApkg below
+let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
+  let amt = switch (politician.amt, politician.state) {
   | (Some(amt), _) => amt
   | (None, Some(state)) => state
   | (None, None) =>
     Error.panic(
-      `Politician must have either 'amt' or 'state' to use as card front, but got: ${JSON.stringifyAny(
+      `Politician must have either 'amt' or 'state' for the Amt/Ministerium field, but got: ${JSON.stringifyAny(
           politician,
         )->Option.getExn}`,
     )
   }
-  (front, `${politician.name} (${politician.party})`)
+  [politician.name, politician.party, amt, ""]
 }
 
 // only the extensions Anki reliably renders inline; anything else falls back to jpg
@@ -78,10 +81,7 @@ let _imageConfig: Axios.axiosRequestConfig = {
 }
 
 let _downloadImage = async (imageUrl: string): AnkiExport.mediaData => {
-  let response: Axios.response<AnkiExport.mediaData> = await Axios.get(
-    imageUrl,
-    Some(_imageConfig),
-  )
+  let response: Axios.response<AnkiExport.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
   response.data
 }
 
@@ -101,24 +101,26 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
 
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = AnkiExport.make(deckName)
+  let deck = AnkiExport.makeMultiFieldExporter(deckName)
 
   let media = await Promise.all(
     politicians->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index)),
   )
 
   politicians->Array.forEachWithIndex((politician, index) => {
-    let (front, back) = cardFieldsFor(politician)
-    let back = switch media->Array.get(index)->Option.flatMap(x => x) {
+    let fields = fieldsFor(politician)
+    let fields = switch media->Array.get(index)->Option.flatMap(x => x) {
     | Some((filename, data)) =>
       AnkiExport.addMedia(deck, filename, data)
-      `${back}<br><img src="${filename}">`
-    | None => back
+      fields->Array.mapWithIndex((field, fieldIndex) =>
+        fieldIndex == 3 ? `<img src="${filename}">` : field
+      )
+    | None => fields
     }
-    AnkiExport.addCard(deck, front, back)
+    AnkiExport.addNote(deck, fields)
   })
 
   let data = await AnkiExport.save(deck)
   AnkiExport.writeFileSync(outputFilePath, data)
-  Console.log(`Wrote ${politicians->Array.length->Int.toString} cards to ${outputFilePath}`)
+  Console.log(`Wrote ${politicians->Array.length->Int.toString} notes to ${outputFilePath}`)
 }
