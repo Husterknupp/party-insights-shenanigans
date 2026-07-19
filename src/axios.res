@@ -1,11 +1,10 @@
 type request
 
-type axiosHeaders = {
-  @as("User-Agent") userAgent: string,
-}
+type axiosHeaders = {@as("User-Agent") userAgent: string}
 
 type axiosRequestConfig = {
   headers: axiosHeaders,
+  responseType?: string,
 }
 
 type response<'dataType> = {
