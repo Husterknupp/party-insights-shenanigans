@@ -3,49 +3,49 @@
 Ministerpräsident:
 * Name: Mario Voigt
 * Partei: CDU
-* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg/500px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg)
+* Profilbild: ![Mario Voigt](https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg/400px-2024-12-12_Landtag_Th%C3%BCringen_%E2%80%93_Wahl_des_Ministerpr%C3%A4sidenten_by_Sandro_Halank%E2%80%93049.jpg)
 
 Stellvertretende Ministerpräsidentin, Finanzministerin:
 * Name: Katja Wolf
 * Partei: BSW
-* Profilbild: ![Katja Wolf](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_3008_by_Stepro.jpg/500px-2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_3008_by_Stepro.jpg)
+* Profilbild: ![Katja Wolf](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_3008_by_Stepro.jpg/400px-2024-08-19_Event%2C_Th%C3%BCringer_Wahlkampftour-Start_des_BSW_in_Eisenach_STP_3008_by_Stepro.jpg)
 
 Zweiter Stellvertretender Ministerpräsident, Minister für Inneres, Kommunales und Landesentwicklung:
 * Name: Georg Maier
 * Partei: SPD
-* Profilbild: ![Georg Maier](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/2024-09-01_Politik%2C_Landtagswahl_Th%C3%BCringen_STP_4375_by_Stepro.jpg/500px-2024-09-01_Politik%2C_Landtagswahl_Th%C3%BCringen_STP_4375_by_Stepro.jpg)
+* Profilbild: ![Georg Maier](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/2024-09-01_Politik%2C_Landtagswahl_Th%C3%BCringen_STP_4375_by_Stepro.jpg/400px-2024-09-01_Politik%2C_Landtagswahl_Th%C3%BCringen_STP_4375_by_Stepro.jpg)
 
 Chef der StaatskanzleiMinister für Bundes- und Europaangelegenheiten, Sport und Ehrenamt:
 * Name: Stefan Gruhner
 * Partei: CDU
-* Profilbild: ![Stefan Gruhner](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Stefan_Gruhner_CDU.jpg/500px-Stefan_Gruhner_CDU.jpg)
+* Profilbild: ![Stefan Gruhner](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Stefan_Gruhner_CDU.jpg/400px-Stefan_Gruhner_CDU.jpg)
 
 Ministerin für Wirtschaft, Landwirtschaft und Ländlichen Raum:
 * Name: Colette Boos-John
 * Partei: CDU
-* Profilbild: ![Colette Boos-John](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2026-02-04_Th%C3%BCringer_Landtag_STP_6808-2.jpg/500px-2026-02-04_Th%C3%BCringer_Landtag_STP_6808-2.jpg)
+* Profilbild: ![Colette Boos-John](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2026-02-04_Th%C3%BCringer_Landtag_STP_6808-2.jpg/400px-2026-02-04_Th%C3%BCringer_Landtag_STP_6808-2.jpg)
 
 Minister für Umwelt, Energie, Naturschutz und Forsten:
 * Name: Tilo Kummer
 * Partei: BSW
-* Profilbild: ![Tilo Kummer](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/2024-09-26_Politik%2C_Th%C3%BCringer_Landtag%2C_Konstituierung_STP_5907_by_Stepro.jpg/500px-2024-09-26_Politik%2C_Th%C3%BCringer_Landtag%2C_Konstituierung_STP_5907_by_Stepro.jpg)
+* Profilbild: ![Tilo Kummer](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/2024-09-26_Politik%2C_Th%C3%BCringer_Landtag%2C_Konstituierung_STP_5907_by_Stepro.jpg/400px-2024-09-26_Politik%2C_Th%C3%BCringer_Landtag%2C_Konstituierung_STP_5907_by_Stepro.jpg)
 
 Ministerin für Justiz, Migration und Verbraucherschutz:
 * Name: Beate Meißner
 * Partei: CDU
-* Profilbild: ![Beate Meißner](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg/500px-2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg)
+* Profilbild: ![Beate Meißner](https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg/400px-2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6038_by_Stepro.jpg)
 
 Ministerin für Soziales, Gesundheit, Arbeit und Familie:
 * Name: Katharina Schenk
 * Partei: SPD
-* Profilbild: ![Katharina Schenk](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6048_by_Stepro.jpg/500px-2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6048_by_Stepro.jpg)
+* Profilbild: ![Katharina Schenk](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6048_by_Stepro.jpg/400px-2024-09-28_Politik%2C_Th%C3%BCringer_Landtag%2C_Fortsetzung_Konstituierung_STP_6048_by_Stepro.jpg)
 
 Minister für Digitales und Infrastruktur:
 * Name: Steffen Schütz
 * Partei: BSW
-* Profilbild: ![Steffen Schütz](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/2024-11-22_Politik%2C_Vorstellung_Regierungsvertrag_%28Koalitionsvertrag%29_Th%C3%BCringen_zwischen_CDU%2C_BSW_und_SPD_STP_1291.jpg/500px-2024-11-22_Politik%2C_Vorstellung_Regierungsvertrag_%28Koalitionsvertrag%29_Th%C3%BCringen_zwischen_CDU%2C_BSW_und_SPD_STP_1291.jpg)
+* Profilbild: ![Steffen Schütz](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/2024-11-22_Politik%2C_Vorstellung_Regierungsvertrag_%28Koalitionsvertrag%29_Th%C3%BCringen_zwischen_CDU%2C_BSW_und_SPD_STP_1291.jpg/400px-2024-11-22_Politik%2C_Vorstellung_Regierungsvertrag_%28Koalitionsvertrag%29_Th%C3%BCringen_zwischen_CDU%2C_BSW_und_SPD_STP_1291.jpg)
 
 Minister für Bildung, Wissenschaft und Kultur:
 * Name: Christian Tischner
 * Partei: CDU
-* Profilbild: ![Christian Tischner](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/2026-01-18_FIS_Cross-Country_World_Cup_Oberhof_2026_%E2%80%93_Men%27s_10_km_Interval_Start_Classic_by_Sandro_Halank%E2%80%93268.jpg/500px-2026-01-18_FIS_Cross-Country_World_Cup_Oberhof_2026_%E2%80%93_Men%27s_10_km_Interval_Start_Classic_by_Sandro_Halank%E2%80%93268.jpg)
+* Profilbild: ![Christian Tischner](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/2026-01-18_FIS_Cross-Country_World_Cup_Oberhof_2026_%E2%80%93_Men%27s_10_km_Interval_Start_Classic_by_Sandro_Halank%E2%80%93268.jpg/400px-2026-01-18_FIS_Cross-Country_World_Cup_Oberhof_2026_%E2%80%93_Men%27s_10_km_Interval_Start_Classic_by_Sandro_Halank%E2%80%93268.jpg)

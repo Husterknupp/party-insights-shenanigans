@@ -3,12 +3,12 @@
 Ministerpräsident, Staatskanzlei:
 * Name: Daniel Günther
 * Partei: CDU
-* Profilbild: ![Daniel Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Daniel_G%C3%BCnther_%282017%29.jpg/500px-Daniel_G%C3%BCnther_%282017%29.jpg)
+* Profilbild: ![Daniel Günther](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Daniel_G%C3%BCnther_%282017%29.jpg/400px-Daniel_G%C3%BCnther_%282017%29.jpg)
 
 Ministerin für Soziales, Jugend, Familie, Senioren, Integration und Gleichstellung (gleichzeitig: Stellvertretende Ministerpräsidentin):
 * Name: Aminata Touré
 * Partei: B’90/Die Grünen
-* Profilbild: ![Aminata Touré](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Aminata_Tour%C3%A9_%28Juli_2021%2C_Kiel%29.jpg/500px-Aminata_Tour%C3%A9_%28Juli_2021%2C_Kiel%29.jpg)
+* Profilbild: ![Aminata Touré](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Aminata_Tour%C3%A9_%28Juli_2021%2C_Kiel%29.jpg/400px-Aminata_Tour%C3%A9_%28Juli_2021%2C_Kiel%29.jpg)
 
 Ministerin der Finanzen:
 * Name: Silke Schneider
@@ -28,17 +28,17 @@ Ministerin für Allgemeine und Berufliche Bildung, Wissenschaft, Forschung und K
 Ministerin für Inneres, Kommunales, Wohnen und Sport:
 * Name: Magdalena Finke
 * Partei: CDU
-* Profilbild: ![Magdalena Finke](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Magdalena_Finke.jpg/500px-Magdalena_Finke.jpg)
+* Profilbild: ![Magdalena Finke](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Magdalena_Finke.jpg/400px-Magdalena_Finke.jpg)
 
 Minister für Energiewende, Klimaschutz, Umwelt und Natur:
 * Name: Tobias Goldschmidt
 * Partei: B’90/Die Grünen
-* Profilbild: ![Tobias Goldschmidt](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tobias_Goldschmidt_%282024%29.jpg/500px-Tobias_Goldschmidt_%282024%29.jpg)
+* Profilbild: ![Tobias Goldschmidt](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tobias_Goldschmidt_%282024%29.jpg/400px-Tobias_Goldschmidt_%282024%29.jpg)
 
 Minister für Wirtschaft, Verkehr, Arbeit, Technologie und Tourismus:
 * Name: Claus Ruhe Madsen
 * Partei: CDU
-* Profilbild: ![Claus Ruhe Madsen](https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Claus_Ruhe_Madsen_Nov_2021.jpg/500px-Claus_Ruhe_Madsen_Nov_2021.jpg)
+* Profilbild: ![Claus Ruhe Madsen](https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Claus_Ruhe_Madsen_Nov_2021.jpg/400px-Claus_Ruhe_Madsen_Nov_2021.jpg)
 
 Minister für Landwirtschaft, ländliche Räume, Europa und Verbraucherschutz:
 * Name: Cornelia Schmachtenberg
