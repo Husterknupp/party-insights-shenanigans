@@ -89,9 +89,7 @@ function findPoliticians(html) {
         );
       }
 
-      // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path;
-      // normalizeWikiImageUrl takes care of the 500px thumbnail rewrite (defined MediaWiki size,
-      // see mediawiki.org/wiki/Common_thumbnail_sizes), so only the absolute-URL resolution stays here
+      // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path
       const imageUrl = normalizeWikiImageUrl(
         image.startsWith("http") || image.startsWith("//")
           ? image
