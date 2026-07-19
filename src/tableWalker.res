@@ -218,14 +218,7 @@ let _extractAndResizeImageUrl = (cheerio: CheerioFacade.loadedCheerio, cell: dat
     ->CheerioFacade.find("img")
     ->CheerioFacade.getLast
 
-  CheerioFacade.getSrc(imageElement)->Option.map(src => {
-    let parts = String.split(src, "/")
-    let filtered = Array.filterWithIndex(parts, (_, index) => index !== Array.length(parts) - 1)
-    let lastPart = filtered->Array.get(Array.length(filtered) - 1)->Option.getExn
-    let newLastPart = "400px-" ++ String.replaceRegExp(lastPart, %re("/\.tif$/"), ".png")
-    filtered->Array.push(newLastPart)->ignore
-    "https:" ++ Array.join(filtered, "/")
-  })
+  CheerioFacade.getSrc(imageElement)->Option.map(src => ImageUrl.normalizeWikiImageUrl(src))
 }
 
 let _findHeaderTextForCell = (

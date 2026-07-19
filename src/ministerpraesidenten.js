@@ -2,6 +2,7 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeFileSync, mkdirSync } from "fs";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
+import { normalizeWikiImageUrl } from "./ImageUrl.res.mjs";
 
 async function createImageFiles(ministerpraesidenten) {
   mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
@@ -12,7 +13,9 @@ async function createImageFiles(ministerpraesidenten) {
 
     const ministerpraesident = ministerpraesidenten[index];
     if (!ministerpraesident.imageUrl) {
-      console.error(`Skipping image download for ${ministerpraesident.name} (${ministerpraesident.state}): imageUrl is ${ministerpraesident.imageUrl}`);
+      console.error(
+        `Skipping image download for ${ministerpraesident.name} (${ministerpraesident.state}): imageUrl is ${ministerpraesident.imageUrl}`,
+      );
       await downloadWithDelay(index + 1);
       return;
     }
@@ -20,7 +23,8 @@ async function createImageFiles(ministerpraesidenten) {
       const image = await axios.get(ministerpraesident.imageUrl, {
         responseType: "arraybuffer",
         headers: {
-          "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+          "User-Agent":
+            "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
         },
       });
       console.log("Downloaded file for " + ministerpraesident.name);
@@ -32,15 +36,17 @@ async function createImageFiles(ministerpraesidenten) {
         image.data,
         {
           encoding: "base64",
-        }
+        },
       );
     } catch (err) {
-      console.error(`Failed to download image for ${ministerpraesident.name} (${ministerpraesident.state}): ${err.message}`);
+      console.error(
+        `Failed to download image for ${ministerpraesident.name} (${ministerpraesident.state}): ${err.message}`,
+      );
       console.error(`  URL: ${ministerpraesident.imageUrl}`);
     }
 
     // Wait 1 second before next request to avoid rate limiting
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await downloadWithDelay(index + 1);
   }
 
@@ -79,21 +85,25 @@ function findPoliticians(html) {
       if (missing.length > 0) {
         throw new Error(
           `Missing fields for ${context}: ${missing.join(", ")}` +
-          `\n  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`
+            `\n  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`,
         );
       }
 
-      // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path
-      // Use 500px thumbnail (defined MediaWiki size, see mediawiki.org/wiki/Common_thumbnail_sizes)
-      const imageUrl = (image.startsWith("http") ? image
-        : image.startsWith("//") ? "https:" + image
-        : "https://de.wikipedia.org" + image)
-        .replace(/\/\d+px-/, "/500px-");
+      // image may be a full URL, protocol-relative (//upload.wikimedia.org/...), or a relative path;
+      // normalizeWikiImageUrl takes care of the 500px thumbnail rewrite (defined MediaWiki size,
+      // see mediawiki.org/wiki/Common_thumbnail_sizes), so only the absolute-URL resolution stays here
+      const imageUrl = normalizeWikiImageUrl(
+        image.startsWith("http") || image.startsWith("//")
+          ? image
+          : "https://de.wikipedia.org" + image,
+      );
 
       // cabinet may be a full URL, protocol-relative (//de.wikipedia.org/...), or a relative path (/wiki/...)
-      const urlCabinet = cabinet.startsWith("http") ? cabinet
-        : cabinet.startsWith("//") ? "https:" + cabinet
-        : "https://de.wikipedia.org" + cabinet;
+      const urlCabinet = cabinet.startsWith("http")
+        ? cabinet
+        : cabinet.startsWith("//")
+          ? "https:" + cabinet
+          : "https://de.wikipedia.org" + cabinet;
 
       result.push({
         state,
@@ -106,7 +116,7 @@ function findPoliticians(html) {
 
   if (result.length === 0) {
     throw new Error(
-      `Could not extract any Ministerpräsidenten. Searched for '${wikiHeadline}'`
+      `Could not extract any Ministerpräsidenten. Searched for '${wikiHeadline}'`,
     );
   }
 
@@ -115,24 +125,26 @@ function findPoliticians(html) {
 
 async function saveToOutputfiles(ministerpraesidenten) {
   ministerpraesidenten.sort(({ state: stateA }, { state: stateB }) =>
-    stateA.localeCompare(stateB)
+    stateA.localeCompare(stateB),
   );
 
   writeAsJson("output/ministerpraesidenten.json", ministerpraesidenten);
   writeAsMarkdown(
     "output/ministerpraesidenten.md",
     "Ministerpräsidenten",
-    ministerpraesidenten
+    ministerpraesidenten,
   );
   await createImageFiles(ministerpraesidenten);
 }
 
 export default async function extract() {
-  const WIKI_URL = "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten";
+  const WIKI_URL =
+    "https://de.wikipedia.org/wiki/Liste_der_deutschen_Ministerpr%C3%A4sidenten";
   console.log(`Fetching ${WIKI_URL}`);
   const wikiResponse = await axios.get(WIKI_URL, {
     headers: {
-      "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+      "User-Agent":
+        "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
     },
   });
   const ministerpraesidenten = findPoliticians(wikiResponse.data);
