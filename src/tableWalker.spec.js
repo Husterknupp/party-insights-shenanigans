@@ -131,7 +131,7 @@ describe("integration tests", () => {
     const partyCells = cells.filter(
       (cell) =>
         isColumnHeaderLike(cell, ["partei", "parteien"]) &&
-        sameRow(cell, ministerpraesident)
+        sameRow(cell, ministerpraesident),
     );
 
     for (const cell of partyCells) {
@@ -193,10 +193,10 @@ describe("integration tests", () => {
     expect(
       (() => {
         const staatssekretaer = row.find((cell) =>
-          cell.linesOfText.includes("Sebastian Hecht")
+          cell.linesOfText.includes("Sebastian Hecht"),
         );
         return staatssekretaer.colStart;
-      })()
+      })(),
     ).toEqual(4);
   });
 
@@ -215,7 +215,7 @@ describe("integration tests", () => {
       const row = cells.filter(
         (cell) =>
           (amt.rowStart <= cell.rowStart && cell.rowStart <= amt.rowEnd) ||
-          (amt.rowStart <= cell.rowEnd && cell.rowEnd <= amt.rowEnd)
+          (amt.rowStart <= cell.rowEnd && cell.rowEnd <= amt.rowEnd),
       );
 
       // Using findLast here because during one term of office more than one person can have the Ministerial position.
@@ -235,7 +235,7 @@ describe("integration tests", () => {
         ministerName,
         party,
         imageUrl,
-        ministerRows
+        ministerRows,
       );
     }
 
@@ -244,7 +244,7 @@ describe("integration tests", () => {
     expect(ministerRows[0].name).toContain("Malu Dreyer");
     expect(ministerRows[0].party).toContain("SPD");
     expect(ministerRows[0].imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/400px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg/500px-Wahlkampf_Landtagswahl_NRW_2022_-_SPD_-_Roncalliplatz_K%C3%B6ln_2022-05-13-4145_Malu_Dreyer_%28cropped%29.jpg",
     );
 
     // One minister row but two people had the amt one after the other
@@ -252,18 +252,18 @@ describe("integration tests", () => {
     expect(ministerRows[5].name).toContain("Michael Ebling");
     expect(ministerRows[5].party).toContain("SPD");
     expect(ministerRows[5].imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg/400px-2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg/500px-2015-12_Michael_Ebling_SPD_Bundesparteitag_by_Olaf_Kosinsky-6.jpg",
     );
 
     // One minister row but three people had the amt one after the other
     const klimaschutz = ministerRows[ministerRows.length - 1];
     expect(klimaschutz.amt).toContain(
-      "Ministerin für Klimaschutz, Umwelt, Energie und Mobilität"
+      "Ministerin für Klimaschutz, Umwelt, Energie und Mobilität",
     );
     expect(klimaschutz.name).toContain("Katrin Eder");
     expect(klimaschutz.party).toContain("B’90/Die Grünen");
     expect(klimaschutz.imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg/400px-Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg/500px-Katrin_Eder_Ministerin_f%C3%BCr_Klimaschutz_Umwelt_Energie_und_Mobilit%C3%A4t.jpg",
     );
   });
 });
@@ -304,7 +304,7 @@ describe("tableWalker", () => {
 
     expect(cells.length).toBe(1);
     expect(cells[0].imageUrl).toEqual(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/400px-PetravonOlschowski_Web.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/PetravonOlschowski_Web.jpg/500px-PetravonOlschowski_Web.jpg",
     );
   });
 
@@ -347,7 +347,7 @@ describe("tableWalker", () => {
 
     expect(lastElement(cells[0].linesOfText)).toEqual("Petra Olschowski");
     expect(lastElement(cells[1].linesOfText)).toEqual(
-      "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung"
+      "Staatsrätin für Zivilgesellschaft und Bürgerbeteiligung",
     );
     expect(lastElement(cells[2].linesOfText)).toEqual("Random teapot");
     expect(cells[3].linesOfText).toEqual([
@@ -385,7 +385,7 @@ describe("tableWalker", () => {
     const cells = tableWalker(TableHtmlVariant(kabinettKretschmer));
 
     const giesela = cells.find(
-      (cell) => cell.linesOfText[0] === "Gisela Reetz"
+      (cell) => cell.linesOfText[0] === "Gisela Reetz",
     );
     expect(giesela.header).toEqual("Staatssekretär");
     expect(giesela.colStart).toEqual(5);
@@ -732,7 +732,7 @@ describe("tableWalker", () => {
 `;
 
     expect(() => tableWalker(TableHtmlVariant(table02))).toThrow(
-      'Panic! Could not find matching header. Cell\'s content is "img". Cell is located at col 2 (colEnd: 2), row 1 (rowEnd: 1)'
+      'Panic! Could not find matching header. Cell\'s content is "img". Cell is located at col 2 (colEnd: 2), row 1 (rowEnd: 1)',
     );
   });
 
