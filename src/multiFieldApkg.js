@@ -299,13 +299,17 @@ const checksum = (str) => parseInt(sha1(str).substr(0, 8), 16);
 
 const getId = (db, table, col, ts) => {
   const query = `SELECT ${col} from ${table} WHERE ${col} >= :ts ORDER BY ${col} DESC LIMIT 1`;
-  const rowObj = db.prepare(query).getAsObject({ ":ts": ts });
+  const stmt = db.prepare(query);
+  const rowObj = stmt.getAsObject({ ":ts": ts });
+  stmt.free();
   return rowObj[col] ? +rowObj[col] + 1 : ts;
 };
 
 const getNoteId = (db, guid, ts) => {
   const query = `SELECT id from notes WHERE guid = :guid ORDER BY id DESC LIMIT 1`;
-  const rowObj = db.prepare(query).getAsObject({ ":guid": guid });
+  const stmt = db.prepare(query);
+  const rowObj = stmt.getAsObject({ ":guid": guid });
+  stmt.free();
   return rowObj.id || getId(db, "notes", "id", ts);
 };
 
@@ -314,9 +318,9 @@ const getNoteId = (db, guid, ts) => {
 // second card's "insert or replace" collide with and overwrite the first
 const getCardId = (db, noteId, ord, ts) => {
   const query = `SELECT id from cards WHERE nid = :note_id AND ord = :ord ORDER BY id DESC LIMIT 1`;
-  const rowObj = db
-    .prepare(query)
-    .getAsObject({ ":note_id": noteId, ":ord": ord });
+  const stmt = db.prepare(query);
+  const rowObj = stmt.getAsObject({ ":note_id": noteId, ":ord": ord });
+  stmt.free();
   return rowObj.id || getId(db, "cards", "id", ts);
 };
 
@@ -370,9 +374,10 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
       ? ` ${tags.map((t) => t.replace(/ /g, "_")).join(" ")} `
       : "";
 
-  db.prepare(
+  const insertNoteStmt = db.prepare(
     "insert or replace into notes values(:id,:guid,:mid,:mod,:usn,:tags,:flds,:sfld,:csum,:flags,:data)",
-  ).getAsObject({
+  );
+  insertNoteStmt.getAsObject({
     ":id": noteId,
     ":guid": guid,
     ":mid": topModelId,
@@ -385,6 +390,7 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
     ":flags": 0,
     ":data": "",
   });
+  insertNoteStmt.free();
 
   POLITICIAN_REQ.forEach(([ord, , requiredFieldOrds]) => {
     const hasAllRequiredFields = requiredFieldOrds.every(
@@ -392,9 +398,10 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
     );
     if (!hasAllRequiredFields) return;
 
-    db.prepare(
+    const insertCardStmt = db.prepare(
       "insert or replace into cards values(:id,:nid,:did,:ord,:mod,:usn,:type,:queue,:due,:ivl,:factor,:reps,:lapses,:left,:odue,:odid,:flags,:data)",
-    ).getAsObject({
+    );
+    insertCardStmt.getAsObject({
       ":id": getCardId(db, noteId, ord, now + ord),
       ":nid": noteId,
       ":did": topDeckId,
@@ -414,5 +421,6 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
       ":flags": 0,
       ":data": "",
     });
+    insertCardStmt.free();
   });
 };
