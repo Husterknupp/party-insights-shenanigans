@@ -13,7 +13,7 @@ Arbeit, Soziales, Frauen, Familie und Jugend (gleichzeitig: Stellvertreterin des
 Inneres, Integration und Verkehr:
 * Name: Achim Schwickert
 * Partei: CDU
-* Profilbild: ![Achim Schwickert](https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Keinfoto.svg/500px-Keinfoto.svg)
+* Profilbild: *Kein Bild verfügbar*
 
 Finanzen:
 * Name: Doris Ahnen
