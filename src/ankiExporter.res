@@ -44,7 +44,7 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
 // the image (if any) has been downloaded, since that happens async and per-index in
 // exportJsonFileToApkg below
 let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
-  let amt = switch (politician.amt, politician.state) {
+  let amtOrState = switch (politician.amt, politician.state) {
   | (Some(amt), _) => amt
   | (None, Some(state)) => state
   | (None, None) =>
@@ -54,7 +54,7 @@ let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
         )->Option.getExn}`,
     )
   }
-  [politician.name, politician.party, amt, ""]
+  [politician.name, politician.party, amtOrState, ""]
 }
 
 // only the extensions Anki reliably renders inline; anything else falls back to jpg
