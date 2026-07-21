@@ -126,9 +126,9 @@ async function saveToOutputfiles(ministerpraesidenten) {
     stateA.localeCompare(stateB),
   );
 
-  writeAsJson("output/ministerpraesidenten.json", ministerpraesidenten);
+  writeAsJson("output/ministerpräsidenten.json", ministerpraesidenten);
   writeAsMarkdown(
-    "output/ministerpraesidenten.md",
+    "output/ministerpräsidenten.md",
     "Ministerpräsidenten",
     ministerpraesidenten,
   );

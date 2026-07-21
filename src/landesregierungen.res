@@ -279,7 +279,7 @@ let deserializeMinisterpraesidenten = fileName => {
 }
 
 let extract = async () => {
-  let ministerpraesidenten = deserializeMinisterpraesidenten("./output/ministerpraesidenten.json")
+  let ministerpraesidenten = deserializeMinisterpraesidenten("./output/ministerpräsidenten.json")
 
   let promises = ministerpraesidenten->Array.map(async mp => {
     switch mp.state {

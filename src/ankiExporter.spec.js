@@ -1,7 +1,7 @@
-import { cardFieldsFor } from "./ankiExporter.res.mjs";
+import { fieldsFor } from "./ankiExporter.res.mjs";
 
-describe("cardFieldsFor", () => {
-  it("uses 'amt' as front when present", () => {
+describe("fieldsFor", () => {
+  it("uses 'amt' as the Amt/Ministerium field when present", () => {
     const politician = {
       amt: "Bundeskanzler",
       state: undefined,
@@ -9,10 +9,15 @@ describe("cardFieldsFor", () => {
       party: "CDU",
     };
 
-    expect(cardFieldsFor(politician)).toEqual(["Bundeskanzler", "Friedrich Merz (CDU)"]);
+    expect(fieldsFor(politician)).toEqual([
+      "Friedrich Merz",
+      "CDU",
+      "Bundeskanzler",
+      "",
+    ]);
   });
 
-  it("falls back to 'state' as front when 'amt' is missing", () => {
+  it("falls back to 'state' as the Amt/Ministerium field when 'amt' is missing", () => {
     const politician = {
       amt: undefined,
       state: "Bayern",
@@ -20,7 +25,12 @@ describe("cardFieldsFor", () => {
       party: "CSU",
     };
 
-    expect(cardFieldsFor(politician)).toEqual(["Bayern", "Markus Söder (CSU)"]);
+    expect(fieldsFor(politician)).toEqual([
+      "Markus Söder",
+      "CSU",
+      "Bayern",
+      "",
+    ]);
   });
 
   it("throws when neither 'amt' nor 'state' is present", () => {
@@ -31,6 +41,6 @@ describe("cardFieldsFor", () => {
       party: "N/A",
     };
 
-    expect(() => cardFieldsFor(politician)).toThrow();
+    expect(() => fieldsFor(politician)).toThrow();
   });
 });

@@ -30,10 +30,20 @@ let writeAsJson = (fileName: string, output: array<politician>, ~writeFileSyncWi
   }
 }
 
+// Two known placeholder filenames are matched by name (kept for the existing
+// "replace_this_image.jpg"-style fixtures/tests that predate real .svg URLs).
+// On top of that, Wikipedia's generic "no photo available" icons are always
+// .svg uploads (Silver_-_replace_this_image_*.svg, Placeholder_staff_photo.svg,
+// Keinfoto.svg, ...) — real candid photos are never .svg — so filtering by
+// source file type catches every such icon in one check instead of chasing
+// each new filename individually (see ImageUrl.res's normalizeWikiImageUrl,
+// which keeps ".svg" in both path segments of the normalized URL for any .svg
+// source, e.g. ".../Keinfoto.svg/500px-Keinfoto.svg.png").
 let hasValidImageUrl = (minister: politician) => {
   minister.imageUrl != "" &&
   !(minister.imageUrl->String.includes("replace_this_image")) &&
-  !(minister.imageUrl->String.includes("Placeholder"))
+  !(minister.imageUrl->String.includes("Placeholder")) &&
+  !(minister.imageUrl->String.includes(".svg"))
 }
 
 let formatImageUrl = (minister: politician) => {
