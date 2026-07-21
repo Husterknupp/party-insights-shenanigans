@@ -36,7 +36,7 @@ describe("makeMultiFieldExporter", () => {
     const m = model(exporter);
 
     expect(m.flds.map((f) => f.name)).toEqual(POLITICIAN_FIELDS);
-    expect(m.tmpls.map((t) => t.name)).toEqual(["Card 1", "Card 2"]);
+    expect(m.tmpls.map((t) => t.name)).toEqual(["Amt zu Person", "Gesicht zu Amt"]);
   });
 });
 
@@ -74,7 +74,7 @@ describe("addNote", () => {
     expect(cardOrds).toEqual([0, 1]);
   });
 
-  it("skips Card 2 when Profil-Photo is empty (e.g. a politician without an image)", () => {
+  it("skips 'Gesicht zu Amt' when Profil-Photo is empty (e.g. a politician without an image)", () => {
     const exporter = makeMultiFieldExporter("SomeDeck");
 
     addNote(exporter, ["Jane Doe", "N/A", "Ministerin", ""]);

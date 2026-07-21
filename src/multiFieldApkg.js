@@ -6,11 +6,19 @@
 //
 // This module works around that by using the library's *other* public export, the raw
 // `Exporter` class (`new Exporter(deckName, { template: <sql>, sql })`), which just runs
-// whatever SQL string it's given against a fresh sql.js database. `createMultiFieldTemplate`
+// whatever SQL string it's given against a fresh sql.js database. `createCollectionSql`
 // below is a generalized version of the library's own template.js that accepts arbitrary
 // fields/templates/req instead of the hardcoded Front/Back/Card-1 shape, and `addNote` inserts
 // notes/cards directly via `exporter.db` (a public instance property), mirroring the insert
 // logic in the library's own exporter.js#addCard.
+//
+// A note on naming, since "template" means two different things in this file: an Anki *card
+// template* (a qfmt/afmt question/answer pair, e.g. POLITICIAN_TEMPLATES below — what a user of
+// Anki would call a template) vs. the raw *SQL template string* that Exporter's constructor
+// expects under its own `template` option (the seed SQL for a fresh collection database — see
+// `createCollectionSql`/`collectionSql` below). Functions and variables here are named
+// `...Sql`/`collectionSql` specifically to keep those two senses apart; `Exporter`'s `template`
+// option name itself is the library's own naming and can't be changed from here.
 //
 // See issue #50 for the full writeup of why this workaround exists and the license/version
 // tradeoffs of the alternatives (genanki-js is AGPL and pins sql.js@^1.6 vs. the sql.js@0.5.0
@@ -40,12 +48,12 @@ export const POLITICIAN_FIELDS = [
 
 const POLITICIAN_TEMPLATES = [
   {
-    name: "Card 1",
+    name: "Amt zu Person",
     qfmt: "{{Amt/Ministerium}}",
     afmt: '{{FrontSide}}\n\n<hr id="answer">\n\n{{Name}}, {{Partei}}\n<div style="margin-bottom:20px"></div>\n{{Profil-Photo}}',
   },
   {
-    name: "Card 2",
+    name: "Gesicht zu Amt",
     qfmt: "{{Profil-Photo}}",
     afmt: '{{FrontSide}}\n\n<hr id="answer">\n\n{{Name}}, {{Partei}}<br>\n{{Amt/Ministerium}}',
   },
@@ -55,18 +63,21 @@ const POLITICIAN_CSS =
   ".card {\n  font-family: arial;\n  font-size: 20px;\n  text-align: center;\n  color: black;\n  background-color: white;\n}\n";
 
 // req[i] = [templateOrd, "all", [fieldOrds]] — a card for that template is only written by
-// addNote() when every listed field is non-empty. Card 1 needs Amt/Ministerium (ord 2), Card 2
-// needs Profil-Photo (ord 3), so a note without an image produces only Card 1 — see #49's
-// "skip on missing/broken image URL" case, which this is designed to compose with.
+// addNote() when every listed field is non-empty. "Amt zu Person" needs Amt/Ministerium (ord 2),
+// "Gesicht zu Amt" needs Profil-Photo (ord 3), so a note without an image produces only the
+// "Amt zu Person" card — see #49's "skip on missing/broken image URL" case, which this is
+// designed to compose with.
 const POLITICIAN_REQ = [
   [0, "all", [2]],
   [1, "all", [3]],
 ];
 
-// a generalized version of anki-apkg-export's src/template.js: same collection schema
-// boilerplate, but the `models` entry takes arbitrary fields/templates/req instead of a
-// hardcoded Front/Back/Card-1 shape
-export const createMultiFieldTemplate = ({
+// Builds the raw SQL string used to seed a fresh collection database — this is the "SQL
+// template" sense of the word, not an Anki card template (that's `templates`/POLITICIAN_TEMPLATES
+// below, the qfmt/afmt pairs that become `models[modelId].tmpls`). A generalized version of
+// anki-apkg-export's src/template.js: same collection schema boilerplate, but the `models` entry
+// takes arbitrary fields/templates/req instead of a hardcoded Front/Back/Card-1 shape.
+export const createCollectionSql = ({
   modelId,
   modelName,
   fields,
@@ -331,7 +342,7 @@ const getCardId = (db, noteId, ord, ts) => {
 // Ministerpräsidenten, ...) import as a differently-named, differently-id'd note type instead of
 // one shared, reusable one.
 export const makeMultiFieldExporter = (deckName) => {
-  const template = createMultiFieldTemplate({
+  const collectionSql = createCollectionSql({
     modelId: POLITICIAN_MODEL_ID,
     modelName: POLITICIAN_MODEL_NAME,
     fields: POLITICIAN_FIELDS,
@@ -340,7 +351,10 @@ export const makeMultiFieldExporter = (deckName) => {
     css: POLITICIAN_CSS,
   });
 
-  const exporter = new Exporter(deckName, { template, sql });
+  // `template` here is `Exporter`'s own option name (see anki-apkg-export/src/exporter.js) for
+  // what it expects to be a SQL string, not an Anki card template — named explicitly rather than
+  // via `{ collectionSql, sql }` shorthand so that distinction stays visible at the call site.
+  const exporter = new Exporter(deckName, { template: collectionSql, sql });
 
   const models = JSON.parse(
     exporter.db.exec("select models from col")[0].values[0][0],
