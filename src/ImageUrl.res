@@ -7,12 +7,6 @@
 //
 // `.tif` source files (rare, but present on Wikipedia) get rendered as `.png` thumbnails
 // by Wikimedia, so that extension is swapped too.
-//
-// `.svg` source files are rendered as a rasterized thumbnail too, but unlike `.tif`,
-// Wikimedia keeps the original `.svg` extension in the thumbnail filename and appends
-// `.png` after it (e.g. `500px-Flag_of_Germany.svg.png`, not `500px-Flag_of_Germany.png`) —
-// confirmed via the MediaWiki imageinfo API. Requesting the un-rasterized name returns
-// "400 Bad Request".
 let normalizeWikiImageUrl = (url: string): string => {
   let withScheme = url->String.startsWith("//") ? "https:" ++ url : url
 
@@ -21,10 +15,7 @@ let normalizeWikiImageUrl = (url: string): string => {
     index !== Array.length(parts) - 1
   )
   let filename = withoutSizeSegment->Array.get(Array.length(withoutSizeSegment) - 1)->Option.getExn
-  let tifNormalized = String.replaceRegExp(filename, %re("/\.tif$/"), ".png")
-  let normalizedFilename = tifNormalized->String.endsWith(".svg")
-    ? tifNormalized ++ ".png"
-    : tifNormalized
+  let normalizedFilename = String.replaceRegExp(filename, %re("/\.tif$/"), ".png")
   withoutSizeSegment->Array.push("500px-" ++ normalizedFilename)->ignore
   Array.join(withoutSizeSegment, "/")
 }

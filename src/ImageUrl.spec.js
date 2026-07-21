@@ -30,14 +30,4 @@ describe("normalizeWikiImageUrl", () => {
       "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Example.tif/500px-Example.png",
     );
   });
-
-  test("keeps the .svg extension and appends .png for a .svg source file, matching what Wikimedia serves", () => {
-    expect(
-      normalizeWikiImageUrl(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/120px-Silver_-_replace_this_image_male.svg.png",
-      ),
-    ).toBe(
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/500px-Silver_-_replace_this_image_male.svg.png",
-    );
-  });
 });
