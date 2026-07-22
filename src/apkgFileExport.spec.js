@@ -2,11 +2,11 @@ import { jest } from "@jest/globals";
 
 const exportJsonFileToApkgMock = jest.fn();
 
-jest.unstable_mockModule("./ankiExporter.res.mjs", () => ({
+jest.unstable_mockModule("./ankiDeckBuilder.res.mjs", () => ({
   exportJsonFileToApkg: exportJsonFileToApkgMock,
 }));
 
-const { deckNameFor, exportOutputFileToApkg } = await import("./apkgExport.js");
+const { deckNameFor, exportOutputFileToApkg } = await import("./apkgFileExport.js");
 
 describe("deckNameFor", () => {
   it("capitalizes a single-word basename and nests it under Party Insights", () => {

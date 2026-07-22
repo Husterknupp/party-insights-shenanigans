@@ -1,5 +1,5 @@
 import path from "node:path";
-import { exportJsonFileToApkg } from "./ankiExporter.res.mjs";
+import { exportJsonFileToApkg } from "./ankiDeckBuilder.res.mjs";
 
 // Mechanical: capitalizes each hyphen-separated word of the input JSON's basename and
 // prefixes it under one shared "Party Insights" parent deck (Anki nests on "::" at
@@ -14,7 +14,7 @@ export function deckNameFor(basename) {
   return `Party Insights::${capitalized}`;
 }
 
-// Shared by exportAnkiDeck.js (manual, single-file CLI) and index.js (automatic, one
+// Shared by ankiExportCli.js (manual, single-file CLI) and index.js (automatic, one
 // call per output file the scrape pipeline produces) so both go through the exact same
 // deck-naming and output-path logic instead of two copies drifting apart.
 export async function exportOutputFileToApkg(jsonFilePath) {

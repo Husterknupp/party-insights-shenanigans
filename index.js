@@ -3,7 +3,7 @@ import path from "node:path";
 import extractMinisterpraesidenten from "./src/ministerpraesidenten.js";
 import extractBundesregierung from "./src/bundesregierung.js";
 import { extract as extractLandesregierungen } from "./src/landesregierungen.res.mjs";
-import { exportOutputFileToApkg } from "./src/apkgExport.js";
+import { exportOutputFileToApkg } from "./src/apkgFileExport.js";
 
 async function exportApkg(jsonFilePath) {
   const outputFilePath = await exportOutputFileToApkg(jsonFilePath);

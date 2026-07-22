@@ -1,10 +1,10 @@
 import fs from "node:fs";
-import { exportOutputFileToApkg } from "./src/apkgExport.js";
+import { exportOutputFileToApkg } from "./src/apkgFileExport.js";
 
 async function run() {
   const jsonFilePath = process.argv[2];
   if (!jsonFilePath) {
-    console.error("Usage: node exportAnkiDeck.js <path-to-output-json-file>");
+    console.error("Usage: node ankiExportCli.js <path-to-output-json-file>");
     process.exit(1);
   }
   if (!fs.existsSync(jsonFilePath)) {
