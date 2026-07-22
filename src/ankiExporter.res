@@ -99,13 +99,38 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
   }
 }
 
+let _sleep = (ms: int): promise<unit> => {
+  Promise.make((resolve, _reject) => {
+    let _ = setTimeout(() => resolve(), ms)
+  })
+}
+
+// Sequential with a delay, not Promise.all: a deck's politicians can number in the
+// dozens (a state cabinet, the Bundesregierung), and firing every image request at
+// once against Wikimedia reliably comes back 429 Too Many Requests once real decks
+// (not just single-politician test fixtures) are exported — reproduced live on
+// 2026-07-22 while wiring this into npm start (index.js), which exports 18 files in
+// one run. Same delay-between-requests approach already used for the sequential image
+// download in ministerpraesidenten.js, for the same reason.
+let rec _downloadAllMediaSequentially = async (
+  politicians: array<OutputHelpers.politician>,
+  index: int,
+): array<option<(string, AnkiExport.mediaData)>> => {
+  if index >= politicians->Array.length {
+    []
+  } else {
+    let media = await _downloadMediaFor(politicians->Array.getUnsafe(index), index)
+    await _sleep(1000)
+    let rest = await _downloadAllMediaSequentially(politicians, index + 1)
+    [media]->Array.concat(rest)
+  }
+}
+
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
   let deck = AnkiExport.makeMultiFieldExporter(deckName)
 
-  let media = await Promise.all(
-    politicians->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index)),
-  )
+  let media = await _downloadAllMediaSequentially(politicians, 0)
 
   politicians->Array.forEachWithIndex((politician, index) => {
     let fields = fieldsFor(politician)
