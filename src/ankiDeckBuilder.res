@@ -80,15 +80,15 @@ let _imageConfig: Axios.axiosRequestConfig = {
   responseType: "arraybuffer",
 }
 
-let _downloadImage = async (imageUrl: string): ApkgWriterFacade.mediaData => {
-  let response: Axios.response<ApkgWriterFacade.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
+let _downloadImage = async (imageUrl: string): AnkiApkgExportFacade.mediaData => {
+  let response: Axios.response<AnkiApkgExportFacade.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
   response.data
 }
 
 // filename is index-based (not name-based) so it stays unique even for duplicate names
 let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int): option<(
   string,
-  ApkgWriterFacade.mediaData,
+  AnkiApkgExportFacade.mediaData,
 )> => {
   if !OutputHelpers.hasValidImageUrl(politician) {
     Console.log(`⚠️  Skipping missing image for ${politician.name}`)
@@ -119,7 +119,7 @@ let _sleep = (ms: int): promise<unit> => {
 let rec _downloadAllMediaSequentially = async (
   politicians: array<OutputHelpers.politician>,
   index: int,
-): array<option<(string, ApkgWriterFacade.mediaData)>> => {
+): array<option<(string, AnkiApkgExportFacade.mediaData)>> => {
   if index >= politicians->Array.length {
     []
   } else {
@@ -135,7 +135,7 @@ let rec _downloadAllMediaSequentially = async (
 
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = ApkgWriterFacade.makeMultiFieldExporter(deckName)
+  let deck = AnkiApkgExportFacade.makeMultiFieldExporter(deckName)
 
   let media = await _downloadAllMediaSequentially(politicians, 0)
 
@@ -143,16 +143,16 @@ let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
     let fields = fieldsFor(politician)
     let fields = switch media->Array.get(index)->Option.flatMap(x => x) {
     | Some((filename, data)) =>
-      ApkgWriterFacade.addMedia(deck, filename, data)
+      AnkiApkgExportFacade.addMedia(deck, filename, data)
       fields->Array.mapWithIndex((field, fieldIndex) =>
         fieldIndex == 3 ? `<img src="${filename}">` : field
       )
     | None => fields
     }
-    ApkgWriterFacade.addNote(deck, fields)
+    AnkiApkgExportFacade.addNote(deck, fields)
   })
 
-  let data = await ApkgWriterFacade.save(deck)
-  ApkgWriterFacade.writeFileSync(outputFilePath, data)
+  let data = await AnkiApkgExportFacade.save(deck)
+  AnkiApkgExportFacade.writeFileSync(outputFilePath, data)
   Console.log(`Wrote ${politicians->Array.length->Int.toString} notes to ${outputFilePath}`)
 }
