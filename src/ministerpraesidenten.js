@@ -3,6 +3,7 @@ import { load } from "cheerio";
 import { writeFileSync, mkdirSync } from "fs";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 import { normalizeWikiImageUrl } from "./ImageUrl.res.mjs";
+import { exportOutputFileToApkg } from "./apkgFileExport.js";
 
 async function createImageFiles(ministerpraesidenten) {
   mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
@@ -126,13 +127,17 @@ async function saveToOutputfiles(ministerpraesidenten) {
     stateA.localeCompare(stateB),
   );
 
-  writeAsJson("output/ministerpräsidenten.json", ministerpraesidenten);
+  const jsonFilePath = "output/ministerpräsidenten.json";
+  writeAsJson(jsonFilePath, ministerpraesidenten);
   writeAsMarkdown(
     "output/ministerpräsidenten.md",
     "Ministerpräsidenten",
     ministerpraesidenten,
   );
   await createImageFiles(ministerpraesidenten);
+
+  const apkgFilePath = await exportOutputFileToApkg(jsonFilePath);
+  console.log(`Exported Anki deck to ${apkgFilePath}`);
 }
 
 export default async function extract() {

@@ -1,35 +1,18 @@
-import { readdirSync } from "node:fs";
-import path from "node:path";
 import extractMinisterpraesidenten from "./src/ministerpraesidenten.js";
 import extractBundesregierung from "./src/bundesregierung.js";
 import { extract as extractLandesregierungen } from "./src/landesregierungen.res.mjs";
-import { exportOutputFileToApkg } from "./src/apkgFileExport.js";
-
-async function exportApkg(jsonFilePath) {
-  const outputFilePath = await exportOutputFileToApkg(jsonFilePath);
-  console.log(`Exported Anki deck to ${outputFilePath}`);
-}
 
 async function run() {
   console.log("Start ministerpräsidenten");
   await extractMinisterpraesidenten();
-  await exportApkg("output/ministerpräsidenten.json");
   console.log("Done with ministerpräsidenten.\n");
 
   console.log("Start bundesregierung");
   await extractBundesregierung();
-  await exportApkg("output/bundesregierung.json");
   console.log("Done with bundesregierung.\n");
 
   console.log("Start landesregierungen");
   await extractLandesregierungen();
-  const landesregierungenDir = "output/landesregierungen";
-  const landesregierungenFiles = readdirSync(landesregierungenDir).filter((file) =>
-    file.endsWith(".json"),
-  );
-  for (const file of landesregierungenFiles) {
-    await exportApkg(path.join(landesregierungenDir, file));
-  }
   console.log("Done with landesregierungen.\n");
 }
 

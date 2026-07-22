@@ -1,6 +1,9 @@
 // Alias because I'm lazy
 type tableCell = TableWalker.tableCell
 
+@module("./apkgFileExport.js")
+external exportOutputFileToApkg: string => promise<string> = "exportOutputFileToApkg"
+
 let sameRow = (cellA: tableCell, cellB: tableCell) => {
   (cellB.rowStart <= cellA.rowStart && cellA.rowStart <= cellB.rowEnd) ||
     (cellB.rowStart <= cellA.rowEnd && cellA.rowEnd <= cellB.rowEnd)
@@ -278,6 +281,24 @@ let deserializeMinisterpraesidenten = fileName => {
   }
 }
 
+// One deck at a time: each deck export downloads its politicians' images from
+// Wikimedia sequentially-with-delay internally (see ankiDeckBuilder.res), but that
+// only protects against rate limiting *within* one deck. Exporting all Bundesländer
+// decks concurrently would still fire that many parallel bursts of image requests at
+// once, so the exports themselves stay sequential even though scraping (below) doesn't
+// touch Wikimedia's image CDN and is safe to run in parallel.
+let rec _exportApkgSequentially = async (states: array<string>, index: int): unit => {
+  switch states->Array.get(index) {
+  | None => ()
+  | Some(state) => {
+      let jsonFilePath = `output/landesregierungen/${state->String.toLocaleLowerCase}.json`
+      let apkgFilePath = await exportOutputFileToApkg(jsonFilePath)
+      Console.log(`Exported Anki deck to ${apkgFilePath}`)
+      await _exportApkgSequentially(states, index + 1)
+    }
+  }
+}
+
 let extract = async () => {
   let ministerpraesidenten = deserializeMinisterpraesidenten("./output/ministerpräsidenten.json")
 
@@ -300,15 +321,22 @@ let extract = async () => {
     | "Brandenburg"
     | "Berlin" => {
         await _extract(mp)
-        None
+        Some(mp.state)
       }
-    | _ => Some(mp.state)
+    | _ => None
     }
   })
 
-  let notMapped = (await Promise.all(promises))->Array.keepSome
+  let extractedStates = (await Promise.all(promises))->Array.keepSome
+
+  let notMapped =
+    ministerpraesidenten
+    ->Array.map(mp => mp.state)
+    ->Array.filter(state => !(extractedStates->Array.includes(state)))
 
   if notMapped->Array.length > 0 {
     Console.log(`Bundesländer ${notMapped->Array.join(", ")} not mapped yet.`)
   }
+
+  await _exportApkgSequentially(extractedStates, 0)
 }
