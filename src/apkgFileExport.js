@@ -18,6 +18,10 @@ export function deckNameFor(basename) {
 // call per output file the scrape pipeline produces) so both go through the exact same
 // deck-naming and output-path logic instead of two copies drifting apart.
 export async function exportOutputFileToApkg(jsonFilePath) {
+  if (path.extname(jsonFilePath) !== ".json") {
+    throw new Error(`Expected a JSON output file, received: ${jsonFilePath}`);
+  }
+
   const basename = path.basename(jsonFilePath, ".json");
   const deckName = deckNameFor(basename);
   const outputFilePath = path.join(path.dirname(jsonFilePath), `${basename}.apkg`);

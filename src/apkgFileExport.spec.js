@@ -44,4 +44,11 @@ describe("exportOutputFileToApkg", () => {
     const outputFilePath = await exportOutputFileToApkg("output/bundesregierung.json");
     expect(outputFilePath).toBe("output/bundesregierung.apkg");
   });
+
+  it("rejects a non-JSON input path instead of silently deriving a wrong output path", async () => {
+    await expect(exportOutputFileToApkg("output/bundesregierung.md")).rejects.toThrow(
+      "Expected a JSON output file, received: output/bundesregierung.md",
+    );
+    expect(exportJsonFileToApkgMock).not.toHaveBeenCalled();
+  });
 });

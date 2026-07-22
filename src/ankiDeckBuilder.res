@@ -112,6 +112,10 @@ let _sleep = (ms: int): promise<unit> => {
 // 2026-07-22 while wiring this into npm start (index.js), which exports 18 files in
 // one run. Same delay-between-requests approach already used for the sequential image
 // download in ministerpraesidenten.js, for the same reason.
+//
+// The delay only runs after an actual download (Some(...)) — a politician with no/an
+// invalid image URL (None, see _downloadMediaFor) never hit Wikimedia, so throttling
+// that case too would slow down exports for no reason.
 let rec _downloadAllMediaSequentially = async (
   politicians: array<OutputHelpers.politician>,
   index: int,
@@ -120,7 +124,10 @@ let rec _downloadAllMediaSequentially = async (
     []
   } else {
     let media = await _downloadMediaFor(politicians->Array.getUnsafe(index), index)
-    await _sleep(1000)
+    switch media {
+    | Some(_) => await _sleep(1000)
+    | None => ()
+    }
     let rest = await _downloadAllMediaSequentially(politicians, index + 1)
     [media]->Array.concat(rest)
   }
