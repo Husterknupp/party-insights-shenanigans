@@ -288,37 +288,12 @@ let deserializeMinisterpraesidenten = fileName => {
 // deck. Running all 16 Bundesländer through _extract concurrently would still fire
 // that many parallel bursts of image requests at once and reintroduce the rate
 // limiting the delay was built to avoid.
-let rec _extractSequentially = async (
-  bundeslaender: array<ministerpraesident>,
-  index: int,
-  extractedStates: array<string>,
-): array<string> => {
+let rec _extractSequentially = async (bundeslaender: array<ministerpraesident>, index: int) => {
   switch bundeslaender->Array.get(index) {
-  | None => extractedStates
+  | None => ()
   | Some(mp) => {
-      let newExtractedStates = switch mp.state {
-      | "Sachsen"
-      | "Baden-Württemberg"
-      | "Bayern"
-      | "Thüringen"
-      | "Schleswig-Holstein"
-      | "Sachsen-Anhalt"
-      | "Saarland"
-      | "Rheinland-Pfalz"
-      | "Nordrhein-Westfalen"
-      | "Niedersachsen"
-      | "Mecklenburg-Vorpommern"
-      | "Hessen"
-      | "Hamburg"
-      | "Bremen"
-      | "Brandenburg"
-      | "Berlin" => {
-          await _extract(mp)
-          Array.concat(extractedStates, [mp.state])
-        }
-      | _ => extractedStates
-      }
-      await _extractSequentially(bundeslaender, index + 1, newExtractedStates)
+      await _extract(mp)
+      await _extractSequentially(bundeslaender, index + 1)
     }
   }
 }
@@ -326,14 +301,5 @@ let rec _extractSequentially = async (
 let extract = async () => {
   let ministerpraesidenten = deserializeMinisterpraesidenten("./output/ministerpräsidenten.json")
 
-  let extractedStates = await _extractSequentially(ministerpraesidenten, 0, [])
-
-  let notMapped =
-    ministerpraesidenten
-    ->Array.map(mp => mp.state)
-    ->Array.filter(state => !(extractedStates->Array.includes(state)))
-
-  if notMapped->Array.length > 0 {
-    Console.log(`Bundesländer ${notMapped->Array.join(", ")} not mapped yet.`)
-  }
+  await _extractSequentially(ministerpraesidenten, 0)
 }
