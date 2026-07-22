@@ -39,9 +39,9 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
   }
 }
 
-// [Name, Partei, Amt/Ministerium, Profil-Photo] — matches AnkiExport.POLITICIAN_FIELDS'
-// order (multiFieldApkg.js); Profil-Photo is left blank here and filled in by the caller once
-// the image (if any) has been downloaded, since that happens async and per-index in
+// [Name, Partei, Amt/Ministerium, Profil-Photo] — matches POLITICIAN_FIELDS' order
+// (politicianNoteTypeSql.js); Profil-Photo is left blank here and filled in by the caller
+// once the image (if any) has been downloaded, since that happens async and per-index in
 // exportJsonFileToApkg below
 let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
   let amtOrState = switch (politician.amt, politician.state) {
@@ -80,15 +80,15 @@ let _imageConfig: Axios.axiosRequestConfig = {
   responseType: "arraybuffer",
 }
 
-let _downloadImage = async (imageUrl: string): AnkiExport.mediaData => {
-  let response: Axios.response<AnkiExport.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
+let _downloadImage = async (imageUrl: string): ApkgWriterFacade.mediaData => {
+  let response: Axios.response<ApkgWriterFacade.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
   response.data
 }
 
 // filename is index-based (not name-based) so it stays unique even for duplicate names
 let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int): option<(
   string,
-  AnkiExport.mediaData,
+  ApkgWriterFacade.mediaData,
 )> => {
   if !OutputHelpers.hasValidImageUrl(politician) {
     Console.log(`⚠️  Skipping missing image for ${politician.name}`)
@@ -115,7 +115,7 @@ let _sleep = (ms: int): promise<unit> => {
 let rec _downloadAllMediaSequentially = async (
   politicians: array<OutputHelpers.politician>,
   index: int,
-): array<option<(string, AnkiExport.mediaData)>> => {
+): array<option<(string, ApkgWriterFacade.mediaData)>> => {
   if index >= politicians->Array.length {
     []
   } else {
@@ -128,7 +128,7 @@ let rec _downloadAllMediaSequentially = async (
 
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = AnkiExport.makeMultiFieldExporter(deckName)
+  let deck = ApkgWriterFacade.makeMultiFieldExporter(deckName)
 
   let media = await _downloadAllMediaSequentially(politicians, 0)
 
@@ -136,16 +136,16 @@ let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
     let fields = fieldsFor(politician)
     let fields = switch media->Array.get(index)->Option.flatMap(x => x) {
     | Some((filename, data)) =>
-      AnkiExport.addMedia(deck, filename, data)
+      ApkgWriterFacade.addMedia(deck, filename, data)
       fields->Array.mapWithIndex((field, fieldIndex) =>
         fieldIndex == 3 ? `<img src="${filename}">` : field
       )
     | None => fields
     }
-    AnkiExport.addNote(deck, fields)
+    ApkgWriterFacade.addNote(deck, fields)
   })
 
-  let data = await AnkiExport.save(deck)
-  AnkiExport.writeFileSync(outputFilePath, data)
+  let data = await ApkgWriterFacade.save(deck)
+  ApkgWriterFacade.writeFileSync(outputFilePath, data)
   Console.log(`Wrote ${politicians->Array.length->Int.toString} notes to ${outputFilePath}`)
 }

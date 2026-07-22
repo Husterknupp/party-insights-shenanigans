@@ -4,7 +4,7 @@ import {
   POLITICIAN_MODEL_ID,
   POLITICIAN_MODEL_NAME,
   POLITICIAN_FIELDS,
-} from "./multiFieldApkg.js";
+} from "./politicianNoteTypeSql.js";
 
 const notes = (exporter) =>
   exporter.db.exec("select id, mid, flds from notes")[0]?.values ?? [];
