@@ -1,6 +1,9 @@
 // Alias because I'm lazy
 type tableCell = TableWalker.tableCell
 
+@module("./apkgFileExport.js")
+external exportOutputFileToApkg: string => promise<string> = "exportOutputFileToApkg"
+
 let sameRow = (cellA: tableCell, cellB: tableCell) => {
   (cellB.rowStart <= cellA.rowStart && cellA.rowStart <= cellB.rowEnd) ||
     (cellB.rowStart <= cellA.rowEnd && cellA.rowEnd <= cellB.rowEnd)
@@ -226,15 +229,16 @@ let _extract = async (bundesland: ministerpraesident) => {
   }
 
   // todo also add URL of cabinet to output files
-  OutputHelpers.writeAsJson(
-    `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.json`,
-    result->Array.map(toOutputType),
-  )
+  let jsonFilePath = `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.json`
+  OutputHelpers.writeAsJson(jsonFilePath, result->Array.map(toOutputType))
   OutputHelpers.writeAsMarkdown(
     `output/landesregierungen/${bundesland.state->String.toLocaleLowerCase}.md`,
     `${bundesland.state} - ${cabinetName}`,
     result->Array.map(toOutputType),
   )
+
+  let apkgFilePath = await exportOutputFileToApkg(jsonFilePath)
+  Console.log(`Exported Anki deck to ${apkgFilePath}`)
 }
 
 let deserializeMinisterpraesidenten = fileName => {
@@ -278,37 +282,24 @@ let deserializeMinisterpraesidenten = fileName => {
   }
 }
 
+// States one at a time, not Promise.all: each state's apkg export downloads its
+// politicians' images from Wikimedia sequentially-with-delay internally (see
+// ankiDeckBuilder.res), but that only protects against rate limiting *within* one
+// deck. Running all 16 Bundesländer through _extract concurrently would still fire
+// that many parallel bursts of image requests at once and reintroduce the rate
+// limiting the delay was built to avoid.
+let rec _extractSequentially = async (bundeslaender: array<ministerpraesident>, index: int) => {
+  switch bundeslaender->Array.get(index) {
+  | None => ()
+  | Some(mp) => {
+      await _extract(mp)
+      await _extractSequentially(bundeslaender, index + 1)
+    }
+  }
+}
+
 let extract = async () => {
   let ministerpraesidenten = deserializeMinisterpraesidenten("./output/ministerpräsidenten.json")
 
-  let promises = ministerpraesidenten->Array.map(async mp => {
-    switch mp.state {
-    | "Sachsen"
-    | "Baden-Württemberg"
-    | "Bayern"
-    | "Thüringen"
-    | "Schleswig-Holstein"
-    | "Sachsen-Anhalt"
-    | "Saarland"
-    | "Rheinland-Pfalz"
-    | "Nordrhein-Westfalen"
-    | "Niedersachsen"
-    | "Mecklenburg-Vorpommern"
-    | "Hessen"
-    | "Hamburg"
-    | "Bremen"
-    | "Brandenburg"
-    | "Berlin" => {
-        await _extract(mp)
-        None
-      }
-    | _ => Some(mp.state)
-    }
-  })
-
-  let notMapped = (await Promise.all(promises))->Array.keepSome
-
-  if notMapped->Array.length > 0 {
-    Console.log(`Bundesländer ${notMapped->Array.join(", ")} not mapped yet.`)
-  }
+  await _extractSequentially(ministerpraesidenten, 0)
 }

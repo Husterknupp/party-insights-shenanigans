@@ -5,6 +5,7 @@ import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
 import { normalizeWikiImageUrl } from "./ImageUrl.res.mjs";
+import { exportOutputFileToApkg } from "./apkgFileExport.js";
 
 export function urlForResizedImage(image) {
   return normalizeWikiImageUrl(image);
@@ -153,6 +154,10 @@ export default async function extract() {
 
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b));
 
-  writeAsJson("output/bundesregierung.json", result);
+  const jsonFilePath = "output/bundesregierung.json";
+  writeAsJson(jsonFilePath, result);
   writeAsMarkdown("output/bundesregierung.md", "Bundesregierung", result);
+
+  const apkgFilePath = await exportOutputFileToApkg(jsonFilePath);
+  console.log(`Exported Anki deck to ${apkgFilePath}`);
 }

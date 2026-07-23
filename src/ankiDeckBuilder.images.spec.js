@@ -1,15 +1,15 @@
 import { jest } from "@jest/globals";
 
-// axios must be mocked before ankiExporter.res.mjs (which pulls in axios.res.mjs) is
+// axios must be mocked before ankiDeckBuilder.res.mjs (which pulls in axios.res.mjs) is
 // ever imported anywhere in this file, so this stays a dedicated spec file rather than
-// living alongside the unmocked tests in ankiExporter.spec.js.
+// living alongside the unmocked tests in ankiDeckBuilder.spec.js.
 const axiosGetMock = jest.fn();
 
 jest.unstable_mockModule("axios", () => ({
   default: { get: axiosGetMock },
 }));
 
-const { _fileExtensionFor, _downloadMediaFor } = await import("./ankiExporter.res.mjs");
+const { _fileExtensionFor, _downloadMediaFor } = await import("./ankiDeckBuilder.res.mjs");
 
 describe("_fileExtensionFor", () => {
   it("extracts a known extension from the URL path", () => {

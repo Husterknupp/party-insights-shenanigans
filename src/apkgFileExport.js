@@ -1,9 +1,9 @@
 import path from "node:path";
-import { exportJsonFileToApkg } from "./src/ankiExporter.res.mjs";
+import { exportJsonFileToApkg } from "./ankiDeckBuilder.res.mjs";
 
 // Mechanical: capitalizes each hyphen-separated word of the input JSON's basename and
 // prefixes it under one shared "Party Insights" parent deck (Anki nests on "::" at
-// import time). Works uniformly across all 18 basenames without a special case, now that
+// import time). Works uniformly across all basenames without a special case, now that
 // every output file on disk uses proper German spelling (incl. umlauts) rather than an
 // ASCII transliteration.
 export function deckNameFor(basename) {
@@ -14,10 +14,12 @@ export function deckNameFor(basename) {
   return `Party Insights::${capitalized}`;
 }
 
-async function run() {
-  const jsonFilePath = process.argv[2];
-  if (!jsonFilePath) {
-    throw new Error("Usage: node exportAnkiDeck.js <path-to-output-json-file>");
+// Shared by ankiExportCli.js (manual, single-file CLI) and index.js (automatic, one
+// call per output file the scrape pipeline produces) so both go through the exact same
+// deck-naming and output-path logic instead of two copies drifting apart.
+export async function exportOutputFileToApkg(jsonFilePath) {
+  if (path.extname(jsonFilePath) !== ".json") {
+    throw new Error(`Expected a JSON output file, received: ${jsonFilePath}`);
   }
 
   const basename = path.basename(jsonFilePath, ".json");
@@ -25,13 +27,5 @@ async function run() {
   const outputFilePath = path.join(path.dirname(jsonFilePath), `${basename}.apkg`);
 
   await exportJsonFileToApkg(jsonFilePath, outputFilePath, deckName);
-}
-
-// guarded so importing deckNameFor (e.g. from exportAnkiDeck.spec.js) doesn't also
-// trigger the CLI run, which would exit the test process
-if (import.meta.url === `file://${process.argv[1]}`) {
-  run().catch((err) => {
-    console.error(err.stack || err);
-    process.exit(1);
-  });
+  return outputFilePath;
 }

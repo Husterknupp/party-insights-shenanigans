@@ -39,9 +39,9 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
   }
 }
 
-// [Name, Partei, Amt/Ministerium, Profil-Photo] — matches AnkiExport.POLITICIAN_FIELDS'
-// order (multiFieldApkg.js); Profil-Photo is left blank here and filled in by the caller once
-// the image (if any) has been downloaded, since that happens async and per-index in
+// [Name, Partei, Amt/Ministerium, Profil-Photo] — matches POLITICIAN_FIELDS' order
+// (politicianNoteTypeSql.js); Profil-Photo is left blank here and filled in by the caller
+// once the image (if any) has been downloaded, since that happens async and per-index in
 // exportJsonFileToApkg below
 let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
   let amtOrState = switch (politician.amt, politician.state) {
@@ -80,15 +80,15 @@ let _imageConfig: Axios.axiosRequestConfig = {
   responseType: "arraybuffer",
 }
 
-let _downloadImage = async (imageUrl: string): AnkiExport.mediaData => {
-  let response: Axios.response<AnkiExport.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
+let _downloadImage = async (imageUrl: string): AnkiApkgExportFacade.mediaData => {
+  let response: Axios.response<AnkiApkgExportFacade.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
   response.data
 }
 
 // filename is index-based (not name-based) so it stays unique even for duplicate names
 let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int): option<(
   string,
-  AnkiExport.mediaData,
+  AnkiApkgExportFacade.mediaData,
 )> => {
   if !OutputHelpers.hasValidImageUrl(politician) {
     Console.log(`⚠️  Skipping missing image for ${politician.name}`)
@@ -99,28 +99,60 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
   }
 }
 
+let _sleep = (ms: int): promise<unit> => {
+  Promise.make((resolve, _reject) => {
+    let _ = setTimeout(() => resolve(), ms)
+  })
+}
+
+// Sequential with a delay, not Promise.all: a deck's politicians can number in the
+// dozens (a state cabinet, the Bundesregierung), and firing every image request at
+// once against Wikimedia reliably comes back 429 Too Many Requests once real decks
+// (not just single-politician test fixtures) are exported — reproduced live on
+// 2026-07-22 while wiring this into npm start (index.js), which exports 18 files in
+// one run. Same delay-between-requests approach already used for the sequential image
+// download in ministerpraesidenten.js, for the same reason.
+//
+// The delay only runs after an actual download (Some(...)) — a politician with no/an
+// invalid image URL (None, see _downloadMediaFor) never hit Wikimedia, so throttling
+// that case too would slow down exports for no reason.
+let rec _downloadAllMediaSequentially = async (
+  politicians: array<OutputHelpers.politician>,
+  index: int,
+): array<option<(string, AnkiApkgExportFacade.mediaData)>> => {
+  if index >= politicians->Array.length {
+    []
+  } else {
+    let media = await _downloadMediaFor(politicians->Array.getUnsafe(index), index)
+    switch media {
+    | Some(_) => await _sleep(1000)
+    | None => ()
+    }
+    let rest = await _downloadAllMediaSequentially(politicians, index + 1)
+    [media]->Array.concat(rest)
+  }
+}
+
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = AnkiExport.makeMultiFieldExporter(deckName)
+  let deck = AnkiApkgExportFacade.makeMultiFieldExporter(deckName)
 
-  let media = await Promise.all(
-    politicians->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index)),
-  )
+  let media = await _downloadAllMediaSequentially(politicians, 0)
 
   politicians->Array.forEachWithIndex((politician, index) => {
     let fields = fieldsFor(politician)
     let fields = switch media->Array.get(index)->Option.flatMap(x => x) {
     | Some((filename, data)) =>
-      AnkiExport.addMedia(deck, filename, data)
+      AnkiApkgExportFacade.addMedia(deck, filename, data)
       fields->Array.mapWithIndex((field, fieldIndex) =>
         fieldIndex == 3 ? `<img src="${filename}">` : field
       )
     | None => fields
     }
-    AnkiExport.addNote(deck, fields)
+    AnkiApkgExportFacade.addNote(deck, fields)
   })
 
-  let data = await AnkiExport.save(deck)
-  AnkiExport.writeFileSync(outputFilePath, data)
+  let data = await AnkiApkgExportFacade.save(deck)
+  AnkiApkgExportFacade.writeFileSync(outputFilePath, data)
   Console.log(`Wrote ${politicians->Array.length->Int.toString} notes to ${outputFilePath}`)
 }

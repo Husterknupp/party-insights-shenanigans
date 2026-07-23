@@ -1,4 +1,4 @@
-import { fieldsFor } from "./ankiExporter.res.mjs";
+import { fieldsFor } from "./ankiDeckBuilder.res.mjs";
 
 describe("fieldsFor", () => {
   it("uses 'amt' as the Amt/Ministerium field when present", () => {
