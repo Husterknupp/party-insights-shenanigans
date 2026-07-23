@@ -63,6 +63,4 @@ USB, cloud storage, or email), then:
 2. Tap **Importieren** (Import).
 3. Choose **Stapel-Paket (.apkg)** ("Deck Package (.apkg)") and pick the file.
 
-AnkiDroid's menu labels above are German (matching the screenshots this was
-transcribed from); the English AnkiDroid build uses the same three-dot menu →
-**Import** → **Deck Package (.apkg)**.
+(Labels above are German; the English build uses the same menu → **Import** → **Deck Package (.apkg)**.)
