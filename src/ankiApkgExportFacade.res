@@ -12,6 +12,11 @@ external makeMultiFieldExporter: string => exporter = "makeMultiFieldExporter"
 external addNote: (exporter, array<string>) => unit = "addNote"
 
 @send external addMedia: (exporter, string, mediaData) => unit = "addMedia"
-@send external save: exporter => Promise.t<apkgData> = "save"
+
+// exporter.save() (the library's own method) embeds each zip entry's current wall-clock
+// time; politicianNoteTypeSql.js's own `save` pins that instead, so re-exporting the same
+// JSON produces a byte-identical .apkg regardless of when/where it runs — see issue #65
+@module("./politicianNoteTypeSql.js")
+external save: exporter => Promise.t<apkgData> = "save"
 
 @module("node:fs") external writeFileSync: (string, apkgData) => unit = "writeFileSync"
