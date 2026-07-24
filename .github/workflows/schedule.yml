@@ -20,6 +20,11 @@ jobs:
       - run: npm ci
       - run: npm run res:build
       - run: npm start
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apkg-output-debug
+          path: output/
+          retention-days: 1
       # ACTUAL CHECK
       - name: Compare output with checked-in version
         run: |
