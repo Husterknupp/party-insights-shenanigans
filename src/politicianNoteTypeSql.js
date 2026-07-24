@@ -25,6 +25,7 @@
 // already used transitively here; the `genanki` npm package is an unpublished stub).
 import { createRequire } from "node:module";
 import sha1 from "sha1";
+import Zip from "jszip";
 
 const require = createRequire(import.meta.url);
 const { Exporter } = require("anki-apkg-export");
@@ -308,6 +309,16 @@ export const createCollectionSql = ({
 
 const checksum = (str) => parseInt(sha1(str).substr(0, 8), 16);
 
+// stand-in for Date.now() everywhere this file (and anki-apkg-export's own Exporter
+// constructor) would otherwise seed ids/mod timestamps from wall-clock time — deriving
+// it from note/deck content instead means re-exporting the same JSON produces a
+// byte-identical .apkg on every machine/run, which is what the checked-in
+// output/**/*.apkg files and the CI "diff against checked-in output" step assume. See
+// issue #65: that CI check failed on every run, even absent real content changes,
+// because these ids/timestamps used to be Date.now()-based and so differed run to run.
+const deterministicTimestamp = (seed) =>
+  parseInt(sha1(`ts:${seed}`).substr(0, 12), 16);
+
 const getId = (db, table, col, ts) => {
   const query = `SELECT ${col} from ${table} WHERE ${col} >= :ts ORDER BY ${col} DESC LIMIT 1`;
   const stmt = db.prepare(query);
@@ -356,6 +367,24 @@ export const makeMultiFieldExporter = (deckName) => {
   // via `{ collectionSql, sql }` shorthand so that distinction stays visible at the call site.
   const exporter = new Exporter(deckName, { template: collectionSql, sql });
 
+  // Same re-keying, but for the deck id: left alone, Exporter's constructor sets
+  // topDeckId from Date.now() too, which — unlike topModelId below — was never
+  // re-keyed anywhere, so it (and every card's `did` column) changed on every run.
+  // Deriving it from deckName instead keeps it both deterministic *and* distinct per
+  // deck (Landesregierungen, Bundesregierung, Ministerpräsidenten, ... each get their
+  // own stable id, rather than sharing POLITICIAN_MODEL_ID's single constant).
+  const deterministicDeckId = deterministicTimestamp(`deck:${deckName}`);
+  const decks = JSON.parse(
+    exporter.db.exec("select decks from col")[0].values[0][0],
+  );
+  const deck = decks[exporter.topDeckId];
+  delete decks[exporter.topDeckId];
+  deck.id = deterministicDeckId;
+  decks[deterministicDeckId] = deck;
+  exporter.db
+    .prepare("update col set decks=:decks where id=1")
+    .getAsObject({ ":decks": JSON.stringify(decks) });
+
   const models = JSON.parse(
     exporter.db.exec("select models from col")[0].values[0][0],
   );
@@ -363,11 +392,16 @@ export const makeMultiFieldExporter = (deckName) => {
   delete models[exporter.topModelId];
   model.id = POLITICIAN_MODEL_ID;
   model.name = POLITICIAN_MODEL_NAME;
+  // the constructor also stamped the model's own `did` with its (non-deterministic)
+  // topDeckId before we got a chance to re-key it above — needs the same fix, or this
+  // field alone still makes every export differ from the last
+  model.did = deterministicDeckId;
   models[POLITICIAN_MODEL_ID] = model;
   exporter.db
     .prepare("update col set models=:models where id=1")
     .getAsObject({ ":models": JSON.stringify(models) });
   exporter.topModelId = POLITICIAN_MODEL_ID;
+  exporter.topDeckId = deterministicDeckId;
 
   return exporter;
 };
@@ -378,10 +412,13 @@ export const makeMultiFieldExporter = (deckName) => {
 // generalized from exactly-one-card-per-note to the req-driven multi-card case
 export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
   const { db, topDeckId, topModelId } = exporter;
-  const now = Date.now();
   const flds = fieldValues.join(SEPARATOR);
   const sfld = fieldValues[0];
   const guid = sha1(`${topDeckId}${flds}`);
+  // see deterministicTimestamp above — content-derived instead of Date.now(), so id/mod
+  // collisions (and their resolution order via getId's "next free id >= ts" query) stay
+  // reproducible across runs instead of depending on wall-clock time
+  const now = deterministicTimestamp(guid);
   const noteId = getNoteId(db, guid, now);
   const strTags =
     tags.length > 0
@@ -436,5 +473,39 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
       ":data": "",
     });
     insertCardStmt.free();
+  });
+};
+
+// Replaces exporter.save() (see anki-apkg-export/src/exporter.js): same collection.anki2 +
+// media + per-media-file zip layout, but with every zip entry's date pinned instead of
+// defaulting to `new Date()` at call time. JSZip embeds that date in each entry's local
+// file header, so even once notes/cards/decks are all deterministic (see
+// deterministicTimestamp above), the zip container itself still came out byte-different
+// on every run — reproduced locally on 2026-07-24 while investigating issue #65: two
+// exports of the same JSON, seconds apart, differed starting at byte 11, right where a
+// zip local file header's mod-time field lives.
+const ZIP_ENTRY_DATE = new Date(0);
+
+export const save = (exporter) => {
+  const { db, media } = exporter;
+  const binaryArray = db.export();
+  const mediaObj = media.reduce((prev, curr, idx) => {
+    prev[idx] = curr.filename;
+    return prev;
+  }, {});
+
+  const zip = new Zip();
+  zip.file("collection.anki2", Buffer.from(binaryArray), {
+    date: ZIP_ENTRY_DATE,
+  });
+  zip.file("media", JSON.stringify(mediaObj), { date: ZIP_ENTRY_DATE });
+  media.forEach(({ data }, i) =>
+    zip.file(`${i}`, data, { date: ZIP_ENTRY_DATE }),
+  );
+
+  return zip.generateAsync({
+    type: "nodebuffer",
+    base64: false,
+    compression: "DEFLATE",
   });
 };
