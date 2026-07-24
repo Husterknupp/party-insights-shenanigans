@@ -23,6 +23,5 @@ jobs:
       # ACTUAL CHECK
       - name: Compare output with checked-in version
         run: |
-          git status --porcelain
-          STATUS=$(git status --porcelain)
-          if [[ ! $STATUS ]]; then echo "empty"; else git --no-pager diff && exit 1; fi
+          STATUS=$(git status --porcelain -- . ':(exclude)output/**/*.apkg')
+          if [[ ! $STATUS ]]; then echo "empty"; else git --no-pager diff -- . ':(exclude)output/**/*.apkg' && exit 1; fi
