@@ -4,14 +4,11 @@
 import axios from "axios";
 import { load } from "cheerio";
 import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
+import { normalizeWikiImageUrl } from "./ImageUrl.res.mjs";
+import { exportOutputFileToApkg } from "./apkgFileExport.js";
 
-function urlForResizedImage(image) {
-  // Resize image to non-thumb size
-  // thumb Format: //upload.wikimedia.org/wikipedia/commons/thumb/5/5f/2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg/74px-2022-02-21_Dr._Markus_Soeder-1926_%28cropped%29.jpg
-  let parts = image.split("/");
-  parts = parts.filter((_, index) => index !== parts.length - 1);
-  parts.push("400px-" + parts[parts.length - 1]);
-  return "https:" + parts.join("/");
+export function urlForResizedImage(image) {
+  return normalizeWikiImageUrl(image);
 }
 
 function indexParty($rows) {
@@ -23,14 +20,14 @@ function indexParty($rows) {
     if (found.length !== 0) {
       if (found.attr("colspan") > 1) {
         console.warn(
-          `[WARN] colspan ${found.attr("colspan")} for party column`
+          `[WARN] colspan ${found.attr("colspan")} for party column`,
         );
       }
 
       console.log(
         `found party column with name '${found
           .text()
-          .trim()}' at index ${found.index()}`
+          .trim()}' at index ${found.index()}`,
       );
       return found.index();
     }
@@ -53,7 +50,7 @@ function indexName($rows) {
       console.log(
         `found name column with name '${found
           .text()
-          .trim()}' at index ${found.index()}`
+          .trim()}' at index ${found.index()}`,
       );
       return found.index();
     }
@@ -72,7 +69,7 @@ function indexAmt($rows) {
       console.log(
         `found amt column with name '${found
           .text()
-          .trim()}' at index ${found.index()}`
+          .trim()}' at index ${found.index()}`,
       );
       return found.index();
     }
@@ -95,7 +92,7 @@ export function findRelevantTable($cheerio) {
     }
   }
   throw Error(
-    "Couldn't find relevant table with any of the names " + options.toString()
+    "Couldn't find relevant table with any of the names " + options.toString(),
   );
 }
 
@@ -104,9 +101,10 @@ export default async function extract() {
     "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)#Zusammensetzung",
     {
       headers: {
-        "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+        "User-Agent":
+          "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
       },
-    }
+    },
   );
   const $ = load(response.data);
 
@@ -156,6 +154,10 @@ export default async function extract() {
 
   result.sort(({ amt: a }, { amt: b }) => a.localeCompare(b));
 
-  writeAsJson("output/bundesregierung.json", result);
+  const jsonFilePath = "output/bundesregierung.json";
+  writeAsJson(jsonFilePath, result);
   writeAsMarkdown("output/bundesregierung.md", "Bundesregierung", result);
+
+  const apkgFilePath = await exportOutputFileToApkg(jsonFilePath);
+  console.log(`Exported Anki deck to ${apkgFilePath}`);
 }

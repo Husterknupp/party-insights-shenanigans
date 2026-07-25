@@ -1,9 +1,39 @@
-import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
+import { writeAsJson, writeAsMarkdown, hasValidImageUrl } from "./outputHelpers.res.mjs";
 import { jest } from "@jest/globals";
 
 describe("outputHelpers", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  describe("hasValidImageUrl", () => {
+    it("accepts a real, non-svg photo URL", () => {
+      expect(
+        hasValidImageUrl({
+          name: "Jane Doe",
+          party: "N/A",
+          imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Jane.jpg/500px-Jane.jpg",
+        }),
+      ).toBe(true);
+    });
+
+    it("rejects an empty imageUrl", () => {
+      expect(hasValidImageUrl({ name: "Jane Doe", party: "N/A", imageUrl: "" })).toBe(false);
+    });
+
+    // Regression test: Rheinland-Pfalz's "no photo" icon (Keinfoto.svg) used to slip
+    // through undetected because the old check only matched the two other known
+    // placeholder filenames ("replace_this_image", "Placeholder") by name, not by
+    // file type. Once #60's .svg thumbnail fix made this URL downloadable, this
+    // Wikipedia icon would have been silently embedded as a real profile photo.
+    it.each([
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Keinfoto.svg/500px-Keinfoto.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/500px-Silver_-_replace_this_image_male.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Silver_-_replace_this_image_female.svg/500px-Silver_-_replace_this_image_female.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Placeholder_staff_photo.svg/500px-Placeholder_staff_photo.svg.png",
+    ])("rejects the Wikipedia placeholder icon at %s", (imageUrl) => {
+      expect(hasValidImageUrl({ name: "Jane Doe", party: "N/A", imageUrl })).toBe(false);
+    });
   });
 
   describe("writeAsJson", () => {
