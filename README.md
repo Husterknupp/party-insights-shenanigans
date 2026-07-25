@@ -47,7 +47,7 @@ Every deck shares one note type, `Deutschland:Politiker` (fields: Name, Partei,
 Amt/Ministerium, Profil-Photo; two card directions — role → person and photo → person).
 The fields and card templates are defined once, as the `POLITICIAN_FIELDS` and
 `POLITICIAN_TEMPLATES` constants in [`src/politicianNoteTypeSql.js`](./src/politicianNoteTypeSql.js) —
-that's the single place to edit if the layout needs to change; `src/ankiApkgExportFacade.res` only
+that's the single place to edit if the layout needs to change; `src/AnkiApkgExportFacade.res` only
 binds into it, it doesn't build any template itself.
 
 ### Import the `.apkg` into Anki

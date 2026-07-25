@@ -242,7 +242,7 @@ let _findHeaderTextForCell = (
 }
 
 // For simplicity and I'm not sure if and how things will be merged
-// later. There exists a copy of this type in landesregierungen.res
+// later. There exists a copy of this type in Landesregierungen.res
 // and should be kept in sync with it.
 type tableCell = {
   colStart: int,

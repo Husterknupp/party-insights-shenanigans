@@ -11,7 +11,7 @@ import {
   createPoliticianAndAddToList,
   isColumnHeaderLike,
   sameRow,
-} from "./landesregierungen.res.mjs";
+} from "./Landesregierungen.res.mjs";
 
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";
