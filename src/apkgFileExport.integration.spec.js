@@ -2,7 +2,15 @@ import { jest } from "@jest/globals";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { createRequire } from "node:module";
+// jszip and sql.js also happen to be what anki-apkg-export uses internally (see
+// politicianNoteTypeSql.js, which reads/writes the exact same collection.anki2 format
+// through the same two libraries) — but they're declared as our own direct dependencies
+// here, not pulled in transitively through anki-apkg-export's node_modules tree. Depending
+// on the exact same libraries anki-apkg-export happens to use internally, without owning
+// that dependency ourselves, would make this spec's ability to even run hostage to an
+// implementation detail anki-apkg-export could change or drop at any point.
+import JSZip from "jszip";
+import SQL from "sql.js";
 
 // Deliberately does NOT mock ankiDeckBuilder.res.mjs (unlike apkgFileExport.spec.js) —
 // the whole point of this spec is to exercise exportOutputFileToApkg end to end, the same
@@ -16,13 +24,6 @@ jest.unstable_mockModule("axios", () => ({
 }));
 
 const { exportOutputFileToApkg } = await import("./apkgFileExport.js");
-
-// jszip and sql.js are already real (transitive) dependencies of anki-apkg-export — see
-// politicianNoteTypeSql.js, which reads/writes the exact same collection.anki2 format via
-// the same two libraries — so reading the produced .apkg back doesn't need a new dependency.
-const require = createRequire(import.meta.url);
-const JSZip = require("jszip");
-const SQL = require("sql.js");
 
 const POLITICIAN_WITH_IMAGE = {
   name: "Jane Doe",
