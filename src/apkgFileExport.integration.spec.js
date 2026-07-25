@@ -26,14 +26,14 @@ jest.unstable_mockModule("axios", () => ({
 const { exportOutputFileToApkg } = await import("./apkgFileExport.js");
 
 const POLITICIAN_WITH_IMAGE = {
-  name: "Jane Doe",
+  name: "Erika Mustermann",
   party: "Testpartei",
   amt: "Ministerin für Tests",
-  imageUrl: "https://example.com/jane.png",
+  imageUrl: "https://example.com/erika.png",
 };
 
 const POLITICIAN_WITHOUT_IMAGE = {
-  name: "John Roe",
+  name: "Max Mustermann",
   party: "Andere Partei",
   amt: "Minister ohne Foto",
   imageUrl: "",
@@ -87,19 +87,23 @@ describe("exportOutputFileToApkg (integration, real anki-apkg-export)", () => {
   it("gets the politician's front/back text into the produced deck", async () => {
     const { notes } = await readNotesAndCards(apkgFilePath);
 
-    const janeNote = notes.find((note) => note.flds.includes("Jane Doe"));
-    expect(janeNote).toBeDefined();
-    expect(janeNote.flds).toContain("Testpartei");
-    expect(janeNote.flds).toContain("Ministerin für Tests");
+    const erikaNote = notes.find((note) =>
+      note.flds.includes("Erika Mustermann"),
+    );
+    expect(erikaNote).toBeDefined();
+    expect(erikaNote.flds).toContain("Testpartei");
+    expect(erikaNote.flds).toContain("Ministerin für Tests");
   });
 
   it("gives a note two cards when its politician has a valid image URL, and one when not", async () => {
     const { notes, cardCountByNoteId } = await readNotesAndCards(apkgFilePath);
 
-    const janeNote = notes.find((note) => note.flds.includes("Jane Doe"));
-    const johnNote = notes.find((note) => note.flds.includes("John Roe"));
+    const erikaNote = notes.find((note) =>
+      note.flds.includes("Erika Mustermann"),
+    );
+    const maxNote = notes.find((note) => note.flds.includes("Max Mustermann"));
 
-    expect(cardCountByNoteId.get(janeNote.id)).toBe(2);
-    expect(cardCountByNoteId.get(johnNote.id)).toBe(1);
+    expect(cardCountByNoteId.get(erikaNote.id)).toBe(2);
+    expect(cardCountByNoteId.get(maxNote.id)).toBe(1);
   });
 });
