@@ -12,7 +12,7 @@ import path from "node:path";
 import JSZip from "jszip";
 import SQL from "sql.js";
 
-// Deliberately does NOT mock ankiDeckBuilder.res.mjs (unlike apkgFileExport.spec.js) —
+// Deliberately does NOT mock AnkiDeckBuilder.res.mjs (unlike apkgFileExport.spec.js) —
 // the whole point of this spec is to exercise exportOutputFileToApkg end to end, the same
 // entry point ankiExportCli.js and index.js use to produce the checked-in decks, so a real
 // regression in that path (e.g. #55's CJS/ESM interop bug) actually fails a test instead of

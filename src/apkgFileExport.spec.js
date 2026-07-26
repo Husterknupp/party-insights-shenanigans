@@ -2,7 +2,7 @@ import { jest } from "@jest/globals";
 
 const exportJsonFileToApkgMock = jest.fn();
 
-jest.unstable_mockModule("./ankiDeckBuilder.res.mjs", () => ({
+jest.unstable_mockModule("./AnkiDeckBuilder.res.mjs", () => ({
   exportJsonFileToApkg: exportJsonFileToApkgMock,
 }));
 

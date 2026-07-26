@@ -1,9 +1,9 @@
-import { loadCheerio } from "./cheerioFacade.res.mjs";
+import { loadCheerio } from "./CheerioFacade.res.mjs";
 
 import {
   removeInvisibleSourceLineBreaks,
   tableWalker,
-} from "./tableWalker.res.mjs";
+} from "./TableWalker.res.mjs";
 
 import {
   getLastCellOfFirstColumnWithHeaderLike,
@@ -11,7 +11,7 @@ import {
   createPoliticianAndAddToList,
   isColumnHeaderLike,
   sameRow,
-} from "./landesregierungen.res.mjs";
+} from "./Landesregierungen.res.mjs";
 
 import kabinettDreyer from "../test-data/Kabinett_Dreyer_III.js";
 import kabinettKretschmer from "../test-data/Kabinett_Kretschmer_II_parts.js";

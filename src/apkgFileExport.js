@@ -1,5 +1,5 @@
 import path from "node:path";
-import { exportJsonFileToApkg } from "./ankiDeckBuilder.res.mjs";
+import { exportJsonFileToApkg } from "./AnkiDeckBuilder.res.mjs";
 
 // Mechanical: capitalizes each hyphen-separated word of the input JSON's basename and
 // prefixes it under one shared "Party Insights" parent deck (Anki nests on "::" at

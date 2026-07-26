@@ -1,7 +1,7 @@
 import axios from "axios";
 import { load } from "cheerio";
 import { writeFileSync, mkdirSync } from "fs";
-import { writeAsJson, writeAsMarkdown } from "./outputHelpers.res.mjs";
+import { writeAsJson, writeAsMarkdown } from "./OutputHelpers.res.mjs";
 import { normalizeWikiImageUrl } from "./ImageUrl.res.mjs";
 import { exportOutputFileToApkg } from "./apkgFileExport.js";
 

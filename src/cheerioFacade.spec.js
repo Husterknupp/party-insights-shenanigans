@@ -1,4 +1,4 @@
-import { loadCheerio, getParentExn } from "./cheerioFacade.res.mjs";
+import { loadCheerio, getParentExn } from "./CheerioFacade.res.mjs";
 
 /**
  * This test suite explores the difference between queriedCheerio and cheerioElement
