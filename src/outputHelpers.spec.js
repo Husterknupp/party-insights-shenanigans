@@ -1,4 +1,4 @@
-import { writeAsJson, writeAsMarkdown, hasValidImageUrl } from "./outputHelpers.res.mjs";
+import { writeAsJson, writeAsMarkdown, hasValidImageUrl } from "./OutputHelpers.res.mjs";
 import { jest } from "@jest/globals";
 
 describe("outputHelpers", () => {

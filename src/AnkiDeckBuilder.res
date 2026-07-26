@@ -1,5 +1,5 @@
 // walking skeleton for issue #48: JSON output -> two-field Anki deck (no images yet)
-// Reuses OutputHelpers.politician (src/outputHelpers.res) rather than a duplicate type,
+// Reuses OutputHelpers.politician (src/OutputHelpers.res) rather than a duplicate type,
 // since that's the exact type all three sources (Ministerpräsidenten, Bundesregierung,
 // Landesregierungen) already serialize through when writing these JSON files.
 let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {

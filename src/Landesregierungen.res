@@ -284,7 +284,7 @@ let deserializeMinisterpraesidenten = fileName => {
 
 // States one at a time, not Promise.all: each state's apkg export downloads its
 // politicians' images from Wikimedia sequentially-with-delay internally (see
-// ankiDeckBuilder.res), but that only protects against rate limiting *within* one
+// AnkiDeckBuilder.res), but that only protects against rate limiting *within* one
 // deck. Running all 16 Bundesländer through _extract concurrently would still fire
 // that many parallel bursts of image requests at once and reintroduce the rate
 // limiting the delay was built to avoid.

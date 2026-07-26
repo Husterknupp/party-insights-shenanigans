@@ -1,9 +1,9 @@
-import { loadCheerio } from "./cheerioFacade.res.mjs";
+import { loadCheerio } from "./CheerioFacade.res.mjs";
 
 import {
   removeInvisibleSourceLineBreaks,
   tableWalker,
-} from "./tableWalker.res.mjs";
+} from "./TableWalker.res.mjs";
 
 import {
   getLastCellOfFirstColumnWithHeaderLike,
