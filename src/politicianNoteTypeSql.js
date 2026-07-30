@@ -405,7 +405,11 @@ export const makeMultiFieldExporter = (deckName) => {
 // generalized from exactly-one-card-per-note to the req-driven multi-card case
 export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
   const { db, topDeckId, topModelId, deckName } = exporter;
+  // note and card ids are epoch milliseconds, but every `mod` column is epoch *seconds* — Anki
+  // reads them as a TimestampSecs. Passing milliseconds there (as this did, and as
+  // anki-apkg-export still does) dates every note to roughly the year 58500
   const now = Date.now();
+  const nowInSeconds = Math.floor(now / 1000);
   const flds = fieldValues.join(SEPARATOR);
   const sfld = fieldValues[0];
   const guid = noteGuid(deckName, fieldValues);
@@ -422,7 +426,7 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
     ":id": noteId,
     ":guid": guid,
     ":mid": topModelId,
-    ":mod": getId(db, "notes", "mod", now),
+    ":mod": getId(db, "notes", "mod", nowInSeconds),
     ":usn": -1,
     ":tags": strTags,
     ":flds": flds,
@@ -447,7 +451,7 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
       ":nid": noteId,
       ":did": topDeckId,
       ":ord": ord,
-      ":mod": getId(db, "cards", "mod", now),
+      ":mod": getId(db, "cards", "mod", nowInSeconds),
       ":usn": -1,
       ":type": 0,
       ":queue": 0,

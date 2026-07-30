@@ -12,6 +12,10 @@ const guids = (exporter) =>
   (exporter.db.exec("select guid from notes")[0]?.values ?? []).map(
     ([guid]) => guid,
   );
+const noteMods = (exporter) =>
+  (exporter.db.exec("select mod from notes")[0]?.values ?? []).map(
+    ([mod]) => mod,
+  );
 const guidOf = (deckName, fieldValues) => {
   const exporter = makeMultiFieldExporter(deckName);
   addNote(exporter, fieldValues);
@@ -114,6 +118,17 @@ describe("addNote", () => {
       .map(([id]) => id);
     expect(cardIds.length).toBe(2);
     expect(new Set(cardIds).size).toBe(2);
+  });
+
+  it("writes note mod as epoch seconds, not milliseconds — Anki reads it as a TimestampSecs", () => {
+    const exporter = makeMultiFieldExporter("SomeDeck");
+    const before = Math.floor(Date.now() / 1000);
+
+    addNote(exporter, MERZ);
+
+    // a millisecond value would land three orders of magnitude above this range (year ~58500)
+    expect(noteMods(exporter)[0]).toBeGreaterThanOrEqual(before);
+    expect(noteMods(exporter)[0]).toBeLessThanOrEqual(before + 60);
   });
 
   it("keeps notes independent across multiple addNote calls", () => {
