@@ -10,10 +10,10 @@ Bundeskanzler:
 * Partei: CDU
 * Profilbild: ![Friedrich Merz](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93076_%28cropped%29.jpg/500px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93076_%28cropped%29.jpg)
 
-Bundesminister für besondere Aufgaben • Chef des Bundeskanzleramtes:
-* Name: Thorsten Frei
+Bundesministerin für besondere Aufgaben • Chefin des Bundeskanzleramtes:
+* Name: Nina Warken
 * Partei: CDU
-* Profilbild: ![Thorsten Frei](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Thorsten_Frei_2023_%28cropped%29.jpg/500px-Thorsten_Frei_2023_%28cropped%29.jpg)
+* Profilbild: ![Nina Warken](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2020-02-13_Deutscher_Bundestag_IMG_3091_by_Stepro.jpg/500px-2020-02-13_Deutscher_Bundestag_IMG_3091_by_Stepro.jpg)
 
 Bundesministerium der Justiz und für Verbraucherschutz (BMJV):
 * Name: Stefanie Hubig
@@ -46,9 +46,9 @@ Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR):
 * Profilbild: ![Dorothee Bär](https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Hart_aber_fair_2024-12-02-8076.jpg/500px-Hart_aber_fair_2024-12-02-8076.jpg)
 
 Bundesministerium für Gesundheit (BMG):
-* Name: Nina Warken
+* Name: Carsten Linnemann
 * Partei: CDU
-* Profilbild: ![Nina Warken](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2020-02-13_Deutscher_Bundestag_IMG_3091_by_Stepro.jpg/500px-2020-02-13_Deutscher_Bundestag_IMG_3091_by_Stepro.jpg)
+* Profilbild: ![Carsten Linnemann](https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93052.jpg/500px-2025-02-23_Bundestagswahl_%E2%80%93_Wahlabend_CDU_by_Sandro_Halank%E2%80%93052.jpg)
 
 Bundesministerium für Landwirtschaft, Ernährung und Heimat (BMELH):
 * Name: Alois Rainer
@@ -61,9 +61,9 @@ Bundesministerium für Umwelt, Klimaschutz, Naturschutz und nukleare Sicherheit 
 * Profilbild: ![Carsten Schneider](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93038.jpg/500px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93038.jpg)
 
 Bundesministerium für Verkehr (BMV):
-* Name: Patrick Schnieder
+* Name: Steffen Bilger
 * Partei: CDU
-* Profilbild: ![Patrick Schnieder](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Schnieder%2C_Patrick-1239.jpg/500px-Schnieder%2C_Patrick-1239.jpg)
+* Profilbild: ![Steffen Bilger](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Bilger-Pressebild-2024-cmyk2.jpg/500px-Bilger-Pressebild-2024-cmyk2.jpg)
 
 Bundesministerium für Wirtschaft und Energie (BMWE):
 * Name: Katherina Reiche
