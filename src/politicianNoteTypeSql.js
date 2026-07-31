@@ -46,6 +46,9 @@ export const POLITICIAN_FIELDS = [
   "Profil-Photo",
 ];
 
+// the one field deliberately left out of a note's identity — see `noteGuid` below
+const PROFILE_PHOTO_ORD = POLITICIAN_FIELDS.indexOf("Profil-Photo");
+
 const POLITICIAN_TEMPLATES = [
   {
     name: "Amt zu Person",
@@ -316,6 +319,33 @@ const getId = (db, table, col, ts) => {
   return rowObj[col] ? +rowObj[col] + 1 : ts;
 };
 
+// A note's guid is its identity to Anki, and the only lever we have over what an import does with
+// it. On import, a guid already present in the target collection has its note's fields overwritten
+// in place while its cards — interval, due date, review log — are left untouched; an unseen guid
+// becomes a new note whose cards enter the new queue. That overwrite is conditional, though: the
+// default import rule is `UpdateCondition::IfNewer`, which writes the incoming fields only when
+// their note's `mod` is strictly greater than the one already in the collection — hence the
+// wall-clock epoch seconds `addNote` puts there, which leave every later export newer than every
+// earlier one. There is no third option: the .apkg format cannot say "keep the scheduling but ask
+// me again". So what goes in here decides, per field, whether a change silently rewrites a card the
+// user may not be shown again for months, or is put back in front of them.
+//
+// Hence the deck name plus every field except the photo. A new minister, a party switch or a
+// renamed ministry all change the answer being learned, so they must be re-learned: new guid, new
+// note, asked at once. A swapped profile picture does not, so it updates in place and the user's
+// progress survives. Keeping the deck name in leaves the same politician appearing in two decks
+// (Ministerpräsidenten and their own Landesregierung) as two separate notes, as before.
+//
+// What must *not* go in is anything that moves on its own. The previous `sha1(topDeckId + flds)`
+// did, twice over: `topDeckId` comes out of `Date.now()` in anki-apkg-export's constructor, so
+// every export forked every note and a re-import appended a second copy of the whole deck instead
+// of updating it (#71); and `flds` carries the photo field, which holds `<img src="<array
+// index>.<ext>">` and so changes whenever an unrelated politician is inserted above this one.
+const noteGuid = (deckName, fieldValues) => {
+  const identity = fieldValues.filter((_, ord) => ord !== PROFILE_PHOTO_ORD);
+  return sha1([deckName, ...identity].join(SEPARATOR));
+};
+
 const getNoteId = (db, guid, ts) => {
   const query = `SELECT id from notes WHERE guid = :guid ORDER BY id DESC LIMIT 1`;
   const stmt = db.prepare(query);
@@ -377,11 +407,15 @@ export const makeMultiFieldExporter = (deckName) => {
 // non-empty — mirrors Exporter#addCard's insert logic (see anki-apkg-export/src/exporter.js),
 // generalized from exactly-one-card-per-note to the req-driven multi-card case
 export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
-  const { db, topDeckId, topModelId } = exporter;
+  const { db, topDeckId, topModelId, deckName } = exporter;
+  // note and card ids are epoch milliseconds, but every `mod` column is epoch *seconds* — Anki
+  // reads them as a TimestampSecs. Passing milliseconds there (as this did, and as
+  // anki-apkg-export still does) dates every note to roughly the year 58500
   const now = Date.now();
+  const nowInSeconds = Math.floor(now / 1000);
   const flds = fieldValues.join(SEPARATOR);
   const sfld = fieldValues[0];
-  const guid = sha1(`${topDeckId}${flds}`);
+  const guid = noteGuid(deckName, fieldValues);
   const noteId = getNoteId(db, guid, now);
   const strTags =
     tags.length > 0
@@ -395,7 +429,7 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
     ":id": noteId,
     ":guid": guid,
     ":mid": topModelId,
-    ":mod": getId(db, "notes", "mod", now),
+    ":mod": getId(db, "notes", "mod", nowInSeconds),
     ":usn": -1,
     ":tags": strTags,
     ":flds": flds,
@@ -420,7 +454,7 @@ export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
       ":nid": noteId,
       ":did": topDeckId,
       ":ord": ord,
-      ":mod": getId(db, "cards", "mod", now),
+      ":mod": getId(db, "cards", "mod", nowInSeconds),
       ":usn": -1,
       ":type": 0,
       ":queue": 0,

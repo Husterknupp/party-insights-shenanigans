@@ -1,3 +1,4 @@
+import { jest } from "@jest/globals";
 import {
   makeMultiFieldExporter,
   addNote,
@@ -8,12 +9,28 @@ import {
 
 const notes = (exporter) =>
   exporter.db.exec("select id, mid, flds from notes")[0]?.values ?? [];
+const guids = (exporter) =>
+  (exporter.db.exec("select guid from notes")[0]?.values ?? []).map(
+    ([guid]) => guid,
+  );
+const noteMods = (exporter) =>
+  (exporter.db.exec("select mod from notes")[0]?.values ?? []).map(
+    ([mod]) => mod,
+  );
+const guidOf = (deckName, fieldValues) => {
+  const exporter = makeMultiFieldExporter(deckName);
+  addNote(exporter, fieldValues);
+  return guids(exporter)[0];
+};
+
 const cards = (exporter) =>
   exporter.db.exec("select id, nid, ord from cards")[0]?.values ?? [];
 const model = (exporter) => {
   const modelsJson = exporter.db.exec("select models from col")[0].values[0][0];
   return JSON.parse(modelsJson)[POLITICIAN_MODEL_ID];
 };
+
+const MERZ = ["Friedrich Merz", "CDU", "Bundeskanzler", '<img src="0.jpg">'];
 
 describe("makeMultiFieldExporter", () => {
   it("re-keys the note type onto the fixed model id and name, not a fresh per-run one", () => {
@@ -104,6 +121,40 @@ describe("addNote", () => {
     expect(new Set(cardIds).size).toBe(2);
   });
 
+  it("writes note mod as epoch seconds, not milliseconds — Anki reads it as a TimestampSecs", () => {
+    const exporter = makeMultiFieldExporter("SomeDeck");
+    const before = Math.floor(Date.now() / 1000);
+
+    addNote(exporter, MERZ);
+
+    // a millisecond value would land three orders of magnitude above this range (year ~58500)
+    expect(noteMods(exporter)[0]).toBeGreaterThanOrEqual(before);
+    expect(noteMods(exporter)[0]).toBeLessThanOrEqual(before + 60);
+  });
+
+  // A stable guid alone does not buy an update in place. Anki's default import rule is
+  // `UpdateCondition::IfNewer`, which overwrites the note it already holds only when the incoming
+  // one's `mod` is strictly greater — otherwise the import is logged as a duplicate and nothing is
+  // written. Our half of that condition is that a later export must carry a later `mod`; the other
+  // half is whatever sits in the user's collection, which no test of ours can speak for.
+  it("gives a later export a strictly greater note mod, so an import updates instead of skipping", () => {
+    const buildTime = 1_753_900_000_000;
+    const nowSpy = jest.spyOn(Date, "now");
+
+    nowSpy.mockReturnValue(buildTime);
+    const firstBuild = makeMultiFieldExporter("SomeDeck");
+    addNote(firstBuild, MERZ);
+
+    nowSpy.mockReturnValue(buildTime + 86_400_000); // same deck, rebuilt a day later
+    const secondBuild = makeMultiFieldExporter("SomeDeck");
+    addNote(secondBuild, MERZ);
+
+    nowSpy.mockRestore();
+
+    expect(guids(secondBuild)).toEqual(guids(firstBuild)); // Anki matches the note ...
+    expect(noteMods(secondBuild)[0]).toBeGreaterThan(noteMods(firstBuild)[0]); // ... and sees it as newer
+  });
+
   it("keeps notes independent across multiple addNote calls", () => {
     const exporter = makeMultiFieldExporter("SomeDeck");
 
@@ -117,5 +168,47 @@ describe("addNote", () => {
 
     expect(notes(exporter).length).toBe(2);
     expect(cards(exporter).length).toBe(3);
+  });
+});
+
+// The guid is what an import matches on: a known guid updates the note's fields and leaves its
+// cards (and therefore the user's scheduling) alone, an unknown one creates a new note whose cards
+// land in the new queue. So these are behavioural assertions about what a re-import does, not
+// assertions about a hash. See #71.
+describe("addNote note identity (guid)", () => {
+  it("is stable across separately built decks, so an unchanged politician re-imports as an update", () => {
+    expect(guidOf("SomeDeck", MERZ)).toBe(guidOf("SomeDeck", MERZ));
+  });
+
+  it("ignores the profile photo, so a new picture updates the note instead of resetting progress", () => {
+    const withOtherPhoto = ["Friedrich Merz", "CDU", "Bundeskanzler", '<img src="7.png">'];
+
+    expect(guidOf("SomeDeck", withOtherPhoto)).toBe(guidOf("SomeDeck", MERZ));
+  });
+
+  it("ignores a missing photo too — gaining or losing an image is not a new fact to learn", () => {
+    const withoutPhoto = ["Friedrich Merz", "CDU", "Bundeskanzler", ""];
+
+    expect(guidOf("SomeDeck", withoutPhoto)).toBe(guidOf("SomeDeck", MERZ));
+  });
+
+  it.each([
+    ["a new person on the post", ["Jane Doe", "CDU", "Bundeskanzler", '<img src="0.jpg">']],
+    ["a party switch", ["Friedrich Merz", "SPD", "Bundeskanzler", '<img src="0.jpg">']],
+    ["a renamed post", ["Friedrich Merz", "CDU", "Bundespräsident", '<img src="0.jpg">']],
+  ])("changes on %s, so the user is asked the card again", (_what, changed) => {
+    expect(guidOf("SomeDeck", changed)).not.toBe(guidOf("SomeDeck", MERZ));
+  });
+
+  it("differs per deck, keeping a politician in two decks as two notes", () => {
+    expect(guidOf("DeckOne", MERZ)).not.toBe(guidOf("DeckTwo", MERZ));
+  });
+
+  it("does not depend on how many notes were added before it", () => {
+    const exporter = makeMultiFieldExporter("SomeDeck");
+    addNote(exporter, ["Jane Doe", "N/A", "Ministerin", ""]);
+    addNote(exporter, MERZ);
+
+    expect(guids(exporter)).toContain(guidOf("SomeDeck", MERZ));
   });
 });
