@@ -78,29 +78,11 @@ you already have is the intended way to update it, and Anki decides what to do p
   learn, so it arrives as a **new card** and you are asked it straight away rather than in
   however many months the old card was next due.
 
-Updating in place has one condition: Anki only overwrites a note it already has when the
-file you are importing is newer than the one you imported last, which every freshly
-generated deck is — each one is stamped with the time it was built. (Import the very same
-file a second time and there is nothing newer to write, so Anki leaves your collection
-exactly as it is and reports those notes as unchanged rather than updated.)
-
 #### Politicians who left have to be deleted by hand
 
-An `.apkg` can only add or update notes. There is no way for it to express "this person is
-no longer in office", so someone who left the cabinet stays in your collection until you
-remove them — and after a reshuffle you will have two cards asking the same question with
-different answers.
-
-Anki tells you which is which: the browser shows the older card with a due date
-("fällig am …") while the replacement is still listed as new ("Neu #123"). Open the browser
-(**Durchsuchen** / Browse), select the deck, sort by **Fällig** (Due), and delete the notes
-for people who are no longer listed.
-
-#### One-time duplication when upgrading from a deck exported before mid-2026
-
-Decks generated before this change identified their notes in a way that changed on every
-export ([#71](https://github.com/Husterknupp/party-insights-shenanigans/issues/71)), so
-Anki could never recognise a re-import. Notes you imported from one of those older decks
-will not be matched by the new ones, and your **next** import will duplicate the deck once.
-Delete the old copies afterwards; every import from then on updates in place as described
-above.
+An `.apkg` can only add or update notes, so someone who left the cabinet stays in your
+collection until you remove them — after a reshuffle you have two cards asking the same
+question with different answers. Anki tells you which is which: the browser shows the older
+card with a due date ("fällig am …") while the replacement is still listed as new
+("Neu #123"). Open the browser (**Durchsuchen** / Browse), select the deck, sort by
+**Fällig** (Due), and delete the notes for people who are no longer listed.
