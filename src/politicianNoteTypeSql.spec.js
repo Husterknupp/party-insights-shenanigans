@@ -1,3 +1,4 @@
+import { jest } from "@jest/globals";
 import {
   makeMultiFieldExporter,
   addNote,
@@ -129,6 +130,29 @@ describe("addNote", () => {
     // a millisecond value would land three orders of magnitude above this range (year ~58500)
     expect(noteMods(exporter)[0]).toBeGreaterThanOrEqual(before);
     expect(noteMods(exporter)[0]).toBeLessThanOrEqual(before + 60);
+  });
+
+  // A stable guid alone does not buy an update in place. Anki's default import rule is
+  // `UpdateCondition::IfNewer`, which overwrites the note it already holds only when the incoming
+  // one's `mod` is strictly greater — otherwise the import is logged as a duplicate and nothing is
+  // written. Our half of that condition is that a later export must carry a later `mod`; the other
+  // half is whatever sits in the user's collection, which no test of ours can speak for.
+  it("gives a later export a strictly greater note mod, so an import updates instead of skipping", () => {
+    const buildTime = 1_753_900_000_000;
+    const nowSpy = jest.spyOn(Date, "now");
+
+    nowSpy.mockReturnValue(buildTime);
+    const firstBuild = makeMultiFieldExporter("SomeDeck");
+    addNote(firstBuild, MERZ);
+
+    nowSpy.mockReturnValue(buildTime + 86_400_000); // same deck, rebuilt a day later
+    const secondBuild = makeMultiFieldExporter("SomeDeck");
+    addNote(secondBuild, MERZ);
+
+    nowSpy.mockRestore();
+
+    expect(guids(secondBuild)).toEqual(guids(firstBuild)); // Anki matches the note ...
+    expect(noteMods(secondBuild)[0]).toBeGreaterThan(noteMods(firstBuild)[0]); // ... and sees it as newer
   });
 
   it("keeps notes independent across multiple addNote calls", () => {

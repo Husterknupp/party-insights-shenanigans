@@ -78,6 +78,12 @@ you already have is the intended way to update it, and Anki decides what to do p
   learn, so it arrives as a **new card** and you are asked it straight away rather than in
   however many months the old card was next due.
 
+Updating in place has one condition: Anki only overwrites a note it already has when the
+file you are importing is newer than the one you imported last, which every freshly
+generated deck is — each one is stamped with the time it was built. (Import the very same
+file a second time and there is nothing newer to write, so Anki leaves your collection
+exactly as it is and reports those notes as unchanged rather than updated.)
+
 #### Politicians who left have to be deleted by hand
 
 An `.apkg` can only add or update notes. There is no way for it to express "this person is

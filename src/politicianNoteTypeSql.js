@@ -322,10 +322,13 @@ const getId = (db, table, col, ts) => {
 // A note's guid is its identity to Anki, and the only lever we have over what an import does with
 // it. On import, a guid already present in the target collection has its note's fields overwritten
 // in place while its cards — interval, due date, review log — are left untouched; an unseen guid
-// becomes a new note whose cards enter the new queue. There is no third option: the .apkg format
-// cannot say "keep the scheduling but ask me again". So what goes in here decides, per field,
-// whether a change silently rewrites a card the user may not be shown again for months, or is put
-// back in front of them.
+// becomes a new note whose cards enter the new queue. That overwrite is conditional, though: the
+// default import rule is `UpdateCondition::IfNewer`, which writes the incoming fields only when
+// their note's `mod` is strictly greater than the one already in the collection — hence the
+// wall-clock epoch seconds `addNote` puts there, which leave every later export newer than every
+// earlier one. There is no third option: the .apkg format cannot say "keep the scheduling but ask
+// me again". So what goes in here decides, per field, whether a change silently rewrites a card the
+// user may not be shown again for months, or is put back in front of them.
 //
 // Hence the deck name plus every field except the photo. A new minister, a party switch or a
 // renamed ministry all change the answer being learned, so they must be re-learned: new guid, new
