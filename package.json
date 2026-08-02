@@ -21,7 +21,8 @@
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules' jest --watch",
     "res:build": "rescript",
     "res:clean": "rescript clean",
-    "res:dev": "rescript -w"
+    "res:dev": "rescript -w",
+    "parallel-downloads": "node src/parallel-image-download.js"
   },
   "dependencies": {
     "@rescript/core": "^1.6.1",
