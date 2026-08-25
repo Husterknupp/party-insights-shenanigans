@@ -37,9 +37,14 @@ async function run() {
         );
     });
 
-    await Promise.all(requests).map((r, i) => {
-        console.log(`Response # ${i} settled.
-            Status code: ${r.status}`);
+    (await Promise.allSettled(requests)).map((r, i) => {
+	    if (r.status === 'fulfilled') { 
+	        console.log(`Response # ${i} settled.
+        	    Status code: ${r.value.status}`);
+	    } else {
+		console.log(`Response # ${i} failed.
+			Status code: ${r.reason}`);
+	    }
     });
 }
 
@@ -47,3 +52,4 @@ run().then(() => console.log("Done.")).catch(err => {
     console.error(err);
     process.exit(1);
 });
+
