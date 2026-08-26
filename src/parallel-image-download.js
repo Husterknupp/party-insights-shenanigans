@@ -51,6 +51,7 @@ async function run() {
             {
                 headers: {
                     "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+                    'Referer': 'https://github.com/Husterknupp/party-insights-shenanigans'
                 },
                 responseType: "arraybuffer",
                 httpsAgent

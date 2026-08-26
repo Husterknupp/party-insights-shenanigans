@@ -10,4 +10,4 @@ Measured on Oracle's infrastructure
 |---|---|---|--|
 | 54 | 429 x24 | 1.055s | `e9d52ae` |
 | 54 | 429 x24 | 1.079s | `e9d52ae` |
-| ? | ? | ? | `maxSockets: 3` |
+| 50 | 429 x20 | 0.676s | `maxSockets: 3` and `Referer` header, `bd40a2c` |
