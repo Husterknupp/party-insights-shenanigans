@@ -63,9 +63,10 @@ async function tryRequest(url) {
         	);
 		console.log(`Response settled.  Status code: ${response.status}, size: ${response.data.length}`);
 	} catch (e) {
-		console.log(`Response failed.  Status code: ${e.status ? e.status : JSON.stringify(e)}`);
-		console.log('Try again in 5s.');
-		setTimeout(() => tryRequest(url), 5000);
+		console.log(`Response failed.  Status code: ${e.response.status}`);
+		const retryIn = parseInt(e.response.headers['retry-after']);
+		console.log(`Try again in ${retryIn}s.`);
+		setTimeout(() => tryRequest(url), retryIn * 1000 + 100);
 	}
 }
 
