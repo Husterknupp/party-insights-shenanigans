@@ -44,30 +44,46 @@ async function run() {
     console.log(`Firing ${urls.length} requests`);
     console.log("In parallel");
 
-    const httpsAgent = new https.Agent({ maxSockets: 3, keepAlive: true });
-    const requests = urls.map(url => {
-        return axios.get(
-            url,
-            {
-                headers: {
-                    "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
-                    'Referer': 'https://github.com/Husterknupp/party-insights-shenanigans'
-                },
-                responseType: "arraybuffer",
-                httpsAgent
-            },
-        );
-    });
+    for (const url of urls) {
+	    tryRequest(url)
+    }
+}
 
-    (await Promise.allSettled(requests)).map((r, i) => {
-        if (r.status === 'fulfilled') {
-            console.log(`Response # ${i} settled.
-		Status code: ${r.value.status}, size: ${r.value.data.length}`);
-        } else {
-            console.log(`Response # ${i} failed.
-			Status code: ${r.reason}`);
-        }
-    });
+async function tryRequest(url) {
+	try {
+		const response = await axios.get(
+            		url,
+            		{
+                		headers: {
+                    			"User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
+		                        'Referer': 'https://github.com/Husterknupp/party-insights-shenanigans'
+               			 },
+		                responseType: "arraybuffer"
+		        },
+        	);
+		console.log(`Response settled.  Status code: ${response.status}, size: ${response.data.length}`);
+	} catch (e) {
+		console.log(`Response failed.  Status code: ${e.status ? e.status : JSON.stringify(e)}`);
+		console.log('Try again in 5s.');
+		setTimeout(() => tryRequest(url), 5000);
+	}
+}
+
+function queueRequest() {
+	// PROBABLY WE DON'T NEED QUEUE AT ALL
+
+	// add request to queue
+
+	//	while queue !empty
+	// 	try
+	// 		move request to inflight-queue
+	// 		await request
+	// 		remove request from inflight-queue
+	// 		return Promise.resolve(request)
+	// 	catch -> if error == 429
+	// 		pause processing queue response seconds
+	// 		move request from inflight-queue to queue
+	// 		setInterval(thisFunction, timeFromErrorResponse)
 }
 
 run().then(() => console.log("Done.")).catch(err => {
