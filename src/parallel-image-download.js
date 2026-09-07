@@ -1,5 +1,4 @@
-import axios from "axios";
-import https from "node:https";
+import { getWithRetry } from "./Axios.res.mjs";
 
 const urls = [
     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Wadephul%2C_Johann-1249.jpg/500px-Wadephul%2C_Johann-1249.jpg",
@@ -40,54 +39,32 @@ const urls = [
     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg/500px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93127.jpg"
 ];
 
+const config = {
+    headers: {
+        "User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)"
+    },
+    responseType: "arraybuffer"
+}
 async function run() {
     console.log(`Firing ${urls.length} requests`);
     console.log("In parallel");
 
     for (const url of urls) {
-	    tryRequest(url)
+        getWithRetry(url, config)
+            .catch(e => {
+                if (String(e).indexOf("aggregateError") !== -1) {
+                    // ignore aggregateError
+                    // This is kind of expected here because we're actually running into http errors
+                    //  which Axios doesn't know it is not a problem for us at this point.
+                } else {
+                    console.log("Caught something meaningful")
+                    console.log(e)
+                }
+            })
     }
 }
 
-async function tryRequest(url) {
-	try {
-		const response = await axios.get(
-            		url,
-            		{
-                		headers: {
-                    			"User-Agent": "party-insights-shenanigans/1.0.0 (https://github.com/Husterknupp/party-insights-shenanigans)",
-		                        'Referer': 'https://github.com/Husterknupp/party-insights-shenanigans'
-               			 },
-		                responseType: "arraybuffer"
-		        },
-        	);
-		console.log(`Response settled.  Status code: ${response.status}, size: ${response.data.length}`);
-	} catch (e) {
-		console.log(`Response failed.  Status code: ${e.response.status}`);
-		const retryIn = parseInt(e.response.headers['retry-after']);
-		console.log(`Try again in ${retryIn}s.`);
-		setTimeout(() => tryRequest(url), retryIn * 1000 + 100);
-	}
-}
-
-function queueRequest() {
-	// PROBABLY WE DON'T NEED QUEUE AT ALL
-
-	// add request to queue
-
-	//	while queue !empty
-	// 	try
-	// 		move request to inflight-queue
-	// 		await request
-	// 		remove request from inflight-queue
-	// 		return Promise.resolve(request)
-	// 	catch -> if error == 429
-	// 		pause processing queue response seconds
-	// 		move request from inflight-queue to queue
-	// 		setInterval(thisFunction, timeFromErrorResponse)
-}
-
-run().then(() => console.log("Done.")).catch(err => {
+run().catch(err => {
     console.error(err);
     process.exit(1);
 });
