@@ -8,18 +8,14 @@ import { exportOutputFileToApkg } from "./apkgFileExport.js";
 async function createImageFiles(ministerpraesidenten) {
   mkdirSync("output-images/ministerpraesidenten/", { recursive: true });
 
-  // Download images sequentially with delay to avoid rate limiting
-  async function downloadWithDelay(index) {
-    if (index >= ministerpraesidenten.length) return;
-
-    const ministerpraesident = ministerpraesidenten[index];
+  for (const ministerpraesident of ministerpraesidenten) {
     if (!ministerpraesident.imageUrl) {
       console.error(
         `Skipping image download for ${ministerpraesident.name} (${ministerpraesident.state}): imageUrl is ${ministerpraesident.imageUrl}`,
       );
-      await downloadWithDelay(index + 1);
-      return;
+      continue;
     }
+
     try {
       const image = await axios.get(ministerpraesident.imageUrl, {
         responseType: "arraybuffer",
@@ -32,8 +28,8 @@ async function createImageFiles(ministerpraesidenten) {
 
       writeFileSync(
         "output-images/ministerpraesidenten/" +
-          ministerpraesident.name +
-          ".jpg",
+        ministerpraesident.name +
+        ".jpg",
         image.data,
         {
           encoding: "base64",
@@ -45,13 +41,7 @@ async function createImageFiles(ministerpraesidenten) {
       );
       console.error(`  URL: ${ministerpraesident.imageUrl}`);
     }
-
-    // Wait 1 second before next request to avoid rate limiting
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await downloadWithDelay(index + 1);
   }
-
-  return await downloadWithDelay(0);
 }
 
 function findPoliticians(html) {
@@ -86,7 +76,7 @@ function findPoliticians(html) {
       if (missing.length > 0) {
         throw new Error(
           `Missing fields for ${context}: ${missing.join(", ")}` +
-            `\n  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`,
+          `\n  state=${state}, name=${name}, party=${party}, image=${image}, cabinet=${cabinet}`,
         );
       }
 

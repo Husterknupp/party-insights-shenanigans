@@ -1,7 +1,3 @@
-// walking skeleton for issue #48: JSON output -> two-field Anki deck (no images yet)
-// Reuses OutputHelpers.politician (src/OutputHelpers.res) rather than a duplicate type,
-// since that's the exact type all three sources (Ministerpräsidenten, Bundesregierung,
-// Landesregierungen) already serialize through when writing these JSON files.
 let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
   let json = OutputHelpers.NodeJs.readFileSync(fileName, {encoding: "utf-8"})->JSON.parseExn
   switch JSON.Decode.array(json) {
@@ -81,7 +77,10 @@ let _imageConfig: Axios.axiosRequestConfig = {
 }
 
 let _downloadImage = async (imageUrl: string): AnkiApkgExportFacade.mediaData => {
-  let response: Axios.response<AnkiApkgExportFacade.mediaData> = await Axios.get(imageUrl, Some(_imageConfig))
+  let response: Axios.response<AnkiApkgExportFacade.mediaData> = await Axios.getWithRetry(
+    imageUrl,
+    Some(_imageConfig),
+  )
   response.data
 }
 
@@ -99,45 +98,14 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
   }
 }
 
-let _sleep = (ms: int): promise<unit> => {
-  Promise.make((resolve, _reject) => {
-    let _ = setTimeout(() => resolve(), ms)
-  })
-}
-
-// Sequential with a delay, not Promise.all: a deck's politicians can number in the
-// dozens (a state cabinet, the Bundesregierung), and firing every image request at
-// once against Wikimedia reliably comes back 429 Too Many Requests once real decks
-// (not just single-politician test fixtures) are exported — reproduced live on
-// 2026-07-22 while wiring this into npm start (index.js), which exports 18 files in
-// one run. Same delay-between-requests approach already used for the sequential image
-// download in ministerpraesidenten.js, for the same reason.
-//
-// The delay only runs after an actual download (Some(...)) — a politician with no/an
-// invalid image URL (None, see _downloadMediaFor) never hit Wikimedia, so throttling
-// that case too would slow down exports for no reason.
-let rec _downloadAllMediaSequentially = async (
-  politicians: array<OutputHelpers.politician>,
-  index: int,
-): array<option<(string, AnkiApkgExportFacade.mediaData)>> => {
-  if index >= politicians->Array.length {
-    []
-  } else {
-    let media = await _downloadMediaFor(politicians->Array.getUnsafe(index), index)
-    switch media {
-    | Some(_) => await _sleep(1000)
-    | None => ()
-    }
-    let rest = await _downloadAllMediaSequentially(politicians, index + 1)
-    [media]->Array.concat(rest)
-  }
-}
-
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
   let deck = AnkiApkgExportFacade.makeMultiFieldExporter(deckName)
 
-  let media = await _downloadAllMediaSequentially(politicians, 0)
+  let media =
+    await politicians
+    ->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index))
+    ->Promise.all
 
   politicians->Array.forEachWithIndex((politician, index) => {
     let fields = fieldsFor(politician)

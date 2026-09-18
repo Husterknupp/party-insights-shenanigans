@@ -1,6 +1,8 @@
 # Measurements
 
-`npm run parallel-downloads`
+Test real process: `npm run export:anki -- output/bundesregierung.json`
+
+Test green-field: `npm run parallel-downloads`
 
 Wikipedia server: "upload.wikimedia.org"
 
