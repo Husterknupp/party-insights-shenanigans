@@ -83,6 +83,6 @@ describe("_downloadMediaFor", () => {
         { name: "Jane Doe", party: "N/A", imageUrl: "https://example.com/broken.png" },
         0,
       ),
-    ).rejects.toThrow("404 Not Found");
+    ).rejects.toThrow("GET request failed unexpectedly. URL: https://example.com/broken.png");
   });
 });
