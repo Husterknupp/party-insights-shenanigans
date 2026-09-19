@@ -50,7 +50,7 @@ let _serverAllowsRequestsAgain = (axiosError, retryCount, url) => {
     ->Dict.get("retry-after")
     ->Option.map(retryAfter => {
       let res = Int.fromString(retryAfter)
-      res->Option.getUnsafe
+      res->Option.getExn(~message="Could not parse 'retry-after' Header. Failing request retry")
     })
     ->Option.getExn(
       ~message=`Trying to retry request. Failed to read 'retry-after' header: ${axiosError.response.headers
