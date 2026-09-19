@@ -40,6 +40,7 @@ async function createImageFiles(ministerpraesidenten) {
         `Failed to download image for ${ministerpraesident.name} (${ministerpraesident.state}): ${err.message}`,
       );
       console.error(`  URL: ${ministerpraesident.imageUrl}`);
+      throw err;
     }
   }
 }
