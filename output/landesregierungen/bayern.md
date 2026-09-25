@@ -31,9 +31,9 @@ Wohnen, Bau und Verkehr:
 * Profilbild: ![Christian Bernreiter](https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/2022-12-08_Christian_Bernreiter_4763_%28cropped%29.JPG/500px-2022-12-08_Christian_Bernreiter_4763_%28cropped%29.JPG)
 
 Justiz:
-* Name: Georg Eisenreich
+* Name: Josef Schmid
 * Partei: CSU
-* Profilbild: ![Georg Eisenreich](https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Georg_Eisenreich_Pressefoto_2018.jpg/500px-Georg_Eisenreich_Pressefoto_2018.jpg)
+* Profilbild: ![Josef Schmid](https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Josef_Schmid_%282023%29_in_der_Gartenstadt_%28cropped%29.jpg/500px-Josef_Schmid_%282023%29_in_der_Gartenstadt_%28cropped%29.jpg)
 
 Unterricht und Kultus:
 * Name: Anna Stolz
@@ -74,3 +74,8 @@ Staatsminister für Europaangelegenheiten und Internationales in der Staatskanzl
 * Name: Eric Beißwenger
 * Partei: CSU
 * Profilbild: ![Eric Beißwenger](https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Eric_Bei%C3%9Fwenger_PLENUM.TV_%28cropped%29.jpg/500px-Eric_Bei%C3%9Fwenger_PLENUM.TV_%28cropped%29.jpg)
+
+Staatsminister für Jugend und Demokratie in der Staatskanzlei:
+* Name: Manuel Knoll
+* Partei: CSU
+* Profilbild: ![Manuel Knoll](https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Manuel_Knoll_MdL%2C_2023_%28cropped%29.jpg/500px-Manuel_Knoll_MdL%2C_2023_%28cropped%29.jpg)
