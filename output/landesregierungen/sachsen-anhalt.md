@@ -15,8 +15,13 @@ Ministerin für Infrastruktur und Digitales (gleichzeitig: Zweite Stellvertreter
 * Partei: FDP
 * Profilbild: ![Lydia Hüskens](https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Lydia-H%C3%BCskens-MdL-Portrait.jpg/500px-Lydia-H%C3%BCskens-MdL-Portrait.jpg)
 
-Staatsminister und Chef der Staatskanzlei, Minister für Kultur:
+Staatsminister und Chef der Staatskanzlei:
 * Name: Rainer Robra
+* Partei: CDU
+* Profilbild: *Kein Bild verfügbar*
+
+Minister für Bildung (gleichzeitig: Minister für Kultur):
+* Name: Jan Riedel
 * Partei: CDU
 * Profilbild: *Kein Bild verfügbar*
 
@@ -32,11 +37,6 @@ Ministerin für Inneres und Sport:
 
 Minister der Finanzen (gleichzeitig: Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten):
 * Name: Michael Richter
-* Partei: CDU
-* Profilbild: *Kein Bild verfügbar*
-
-Minister für Bildung:
-* Name: Jan Riedel
 * Partei: CDU
 * Profilbild: *Kein Bild verfügbar*
 

@@ -18,8 +18,14 @@
     "party": "FDP"
   },
   {
-    "amt": "Staatsminister und Chef der Staatskanzlei, Minister für Kultur",
+    "amt": "Staatsminister und Chef der Staatskanzlei",
     "name": "Rainer Robra",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/500px-Silver_-_replace_this_image_male.svg",
+    "party": "CDU"
+  },
+  {
+    "amt": "Minister für Bildung (gleichzeitig: Minister für Kultur)",
+    "name": "Jan Riedel",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/500px-Silver_-_replace_this_image_male.svg",
     "party": "CDU"
   },
@@ -38,12 +44,6 @@
   {
     "amt": "Minister der Finanzen (gleichzeitig: Minister für Wirtschaft, Tourismus, Landwirtschaft und Forsten)",
     "name": "Michael Richter",
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/500px-Silver_-_replace_this_image_male.svg",
-    "party": "CDU"
-  },
-  {
-    "amt": "Minister für Bildung",
-    "name": "Jan Riedel",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Silver_-_replace_this_image_male.svg/500px-Silver_-_replace_this_image_male.svg",
     "party": "CDU"
   },
