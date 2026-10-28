@@ -15,7 +15,7 @@ Familie, Arbeit und Soziales (gleichzeitig: Weitere Stellvertreterin des Ministe
 * Partei: CSU
 * Profilbild: ![Ulrike Scharf](https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/2016-03-08_Ulrike_Scharf_018_%28cropped%29.JPG/500px-2016-03-08_Ulrike_Scharf_018_%28cropped%29.JPG)
 
-Leiter der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien:
+Leiter der Staatskanzlei und Staatsminister für Bundesangelegenheiten und Medien, ab 30. September 2026 zusätzlich für Europa und Internationales:
 * Name: Florian Herrmann
 * Partei: CSU
 * Profilbild: ![Florian Herrmann](https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Florian_Herrmann_2023.jpg/500px-Florian_Herrmann_2023.jpg)

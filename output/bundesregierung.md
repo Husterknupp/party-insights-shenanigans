@@ -26,9 +26,9 @@ Bundesministerium der Verteidigung (BMVg):
 * Profilbild: ![Boris Pistorius](https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Boris_Pistorius_%282019%29_%28cropped%29.jpg/500px-Boris_Pistorius_%282019%29_%28cropped%29.jpg)
 
 Bundesministerium für Arbeit und Soziales (BMAS):
-* Name: Bärbel Bas
+* Name: Alexander Schweitzer
 * Partei: SPD
-* Profilbild: ![Bärbel Bas](https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93033.jpg/500px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93033.jpg)
+* Profilbild: ![Alexander Schweitzer](https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93120.jpg/500px-2025-05-05_Unterzeichnung_des_Koalitionsvertrages_der_21._Wahlperiode_des_Bundestages_by_Sandro_Halank%E2%80%93120.jpg)
 
 Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend (BMBFSFJ):
 * Name: Karin Prien
