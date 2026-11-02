@@ -65,7 +65,7 @@ let _serverAllowsRequestsAgain = (axiosError, retryCount, url) => {
         ~start=url->String.length - 10,
       )}`,
   )
-  Js_promise.make((~resolve, ~reject) => {
+  Promise.make((resolve, _reject) => {
     ignore(setTimeout(resolve, retryAfter * 1000))
   })
 }
@@ -77,17 +77,17 @@ let rec getWithRetry = async (url, maybeConfig, ~retryCount=1): response<'a> => 
     try {
       await defaultExport.get(url, maybeConfig)
     } catch {
-    | JsError(e) =>
+    | JsExn(e) =>
       switch asJsError(e).name {
       | "AxiosError" => {
           await _serverAllowsRequestsAgain(asAxiosError(e), retryCount, url)
           await getWithRetry(url, maybeConfig, ~retryCount=retryCount + 1)
         }
       | "AggregateError" => await getWithRetry(url, maybeConfig, ~retryCount=retryCount + 1)
-      | _ => Exn.raiseError(`GET request failed unexpectedly. URL: ${url}`)
+      | _ => JsError.throwWithMessage(`GET request failed unexpectedly. URL: ${url}`)
       }
     }
-  | _ => Exn.raiseError(`Tried ${maxRetries->Int.toString} times. Giving up. URL ${url}`)
+  | _ => JsError.throwWithMessage(`Tried ${maxRetries->Int.toString} times. Giving up. URL ${url}`)
   }
 }
 
