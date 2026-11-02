@@ -10,7 +10,7 @@ import path from "node:path";
 // that dependency ourselves, would make this spec's ability to even run hostage to an
 // implementation detail anki-apkg-export could change or drop at any point.
 import JSZip from "jszip";
-import SQL from "sql.js";
+import initSqlJs from "sql.js";
 
 // Deliberately does NOT mock AnkiDeckBuilder.res.mjs (unlike apkgFileExport.spec.js) —
 // the whole point of this spec is to exercise exportOutputFileToApkg end to end, the same
@@ -38,6 +38,8 @@ const POLITICIAN_WITHOUT_IMAGE = {
   amt: "Minister ohne Foto",
   imageUrl: "",
 };
+
+const SQL = await initSqlJs();
 
 const readNotesAndCards = async (apkgFilePath) => {
   const zip = await JSZip.loadAsync(fs.readFileSync(apkgFilePath));
