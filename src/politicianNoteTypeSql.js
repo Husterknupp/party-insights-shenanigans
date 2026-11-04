@@ -28,7 +28,11 @@ import sha1 from "sha1";
 
 const require = createRequire(import.meta.url);
 const { Exporter } = require("anki-apkg-export");
-const sql = require("sql.js");
+const initSqlJs = require("sql.js");
+
+// sql.js >= 1.0 exports an async initializer instead of the ready-to-use module that 0.5 exported;
+// anki-apkg-export 4 only needs the resulting object's `Database` constructor.
+const sql = await initSqlJs();
 
 const SEPARATOR = "";
 
