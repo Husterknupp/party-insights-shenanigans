@@ -6,9 +6,9 @@ Ministerpräsident:
 * Profilbild: ![Markus Söder](https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/2024-10-24_Politik%2C_Ministerpr%C3%A4sidentenkonferenz_2024_Leipzig_STP_7957_by_Stepro_%28cropped%29.jpg/500px-2024-10-24_Politik%2C_Ministerpr%C3%A4sidentenkonferenz_2024_Leipzig_STP_7957_by_Stepro_%28cropped%29.jpg)
 
 Wirtschaft, Landesentwicklung und Energie (gleichzeitig: Stellvertretender Ministerpräsident):
-* Name: Hubert Aiwanger †
+* Name: Hubert Aiwanger
 * Partei: FW
-* Profilbild: ![Hubert Aiwanger †](https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg/500px-2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg)
+* Profilbild: ![Hubert Aiwanger](https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg/500px-2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg)
 
 Familie, Arbeit und Soziales (gleichzeitig: Weitere Stellvertreterin des Ministerpräsidenten):
 * Name: Ulrike Scharf
