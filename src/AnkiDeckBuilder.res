@@ -36,7 +36,7 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
 }
 
 // [Name, Partei, Amt/Ministerium, Profil-Photo] — matches POLITICIAN_FIELDS' order
-// (politicianNoteTypeSql.js); Profil-Photo is left blank here and filled in by the caller
+// (politicianNoteType.js); Profil-Photo is left blank here and filled in by the caller
 // once the image (if any) has been downloaded, since that happens async and per-index in
 // exportJsonFileToApkg below
 let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
@@ -100,27 +100,34 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
 
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = AnkiApkgExportFacade.makeMultiFieldExporter(deckName)
+  let deck = await AnkiApkgExportFacade.makeExporter(deckName)
 
-  let media =
-    await politicians
-    ->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index))
-    ->Promise.all
+  try {
+    let media =
+      await politicians
+      ->Array.mapWithIndex((politician, index) => _downloadMediaFor(politician, index))
+      ->Promise.all
 
-  politicians->Array.forEachWithIndex((politician, index) => {
-    let fields = fieldsFor(politician)
-    let fields = switch media->Array.get(index)->Option.flatMap(x => x) {
-    | Some((filename, data)) =>
-      AnkiApkgExportFacade.addMedia(deck, filename, data)
-      fields->Array.mapWithIndex((field, fieldIndex) =>
-        fieldIndex == 3 ? `<img src="${filename}">` : field
-      )
-    | None => fields
-    }
-    AnkiApkgExportFacade.addNote(deck, fields)
-  })
+    politicians->Array.forEachWithIndex((politician, index) => {
+      let fields = fieldsFor(politician)
+      let fields = switch media->Array.get(index)->Option.flatMap(x => x) {
+      | Some((filename, data)) =>
+        AnkiApkgExportFacade.addMedia(deck, filename, data)
+        fields->Array.mapWithIndex((field, fieldIndex) =>
+          fieldIndex == 3 ? `<img src="${filename}">` : field
+        )
+      | None => fields
+      }
+      AnkiApkgExportFacade.addNote(deck, fields)
+    })
 
-  let data = await AnkiApkgExportFacade.save(deck)
-  AnkiApkgExportFacade.writeFileSync(outputFilePath, data)
-  Console.log(`Wrote ${politicians->Array.length->Int.toString} notes to ${outputFilePath}`)
+    let data = await AnkiApkgExportFacade.save(deck)
+    AnkiApkgExportFacade.writeFileSync(outputFilePath, data)
+    Console.log(`Wrote ${politicians->Array.length->Int.toString} notes to ${outputFilePath}`)
+    AnkiApkgExportFacade.close(deck)
+  } catch {
+  | exn =>
+    AnkiApkgExportFacade.close(deck)
+    raise(exn)
+  }
 }
