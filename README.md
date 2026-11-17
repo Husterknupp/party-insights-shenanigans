@@ -20,6 +20,11 @@ npm run res:build
 npm start
 ```
 
+## Keeping `output/` Up to Date
+
+A GitHub Actions workflow ([`schedule.yml`](./.github/workflows/schedule.yml)) runs the main script once a day.
+If Wikipedia changed anything, it opens a single pull request (branch `auto/wiki-refresh`) with the updated files in `output/`; review and merge it. A later run updates that same PR instead of opening another one.
+
 ## Run Tests
 
 ```shell
