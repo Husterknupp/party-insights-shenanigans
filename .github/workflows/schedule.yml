@@ -4,6 +4,7 @@ name: "Check For Wiki Updates"
 on:
   schedule:
     - cron: "00 00 * * *"
+  workflow_dispatch:
   push:
   pull_request:
     types: [opened, reopened]
@@ -11,6 +12,9 @@ on:
 jobs:
   schedule:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6 # to have the repo content actually available
       - uses: actions/setup-node@v6
@@ -21,7 +25,17 @@ jobs:
       - run: npm run res:build
       - run: npm start
       # ACTUAL CHECK
+      # Nightly runs hand changes over as a PR instead of failing
+      - name: Open or update refresh PR
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          .github/scripts/open-refresh-pr.sh
       - name: Compare output with checked-in version
+        if: github.event_name != 'schedule' && github.event_name != 'workflow_dispatch'
         run: |
           STATUS=$(git status --porcelain -- . ':(glob,exclude)output/**/*.apkg')
           if [[ ! $STATUS ]]; then echo "empty"; else git --no-pager diff -- . ':(glob,exclude)output/**/*.apkg' && exit 1; fi
