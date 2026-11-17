@@ -45,7 +45,7 @@ Hessen:
 Mecklenburg-Vorpommern:
 * Name: Manuela Schwesig
 * Partei: SPD
-* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Schwesig_II
+* Kabinett: https://de.wikipedia.org/wiki/Kabinett_Schwesig_III
 * Profilbild: ![Manuela Schwesig](https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Manuela_Schwesig_2023_2.jpg/500px-Manuela_Schwesig_2023_2.jpg)
 
 Niedersachsen:
