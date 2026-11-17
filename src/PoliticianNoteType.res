@@ -1,55 +1,65 @@
 // The "Deutschland:Politiker" note type: four fields and two card templates, which is more than
 // anki-apkg-export's built-in Front/Back factory offers. Since v5 the library accepts a custom
-// model (`ExportOptions.model`, see its docs/api.md), so everything here goes through its public
-// API; see #86 for the port away from the raw v4 `Exporter` + hand-written SQL.
-import { AnkiExport } from "anki-apkg-export";
+// model (`create(deckName, {model})`), so everything here goes through its public API; see #86
+// for the port away from the raw v4 `Exporter` + hand-written SQL.
 
 // Anki's field separator is U+001F; the library rejects it inside field values, so joining on it
 // cannot make two different field lists collide.
-const SEPARATOR = "\u001f";
+let fieldSeparator = String.fromCharCode(31)
 
 // fixed so the same note type re-imports as one shared model across independently-generated
 // decks (Landesregierungen, Bundesregierung, Ministerpräsidenten, ...)
-export const POLITICIAN_MODEL_ID = 1500000000001;
-export const POLITICIAN_MODEL_NAME = "Deutschland:Politiker";
+let modelId = 1500000000001.
+let modelName = "Deutschland:Politiker"
 
 // field order matters: it's also the order values are passed to `addNote` below
-export const POLITICIAN_FIELDS = [
-  "Name",
-  "Partei",
-  "Amt/Ministerium",
-  "Profil-Photo",
-];
+let fields = ["Name", "Partei", "Amt/Ministerium", "Profil-Photo"]
 
 // the one field deliberately left out of a note's identity — see `noteIdentity` below
-const PROFILE_PHOTO_ORD = POLITICIAN_FIELDS.indexOf("Profil-Photo");
+let profilePhotoOrd = fields->Array.indexOf("Profil-Photo")
 
 // A card is only written when every field in `requiredFields` is non-empty: "Amt zu Person" needs
 // Amt/Ministerium, "Gesicht zu Amt" needs Profil-Photo, so a note without an image produces only
 // the "Amt zu Person" card — see #49's "skip on missing/broken image URL" case, which this is
 // designed to compose with.
-export const POLITICIAN_MODEL = {
-  id: POLITICIAN_MODEL_ID,
-  name: POLITICIAN_MODEL_NAME,
-  fields: POLITICIAN_FIELDS,
+let model: AnkiApkgExportFacade.model = {
+  id: modelId,
+  name: modelName,
+  fields,
   templates: [
     {
       name: "Amt zu Person",
       questionFormat: "{{Amt/Ministerium}}",
-      answerFormat:
-        '{{FrontSide}}\n\n<hr id="answer">\n\n{{Name}}, {{Partei}}\n<div style="margin-bottom:20px"></div>\n{{Profil-Photo}}',
+      answerFormat: `{{FrontSide}}
+
+<hr id="answer">
+
+{{Name}}, {{Partei}}
+<div style="margin-bottom:20px"></div>
+{{Profil-Photo}}`,
       requiredFields: ["Amt/Ministerium"],
     },
     {
       name: "Gesicht zu Amt",
       questionFormat: "{{Profil-Photo}}",
-      answerFormat:
-        '{{FrontSide}}\n\n<hr id="answer">\n\n{{Name}}, {{Partei}}<br>\n{{Amt/Ministerium}}',
+      answerFormat: `{{FrontSide}}
+
+<hr id="answer">
+
+{{Name}}, {{Partei}}<br>
+{{Amt/Ministerium}}`,
       requiredFields: ["Profil-Photo"],
     },
   ],
-  css: ".card {\n  font-family: arial;\n  font-size: 20px;\n  text-align: center;\n  color: black;\n  background-color: white;\n}\n",
-};
+  css: `.card {
+  font-family: arial;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  background-color: white;
+}
+`,
+}
 
 // A note's GUID is its identity to Anki, and the only lever we have over what an import does with
 // it. On import, a GUID already present in the target collection has its note's fields overwritten
@@ -73,15 +83,15 @@ export const POLITICIAN_MODEL = {
 // `<img src="<array index>.<ext>">` and so changes whenever an unrelated politician is inserted
 // above this one; without an explicit key the library would hash all fields, photo included, and
 // fork every note again — the duplicate-everything bug of #71.
-export const noteIdentity = (fieldValues) =>
-  fieldValues.filter((_, ord) => ord !== PROFILE_PHOTO_ORD).join(SEPARATOR);
+let noteIdentity = (fieldValues: array<string>): string =>
+  fieldValues
+  ->Array.filterWithIndex((_, ord) => ord != profilePhotoOrd)
+  ->Array.join(fieldSeparator)
 
-// The exporter owns a WASM database: the caller must `close()` it when done.
-export const makeExporter = (deckName) =>
-  AnkiExport.create(deckName, { model: POLITICIAN_MODEL });
+// The exporter owns a WASM database: the caller must `AnkiApkgExportFacade.close` it when done.
+let makeExporter = (deckName: string) => AnkiApkgExportFacade.create(deckName, {model: model})
 
-// writes one note with the four POLITICIAN_FIELDS values (in that order); the library generates
-// one card per template whose required fields are non-empty
-export const addNote = (exporter, fieldValues, { tags = [] } = {}) => {
-  exporter.addNote(fieldValues, { noteId: noteIdentity(fieldValues), tags });
-};
+// writes one note with the four `fields` values (in that order); the library generates one card
+// per template whose required fields are non-empty
+let addNote = (exporter: AnkiApkgExportFacade.exporter, fieldValues: array<string>) =>
+  AnkiApkgExportFacade.addNote(exporter, fieldValues, {noteId: noteIdentity(fieldValues), tags: []})

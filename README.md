@@ -50,9 +50,9 @@ Produces `output/<file>.apkg` next to the input JSON, importable into Anki/AnkiD
 
 Every deck shares one note type, `Deutschland:Politiker` (fields: Name, Partei,
 Amt/Ministerium, Profil-Photo; two card directions — role → person and photo → person).
-The fields and card templates are defined once, as `POLITICIAN_MODEL` in
-[`src/politicianNoteType.js`](./src/politicianNoteType.js) — that's the single place to edit if the
-layout needs to change; `src/AnkiApkgExportFacade.res` only binds into it.
+The fields and card templates are defined once, as `model` in
+[`src/PoliticianNoteType.res`](./src/PoliticianNoteType.res) — that's the single place to edit if the
+layout needs to change; `src/AnkiApkgExportFacade.res` only binds into the library.
 
 ### Import the `.apkg` into Anki
 

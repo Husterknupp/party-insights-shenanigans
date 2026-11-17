@@ -36,7 +36,7 @@ let deserializePoliticians = (fileName): array<OutputHelpers.politician> => {
 }
 
 // [Name, Partei, Amt/Ministerium, Profil-Photo] — matches POLITICIAN_FIELDS' order
-// (politicianNoteType.js); Profil-Photo is left blank here and filled in by the caller
+// (PoliticianNoteType.res); Profil-Photo is left blank here and filled in by the caller
 // once the image (if any) has been downloaded, since that happens async and per-index in
 // exportJsonFileToApkg below
 let fieldsFor = (politician: OutputHelpers.politician): array<string> => {
@@ -100,7 +100,7 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
 
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = await AnkiApkgExportFacade.makeExporter(deckName)
+  let deck = await PoliticianNoteType.makeExporter(deckName)
 
   try {
     let media =
@@ -118,7 +118,7 @@ let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
         )
       | None => fields
       }
-      AnkiApkgExportFacade.addNote(deck, fields)
+      PoliticianNoteType.addNote(deck, fields)
     })
 
     let data = await AnkiApkgExportFacade.save(deck)

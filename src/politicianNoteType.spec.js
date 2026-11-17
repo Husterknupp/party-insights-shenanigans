@@ -3,10 +3,10 @@ import {
   makeExporter,
   addNote,
   noteIdentity,
-  POLITICIAN_MODEL_ID,
-  POLITICIAN_MODEL_NAME,
-  POLITICIAN_FIELDS,
-} from "./politicianNoteType.js";
+  modelId as POLITICIAN_MODEL_ID,
+  modelName as POLITICIAN_MODEL_NAME,
+  fields as POLITICIAN_FIELDS,
+} from "./PoliticianNoteType.res.mjs";
 
 // The exporter owns a WASM database; closing every one a test opens keeps the suite from piling
 // them up.
