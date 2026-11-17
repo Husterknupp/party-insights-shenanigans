@@ -36,7 +36,9 @@ title="Wiki refresh: ${decks:-output}"
 body=$(printf 'Automated refresh from Wikipedia.\n\n```\n%s\n```\n' "$stat")
 
 if [ "${DRY_RUN:-}" = 1 ]; then
-  printf 'DRY_RUN: would push %s and %s PR "%s"\n%s\n' "$BRANCH" "${open_pr:+update #$open_pr with}${open_pr:-open}" "$title" "$body"
+  action="open a PR"
+  if [ -n "$open_pr" ]; then action="update PR #$open_pr"; fi
+  printf 'DRY_RUN: would push %s and %s: "%s"\n%s\n' "$BRANCH" "$action" "$title" "$body"
   exit 0
 fi
 
