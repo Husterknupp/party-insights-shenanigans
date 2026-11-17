@@ -1,15 +1,13 @@
 import { jest } from "@jest/globals";
+import { makeExporter, addNote } from "./AnkiApkgExportFacade.res.mjs";
 import {
-  makeExporter,
-  addNote,
   noteIdentity,
   modelId as POLITICIAN_MODEL_ID,
   modelName as POLITICIAN_MODEL_NAME,
   fields as POLITICIAN_FIELDS,
 } from "./PoliticianNoteType.res.mjs";
 
-// The exporter owns a WASM database; closing every one a test opens keeps the suite from piling
-// them up.
+// the exporter owns a WASM database: close every one a test opens
 const opened = [];
 const makeTrackedExporter = async (deckName) => {
   const exporter = await makeExporter(deckName);
@@ -152,11 +150,7 @@ describe("addNote", () => {
     expect(noteMods(exporter)[0]).toBeLessThanOrEqual(before + 60);
   });
 
-  // A stable guid alone does not buy an update in place. Anki's default import rule is
-  // `UpdateCondition::IfNewer`, which overwrites the note it already holds only when the incoming
-  // one's `mod` is strictly greater — otherwise the import is logged as a duplicate and nothing is
-  // written. Our half of that condition is that a later export must carry a later `mod`; the other
-  // half is whatever sits in the user's collection, which no test of ours can speak for.
+  // Anki only overwrites a known note on import when the incoming `mod` is strictly greater
   it("gives a later export a strictly greater note mod, so an import updates instead of skipping", async () => {
     const buildTime = 1_753_900_000_000;
     const nowSpy = jest.spyOn(Date, "now");
@@ -191,10 +185,8 @@ describe("addNote", () => {
   });
 });
 
-// The guid is what an import matches on: a known guid updates the note's fields and leaves its
-// cards (and therefore the user's scheduling) alone, an unknown one creates a new note whose cards
-// land in the new queue. So these are behavioural assertions about what a re-import does, not
-// assertions about a hash. See #71.
+// Anki matches imported notes by guid: a known one is updated in place (scheduling kept), an
+// unknown one becomes a new note. See #71.
 describe("addNote note identity (guid)", () => {
   it("is stable across separately built decks, so an unchanged politician re-imports as an update", async () => {
     expect(await guidOf("SomeDeck", MERZ)).toBe(await guidOf("SomeDeck", MERZ));
@@ -233,11 +225,9 @@ describe("addNote note identity (guid)", () => {
   });
 });
 
-// Golden values. The note identity and the GUID Anki matches on were fixed when the exporter moved
-// to anki-apkg-export v5 (#86), and changing either one makes every existing collection import a
-// full second copy of the deck (see #71). So a failure here is not "update the snapshot": it
-// means the identity changed, and re-importing will duplicate notes. This also catches a library
-// upgrade that alters the GUID scheme (as the v4 to v5 bump did).
+// Golden values: if one of these fails, the identity changed and a re-import duplicates every
+// note (#71) — don't just update the expectation. Also fails if a library upgrade changes the
+// GUID scheme.
 describe("note identity golden values", () => {
   it("builds the identity key from every field except the photo", () => {
     expect(noteIdentity(MERZ)).toBe("Friedrich Merz\u001fCDU\u001fBundeskanzler");

@@ -100,7 +100,7 @@ let _downloadMediaFor = async (politician: OutputHelpers.politician, index: int)
 
 let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
   let politicians = deserializePoliticians(jsonFilePath)
-  let deck = await PoliticianNoteType.makeExporter(deckName)
+  let deck = await AnkiApkgExportFacade.makeExporter(deckName)
 
   try {
     let media =
@@ -118,7 +118,7 @@ let exportJsonFileToApkg = async (jsonFilePath, outputFilePath, deckName) => {
         )
       | None => fields
       }
-      PoliticianNoteType.addNote(deck, fields)
+      AnkiApkgExportFacade.addNote(deck, fields)
     })
 
     let data = await AnkiApkgExportFacade.save(deck)

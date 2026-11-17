@@ -1,28 +1,32 @@
-// The "Deutschland:Politiker" note type: four fields and two card templates, which is more than
-// anki-apkg-export's built-in Front/Back factory offers. Since v5 the library accepts a custom
-// model (`create(deckName, {model})`), so everything here goes through its public API; see #86
-// for the port away from the raw v4 `Exporter` + hand-written SQL.
+// The "Deutschland:Politiker" note type: four fields, two card templates.
 
-// Anki's field separator is U+001F; the library rejects it inside field values, so joining on it
-// cannot make two different field lists collide.
-let fieldSeparator = String.fromCharCode(31)
+type cardTemplate = {
+  name: string,
+  questionFormat: string,
+  answerFormat: string,
+  // a card is only written when all of these fields are non-empty
+  requiredFields: array<string>,
+}
+type model = {
+  // Anki ids are too big for ReScript's 32-bit int
+  id: float,
+  name: string,
+  fields: array<string>,
+  templates: array<cardTemplate>,
+  css: string,
+}
 
-// fixed so the same note type re-imports as one shared model across independently-generated
-// decks (Landesregierungen, Bundesregierung, Ministerpräsidenten, ...)
+// fixed, so every deck imports as the same note type
 let modelId = 1500000000001.
 let modelName = "Deutschland:Politiker"
 
-// field order matters: it's also the order values are passed to `addNote` below
+// order matters: it's the order of the values passed to `addNote`
 let fields = ["Name", "Partei", "Amt/Ministerium", "Profil-Photo"]
 
-// the one field deliberately left out of a note's identity — see `noteIdentity` below
 let profilePhotoOrd = fields->Array.indexOf("Profil-Photo")
 
-// A card is only written when every field in `requiredFields` is non-empty: "Amt zu Person" needs
-// Amt/Ministerium, "Gesicht zu Amt" needs Profil-Photo, so a note without an image produces only
-// the "Amt zu Person" card — see #49's "skip on missing/broken image URL" case, which this is
-// designed to compose with.
-let model: AnkiApkgExportFacade.model = {
+// "Gesicht zu Amt" needs the photo, so a politician without one only gets "Amt zu Person" (#49)
+let model: model = {
   id: modelId,
   name: modelName,
   fields,
@@ -61,37 +65,14 @@ let model: AnkiApkgExportFacade.model = {
 `,
 }
 
-// A note's GUID is its identity to Anki, and the only lever we have over what an import does with
-// it. On import, a GUID already present in the target collection has its note's fields overwritten
-// in place while its cards — interval, due date, review log — are left untouched; an unseen GUID
-// becomes a new note whose cards enter the new queue. That overwrite is conditional, though: the
-// default import rule is `UpdateCondition::IfNewer`, which writes the incoming fields only when
-// their note's `mod` is strictly greater than the one already in the collection — the library
-// stamps every note with the current epoch seconds, which leaves every later export newer than
-// every earlier one. There is no third option: the .apkg format cannot say "keep the scheduling
-// but ask me again". So what goes into the key below decides, per field, whether a change silently
-// rewrites a card the user may not be shown again for months, or is put back in front of them.
-//
-// The library derives the GUID from this key plus its deck and model ids, and the deck id from the
-// deck name. Hence every field except the photo: a new minister, a party switch or a renamed
-// ministry all change the answer being learned, so they must be re-learned: new GUID, new note,
-// asked at once. A swapped profile picture does not, so it updates in place and the user's
-// progress survives. The same politician in two decks (Ministerpräsidenten and their own
-// Landesregierung) is two separate notes, because the deck differs.
-//
-// What must *not* go in is anything that moves on its own. The photo field holds
-// `<img src="<array index>.<ext>">` and so changes whenever an unrelated politician is inserted
-// above this one; without an explicit key the library would hash all fields, photo included, and
-// fork every note again — the duplicate-everything bug of #71.
+// Anki's field separator; the library rejects it inside field values, so joins can't collide
+let fieldSeparator = String.fromCharCode(31)
+
+// What the library turns into the note's GUID, i.e. how an import recognizes a note: every field
+// except the photo. A new person, party or ministry is a new note to learn; a new photo, or an
+// image index shifted by an unrelated politician, updates the note in place. Don't add anything
+// that changes on its own, or every re-import duplicates the deck (#71).
 let noteIdentity = (fieldValues: array<string>): string =>
   fieldValues
   ->Array.filterWithIndex((_, ord) => ord != profilePhotoOrd)
   ->Array.join(fieldSeparator)
-
-// The exporter owns a WASM database: the caller must `AnkiApkgExportFacade.close` it when done.
-let makeExporter = (deckName: string) => AnkiApkgExportFacade.create(deckName, {model: model})
-
-// writes one note with the four `fields` values (in that order); the library generates one card
-// per template whose required fields are non-empty
-let addNote = (exporter: AnkiApkgExportFacade.exporter, fieldValues: array<string>) =>
-  AnkiApkgExportFacade.addNote(exporter, fieldValues, {noteId: noteIdentity(fieldValues), tags: []})
