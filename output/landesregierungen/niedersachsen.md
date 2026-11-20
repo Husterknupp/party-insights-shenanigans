@@ -10,7 +10,7 @@ Kultus (gleichzeitig: Stellvertreterin des Ministerpräsidenten):
 * Partei: Bündnis 90/Die Grünen
 * Profilbild: ![Julia Hamburg](https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Hamburg%2C_Julia_Willie.jpg/500px-Hamburg%2C_Julia_Willie.jpg)
 
-Inneres, Sport und Digitalisierung:
+Justiz (gleichzeitig: Inneres, Sport und Digitalisierung):
 * Name: Daniela Behrens
 * Partei: SPD
 * Profilbild: ![Daniela Behrens](https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Behrens_Daniela_042_icv2.tif/500px-Behrens_Daniela_042_icv2.png)
@@ -29,11 +29,6 @@ Finanzen:
 * Name: Gerald Heere
 * Partei: Bündnis 90/Die Grünen
 * Profilbild: ![Gerald Heere](https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/GeraldHeere.jpg/500px-GeraldHeere.jpg)
-
-Justiz:
-* Name: Kathrin Wahlmann
-* Partei: SPD
-* Profilbild: *Kein Bild verfügbar*
 
 Ernährung, Landwirtschaft und Verbraucherschutz:
 * Name: Miriam Staudte
