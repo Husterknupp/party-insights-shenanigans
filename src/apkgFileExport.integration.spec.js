@@ -2,13 +2,11 @@ import { jest } from "@jest/globals";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-// jszip and sql.js also happen to be what anki-apkg-export uses internally (see
-// politicianNoteTypeSql.js, which reads/writes the exact same collection.anki2 format
-// through the same two libraries) — but they're declared as our own direct dependencies
-// here, not pulled in transitively through anki-apkg-export's node_modules tree. Depending
-// on the exact same libraries anki-apkg-export happens to use internally, without owning
-// that dependency ourselves, would make this spec's ability to even run hostage to an
-// implementation detail anki-apkg-export could change or drop at any point.
+// jszip and sql.js also happen to be what anki-apkg-export uses internally, but they're declared
+// as our own direct dependencies here, not pulled in transitively through anki-apkg-export's
+// node_modules tree. Depending on the exact same libraries anki-apkg-export happens to use
+// internally, without owning that dependency ourselves, would make this spec's ability to even
+// run hostage to an implementation detail anki-apkg-export could change or drop at any point.
 import JSZip from "jszip";
 import initSqlJs from "sql.js";
 
