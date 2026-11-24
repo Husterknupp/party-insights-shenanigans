@@ -5,10 +5,15 @@ Ministerpräsident:
 * Partei: CSU
 * Profilbild: ![Markus Söder](https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/2024-10-24_Politik%2C_Ministerpr%C3%A4sidentenkonferenz_2024_Leipzig_STP_7957_by_Stepro_%28cropped%29.jpg/500px-2024-10-24_Politik%2C_Ministerpr%C3%A4sidentenkonferenz_2024_Leipzig_STP_7957_by_Stepro_%28cropped%29.jpg)
 
-Wirtschaft, Landesentwicklung und Energie (gleichzeitig: Stellvertretender Ministerpräsident):
-* Name: Hubert Aiwanger
+Umwelt und Verbraucherschutz (gleichzeitig: Stellvertretender Ministerpräsident):
+* Name: Thorsten Glauber
 * Partei: FW
-* Profilbild: ![Hubert Aiwanger](https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg/500px-2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg)
+* Profilbild: ![Thorsten Glauber](https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/GlauberThorsten_2015.jpg/500px-GlauberThorsten_2015.jpg)
+
+Wirtschaft, Landesentwicklung und Energie:
+* Name: Tobias Gotthardt
+* Partei: FW
+* Profilbild: ![Tobias Gotthardt](https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/2024-10-10_Reuni%C3%A3o_de_Felicio_Ramuth_com_o_Senhor_Tobias_Gotthardt%2C_06_%28cropped%29.jpg/500px-2024-10-10_Reuni%C3%A3o_de_Felicio_Ramuth_com_o_Senhor_Tobias_Gotthardt%2C_06_%28cropped%29.jpg)
 
 Familie, Arbeit und Soziales (gleichzeitig: Weitere Stellvertreterin des Ministerpräsidenten):
 * Name: Ulrike Scharf
@@ -49,11 +54,6 @@ Finanzen und Heimat:
 * Name: Albert Füracker
 * Partei: CSU
 * Profilbild: ![Albert Füracker](https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Albert_Fueracker_-_Bayerischer_Staatsminister_der_Finanzen_und_f%C3%BCr_Heimat.jpg/500px-Albert_Fueracker_-_Bayerischer_Staatsminister_der_Finanzen_und_f%C3%BCr_Heimat.jpg)
-
-Umwelt und Verbraucherschutz:
-* Name: Thorsten Glauber
-* Partei: FW
-* Profilbild: ![Thorsten Glauber](https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/GlauberThorsten_2015.jpg/500px-GlauberThorsten_2015.jpg)
 
 Ernährung, Landwirtschaft, Forsten und Tourismus:
 * Name: Michaela Kaniber

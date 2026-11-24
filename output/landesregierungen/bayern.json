@@ -6,9 +6,15 @@
     "party": "CSU"
   },
   {
-    "amt": "Wirtschaft, Landesentwicklung und Energie (gleichzeitig: Stellvertretender Ministerpräsident)",
-    "name": "Hubert Aiwanger",
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg/500px-2023-05-23-Hubert_Aiwanger-Maischberger-6164.jpg",
+    "amt": "Umwelt und Verbraucherschutz (gleichzeitig: Stellvertretender Ministerpräsident)",
+    "name": "Thorsten Glauber",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/GlauberThorsten_2015.jpg/500px-GlauberThorsten_2015.jpg",
+    "party": "FW"
+  },
+  {
+    "amt": "Wirtschaft, Landesentwicklung und Energie",
+    "name": "Tobias Gotthardt",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/2024-10-10_Reuni%C3%A3o_de_Felicio_Ramuth_com_o_Senhor_Tobias_Gotthardt%2C_06_%28cropped%29.jpg/500px-2024-10-10_Reuni%C3%A3o_de_Felicio_Ramuth_com_o_Senhor_Tobias_Gotthardt%2C_06_%28cropped%29.jpg",
     "party": "FW"
   },
   {
@@ -58,12 +64,6 @@
     "name": "Albert Füracker",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Albert_Fueracker_-_Bayerischer_Staatsminister_der_Finanzen_und_f%C3%BCr_Heimat.jpg/500px-Albert_Fueracker_-_Bayerischer_Staatsminister_der_Finanzen_und_f%C3%BCr_Heimat.jpg",
     "party": "CSU"
-  },
-  {
-    "amt": "Umwelt und Verbraucherschutz",
-    "name": "Thorsten Glauber",
-    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/GlauberThorsten_2015.jpg/500px-GlauberThorsten_2015.jpg",
-    "party": "FW"
   },
   {
     "amt": "Ernährung, Landwirtschaft, Forsten und Tourismus",
